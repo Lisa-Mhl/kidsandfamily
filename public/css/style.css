@@ -1,3 +1,46 @@
-h1{
+h1 {
     color: red;
 }
+
+/****************** DESKSTOP VERSION *******************/
+
+/* LOGIN */
+.logCtn {
+    margin-top: 10%;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: solid;
+    border-width: thin;
+    padding: 2em;
+    background-color: #354254;
+    color: whitesmoke;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.logTitle {
+    color: whitesmoke;
+    text-align: center;
+}
+
+.loginBtn {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+    background-color: #bdc902;
+    width: 30%;
+    text-align: center;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+.loginBtn:hover {
+    background-color: cornflowerblue ;
+    transition: 0.5s;
+}
+
+.remeberMe {
+    margin-top: 1em;
+}
+
+
