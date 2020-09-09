@@ -8,6 +8,10 @@ html {
     scroll-behavior: smooth;
 }
 
+.bold{
+    font-weight: bold;
+}
+
 /****************** DESKSTOP VERSION *******************/
 
 /* NAVBAR */
@@ -152,7 +156,8 @@ html {
 }
 
 .aboutCtn {
-    background-color: #00bbd3;
+    background: linear-gradient(135deg, darkseagreen, #00bbd3);
+    background-blend-mode: lighten;
     color: whitesmoke;
     padding-top: 5em;
     padding-bottom: 5em;
@@ -209,11 +214,26 @@ html {
 
 .services {
     text-align: center;
-    background-color: #f8d7c6;
+    background: linear-gradient(#f8d7c6, navajowhite);
     padding: 5em;
 }
 
-.servicesBody{
+.green {
+    color: #51d7a3;
+    font-weight: bold;
+}
+
+.orange {
+    color: #fea94b;
+    font-weight: bold;
+}
+
+.grey {
+    color: #929292;
+    font-weight: bold;
+}
+
+.servicesBody {
     width: 70%;
     margin: auto;
 }
@@ -232,6 +252,31 @@ html {
 .newsTitle {
     margin-bottom: 2em;
 }
+
+.newsLinkCtn {
+    margin-top: 5em;
+}
+
+.newsLink {
+    margin-top: 5em;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em;
+    background-color: #bdc902;
+    width: 30%;
+    text-align: center;
+    border-radius: 10px;
+    transition: 0.5s;
+    color: black;
+}
+
+.newsLink:hover {
+    text-decoration: none;
+    color: black;
+    background-color: cornflowerblue;
+    transition: 0.5s;
+}
+
 
 .articleCard {
     margin: auto;
@@ -303,6 +348,18 @@ html {
     color: red;
 }
 
+#articleIdLink {
+    color: white;
+}
+
+.eshopTitle {
+    margin-bottom: 1em;
+}
+
+.eshopBody {
+    margin-top: 1em;
+}
+
 .eshopCtn {
     background-color: darkcyan;
     padding: 1em;
@@ -315,14 +372,27 @@ html {
     margin: 5em auto 5em;
 }
 
+.eshopLinkCtn {
+    margin-top: 3em;
+}
+
 .eshopLink {
-    color: #bdc902;
-    font-size: 1.5em;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em;
+    background-color: #bdc902;
+    width: 30%;
+    text-align: center;
+    border-radius: 10px;
+    transition: 0.5s;
+    color: black;
 }
 
 .eshopLink:hover {
-    color: dodgerblue;
     text-decoration: none;
+    color: black;
+    background-color: cornflowerblue;
+    transition: 0.5s;
 }
 
 /*footer*/
