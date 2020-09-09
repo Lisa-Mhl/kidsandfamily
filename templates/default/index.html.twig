@@ -61,14 +61,14 @@
     <div id="news"></div>
     <div class="news">
         <h2>Les nouveautés</h2>
-        {% for article in articles %}
-            <div class="card articleCard">
-                <img class="card-img" src="https://cdn.pixabay.com/photo/2017/12/24/08/50/family-3036595_960_720.jpg"
-                     alt="XX">
-                <h5 class="card-title">{{ article.title }}</h5>
-                <p class="card-body">{{ article.author }} <br> {{ article.category }}</p>
-            </div>
-        {% endfor %}
+        {# {% for article in articles %} #}
+        <div class="card articleCard">
+            <img class="card-img" src="https://cdn.pixabay.com/photo/2017/12/24/08/50/family-3036595_960_720.jpg"
+                 alt="XX">
+            <h5 class="card-title">TITRE</h5>
+            <p class="card-body"> AUTEUR <br> CATEGORIE </p>
+        </div>
+        {# {% endfor %} #}
     </div>
 
     <div class="eshopCtn">
