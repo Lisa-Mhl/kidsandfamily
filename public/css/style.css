@@ -34,7 +34,7 @@ html {
     flex-direction: row;
 }
 
-i {
+.navIcon {
     margin-top: 11px;
     margin-left: 3em;
 }
@@ -152,7 +152,7 @@ i {
 }
 
 .aboutCtn {
-    background-color: darkcyan;
+    background-color: #00bbd3;
     color: whitesmoke;
     padding-top: 5em;
     padding-bottom: 5em;
@@ -161,7 +161,8 @@ i {
 #about {
     z-index: 2;
     text-align: center;
-
+    width: 70%;
+    margin: auto;
 }
 
 .targetCtn {
@@ -208,8 +209,13 @@ i {
 
 .services {
     text-align: center;
-    background-color: darkcyan;
-    color: whitesmoke;
+    background-color: #f8d7c6;
+    padding: 5em;
+}
+
+.servicesBody{
+    width: 70%;
+    margin: auto;
 }
 
 #news {
@@ -218,14 +224,74 @@ i {
     text-align: center;
 }
 
+.news {
+    text-align: center;
+    margin-bottom: 9em;
+}
+
+.newsTitle {
+    margin-bottom: 2em;
+}
+
 .articleCard {
     margin: auto;
     text-align: left;
 }
 
-.news {
+#articleCard {
+    height: 430px;
+    width: 400px;
+    border-radius: 5% 5% 0 0;
+    border-style: none;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.articleHead {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    justify-content: space-between;
+}
+
+.articleTitle {
+    margin-left: 0.9em;
+    font-weight: bold;
+}
+
+.like {
+    margin-right: 1em;
+}
+
+.articleCategory {
+    background-color: lightgray;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 1em;
+    padding: 0.2em;
+    font-size: small;
+    font-style: italic;
+    width: 20%;
     text-align: center;
-    margin-bottom: 9em;
+}
+
+.articleImg {
+    height: 300px;
+    border-radius: 5% 5% 0 0;
+}
+
+.articleLink {
+    transition: 0.5s;
+    color: black;
+}
+
+.articleLink:hover {
+    text-decoration: none;
+    color: #bdc902;
+    transition: 0.5s;
+}
+
+.com {
+    margin-left: 2.3em;
 }
 
 .articleCard {
@@ -233,10 +299,15 @@ i {
     height: 350px;
 }
 
+.fa-heart {
+    color: red;
+}
+
 .eshopCtn {
     background-color: darkcyan;
     padding: 1em;
     color: whitesmoke;
+    text-align: center;
 }
 
 .eshop {
