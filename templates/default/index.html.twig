@@ -6,15 +6,82 @@
         <div class="coverLinks">
             <span class="coverCtn">
             KIDS AND FAMILY <br>
-            CREATEUR D'EXEPERIENCES EN FAMILLE <br>
+            CREATEUR D'EXPERIENCES EN FAMILLE <br>
                 {% if app.user %}
-                    <a id="coverBtn" class="btn loginBtn" href="#">Nouveautés</a>
+                    <a id="coverBtn" class="btn loginBtn" href="#news">Nouveautés</a>
                     <a id="coverBtn" class="btn loginBtn" href="#">Contribuer</a>
                 {% else %}
-                    <a id="coverBtn" class="btn loginBtn" href="#">Nous Découvrir</a>
+                    <a id="coverBtn" class="btn loginBtn" href="#a-propos">Nous Découvrir</a>
                     <a id="coverBtn" class="btn loginBtn" href="{{ path('app_register') }}">S'inscrire</a>
                 {% endif %}
                 </span>
+        </div>
+    </div>
+    <div id="a-propos"></div>
+    <div class="aboutCtn">
+        <div id="about">
+            <h2>Notre volonté</h2>
+            <h4>
+                Faire vivre des expériences, recréer des moments de partage et de lien, porteurs de valeurs, pour les
+                enfants et la famille
+            </h4>
+        </div>
+    </div>
+    <div id="target">
+        <h2>Pour qui ?</h2>
+        <div class="row targetCtn">
+            <div class="card targetCard">
+                <div class="row">
+                    <i class="fas fa-users"></i>
+                    <h4 class="card-title">Les familles</h4></div>
+                <img class="card-img targetImg"
+                     src="https://cdn.pixabay.com/photo/2017/12/24/08/50/family-3036595_960_720.jpg"
+                     alt="Photo Famille">
+            </div>
+            <div class="card targetCard">
+                <div class="row">
+                    <i class="fas fa-house-user"></i>
+                    <h4 class="card-title targetTitle">Les sites d'accueil</h4></div>
+                <img class="card-img targetImg"
+                     src="https://img.freepik.com/vecteurs-libre/mignon-drole-souriant-heureux-france-carte-drapeau-personnage_92289-244.jpg?size=338&ext=jpg"
+                     alt="Photo Famille">
+            </div>
+        </div>
+    </div>
+
+    <div class="services">
+        <h2>Notre démarche</h2>
+        <h4>AIDER | RECENSER | PROPOSER <br> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+            tempor incididunt ut labore
+            et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip
+            ex ea commodo consequat. </h4>
+    </div>
+    <div id="news"></div>
+    <div class="news">
+        <h2>Les nouveautés</h2>
+        {% for article in articles %}
+            <div class="card articleCard">
+                <img class="card-img" src="https://cdn.pixabay.com/photo/2017/12/24/08/50/family-3036595_960_720.jpg"
+                     alt="XX">
+                <h5 class="card-title">{{ article.title }}</h5>
+                <p class="card-body">{{ article.author }} <br> {{ article.category }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="eshopCtn">
+        <div class="eshop">
+            <h2>Notre E-Shop est ouvert !</h2>
+            <iframe src="https://giphy.com/embed/1i3ypX170NWbWMGOXV" width="480" height="270" frameBorder="0"
+            ></iframe>
+            <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                aliquip
+                ex ea commodo consequat. </h4>
+            <a class="eshopLink" href="#" target="_blank">Visiter notre boutique en ligne</a>
         </div>
     </div>
 
