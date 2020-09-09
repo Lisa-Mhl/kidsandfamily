@@ -64,8 +64,8 @@
     </div>
 
     <div id="news"></div>
+    <h2 class="newsTitle bold">Les dernières publications</h2>
     <div class="news">
-        <h2 class="newsTitle bold" >Les dernières publications</h2>
         {% for article in articles %}
             <div class="card articleCard" id="articleCard">
                 <img class="card-img articleImg" src="{{ article.photo }}"
@@ -76,22 +76,26 @@
                     <i class="fas fa-heart"></i> J'aime</span>
                 </div>
                 {# AJOUTER SYSTEME DE LIKE #}
-                {% for category in article.category %}
-                    <div class="card-title articleCategory ">{{ category.name }}</div>
-                {% endfor %}
-                <p class="card-body">
+                <div class="row">
+                    {% for category in article.category %}
+                        <div class="card-title articleCategory ">{{ category.name }}</div>
+                    {% endfor %}
+                </div>
+                <hr>
+                <p class="card-body bottomCard">
                     {# AJOUTER PHOTO DE PROFIL DE L'AUTEUR #} Auteur
                     <i class="fa fa-commenting-o com"></i> <a class="articleLink"
                                                               href="#">Commenter</a> {# AJOUTER SYSTEM DE COMMENT #}
                     <i class="fa fa-envelope-o com"></i> <a class="articleLink" href="#">Message
                         Privé</a> {# AJOUTER SYSTEM DE MESSAGE DIRECT #}
-                    <a {# class="stretched-link"#} id="articleIdLink" href="#">Voir</a>
+                    {# <a  class="stretched-link"  id="articleIdLink" href="#">Voir</a> #}
                 </p>
             </div>
-            {% endfor %}
-        <div class="newsLinkCtn">
-            <a class="newsLink" href="#">Voir toutes les publications</a>
-        </div>
+        {% endfor %}
+    </div>
+    <div class="newsLinkCtn">
+        <a class="newsLink" href="#">Voir toutes les publications</a>
+
     </div>
 
     <div class="eshopCtn">
@@ -99,7 +103,8 @@
             <h2 class="eshopTitle bold">Notre E-Shop est ouvert !</h2>
             <iframe src="https://giphy.com/embed/xUA7aLpVxPVEoEPXji" width="480" height="270" frameBorder="0"
             ></iframe>
-            <h4 class="eshopBody">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+            <h4 class="eshopBody">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore
                 et
                 dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                 aliquip
