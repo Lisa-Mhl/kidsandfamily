@@ -55,7 +55,7 @@ class Article
     private $video;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $videoTitle;
 
@@ -74,10 +74,6 @@ class Article
      */
     private $description;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Category::class, mappedBy="name")
-     */
-    private $categories;
 
     /**
      * @ORM\ManyToOne(targetEntity=Target::class, inversedBy="articles")
@@ -85,9 +81,19 @@ class Article
      */
     private $target;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="articles")
+     */
+    private $category;
+
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
+
     public function __construct()
     {
-        $this->categories = new ArrayCollection();
+        $this->category = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -227,34 +233,6 @@ class Article
         return $this;
     }
 
-    /**
-     * @return Collection|Category[]
-     */
-    public function getCategories(): Collection
-    {
-        return $this->categories;
-    }
-
-    public function addCategory(Category $category): self
-    {
-        if (!$this->categories->contains($category)) {
-            $this->categories[] = $category;
-            $category->addName($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCategory(Category $category): self
-    {
-        if ($this->categories->contains($category)) {
-            $this->categories->removeElement($category);
-            $category->removeName($this);
-        }
-
-        return $this;
-    }
-
     public function getTarget(): ?Target
     {
         return $this->target;
@@ -263,6 +241,32 @@ class Article
     public function setTarget(?Target $target): self
     {
         $this->target = $target;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Category[]
+     */
+    public function getCategory(): Collection
+    {
+        return $this->category;
+    }
+
+    public function addCategory(Category $category): self
+    {
+        if (!$this->category->contains($category)) {
+            $this->category[] = $category;
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category): self
+    {
+        if ($this->category->contains($category)) {
+            $this->category->removeElement($category);
+        }
 
         return $this;
     }

@@ -20,13 +20,23 @@ class Category
     private $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Article::class, inversedBy="categories")
+     * @ORM\Column(type="string", length=255)
      */
     private $name;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Article::class, mappedBy="category")
+     */
+    private $articles;
+
+    public function __toString()
+    {
+        return $this->getName();
+    }
+
     public function __construct()
     {
-        $this->name = new ArrayCollection();
+        $this->articles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -34,30 +44,43 @@ class Category
         return $this->id;
     }
 
-    /**
-     * @return Collection|Article[]
-     */
-    public function getName(): Collection
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function addName(Article $name): self
+    public function setName(string $name): self
     {
-        if (!$this->name->contains($name)) {
-            $this->name[] = $name;
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Article[]
+     */
+    public function getArticle(): Collection
+    {
+        return $this->articles;
+    }
+
+    public function addArticle(Article $article): self
+    {
+        if (!$this->articles->contains($article)) {
+            $this->articles[] = $article;
+            $article->addCategory($this);
         }
 
         return $this;
     }
 
-    public function removeName(Article $name): self
+    public function removeArticle(Article $article): self
     {
-        if ($this->name->contains($name)) {
-            $this->name->removeElement($name);
+        if ($this->articles->contains($article)) {
+            $this->articles->removeElement($article);
+            $article->removeCategory($this);
         }
 
         return $this;
     }
-
 }
