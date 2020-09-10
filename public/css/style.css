@@ -719,6 +719,12 @@ hr {
         margin-top: auto;
     }
 
+    /* LOGIN */
+    .logCtn {
+        width: 80%;
+        margin-top: 8em;
+    }
+
 
     /*////////////////////////// MOBILE ///////////////////////*/
     @media only screen and (max-width: 640px) {
@@ -814,6 +820,10 @@ hr {
         .sidebar {
             width: auto;
             margin-top: auto;
+        }
+
+        .loginBtn{
+            width: 80%;
         }
 
     }
