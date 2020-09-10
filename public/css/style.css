@@ -740,14 +740,94 @@ hr {
 
 
     /*////////////////////////// MOBILE ///////////////////////*/
-    @media screen and (max-width: 640px) {
+    @media only screen and (max-width: 640px) {
 
         /* NAVBAR*/
         #nav-mobile {
             justify-content: space-between;
         }
 
+        /* HOMEPAGE*/
+        .coverCtn {
+            padding-top: 10%;
+            height: 300px;
+            width: fit-content;
+        }
+
+        .targetCard {
+            width: 80%;
+            margin-bottom: 2em;
+        }
+
+        #targetTitle {
+            margin: auto;
+        }
+
+        .targetCtn {
+            justify-content: center;
+        }
+
+        .services {
+            width: 100%;
+            padding-left: 1em;
+            padding-right: 1em;
+        }
+
+        .servicesTitle {
+            font-size: 1em;
+        }
+
+        .servicesBody {
+            text-align: justify;
+        }
+
+        #about {
+            width: 90%;
+        }
+
+        .aboutBody {
+            width: 100%;
+        }
+
+        .fa-users {
+            margin-right: 0.2em;
+            padding-right: 0;
+        }
+
+        .fa-house-user {
+            margin-right: 0.2em;
+            padding-right: 0;
+        }
+
+        .news {
+            margin-bottom: 0;
+        }
+
+        .articleImg {
+            height: 250px;
+        }
+
+        #articleCard {
+            height: 440px;
+            width: 350px;
+            margin-bottom: 3em;
+        }
+
+        .newsLinkCtn {
+            margin-bottom: 3em;
+        }
+
+        .eshopGif{
+            width: 350px;
+        }
+
+        .eshop{
+            width: 100%;
+        }
+
     }
+
+
 }
 
 

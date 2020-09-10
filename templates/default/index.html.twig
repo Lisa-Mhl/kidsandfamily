@@ -11,7 +11,7 @@
                     <a id="coverBtn" class="btn loginBtn" href="#news">Nouveautés</a>
                     <a id="coverBtn" class="btn loginBtn" href="#">Contribuer</a>
                 {% else %}
-                    <a id="coverBtn" class="btn loginBtn" href="#a-propos">Nous Découvrir</a>
+                    <a id="coverBtn" class="btn loginBtn" href="#a-propos">Découvrir</a>
                     <a id="coverBtn" class="btn loginBtn" href="{{ path('app_register') }}">S'inscrire</a>
                 {% endif %}
                 </span>
@@ -22,7 +22,7 @@
     <div class="aboutCtn">
         <div id="about">
             <h2 class="bold">Notre volonté</h2>
-            <h4>
+            <h4 class="aboutBody">
                 Faire vivre des expériences, recréer des moments de partage et de lien, porteurs de valeurs, pour les
                 enfants et la famille
             </h4>
@@ -33,15 +33,16 @@
         <h2 class="bold">Pour qui ?</h2>
         <div class="row targetCtn">
             <div class="card targetCard">
-                <div class="row">
+                <div class="row" id="targetTitle">
                     <i class="fas fa-users"></i>
-                    <h4 class="card-title">Les familles</h4></div>
+                    <h4 class="card-title">Les familles</h4>
+                </div>
                 <img class="card-img targetImg"
                      src="https://cdn.pixabay.com/photo/2017/12/24/08/50/family-3036595_960_720.jpg"
                      alt="Photo Famille">
             </div>
             <div class="card targetCard">
-                <div class="row">
+                <div class="row" id="targetTitle">
                     <i class="fas fa-house-user"></i>
                     <h4 class="card-title targetTitle">Les sites d'accueil</h4></div>
                 <img class="card-img targetImg"
@@ -53,14 +54,15 @@
 
     <div class="services">
         <h2 class="bold">Notre démarche</h2>
-        <h4 class="servicesBody"><span class="grey">AIDER</span> | <span class="green">RECENSER</span> | <span
-                    class="orange">PROPOSER</span> <br> <br>Lorem ipsum dolor sit amet, consectetur adipiscing
+        <h4 class="servicesTitle"><span class="grey">AIDER</span> | <span class="green">RECENSER</span> | <span
+                    class="orange">PROPOSER</span></h4> <br>
+        <p class="servicesBody">Lorem ipsum dolor sit amet, consectetur adipiscing
             elit, sed do eiusmod
             tempor incididunt ut labore
             et
             dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
             aliquip
-            ex ea commodo consequat. </h4>
+            ex ea commodo consequat. </p>
     </div>
 
     <div id="news"></div>
@@ -84,31 +86,32 @@
                 <hr>
                 <p class="card-body bottomCard">
                     {# AJOUTER PHOTO DE PROFIL DE L'AUTEUR #} Auteur
+                <div class="commentCtn">
                     <i class="fa fa-commenting-o com"></i> <a class="articleLink"
                                                               href="#">Commenter</a> {# AJOUTER SYSTEM DE COMMENT #}
                     <i class="fa fa-envelope-o com"></i> <a class="articleLink" href="#">Message
-                        Privé</a> {# AJOUTER SYSTEM DE MESSAGE DIRECT #}
-                    {# <a  class="stretched-link"  id="articleIdLink" href="#">Voir</a> #}
+                        Privé</a></div> {# AJOUTER SYSTEM DE MESSAGE DIRECT #}
+                {# <a  class="stretched-link"  id="articleIdLink" href="#">Voir</a> #}
                 </p>
             </div>
         {% endfor %}
     </div>
     <div class="newsLinkCtn">
         <a class="newsLink" href="#">Voir toutes les publications</a>
-
     </div>
 
     <div class="eshopCtn">
         <div class="eshop">
-            <h2 class="eshopTitle bold">Notre E-Shop est ouvert !</h2>
-            <iframe src="https://giphy.com/embed/xUA7aLpVxPVEoEPXji" width="480" height="270" frameBorder="0"
+            <h2 class="eshopTitle bold">Notre E-Shop est ouvert</h2>
+            <iframe class="eshopGif" src="https://giphy.com/embed/xUA7aLpVxPVEoEPXji" width="480" height="270"
+                    frameBorder="0"
             ></iframe>
-            <h4 class="eshopBody">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            <p class="servicesBody">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                 incididunt ut labore
                 et
                 dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                 aliquip
-                ex ea commodo consequat. </h4>
+                ex ea commodo consequat. </p>
             <div class="eshopLinkCtn"></div>
             <a class="eshopLink" href="#" target="_blank">Visiter la boutique en ligne</a>
         </div>
