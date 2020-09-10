@@ -4,6 +4,10 @@ body {
     margin: 0;
 }
 
+.white {
+    color: whitesmoke;
+}
+
 /* profile*/
 
 .cardProfile {
@@ -13,7 +17,8 @@ body {
     text-align: center;
     z-index: 1;
 }
-.imgProfile{
+
+.imgProfile {
     border-radius: 100%;
 }
 
@@ -22,7 +27,7 @@ body {
     font-size: 18px;
 }
 
-.btnProfile{
+.btnProfile {
     border: none;
     outline: 0;
     display: inline-block;
@@ -53,7 +58,7 @@ body {
     height: 100%;
     width: 20%;
     position: fixed;
-     z-index: 1;
+    z-index: 1;
     top: 0;
     left: 0;
     background-color: white;
@@ -84,10 +89,15 @@ body {
 }
 
 /* Add media queries for small screens (when the height of the screen is less than 450px, add a smaller padding and font-size) */
-@media screen and (max-height: 450px) {
-    .sidebar {padding-top: 15px;}
-    .sidebar a {font-size: 18px;}
+
+.sidebar {
+    padding-top: 15px;
 }
+
+.sidebar a {
+    font-size: 18px;
+}
+
 
 html {
     scroll-behavior: smooth;
@@ -100,6 +110,13 @@ html {
 /****************** DESKSTOP VERSION *******************/
 
 /* NAVBAR */
+#nav-mobile {
+    display: none;
+}
+
+#nav-desktop {
+    display: flex;
+}
 
 #nav {
     display: flex;
@@ -502,7 +519,7 @@ hr {
     line-height: 24px;
     color: #737373;
     display: block;
-    z-index: 2 ;
+    z-index: 2;
 }
 
 .site-footer hr {
@@ -650,26 +667,35 @@ hr {
     background-color: #ea4c89
 }
 
-@media (max-width: 767px) {
-    .social-icons li.title {
-        display: block;
-        margin-right: 0;
-        font-weight: 600
+
+/*////////////////////////// TABLETTE ///////////////////////*/
+@media only screen and (max-width: 1200px) {
+    #nav-mobile {
+        display: flex;
+        color: whitesmoke;
+
     }
 
-    /*////////////////////////// TABLETTE ///////////////////////*/
-    @media only screen and (max-width: 1200px) {
-
-        #burger {
-            color: whitesmoke;
-        }
+    #nav-desktop {
+        display: none;
     }
 
+    #burger {
+        color: whitesmoke;
+    }
+
+    #navMobile-link {
+        color: whitesmoke;
+        margin: auto;
+    }
 
     /*////////////////////////// MOBILE ///////////////////////*/
     @media screen and (max-width: 640px) {
-
+        #nav-mobile{
+            width: 51.5%;
+            justify-content: space-between;
+        }
     }
-
 }
+
 
