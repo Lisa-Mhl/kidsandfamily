@@ -488,9 +488,13 @@ hr {
 }
 
 /*footer*/
-.site-footer {
+.footer-body{
+    padding-top: 6%;
+    padding-left: 10%;
+}
+
+.page-footer {
     background-color: #354254;
-    padding: 45px 350px 20px;
     font-size: 15px;
     line-height: 24px;
     color: #737373;
@@ -498,16 +502,16 @@ hr {
     z-index: 2;
 }
 
-.site-footer hr {
+.page-footer hr {
     border-top-color: #bbb;
     opacity: 0.5
 }
 
-.site-footer hr.small {
+.page-footer hr.small {
     margin: 20px 0
 }
 
-.site-footer h6 {
+.page-footer h6 {
     color: #fff;
     font-size: 16px;
     text-transform: uppercase;
@@ -515,11 +519,11 @@ hr {
     letter-spacing: 2px
 }
 
-.site-footer a {
+.page-footer a {
     color: #737373;
 }
 
-.site-footer a:hover {
+.page-footer a:hover {
     color: #bdc902;
     text-decoration: none;
 }
@@ -648,6 +652,10 @@ hr {
             .sidebar{
                 width: auto;
                 margin-top: auto;
+            }
+
+            .site-footer{
+                width: auto;
             }
 
         }
