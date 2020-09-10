@@ -267,7 +267,6 @@ html {
     margin-right: auto;
     padding: 1em;
     background-color: #bdc902;
-    width: 15%;
     text-align: center;
     border-radius: 10px;
     transition: 0.5s;
@@ -285,6 +284,7 @@ html {
 .articleCard {
     margin: auto;
     text-align: left;
+    transition: transform 250ms;
 }
 
 #articleCard {
@@ -293,6 +293,11 @@ html {
     border-radius: 5% 5% 0 0;
     border-style: none;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+#articleCard:hover {
+    transform: scale(1.1, 1.1);
+    transition: transform 250ms;
 }
 
 .articleHead {
@@ -357,7 +362,7 @@ html {
     color: white;
 }
 
-hr{
+hr {
     margin-bottom: 0;
 }
 
@@ -565,5 +570,16 @@ hr{
         margin-right: 0;
         font-weight: 600
     }
+
+    /*////////////////////////// TABLETTE ///////////////////////*/
+    @media only screen and (max-width: 1200px) {
+    }
+
+
+    /*////////////////////////// MOBILE ///////////////////////*/
+    @media screen and (max-width: 640px) {
+
+    }
+
 }
 
