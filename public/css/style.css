@@ -18,13 +18,13 @@ body {
     z-index: 1;
 }
 
-.bg-profile{
+.bg-profile {
     background-image: url("https://cdn.pixabay.com/photo/2017/10/13/12/29/hands-2847508_960_720.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.imgProfile{
+.imgProfile {
     border-radius: 100%;
 }
 
@@ -378,7 +378,7 @@ html {
 }
 
 #articleCard {
-    height: 440px;
+    height: 480px;
     width: 400px;
     border-radius: 5% 5% 0 0;
     border-style: none;
@@ -708,15 +708,16 @@ hr {
         width: 350px;
         margin-bottom: 3em;
     }
-  
-    #cardProfile{
-            width: auto;
-            margin-left: 270px;
-        }
-        .sidebar{
-            width: auto;
-            margin-top: auto;
-        }
+
+    #cardProfile {
+        width: auto;
+        margin-left: 270px;
+    }
+
+    .sidebar {
+        width: auto;
+        margin-top: auto;
+    }
 
 
     /*////////////////////////// MOBILE ///////////////////////*/
@@ -797,24 +798,24 @@ hr {
             margin-bottom: 3em;
         }
 
-        .eshopGif{
+        .eshopGif {
             width: 350px;
         }
 
-        .eshop{
+        .eshop {
             width: 100%;
-      }
+        }
 
-          #cardProfile {
-                width: auto;
-                margin-left: 200px;
-            }
-          
-            .sidebar{
-                width: auto;
-                margin-top: auto;
-            }
-          
+        #cardProfile {
+            width: auto;
+            margin-left: 200px;
+        }
+
+        .sidebar {
+            width: auto;
+            margin-top: auto;
         }
 
     }
+
+}
