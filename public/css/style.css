@@ -4,6 +4,10 @@ body {
     margin: 0;
 }
 
+.white {
+    color: whitesmoke;
+}
+
 /* profile*/
 
 #cardProfile {
@@ -13,6 +17,7 @@ body {
     text-align: center;
     z-index: 1;
 }
+
 .bg-profile{
     background-image: url("https://cdn.pixabay.com/photo/2017/10/13/12/29/hands-2847508_960_720.jpg");
     background-repeat: no-repeat;
@@ -28,7 +33,7 @@ body {
     font-size: 18px;
 }
 
-.btnProfile{
+.btnProfile {
     border: none;
     outline: 0;
     display: inline-block;
@@ -93,6 +98,13 @@ html {
 /****************** DESKSTOP VERSION *******************/
 
 /* NAVBAR */
+#nav-mobile {
+    display: none;
+}
+
+#nav-desktop {
+    display: flex;
+}
 
 #nav {
     display: flex;
@@ -627,9 +639,77 @@ hr {
     background-color: #ea4c89
 }
 
-    /*////////////////////////// TABLETTE ///////////////////////*/
-    @media only screen and (max-width: 1200px) {
-        #cardProfile{
+/*////////////////////////// TABLETTE ///////////////////////*/
+
+@media only screen and (max-width: 1200px) {
+
+    /* NAVBAR*/
+    #nav-mobile {
+        display: flex;
+        color: whitesmoke;
+
+    }
+
+    #nav-desktop {
+        display: none;
+    }
+
+    #burger {
+        color: whitesmoke;
+    }
+
+    #navMobile-link {
+        color: whitesmoke;
+        margin: auto;
+    }
+
+    /* HOMEPAGE*/
+    .coverCtn {
+        height: 130px;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #coverBtn {
+        padding-right: 5em;
+        padding-left: 5em;
+        display: flex;
+        justify-content: center;
+    }
+
+    .targetCtn {
+        justify-content: space-between;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .targetCard {
+        width: 40%;
+    }
+
+    .targetImg {
+        width: fit-content;
+        height: 270px;
+    }
+
+    .servicesBody {
+        width: 90%;
+    }
+
+    .news {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    #articleCard {
+        height: 500px;
+        width: 350px;
+        margin-bottom: 3em;
+    }
+  
+    #cardProfile{
             width: auto;
             margin-left: 270px;
         }
@@ -640,17 +720,101 @@ hr {
 
 
     /*////////////////////////// MOBILE ///////////////////////*/
-        @media screen and (max-width: 640px) {
-            #cardProfile {
+    @media only screen and (max-width: 640px) {
+
+        /* NAVBAR*/
+        #nav-mobile {
+            justify-content: space-between;
+        }
+
+        /* HOMEPAGE*/
+        .coverCtn {
+            padding-top: 10%;
+            height: 300px;
+            width: fit-content;
+        }
+
+        .targetCard {
+            width: 80%;
+            margin-bottom: 2em;
+        }
+
+        #targetTitle {
+            margin: auto;
+        }
+
+        .targetCtn {
+            justify-content: center;
+        }
+
+        .services {
+            width: 100%;
+            padding-left: 1em;
+            padding-right: 1em;
+        }
+
+        .servicesTitle {
+            font-size: 1em;
+        }
+
+        .servicesBody {
+            text-align: justify;
+        }
+
+        #about {
+            width: 90%;
+        }
+
+        .aboutBody {
+            width: 100%;
+        }
+
+        .fa-users {
+            margin-right: 0.2em;
+            padding-right: 0;
+        }
+
+        .fa-house-user {
+            margin-right: 0.2em;
+            padding-right: 0;
+        }
+
+        .news {
+            margin-bottom: 0;
+        }
+
+        .articleImg {
+            height: 250px;
+        }
+
+        #articleCard {
+            height: 440px;
+            width: 350px;
+            margin-bottom: 3em;
+        }
+
+        .newsLinkCtn {
+            margin-bottom: 3em;
+        }
+
+        .eshopGif{
+            width: 350px;
+        }
+
+        .eshop{
+            width: 100%;
+      }
+
+          #cardProfile {
                 width: auto;
                 margin-left: 200px;
             }
+          
             .sidebar{
                 width: auto;
                 margin-top: auto;
             }
-
+          
         }
 
     }
-
