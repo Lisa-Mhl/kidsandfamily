@@ -5,14 +5,30 @@
 
 {% block body %}
     <h1>Mon compte</h1>
-    {% include 'profile.html.twig' %}
+
+    {% if is_granted('ROLE_USER') %}
+        <!-- The sidebar -->
+        <div class="sidebar">
+            <a href="#"><i class="fa fa-info-circle"></i> Information</a>
+            <a href="#"><i class="fa fa-fw fa-home"></i> Coordonnées</a>
+            <a href="#"><i class="fa fa-mobile"></i> Catégories</a>
+            <a href="#"><i class="fa fa-heart"></i> Centres d'intérêts</a>
+            <a href="#"><i class="fa fa-picture-o"></i> Mes publications</a>
+            <a href="#"><i class="fa fa-users"></i> Discussion</a>
+        </div>
+
+    {% else %}
+        <p class="text-center">Seuls les users peuvent accéder à cette page <br>
+            <a href="{{ path('app_login') }}">Connexion</a>
+        </p>
+    {% endif %}
 
     {% if app.user %}
         {% if is_granted('ROLE_USER') %}
-            <tbody>
+         <div class="bg-profile">
             {% for user in users %}
 
-                <div class="card cardProfile">
+                <div class="card cardProfile" style="width: 100%;" id="cardProfile">
                     <div class="card-body">
                         <img class="card-img-top imgProfile" src="https://via.placeholder.com/300
 C/O https://placeholder.com/" alt="John" style="width:20% ">
@@ -38,8 +54,7 @@ C/O https://placeholder.com/" alt="John" style="width:20% ">
                 </tr>
             {% endfor %}
 
-            </tbody>
         {% endif %}
     {% endif %}
-
+    </div>
 {% endblock %}
