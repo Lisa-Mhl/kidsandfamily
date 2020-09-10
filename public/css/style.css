@@ -669,7 +669,10 @@ hr {
 
 
 /*////////////////////////// TABLETTE ///////////////////////*/
+
 @media only screen and (max-width: 1200px) {
+
+    /* NAVBAR*/
     #nav-mobile {
         display: flex;
         color: whitesmoke;
@@ -689,12 +692,61 @@ hr {
         margin: auto;
     }
 
+    /* HOMEPAGE*/
+    .coverCtn {
+        height: 130px;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #coverBtn {
+        padding-right: 5em;
+        padding-left: 5em;
+        display: flex;
+        justify-content: center;
+    }
+
+    .targetCtn {
+        justify-content: space-between;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .targetCard {
+        width: 40%;
+    }
+
+    .targetImg {
+        width: fit-content;
+        height: 270px;
+    }
+
+    .servicesBody {
+        width: 90%;
+    }
+
+    .news {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    #articleCard {
+        height: 500px;
+        width: 350px;
+        margin-bottom: 3em;
+    }
+
+
     /*////////////////////////// MOBILE ///////////////////////*/
     @media screen and (max-width: 640px) {
-        #nav-mobile{
-            width: 51.5%;
+
+        /* NAVBAR*/
+        #nav-mobile {
             justify-content: space-between;
         }
+
     }
 }
 
