@@ -93,6 +93,10 @@ html {
     scroll-behavior: smooth;
 }
 
+.bold {
+    font-weight: bold;
+}
+
 /****************** DESKSTOP VERSION *******************/
 
 /* NAVBAR */
@@ -119,7 +123,7 @@ html {
     flex-direction: row;
 }
 
-i {
+.navIcon {
     margin-top: 11px;
     margin-left: 3em;
 }
@@ -237,7 +241,8 @@ i {
 }
 
 .aboutCtn {
-    background-color: darkcyan;
+    background: linear-gradient(135deg, darkseagreen, #00bbd3);
+    background-blend-mode: lighten;
     color: whitesmoke;
     padding-top: 5em;
     padding-bottom: 5em;
@@ -246,7 +251,8 @@ i {
 #about {
     z-index: 2;
     text-align: center;
-
+    width: 70%;
+    margin: auto;
 }
 
 .targetCtn {
@@ -293,24 +299,139 @@ i {
 
 .services {
     text-align: center;
-    background-color: darkcyan;
-    color: whitesmoke;
+    background: linear-gradient(#f8d7c6, navajowhite);
+    padding: 5em;
+}
+
+.green {
+    color: #51d7a3;
+    font-weight: bold;
+}
+
+.orange {
+    color: #fea94b;
+    font-weight: bold;
+}
+
+.grey {
+    color: #929292;
+    font-weight: bold;
+}
+
+.servicesBody {
+    width: 70%;
+    margin: auto;
 }
 
 #news {
-    margin-bottom: 5em;
     z-index: 2;
     text-align: center;
 }
 
+.news {
+    text-align: center;
+    margin-bottom: 5em;
+    display: flex;
+    flex-direction: row;
+}
+
+.newsTitle {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    text-align: center;
+}
+
+.newsLinkCtn {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5em;
+}
+
+.newsLink {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em;
+    background-color: #bdc902;
+    text-align: center;
+    border-radius: 10px;
+    transition: 0.5s;
+    color: black;
+}
+
+.newsLink:hover {
+    text-decoration: none;
+    color: black;
+    background-color: cornflowerblue;
+    transition: 0.5s;
+}
+
+
 .articleCard {
     margin: auto;
     text-align: left;
+    transition: transform 250ms;
 }
 
-.news {
+#articleCard {
+    height: 440px;
+    width: 400px;
+    border-radius: 5% 5% 0 0;
+    border-style: none;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+#articleCard:hover {
+    transform: scale(1.1, 1.1);
+    transition: transform 250ms;
+}
+
+.articleHead {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    justify-content: space-between;
+    margin-top: 0.5em;
+}
+
+.articleTitle {
+    margin-left: 0.9em;
+    font-weight: bold;
+}
+
+.like {
+    margin-right: 1em;
+}
+
+.articleCategory {
+    background-color: lightgray;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 2em;
+    padding: 0.2em;
+    font-size: small;
+    font-style: italic;
+    width: 20%;
     text-align: center;
-    margin-bottom: 9em;
+}
+
+.articleImg {
+    height: 300px;
+    border-radius: 5% 5% 0 0;
+}
+
+.articleLink {
+    transition: 0.5s;
+    color: black;
+}
+
+.articleLink:hover {
+    text-decoration: none;
+    color: #bdc902;
+    transition: 0.5s;
+}
+
+.com {
+    margin-left: 2.3em;
 }
 
 .articleCard {
@@ -318,10 +439,31 @@ i {
     height: 350px;
 }
 
+.fa-heart {
+    color: red;
+}
+
+#articleIdLink {
+    color: white;
+}
+
+hr {
+    margin-bottom: 0;
+}
+
+.eshopTitle {
+    margin-bottom: 1em;
+}
+
+.eshopBody {
+    margin-top: 1em;
+}
+
 .eshopCtn {
     background-color: darkcyan;
     padding: 1em;
     color: whitesmoke;
+    text-align: center;
 }
 
 .eshop {
@@ -329,14 +471,27 @@ i {
     margin: 5em auto 5em;
 }
 
+.eshopLinkCtn {
+    margin-top: 3em;
+}
+
 .eshopLink {
-    color: #bdc902;
-    font-size: 1.5em;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em;
+    background-color: #bdc902;
+    width: 30%;
+    text-align: center;
+    border-radius: 10px;
+    transition: 0.5s;
+    color: black;
 }
 
 .eshopLink:hover {
-    color: dodgerblue;
     text-decoration: none;
+    color: black;
+    background-color: cornflowerblue;
+    transition: 0.5s;
 }
 
 /*footer*/
@@ -501,5 +656,16 @@ i {
         margin-right: 0;
         font-weight: 600
     }
+
+    /*////////////////////////// TABLETTE ///////////////////////*/
+    @media only screen and (max-width: 1200px) {
+    }
+
+
+    /*////////////////////////// MOBILE ///////////////////////*/
+    @media screen and (max-width: 640px) {
+
+    }
+
 }
 
