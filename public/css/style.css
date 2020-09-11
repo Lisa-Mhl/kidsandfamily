@@ -256,7 +256,7 @@ html {
 #about {
     z-index: 2;
     text-align: center;
-    width: 70%;
+    width: 75%;
     margin: auto;
 }
 
@@ -306,6 +306,10 @@ html {
     text-align: center;
     background: linear-gradient(#f8d7c6, navajowhite);
     padding: 5em;
+}
+
+.aboutLink {
+    margin-top: 5em;
 }
 
 .green {
@@ -435,8 +439,15 @@ html {
     transition: 0.5s;
 }
 
-.com {
-    margin-left: 2.3em;
+.commentCtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.iconCard{
+    padding-left: 1em;
+    padding-right: 1em;
 }
 
 .articleCard {
@@ -476,8 +487,12 @@ hr {
     margin: 5em auto 5em;
 }
 
+.eshopGif{
+    margin-bottom: 2em;
+}
+
 .eshopLinkCtn {
-    margin-top: 3em;
+    margin-top: 5em;
 }
 
 .eshopLink {
@@ -500,7 +515,7 @@ hr {
 }
 
 /*footer*/
-.footer-body{
+.footer-body {
     padding-top: 6%;
     padding-left: 10%;
 }
@@ -701,6 +716,7 @@ hr {
         width: 90%;
     }
 
+
     .news {
         display: flex;
         flex-direction: column;
@@ -746,8 +762,9 @@ hr {
         }
 
         .targetCard {
-            width: 80%;
+            width: 70%;
             margin-bottom: 2em;
+            margin-top: 2em;
         }
 
         #targetTitle {
@@ -756,6 +773,11 @@ hr {
 
         .targetCtn {
             justify-content: center;
+        }
+
+        .targetImg {
+            width: fit-content;
+            height: 280px;
         }
 
         .services {
@@ -827,13 +849,13 @@ hr {
             margin-top: auto;
         }
 
-        .loginBtn{
+        .loginBtn {
             width: 80%;
-
-      }
-
 
         }
 
+
     }
+
+}
 
