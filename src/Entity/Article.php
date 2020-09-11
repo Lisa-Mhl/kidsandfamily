@@ -40,24 +40,14 @@ class Article
     private $heading;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $photo;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $photoTitle;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
     private $video;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $videoTitle;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -70,12 +60,6 @@ class Article
     private $needs;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $description;
-
-
-    /**
      * @ORM\ManyToOne(targetEntity=Target::class, inversedBy="articles")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -85,6 +69,21 @@ class Article
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="articles")
      */
     private $category;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $content;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $photoB;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $photoC;
 
     public function __toString()
     {
@@ -161,18 +160,6 @@ class Article
         return $this;
     }
 
-    public function getPhotoTitle(): ?string
-    {
-        return $this->photoTitle;
-    }
-
-    public function setPhotoTitle(?string $photoTitle): self
-    {
-        $this->photoTitle = $photoTitle;
-
-        return $this;
-    }
-
     public function getVideo(): ?string
     {
         return $this->video;
@@ -181,18 +168,6 @@ class Article
     public function setVideo(?string $video): self
     {
         $this->video = $video;
-
-        return $this;
-    }
-
-    public function getVideoTitle(): ?string
-    {
-        return $this->videoTitle;
-    }
-
-    public function setVideoTitle(string $videoTitle): self
-    {
-        $this->videoTitle = $videoTitle;
 
         return $this;
     }
@@ -217,18 +192,6 @@ class Article
     public function setNeeds(?string $needs): self
     {
         $this->needs = $needs;
-
-        return $this;
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(?string $description): self
-    {
-        $this->description = $description;
 
         return $this;
     }
@@ -267,6 +230,42 @@ class Article
         if ($this->category->contains($category)) {
             $this->category->removeElement($category);
         }
+
+        return $this;
+    }
+
+    public function getContent(): ?string
+    {
+        return $this->content;
+    }
+
+    public function setContent(string $content): self
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    public function getPhotoB(): ?string
+    {
+        return $this->photoB;
+    }
+
+    public function setPhotoB(?string $photoB): self
+    {
+        $this->photoB = $photoB;
+
+        return $this;
+    }
+
+    public function getPhotoC(): ?string
+    {
+        return $this->photoC;
+    }
+
+    public function setPhotoC(?string $photoC): self
+    {
+        $this->photoC = $photoC;
 
         return $this;
     }

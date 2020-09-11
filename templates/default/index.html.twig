@@ -64,12 +64,12 @@
             aliquip
             ex ea commodo consequat. </h4>
         <div class="aboutLink">
-            <a class="newsLink" href="#">En savoir plus</a>
+            <a class="newsLink" href="{{ path('about') }}">En savoir plus</a>
         </div>
     </div>
 
     <div id="news"></div>
-    <h2 class="newsTitle bold">Les dernières publications</h2>
+    <h2 class="newsTitle bold">Nos dernières publications</h2>
     <div class="news">
         {% for article in articles %}
             <div class="card articleCard" id="articleCard">
@@ -87,7 +87,7 @@
                     {% endfor %}
                 </div>
                 <hr>
-                <p class="card-body bottomCard">
+                <p class="bottomCard">
                     {# AJOUTER PHOTO DE PROFIL DE L'AUTEUR #} Auteur
                 <div class="commentCtn">
                     <section class="iconCard">
@@ -101,9 +101,13 @@
                 </div> {# AJOUTER SYSTEM DE MESSAGE DIRECT #}
                 {# <a  class="stretched-link"  id="articleIdLink" href="#">Voir</a> #}
                 </p>
+                <a class="detailsLink" href="{{ path('article_details', {'id': article.id}) }}">Voir le détail</a>
             </div>
         {% endfor %}
     </div>
+    <h2 class="newsTitle bold">Les dernières publications de nos ambassadeurs</h2>
+    <h2 class="newsTitle bold">Ils ont besoin d'aide !</h2>
+
     <div class="newsLinkCtn">
         <a class="newsLink" href="#">Voir toutes les publications</a>
     </div>
