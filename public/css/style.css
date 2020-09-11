@@ -603,10 +603,36 @@ hr {
 }
 
 #helpLink {
-    width: 15%;
+    width: 12%;
     margin-top: 0;
     margin-bottom: 2em;
 }
+
+.articleCommentCtn {
+    width: 60%;
+    margin: auto;
+}
+
+.commentTitle{
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1em;
+}
+
+.sendComment{
+    width: 10%;
+    margin-bottom: 2em;
+}
+
+.comTitle{
+    margin-top: 2em;
+}
+
+.commentLine{
+    margin-top: 5em;
+}
+
 
 /*footer*/
 .footer-body {

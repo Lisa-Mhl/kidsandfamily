@@ -2,51 +2,48 @@
 
 
 {% block body %}
-<div class="ctn detailsCtn">
-    <h1 class="detailsTitle">{{ article.title }}</h1>
-    <p class="detailsContent">{{ article.content }}</p>
-    <div class="detailsPhotoCtn">
-        <img class="detailsPhoto" src="{{ article.photo }}" alt="Illustration Article {{ article.title }}">
-        {% if article.photoB %}
-            <img class="detailsPhoto" src="{{ article.photoB }}" alt="Illustration Article {{ article.title }}">
-        {% endif %}
-        {% if article.photoC %}
-            <img class="detailsPhoto" src="{{ article.photoC }}" alt="Illustration Article {{ article.title }}">
-        {% endif %}
-    </div>
-
-    {% if article.needs %}
-        <div class="needsCtn">
-            <h3 class="needsTitle">Nos besoins</h3>
-            <p class="needsBody">{{ article.needs }}</p>
-            <a class="btn loginBtn" id="helpLink" href="#">Je peux aider !</a>
+    <div class="ctn detailsCtn">
+        <h1 class="detailsTitle">{{ article.title }}</h1>
+        <p class="detailsContent">{{ article.content }}</p>
+        <div class="detailsPhotoCtn">
+            <img class="detailsPhoto" src="{{ article.photo }}" alt="Illustration Article {{ article.title }}">
+            {% if article.photoB %}
+                <img class="detailsPhoto" src="{{ article.photoB }}" alt="Illustration Article {{ article.title }}">
+            {% endif %}
+            {% if article.photoC %}
+                <img class="detailsPhoto" src="{{ article.photoC }}" alt="Illustration Article {{ article.title }}">
+            {% endif %}
         </div>
-    {% endif %}
 
-    <h3 id="comment" class="needsTitle">Commentaires</h3>
+        {% if article.needs %}
+            <div class="needsCtn">
+                <h3 class="needsTitle">Nos besoins</h3>
+                <p class="needsBody">{{ article.needs }}</p>
+                <a class="btn loginBtn" id="helpLink" href="#">Je peux aider !</a>
+            </div>
+        {% endif %}
 
-    {% for comment in article.comments %}
-    <div class="articleCommentCtn">
+        <h3 id="comment" class="commentTitle">Commentaires</h3>
+        <div class="articleCommentCtn">
+            {% for comment in article.comments %}
                 <span class="name">
-                   {#   {% if comment.author.photo %}
+                   {# {% if comment.author.photo %}
                          <img class="profilePix" src="{{ comment.author.photo }}" alt="Photo de Profil">
                      {% endif %} #}
-                <p class="card-body">{{ comment.author }}<br>
+                <p class="name">{{ comment.author }}<br>
                     {{ comment.comment }}</p></span>
+            {% endfor %}
 
-        {% endfor %}
-
-        <h3 class="needsTitle">Laisser un commentaire</h3>
-        {{ form_start(form) }}
-        {{ form_label(form.comment, 'Votre message') }}
-        {{ form_widget(form.comment) }}
-        <div class="center">
-            <button class="sendlink">{{ button_label|default('Envoyer') }}</button>
+            <hr class="commentLine">
+            <h3 class="needsTitle comTitle">Laisser un commentaire</h3>
+            {{ form_start(form) }}
+            {{ form_label(form.comment, 'Votre message') }}
+            {{ form_widget(form.comment) }}
+            <button class="loginBtn btn sendComment">{{ button_label|default('Envoyer !') }}</button>
+            {{ form_end(form) }}
         </div>
-        {{ form_end(form) }}
+
     </div>
 
-</div>
-</div>
 
 {% endblock %}
