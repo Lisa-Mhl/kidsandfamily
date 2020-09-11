@@ -137,7 +137,7 @@
                 <!-- Content -->
                 <div class="footer-body">
                     <h5 class="text-uppercase font-weight-bold">Footer text 1</h5>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita sapiente sint, nulla, nihil
+                    <p class="footerText">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita sapiente sint, nulla, nihil
                         repudiandae commodi voluptatibus corrupti animi sequi aliquid magnam debitis, maxime quam
                         recusandae
                         harum esse fugiat. Itaque, culpa?</p>
@@ -145,21 +145,21 @@
 
             </div>
             <!-- Grid column -->
-            <div class="col-md-3 mx-auto">
+            <div class="col-md-3 mx-auto" id="footerLinks">
 
                 <!-- Links -->
                 <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
                 <ul class="footer-links">
                     {% if app.user %}
-                        <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
+                        <li class="fl"><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
                     {% else %}
-                        <li><a href="{{ path('app_login') }}">Se connecter</a></li>
-                        <li><a href="{{ path('app_register') }}">Créer un compte</a></li>
+                        <li class="fl"><a href="{{ path('app_login') }}">Se connecter</a></li>
+                        <li class="fl"><a href="{{ path('app_register') }}">Créer un compte</a></li>
                     {% endif %}
-                    <li><a href="#">Nos Valeurs</a></li>
-                    <li><a href="#">Contribuer</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Conditions d'utilisation</a></li>
+                    <li class="fl"><a href="#">Nos Valeurs</a></li>
+                    <li class="fl"><a href="#">Contribuer</a></li>
+                    <li class="fl"><a href="#">Contact</a></li>
+                    <li class="fl"><a href="#">Conditions d'utilisation</a></li>
                 </ul>
             </div>
         </div>
