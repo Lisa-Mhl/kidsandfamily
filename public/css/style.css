@@ -582,21 +582,32 @@ hr {
     text-align: justify;
 }
 
-.detailsPhoto{
+.detailsPhoto {
     width: 350px;
     height: 330px;
     margin: 2em auto;
 }
 
 
-.detailsPhotoCtn{
+.detailsPhotoCtn {
     margin: auto;
     display: flex;
     flex-direction: row;
     width: 61.5%;
     justify-content: center;
-
 }
+
+.needsCtn {
+    margin: auto;
+    width: 60%;
+}
+
+#helpLink {
+    width: 15%;
+    margin-top: 0;
+    margin-bottom: 2em;
+}
+
 /*footer*/
 .footer-body {
     padding-top: 6%;

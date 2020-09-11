@@ -66,6 +66,10 @@ class User implements UserInterface
      */
     private $marital;
 
+    public function __toString()
+    {
+        return $this->getFirstname();
+    }
 
     public function getId(): ?int
     {
