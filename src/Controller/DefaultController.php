@@ -78,4 +78,12 @@ class DefaultController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/contribuer", name="contribute")
+     */
+    public function contribute()
+    {
+        return $this->render('default/contribute.html.twig');
+    }
+
 }

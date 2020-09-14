@@ -606,7 +606,7 @@ hr {
     z-index: 2;
 }
 
-.allArticles{
+.allArticles {
     margin-top: 5em;
 }
 
@@ -709,6 +709,17 @@ hr {
     transition: 1s;
 }
 
+/* CONTRIBUTE  */
+.contributeCtn {
+    padding-top: 5em;
+    width: 65%;
+    margin: auto;
+}
+
+.contributeStepImg{
+    height: 450px;
+    width: 700px;
+}
 
 /*footer*/
 .footer-body {
