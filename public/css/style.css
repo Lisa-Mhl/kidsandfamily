@@ -288,7 +288,7 @@ html {
 }
 
 .targetCard:hover {
-    opacity: 50%;
+    opacity: 80%;
 }
 
 div.enfant {
@@ -307,10 +307,6 @@ div.targetCard:hover .enfant {
     font-weight: bold;
     font-size: 2em;
     padding-top: 1em;
-}
-
-.targetCtn:hover {
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.";
 }
 
 .fa-users {
@@ -596,6 +592,8 @@ hr {
     margin-bottom: 1em;
 }
 
+
+
 /* ARTICLE DETAILS */
 
 .detailsTitle {
@@ -666,11 +664,12 @@ hr {
 
 .articleSideBar {
     position: absolute;
-    top: 18%;
+    top: 10%;
     left: 2%;
     width: 15%;
     background-color: white;
     padding: 1em;
+    height: 100%;
 }
 
 .map {

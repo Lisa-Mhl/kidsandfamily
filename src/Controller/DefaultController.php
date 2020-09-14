@@ -6,6 +6,7 @@ use App\Entity\Article;
 use App\Entity\Comment;
 use App\Form\CommentType;
 use App\Repository\ArticleRepository;
+use App\Repository\CategoryRepository;
 use App\Repository\CommentRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -60,6 +61,20 @@ class DefaultController extends AbstractController
             'article' => $article,
             'form' => $form->createView(),
             'comments' => $commentRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/articles", name="all_articles")
+     * @param ArticleRepository $articleRepository
+     * @param CategoryRepository $categoryRepository
+     * @return Response
+     */
+    public function allArticles(ArticleRepository $articleRepository, CategoryRepository $categoryRepository)
+    {
+        return $this->render('default/all_articles.html.twig', [
+            'articles' => $articleRepository->findAll(),
+            'categories' => $categoryRepository->findAll(),
         ]);
     }
 
