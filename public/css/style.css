@@ -592,7 +592,23 @@ hr {
     margin-bottom: 1em;
 }
 
+/* ALL ARTICLES  */
+.articlesCategory {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: white;
+    padding: 1em;
+    position: fixed;
+    top: 6.7%;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+}
 
+.allArticles{
+    margin-top: 5em;
+}
 
 /* ARTICLE DETAILS */
 
