@@ -40,6 +40,14 @@
                 <img class="card-img targetImg"
                      src="https://cdn.pixabay.com/photo/2017/12/24/08/50/family-3036595_960_720.jpg"
                      alt="Photo Famille">
+                <div class="enfant">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing
+                    elit, sed do eiusmod
+                    tempor incididunt ut labore
+                    et
+                    dolore magna aliqua.
+                </div>
+
             </div>
             <div class="card targetCard">
                 <div class="row" id="targetTitle">
@@ -48,9 +56,22 @@
                 <img class="card-img targetImg"
                      src="https://img.freepik.com/vecteurs-libre/mignon-drole-souriant-heureux-france-carte-drapeau-personnage_92289-244.jpg?size=338&ext=jpg"
                      alt="Photo Famille">
+                <div class="enfant">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing
+                    elit, sed do eiusmod
+                    tempor incididunt ut labore
+                    et
+                    dolore magna aliqua.
+                </div>
             </div>
         </div>
     </div>
+
+
+
+
+
+
 
     <div class="services">
         <h2 class="bold">Notre démarche</h2>
@@ -87,26 +108,63 @@
                     {% endfor %}
                 </div>
                 <hr>
-                <p class="bottomCard">
+                <div class="bottomCard">
                     {# AJOUTER PHOTO DE PROFIL DE L'AUTEUR #} Auteur
-                <div class="commentCtn">
-                    <section class="iconCard">
-                        <i class="fa fa-commenting-o"></i>
-                        <a class="articleLink" href="{{ path('article_details', {'id': article.id}) }}#comment">Commenter</a>
-                    </section>
-                    <section class="iconCard">
-                        <i class="fa fa-envelope-o"></i>
-                        <a class="articleLink" href="#">Message Privé</a>
-                    </section>
-                </div> {# AJOUTER SYSTEM DE MESSAGE DIRECT #}
-                {# <a  class="stretched-link"  id="articleIdLink" href="#">Voir</a> #}
-                </p>
+                    <div class="commentCtn">
+                        <section class="iconCard">
+                            <i class="fa fa-commenting-o"></i>
+                            <a class="articleLink" href="{{ path('article_details', {'id': article.id}) }}#comment">Commenter</a>
+                        </section>
+                        <section class="iconCard">
+                            <i class="fa fa-envelope-o"></i>
+                            <a class="articleLink" href="#">Message Privé</a>
+                        </section>
+                    </div> {# AJOUTER SYSTEM DE MESSAGE DIRECT #}
+                    {# <a  class="stretched-link"  id="articleIdLink" href="#">Voir</a> #}
+                </div>
                 <a class="detailsLink" href="{{ path('article_details', {'id': article.id}) }}">Voir le détail</a>
             </div>
         {% endfor %}
     </div>
     <h2 class="newsTitle bold">Les dernières publications de nos ambassadeurs</h2>
     <h2 class="newsTitle bold">Ils ont besoin d'aide !</h2>
+    {% for article in articles %}
+        {% if article.needs %}
+            <div class="card articleCard" id="articleCard">
+                <img class="card-img articleImg" src="{{ article.photo }}"
+                     alt="{{ article.title }}">
+                <div class="articleHead">
+                    <h5 class="card-title articleTitle">{{ article.title }}</h5>
+                    <span class="like">
+                    <i class="fas fa-heart"></i> J'aime</span>
+                </div>
+                {# AJOUTER SYSTEME DE LIKE #}
+                <div class="row">
+                    {% for category in article.category %}
+                        <div class="card-title articleCategory ">{{ category.name }}</div>
+                    {% endfor %}
+                </div>
+                <hr>
+                <div class="bottomCard">
+                    {# AJOUTER PHOTO DE PROFIL DE L'AUTEUR #} Auteur
+                    <div class="commentCtn">
+                        <section class="iconCard">
+                            <i class="fa fa-commenting-o"></i>
+                            <a class="articleLink" href="{{ path('article_details', {'id': article.id}) }}#comment">Commenter</a>
+                        </section>
+                        <section class="iconCard">
+                            <i class="fa fa-envelope-o"></i>
+                            <a class="articleLink" href="#">Message Privé</a>
+                        </section>
+                    </div> {# AJOUTER SYSTEM DE MESSAGE DIRECT #}
+                    {# <a  class="stretched-link"  id="articleIdLink" href="#">Voir</a> #}
+                </div>
+                <a class="detailsLink" href="{{ path('article_details', {'id': article.id}) }}">Voir le détail</a>
+            </div>
+
+        {% endif %}
+
+    {% endfor %}
 
     <div class="newsLinkCtn">
         <a class="newsLink" href="#">Voir toutes les publications</a>

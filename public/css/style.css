@@ -287,6 +287,32 @@ html {
     z-index: 1;
 }
 
+.targetCard:hover {
+    opacity: 50%;
+}
+
+div.enfant {
+    display: none;
+}
+
+div.targetCard:hover .enfant {
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 9%;
+    left: 0;
+    z-index: 2;
+    background-color: whitesmoke;
+    opacity: 80%;
+    font-weight: bold;
+    font-size: 2em;
+    padding-top: 1em;
+}
+
+.targetCtn:hover {
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et.";
+}
+
 .fa-users {
     margin: 0;
     font-size: 1.5em;
@@ -353,6 +379,7 @@ html {
     display: flex;
     justify-content: center;
     margin-bottom: 5em;
+    margin-top: 2em;
 }
 
 .newsLink {
@@ -576,6 +603,10 @@ hr {
     margin-bottom: 1em;
 }
 
+.detailsSubtitle {
+    font-size: 0.5em;
+}
+
 .detailsContent {
     width: 60%;
     margin: auto;
@@ -613,24 +644,54 @@ hr {
     margin: auto;
 }
 
-.commentTitle{
+.commentTitle {
     width: 60%;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 1em;
 }
 
-.sendComment{
+.sendComment {
     width: 10%;
     margin-bottom: 2em;
 }
 
-.comTitle{
+.comTitle {
     margin-top: 2em;
 }
 
-.commentLine{
+.commentLine {
     margin-top: 5em;
+}
+
+.articleSideBar {
+    position: absolute;
+    top: 18%;
+    left: 2%;
+    width: 15%;
+    background-color: white;
+    padding: 1em;
+}
+
+.map {
+    width: 95%;
+}
+
+.detailsMapLink {
+    margin-top: 1em;
+    text-align: center;
+}
+
+.detMapLink {
+    text-decoration: none;
+    color: #718C00;
+    transition: 1s;
+}
+
+.detMapLink:hover {
+    text-decoration: none;
+    color: dodgerblue;
+    transition: 1s;
 }
 
 
