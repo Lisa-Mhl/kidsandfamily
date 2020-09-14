@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <div class="ctn detailsCtn" xmlns="http://www.w3.org/1999/html">
+        <h1 class="detailsTitle">{{ article.title }} <br> <span class="detailsSubtitle grey"> par {{ article.author }} | publié le DATE {# AJOUTER DATE DANS BDD #}</span>
+        </h1>
+
+
+        <p class="detailsContent">{{ article.content }}</p>
+        <div class="detailsPhotoCtn">
+            <img class="detailsPhoto" src="{{ article.photo }}" alt="Illustration Article {{ article.title }}">
+            {% if article.photoB %}
+                <img class="detailsPhoto" src="{{ article.photoB }}" alt="Illustration Article {{ article.title }}">
+            {% endif %}
+            {% if article.photoC %}
+                <img class="detailsPhoto" src="{{ article.photoC }}" alt="Illustration Article {{ article.title }}">
+            {% endif %}
+        </div>
+
+        {% if article.needs %}
+            <div class="needsCtn">
+                <h3 class="needsTitle">Nos besoins</h3>
+                <p class="needsBody">{{ article.needs }}</p>
+                <a class="btn loginBtn" id="helpLink" href="#">Je peux aider !</a>
+            </div>
+        {% endif %}
+
+        <h3 id="comment" class="commentTitle">Commentaires</h3>
+        <div class="articleCommentCtn">
+            {% for comment in article.comments %}
+
+                {# {% if comment.author.photo %}
+                         <img class="profilePix" src="{{ comment.author.photo }}" alt="Photo de Profil">
+                     {% endif %} #}
+                <p class="bold green">{{ comment.author }}<br>
+                    <span class="grey">{{ comment.comment }}</span></p>
+            {% endfor %}
+
+            <hr class="commentLine">
+            {% if app.user %}
+                <h3 class="needsTitle comTitle">Laisser un commentaire</h3>
+                {{ form_start(form) }}
+                {{ form_label(form.comment, 'Votre message') }}
+                {{ form_widget(form.comment) }}
+                <button class="loginBtn btn sendComment">{{ button_label|default('Envoyer !') }}</button>
+                {{ form_end(form) }}
+            {% else %}
+                <p><a class="detailsLink" href="{{ path('app_login') }}"> Connectez-vous</a> pour laisser un commentaire
+                </p>
+            {% endif %}
+        </div>
+
+
+        <div class="articleSideBar">
+            <div class="detailsCatCtn">
+                <p class="detailsCat"><i class="fa fa-folder-open" aria-hidden="true"></i>
+                    Catégorie : <br>
+                    {% for category in article.category %}
+                    {{ category.name }}</p>
+                {% endfor %}
+            </div>
+            <h4 class="needsTitle">Lieu : </h4>
+            <p>{{ article.address }}</p>
+            <img class="map" src="https://i.postimg.cc/hGhTSc22/map.png"> <br> {# REMPLACER PAR API MAP #}
+            <div class="detailsMapLink">
+                <a class="detMapLink" href="#">Voir la map</a> {# AJOUTER LINK VERS MAP #}
+            </div>
+            <h4 class="needsTitle">Partager : </h4> {# AJOUTER FONCTION DE PARTAGE VERS RESEAU #}
+            <a class="instagram" href="#"><i class="fa fa-instagram"></i></a>
+            <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
+            <a class="instagram" href="#"><i class="fa fa-pinterest"></i></a>
+            <a class="instagram" href="#"><i class="fa fa-twitter"></i></a>
+        </div>
+
+
+    </div>
+
+
+{% endblock %}

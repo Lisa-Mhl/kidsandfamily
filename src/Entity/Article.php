@@ -40,24 +40,14 @@ class Article
     private $heading;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $photo;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $photoTitle;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
     private $video;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $videoTitle;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -70,12 +60,6 @@ class Article
     private $needs;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $description;
-
-
-    /**
      * @ORM\ManyToOne(targetEntity=Target::class, inversedBy="articles")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -86,6 +70,31 @@ class Article
      */
     private $category;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $content;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $photoB;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $photoC;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="articles")
+     */
+    private $author;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="article")
+     */
+    private $comments;
+
     public function __toString()
     {
         return $this->getTitle();
@@ -94,6 +103,7 @@ class Article
     public function __construct()
     {
         $this->category = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -161,18 +171,6 @@ class Article
         return $this;
     }
 
-    public function getPhotoTitle(): ?string
-    {
-        return $this->photoTitle;
-    }
-
-    public function setPhotoTitle(?string $photoTitle): self
-    {
-        $this->photoTitle = $photoTitle;
-
-        return $this;
-    }
-
     public function getVideo(): ?string
     {
         return $this->video;
@@ -181,18 +179,6 @@ class Article
     public function setVideo(?string $video): self
     {
         $this->video = $video;
-
-        return $this;
-    }
-
-    public function getVideoTitle(): ?string
-    {
-        return $this->videoTitle;
-    }
-
-    public function setVideoTitle(string $videoTitle): self
-    {
-        $this->videoTitle = $videoTitle;
 
         return $this;
     }
@@ -217,18 +203,6 @@ class Article
     public function setNeeds(?string $needs): self
     {
         $this->needs = $needs;
-
-        return $this;
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(?string $description): self
-    {
-        $this->description = $description;
 
         return $this;
     }
@@ -266,6 +240,85 @@ class Article
     {
         if ($this->category->contains($category)) {
             $this->category->removeElement($category);
+        }
+
+        return $this;
+    }
+
+    public function getContent(): ?string
+    {
+        return $this->content;
+    }
+
+    public function setContent(string $content): self
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    public function getPhotoB(): ?string
+    {
+        return $this->photoB;
+    }
+
+    public function setPhotoB(?string $photoB): self
+    {
+        $this->photoB = $photoB;
+
+        return $this;
+    }
+
+    public function getPhotoC(): ?string
+    {
+        return $this->photoC;
+    }
+
+    public function setPhotoC(?string $photoC): self
+    {
+        $this->photoC = $photoC;
+
+        return $this;
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?User $author): self
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Comment[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comment $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comment $comment): self
+    {
+        if ($this->comments->contains($comment)) {
+            $this->comments->removeElement($comment);
+            // set the owning side to null (unless already changed)
+            if ($comment->getArticle() === $this) {
+                $comment->setArticle(null);
+            }
         }
 
         return $this;
