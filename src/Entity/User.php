@@ -112,6 +112,12 @@ class User implements UserInterface
     private $mobile;
 
 
+    public function __toString()
+    {
+        return $this->getFirstname();
+    }
+
+
     public function getId(): ?int
     {
         return $this->id;

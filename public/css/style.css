@@ -309,6 +309,28 @@ html {
     z-index: 1;
 }
 
+.targetCard:hover {
+    opacity: 80%;
+}
+
+div.enfant {
+    display: none;
+}
+
+div.targetCard:hover .enfant {
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 9%;
+    left: 0;
+    z-index: 2;
+    background-color: whitesmoke;
+    opacity: 80%;
+    font-weight: bold;
+    font-size: 2em;
+    padding-top: 1em;
+}
+
 .fa-users {
     margin: 0;
     font-size: 1.5em;
@@ -375,6 +397,7 @@ html {
     display: flex;
     justify-content: center;
     margin-bottom: 5em;
+    margin-top: 2em;
 }
 
 .newsLink {
@@ -403,8 +426,8 @@ html {
 }
 
 #articleCard {
-    height: 480px;
-    width: 400px;
+    height: 460px;
+    width: 350px;
     border-radius: 5% 5% 0 0;
     border-style: none;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
@@ -421,6 +444,11 @@ html {
     padding: 0;
     justify-content: space-between;
     margin-top: 0.5em;
+}
+
+.bottomCard {
+    margin-bottom: 1em;
+    margin-left: 1em;
 }
 
 .articleTitle {
@@ -445,7 +473,7 @@ html {
 }
 
 .articleImg {
-    height: 300px;
+    height: 260px;
     border-radius: 5% 5% 0 0;
 }
 
@@ -466,7 +494,7 @@ html {
     justify-content: center;
 }
 
-.iconCard{
+.iconCard {
     padding-left: 1em;
     padding-right: 1em;
 }
@@ -482,6 +510,19 @@ html {
 
 #articleIdLink {
     color: white;
+}
+
+.detailsLink {
+    text-align: center;
+    text-decoration: none;
+    color: #718C00;
+    transition: 0.5s;
+}
+
+.detailsLink:hover {
+    text-decoration: none;
+    color: dodgerblue;
+    transition: 0.5s;
 }
 
 hr {
@@ -508,7 +549,7 @@ hr {
     margin: 5em auto 5em;
 }
 
-.eshopGif{
+.eshopGif {
     margin-bottom: 2em;
 }
 
@@ -534,6 +575,162 @@ hr {
     background-color: cornflowerblue;
     transition: 0.5s;
 }
+
+/* A PROPOS */
+.ctn {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5em;
+
+}
+
+.aboutArticle {
+    width: 60%;
+    margin: 4em auto 5em;
+    text-align: justify;
+}
+
+.rightTitle {
+    text-align: right;
+}
+
+.join {
+    text-align: center;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.aboutList {
+    width: 70%;
+    margin: auto;
+}
+
+.aboutServicesTitle {
+    text-align: center;
+}
+
+.serviceList {
+    margin-bottom: 1em;
+}
+
+/* ALL ARTICLES  */
+.articlesCategory {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: white;
+    padding: 1em;
+    position: fixed;
+    top: 6.7%;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+.allArticles{
+    margin-top: 5em;
+}
+
+/* ARTICLE DETAILS */
+
+.detailsTitle {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.detailsSubtitle {
+    font-size: 0.5em;
+}
+
+.detailsContent {
+    width: 60%;
+    margin: auto;
+    text-align: justify;
+}
+
+.detailsPhoto {
+    width: 350px;
+    height: 330px;
+    margin: 2em auto;
+}
+
+
+.detailsPhotoCtn {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    width: 61.5%;
+    justify-content: center;
+}
+
+.needsCtn {
+    margin: auto;
+    width: 60%;
+}
+
+#helpLink {
+    width: 12%;
+    margin-top: 0;
+    margin-bottom: 2em;
+}
+
+.articleCommentCtn {
+    width: 60%;
+    margin: auto;
+}
+
+.commentTitle {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1em;
+}
+
+.sendComment {
+    width: 10%;
+    margin-bottom: 2em;
+}
+
+.comTitle {
+    margin-top: 2em;
+}
+
+.commentLine {
+    margin-top: 5em;
+}
+
+.articleSideBar {
+    position: absolute;
+    top: 10%;
+    left: 2%;
+    width: 15%;
+    background-color: white;
+    padding: 1em;
+    height: 100%;
+}
+
+.map {
+    width: 95%;
+}
+
+.detailsMapLink {
+    margin-top: 1em;
+    text-align: center;
+}
+
+.detMapLink {
+    text-decoration: none;
+    color: #718C00;
+    transition: 1s;
+}
+
+.detMapLink:hover {
+    text-decoration: none;
+    color: dodgerblue;
+    transition: 1s;
+}
+
 
 /*footer*/
 .footer-body {
@@ -766,7 +963,8 @@ hr {
         margin-top: auto;
         height: 54.2%;
     }
-    .page-footer{
+
+    .page-footer {
         position: relative;
         left: 0;
         top: 72%;
@@ -883,20 +1081,25 @@ hr {
         .eshop {
             width: 100%;
         }
+
         #cardProfile {
             width: auto;
             margin: auto;
         }
-        .footerText{
+
+        .footerText {
             width: 80%;
             margin: auto;
         }
+
         .footer-body {
             padding: 0;
         }
+
         .fl {
-        margin: auto;
+            margin: auto;
         }
+
         .loginBtn {
             width: 80%;
 
