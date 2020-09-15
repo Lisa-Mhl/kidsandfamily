@@ -12,17 +12,17 @@ body {
 
 #cardProfile {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 50%;
+    max-width: 100%;
     margin: auto;
     text-align: center;
     z-index: 1;
 }
 
-.bg-profile {
+/*.bg-profile {
     background-image: url("https://cdn.pixabay.com/photo/2017/10/13/12/29/hands-2847508_960_720.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-}
+}*/
 
 .imgProfile {
     border-radius: 100%;
@@ -59,13 +59,14 @@ body {
 /* SideBAR */
 
 /* Style the sidebar - fixed full height */
+
 .sidebar {
     height: 63.2%;
     width: 15%;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1;
+    z-index: 4;
     background-color: white;
     padding-top: 16px;
     margin-top: 64px;
@@ -83,6 +84,27 @@ body {
 
 /* Style links on mouse-over */
 .sidebar a:hover {
+    color: orange;
+}
+
+/* dropdown*/
+.dropdown{
+    margin-top: 50px;
+    margin-left: 20px;
+    display: none;
+}
+/* Style sidebar links */
+.dropdown-menu a {
+    padding: 16px 8px 6px 0px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: flex;
+    justify-content: center;
+}
+
+/* Style links on mouse-over */
+.dropdown-menu a:hover {
     color: orange;
 }
 
@@ -936,7 +958,7 @@ hr {
         margin-top: 8em;
     }
 
-    .sidebar {
+    .dropdown-toggle {
         width: auto;
         margin-top: auto;
         height: 54.2%;
@@ -951,6 +973,26 @@ hr {
     /*////////////////////////// MOBILE ///////////////////////*/
     @media only screen and (max-width: 640px) {
 
+        .sidebar{
+            display: none;
+        }
+        .dropdown{
+            display: flex;
+            position: fixed;
+            top: -6%;
+            left: 60%;
+            z-index: 3;
+            background-color: transparent;
+        }
+
+        .dropdown-menu a{
+            text-align: center;
+            padding: 16px 8px 6px 0px;
+        }
+
+        #dropdownMenu2{
+            color: white;
+        }
         /* NAVBAR*/
         #nav-mobile {
             justify-content: space-between;
@@ -1042,7 +1084,7 @@ hr {
 
         #cardProfile {
             width: auto;
-            margin-left: 200px;
+            margin: auto;
         }
 
         .footerText {
