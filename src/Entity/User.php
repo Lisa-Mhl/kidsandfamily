@@ -66,10 +66,57 @@ class User implements UserInterface
      */
     private $marital;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $categ;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $channelnum;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $complement;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $namevoie;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $cp;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $city;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $country;
+
+    /**
+     * @ORM\Column(type="string", length=15, nullable=true)
+     */
+    private $phone;
+
+    /**
+     * @ORM\Column(type="string", length=15, nullable=true)
+     */
+    private $mobile;
+
+
     public function __toString()
     {
         return $this->getFirstname();
     }
+
 
     public function getId(): ?int
     {
@@ -217,6 +264,114 @@ class User implements UserInterface
     public function setMarital(?string $marital): self
     {
         $this->marital = $marital;
+
+        return $this;
+    }
+
+    public function getCateg(): ?string
+    {
+        return $this->categ;
+    }
+
+    public function setCateg(?string $categ): self
+    {
+        $this->categ = $categ;
+
+        return $this;
+    }
+
+    public function getChannelnum(): ?string
+    {
+        return $this->channelnum;
+    }
+
+    public function setChannelnum(?string $channelnum): self
+    {
+        $this->channelnum = $channelnum;
+
+        return $this;
+    }
+
+    public function getComplement(): ?string
+    {
+        return $this->complement;
+    }
+
+    public function setComplement(?string $complement): self
+    {
+        $this->complement = $complement;
+
+        return $this;
+    }
+
+    public function getNamevoie(): ?string
+    {
+        return $this->namevoie;
+    }
+
+    public function setNamevoie(?string $namevoie): self
+    {
+        $this->namevoie = $namevoie;
+
+        return $this;
+    }
+
+    public function getCp(): ?string
+    {
+        return $this->cp;
+    }
+
+    public function setCp(?string $cp): self
+    {
+        $this->cp = $cp;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(?string $city): self
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getCountry(): ?string
+    {
+        return $this->country;
+    }
+
+    public function setCountry(?string $country): self
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(?string $phone): self
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getMobile(): ?string
+    {
+        return $this->mobile;
+    }
+
+    public function setMobile(?string $mobile): self
+    {
+        $this->mobile = $mobile;
 
         return $this;
     }
