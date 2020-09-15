@@ -1,38 +1,61 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="ctn">
+    <div class="ctn" id="aboutCtn">
+
         <article class="aboutArticle">
-            <h1>Qui sommes-nous ?</h1>
-            Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex
-            ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil
-            molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Duis aute irure dolor
-            in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-            anim id est laborum.
+            <h1 id="aboutTitle" class="bold yellow">Qui sommes-nous ?</h1>
+            <p id="aboutBody">
+                Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut
+                aliquid ex
+                ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil
+                molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Duis aute irure
+                dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                mollit
+                anim id est laborum.</p> <br>
+            <iframe class="aboutVideo" width="560" height="315" src="https://www.youtube.com/embed/sqGltsSb-i0"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
         </article>
         <article class="aboutArticle">
-            <h1 class="rightTitle">Notre Vision</h1>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-            anim id est laborum.
+            <h1 id="aboutTitle" class="rightTitle bold pink">Notre Vision</h1>
+            <section id="vision">
+                <img src="https://i.postimg.cc/cLP36hHP/kidsetfam.png" class="aboutImg">
+                <p id="aboutBody" class="visionBody">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip
+                    ex
+                    ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+                    eu
+                    fugiat
+                    nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                    mollit
+                    anim id est laborum.</p>
+            </section>
         </article>
         <article class="aboutArticle">
-            <h1>Nos Valeurs</h1>
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
-            aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-            Nemo
-            enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-            eos
-            qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-            consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam
-            aliquam
-            quaerat voluptatem.
+            <h1 id="aboutTitle" class="bold yellow">Nos Valeurs</h1>
+            <p id="aboutBody">
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
+                rem
+                aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
+                explicabo.
+                Nemo
+                enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
+                dolores
+                eos
+                qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
+                consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam
+                aliquam
+                quaerat voluptatem.</p>
         </article>
         <article class="aboutArticle">
-            <h1 class="aboutServicesTitle">Nos Services</h1>
+            <h1 id="aboutTitle" class="aboutServicesTitle bold pink">Nos Services</h1>
             <ul class="aboutList">
                 <li class="serviceList">
                     At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
@@ -54,16 +77,23 @@
             </ul>
         </article>
         <article class="join">
-            <h1>Rejoindre la communauté</h1>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-            anim id est laborum. <br>
-            <a href="{{ path('app_register') }}">Je souhaite m'inscrire !</a>
+            <h1 class="bold yellow" id="aboutTitleJoin">Rejoindre la communauté</h1>
+            <p id="aboutBody">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex
+                ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                mollit
+                anim id est laborum. <br>
+                <a class="btn loginBtn" href="{{ path('app_register') }}">Je souhaite m'inscrire !</a> <br>
+            <div class="aboutLinksCtn">
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                <a class="logLink bold" href="{{ path('all_articles') }}">Voir les publications</a> <br>
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                <a class="logLink bold" href="{{ path('home') }}">Retour à l'accueil</a>
+            </div>
         </article>
-        <a href="{{ path('all_articles') }}">Voir toutes les publications</a>
-        <a href="{{ path('home') }}">Retour à l'accueil</a>
-
     </div>
 {% endblock %}
