@@ -39,7 +39,6 @@
 
     {% if app.user %}
         {% if is_granted('ROLE_USER') %}
-            {% for user in users %}
 
                 <div class="card cardProfile" id="cardProfile">
                     <div class="card-body">
@@ -64,6 +63,9 @@ C/O https://placeholder.com/" alt="John" style="width:10% ">
                         <p>
                             <button class="btnProfile"><a class="linkProfile" href="{{ path('user_edit', {'id': user.id}) }}">Modifier</a></button>
                         </p>
+                        <p>
+                            <button class="btnProfile"><a class="linkProfile" href="{{ path('app_forgot_password_request') }}">Modifier Mon Mot de passe</a></button>
+                        </p>
                     </div>
                 </div>
 
@@ -71,8 +73,6 @@ C/O https://placeholder.com/" alt="John" style="width:10% ">
                 <tr>
                     <td colspan="13">no records found</td>
                 </tr>
-            {% endfor %}
-
         {% endif %}
     {% endif %}
 {% endblock %}
