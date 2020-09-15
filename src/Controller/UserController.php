@@ -4,26 +4,24 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
-use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/profile")
- */
+
 class UserController extends AbstractController
 {
+
     /**
-     * @Route("/", name="profile", methods={"GET"})
-     * @param UserRepository $userRepository
+     * @Route("/profil/{id}", name="profile", methods={"GET"})
+     * @param User $user
      * @return Response
      */
-    public function index(UserRepository $userRepository): Response
+    public function profile(User $user): Response
     {
-        return $this->render('user/index.html.twig', [
-            'users' => $userRepository->findAll(),
+        return $this->render('user/profile.html.twig', [
+            'user' => $user,
         ]);
     }
 
@@ -52,17 +50,6 @@ class UserController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="user_show", methods={"GET"})
-     * @param User $user
-     * @return Response
-     */
-    public function show(User $user): Response
-    {
-        return $this->render('user/show.html.twig', [
-            'user' => $user,
-        ]);
-    }
 
     /**
      * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
@@ -78,7 +65,7 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('profile');
+            return $this->redirectToRoute('profile', ['id' => $user->getId()]);
         }
 
         return $this->render('user/edit.html.twig', [
