@@ -597,9 +597,10 @@ hr {
 }
 
 #aboutCtn {
-    background-size: auto;
-    background: url("https://i.postimg.cc/mDKXZC9w/boy-1298788-1280.png");
-    background-blend-mode: darken;
+    margin: 0;
+    padding-top: 5em;
+    background-size: cover;
+    background: url("https://i.postimg.cc/QMp5n16W/3558.jpg");
 }
 
 .aboutArticle {
@@ -627,8 +628,10 @@ hr {
 }
 
 .aboutList {
-    width: 70%;
-    margin: auto;
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    justify-content: center;
 }
 
 .aboutServicesTitle {
@@ -637,6 +640,19 @@ hr {
 
 .serviceList {
     margin-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.serviceImg {
+    height: 100px;
+    margin-bottom: 1em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.serviceListTitle {
+    text-align: center;
 }
 
 #aboutTitle {
@@ -800,14 +816,34 @@ hr {
 
 /* CONTRIBUTE  */
 .contributeCtn {
-    padding-top: 5em;
+    padding-top: 10em;
     width: 65%;
     margin: auto;
+}
+
+.contributeStep{
+    margin-bottom: 5em;
+}
+
+.stepCtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.contributeStepTitle{
+    margin-top: 2em;
 }
 
 .contributeStepImg {
     height: 450px;
     width: 700px;
+}
+
+.contributeStepBody{
+    width: 45%;
+    padding: 2em;
+    font-size: 1.5em;
 }
 
 /*footer*/
