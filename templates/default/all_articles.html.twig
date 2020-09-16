@@ -6,7 +6,7 @@
             <a href="#Kids&Family">Kids & Family</a> | <a href="#Ambassadeurs">Les Ambassadeurs</a>
             {% if app.user %}
                 | <a href="#Help">Venir
-                en aide </a> | <a href="#">Poster un projet / événement</a>
+                en aide </a> | <a href="{{ path('article_new') }}">Ajouter une publication</a>
             {% endif %}
         </div>
         <div class="allArticles">
@@ -20,7 +20,6 @@
                     {% endif %}
                 {% endfor %}
             </h4>
-
 
             <div class="row">
                 {% for article in articles %}
@@ -115,45 +114,45 @@
 
             <div id="Help"></div>
             <h4 class="allArticlesNav">Ils ont besoin d'aide !</h4>
-
-            {% for article in articles %}
-                {% if article.needs %}
-                    <div class="card articleCard" id="allArticlesCard">
-                        <img class="card-img allArticlesImg" src="{{ article.photo }}"
-                             alt="{{ article.title }}">
-                        <div class="articleHead">
-                            <h5 class="card-title articleTitle">{{ article.title }}</h5>
-                            <span class="like">
+            <div class="row">
+                {% for article in articles %}
+                    {% if article.needs %}
+                        <div class="card articleCard" id="allArticlesCard">
+                            <img class="card-img allArticlesImg" src="{{ article.photo }}"
+                                 alt="{{ article.title }}">
+                            <div class="articleHead">
+                                <h5 class="card-title articleTitle">{{ article.title }}</h5>
+                                <span class="like">
                     <i class="fas fa-heart"></i> J'aime</span>
+                            </div>
+                            {# TO DO : AJOUTER SYSTEME DE LIKE #}
+                            <div class="row">
+                                {% for category in article.category %}
+                                    <div class="card-title articleCategory">{{ category.name }}</div>
+                                {% endfor %}
+                            </div>
+                            <hr>
+                            <div class="bottomCard">
+                                {# TO DO : AJOUTER PHOTO DE PROFIL DE L'AUTEUR #} {{ article.author }}
+                                <div class="commentCtn" id="allCommentCtn">
+                                    <section class="iconCard">
+                                        <i class="fa fa-commenting-o"></i>
+                                        <a class="articleLink"
+                                           href="{{ path('article_details', {'id': article.id}) }}#comment">Commenter</a>
+                                    </section>
+                                    <section class="iconCard">
+                                        <i class="fa fa-envelope-o"></i>
+                                        <a class="articleLink" href="#">Message Privé</a>
+                                    </section>
+                                </div> {# TO DO : AJOUTER SYSTEM DE MESSAGE DIRECT #}
+                                {# <a  class="stretched-link"  id="articleIdLink" href="#">Voir</a> #}
+                            </div>
+                            <a class="detailsLink" id="allDetLink"
+                               href="{{ path('article_details', {'id': article.id}) }}">Voir la publication</a>
                         </div>
-                        {# TO DO : AJOUTER SYSTEME DE LIKE #}
-                        <div class="row">
-                            {% for category in article.category %}
-                                <div class="card-title articleCategory">{{ category.name }}</div>
-                            {% endfor %}
-                        </div>
-                        <hr>
-                        <div class="bottomCard">
-                            {# TO DO : AJOUTER PHOTO DE PROFIL DE L'AUTEUR #} {{ article.author }}
-                            <div class="commentCtn" id="allCommentCtn">
-                                <section class="iconCard">
-                                    <i class="fa fa-commenting-o"></i>
-                                    <a class="articleLink"
-                                       href="{{ path('article_details', {'id': article.id}) }}#comment">Commenter</a>
-                                </section>
-                                <section class="iconCard">
-                                    <i class="fa fa-envelope-o"></i>
-                                    <a class="articleLink" href="#">Message Privé</a>
-                                </section>
-                            </div> {# TO DO : AJOUTER SYSTEM DE MESSAGE DIRECT #}
-                            {# <a  class="stretched-link"  id="articleIdLink" href="#">Voir</a> #}
-                        </div>
-                        <a class="detailsLink" id="allDetLink"
-                           href="{{ path('article_details', {'id': article.id}) }}">Voir la publication</a>
-                    </div>
-                {% endif %}
-            {% endfor %}
-
+                    {% endif %}
+                {% endfor %}
+            </div>
 
         </div>
     </div>
