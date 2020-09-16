@@ -95,6 +95,21 @@ class Article
      */
     private $comments;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $telephone;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $email;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $website;
+
     public function __toString()
     {
         return $this->getTitle();
@@ -320,6 +335,42 @@ class Article
                 $comment->setArticle(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTelephone(): ?int
+    {
+        return $this->telephone;
+    }
+
+    public function setTelephone(?int $telephone): self
+    {
+        $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(?string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getWebsite(): ?string
+    {
+        return $this->website;
+    }
+
+    public function setWebsite(?string $website): self
+    {
+        $this->website = $website;
 
         return $this;
     }

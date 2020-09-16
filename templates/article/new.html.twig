@@ -38,7 +38,7 @@
                 {{ form_widget(form.photo) }}
 
                 <div class="option">
-                    <h4>Optionnel</h4>
+                    <h4 class="optionTitle">Optionnel</h4>
                     {{ form_label(form.photoB, 'Ajoutez une 2e image') }}
                     {{ form_widget(form.photoB) }}
                     {{ form_label(form.photoC, 'Ajoutez une 3e image') }}
@@ -47,6 +47,16 @@
                     {{ form_widget(form.video) }}
                     {{ form_label(form.pdf, 'Ajoutez un document PDF') }}
                     {{ form_widget(form.pdf) }}
+                    <h5 class="newArticleContact">Contact</h5>
+                    <i class="fa fa-phone-square" aria-hidden="true"></i>
+                    {{ form_label(form.telephone, 'Téléphone') }}
+                    {{ form_widget(form.telephone) }}
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    {{ form_label(form.email, 'Email') }}
+                    {{ form_widget(form.email) }}
+                    <i class="fas fa-globe"></i>
+                    {{ form_label(form.website, 'Site Web') }}
+                    {{ form_widget(form.website) }}
                 </div>
 
                 <div class="center">

@@ -26,7 +26,7 @@ class ArticleType extends AbstractType
             ->add('heading', ChoiceType::class, [
                 'choices' => [
                     'Projet' => 'Projet',
-                    'Evénement' => 'Evénement',
+                    'Événement' => 'Evénement',
                 ]
             ])
             ->add('photo')
@@ -38,7 +38,10 @@ class ArticleType extends AbstractType
             ->add('photoC')
             ->add('target')
             ->add('category')
-            ->add('author');
+            ->add('author')
+            ->add('telephone')
+            ->add('email')
+            ->add('website');
     }
 
     public function configureOptions(OptionsResolver $resolver)
