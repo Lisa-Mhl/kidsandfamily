@@ -13,7 +13,7 @@
             <a href="#"><i class="fa fa-fw fa-home"></i> Coordonnées</a>
             <a href="#"><i class="fa fa-mobile"></i> Catégories</a>
             <a href="#"><i class="fa fa-heart"></i> Centres d'intérêts</a>
-            <a href="#"><i class="fa fa-picture-o"></i> Mes publications</a>
+            <a href="{{ path('my_articles', {'id': user.id}) }}"><i class="fa fa-picture-o"></i> Mes publications</a>
             <a href="#"><i class="fa fa-users"></i> Discussion</a>
         </div>
         <!-- dropdown -->
