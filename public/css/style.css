@@ -117,17 +117,28 @@ body {
     border-radius: 5px;
     width: 125px;
     text-align: center;
+    transition: 0.5s;
 }
 
-.cardDeleteLink{
+#cardDeleteLink {
     color: #9f090d;
+    transition: 0.5s;
 }
 
-.cardUpdateLink:hover{
-
+#cardDeleteLink:hover {
+    background-color: #9f090d;
+    color: white;
+    transition: 0.5s;
 }
 
-    /* SideBAR */
+.cardUpdateLink:hover {
+    text-decoration: none;
+    background-color: dodgerblue;
+    color: white;
+    transition: 0.5s;
+}
+
+/* SideBAR */
 
 /* Style the sidebar - fixed full height */
 

@@ -94,7 +94,7 @@ class UserController extends AbstractController
             $session = new Session();
             $session->invalidate();
 
-            $this->addFlash('sup', 'Votre compte a bien été supprimée');
+            $this->addFlash('sup', 'Votre compte a bien été supprimé');
         }
 
         return $this->redirectToRoute( 'app_logout' );
