@@ -9,7 +9,7 @@
             CREATEUR D'EXPERIENCES EN FAMILLE <br>
                 {% if app.user %}
                     <a id="coverBtn" class="btn loginBtn" href="#news">Nouveautés</a>
-                    <a id="coverBtn" class="btn loginBtn" href="#">Contribuer</a>
+                    <a id="coverBtn" class="btn loginBtn" href="{{ path('contribute') }}">Contribuer</a>
                 {% else %}
                     <a id="coverBtn" class="btn loginBtn" href="#a-propos">Découvrir</a>
                     <a id="coverBtn" class="btn loginBtn" href="{{ path('app_register') }}">S'inscrire</a>
@@ -203,7 +203,7 @@
     </div>
 
     <div class="newsLinkCtn">
-        <a class="newsLink" href="{{ path('all_articles') }}">Voir toutes les publications</a>
+        <a class="newsLink" href="{{ path('all_articles') }}#Kids&Family">Voir toutes les publications</a>
     </div>
 
     <div class="eshopCtn">
