@@ -157,7 +157,7 @@ html {
 
 .connexionLink {
     margin-top: 11px;
-    margin-right: 2em;
+    margin-left: 7em;
 }
 
 .logLink {
@@ -171,8 +171,8 @@ html {
     transition: 0.5s;
 }
 
-.social-icons, li {
-    margin-right: 2em;
+#nav .social-icons {
+    margin-left: 20%;
 }
 
 #nav-link {
@@ -702,7 +702,7 @@ hr {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    background-color: white;
+    background-color: orange;
     padding: 1em;
     position: fixed;
     top: 6.7%;
@@ -711,8 +711,81 @@ hr {
     z-index: 2;
 }
 
+.articlesCategory a {
+    color: mediumvioletred;
+    font-size: 1.5em;
+}
+
+.articlesCategory a:hover {
+    text-decoration: none;
+    color: #718C00;
+}
+
 .allArticles {
-    margin-top: 5em;
+    margin-bottom: 5em;
+}
+
+.allArticlesNav {
+    background-color: white;
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.allArticlesNav a {
+    background-color: lightseagreen;
+    padding: 0.7em;
+    border-radius: 15px;
+    color: lightyellow;
+}
+
+.allArticlesNav a:hover {
+    text-decoration: none;
+    color: yellow;
+}
+
+.catId {
+    padding-top: 8em;
+}
+
+.catTitle {
+    text-align: center;
+    padding: 1em;
+}
+
+#Ambassadeurs {
+    padding-top: 7.5em;
+}
+
+#Kids\&Family {
+    padding-top: 7.5em;
+}
+
+#Help{
+    padding-top: 7.5em;
+}
+
+#allArticlesCard {
+    margin-top: 2em;
+    height: 450px;
+    width: 330px;
+    border-radius: 5% 5% 0 0;
+    border-style: none;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.allArticlesImg {
+    height: 280px;
+    border-radius: 5% 5% 0 0;
+}
+
+#allCommentCtn {
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 /* ARTICLE DETAILS */
@@ -821,7 +894,7 @@ hr {
     margin: auto;
 }
 
-.contributeStep{
+.contributeStep {
     margin-bottom: 5em;
 }
 
@@ -831,7 +904,7 @@ hr {
     justify-content: center;
 }
 
-.contributeStepTitle{
+.contributeStepTitle {
     margin-top: 2em;
 }
 
@@ -840,7 +913,7 @@ hr {
     width: 700px;
 }
 
-.contributeStepBody{
+.contributeStepBody {
     width: 45%;
     padding: 2em;
     font-size: 1.5em;
