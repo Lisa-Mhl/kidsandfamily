@@ -8,6 +8,15 @@ body {
     color: whitesmoke;
 }
 
+.hidden{
+    display: none;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+}
+
 /* profile*/
 
 #cardProfile {
@@ -786,6 +795,47 @@ hr {
 #allCommentCtn {
     margin-top: 1em;
     margin-bottom: 1em;
+}
+
+/* PUBLIER UN ARTICLE */
+
+.helpLink{
+    font-size: 0.5em;
+}
+
+.helpIcon{
+    font-size: 0.5em;
+}
+
+.mustCo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 30%;
+    margin: 10% auto 10%;
+    text-align: center;
+    border-style: solid;
+    border-width: thin;
+    padding: 2em;
+    background-color: #354254;
+    color: whitesmoke;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.formFs{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5em;
+}
+
+.mustCoBody{
+    font-weight: bold;
+    font-size: 2em;
+}
+
+#publishBtn{
+    width: 10%;
 }
 
 /* ARTICLE DETAILS */

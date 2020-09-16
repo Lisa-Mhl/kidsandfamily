@@ -6,7 +6,7 @@
             <a href="#Kids&Family">Kids & Family</a> | <a href="#Ambassadeurs">Les Ambassadeurs</a>
             {% if app.user %}
                 | <a href="#Help">Venir
-                en aide </a> | <a href="#">Poster un projet / événement</a>
+                en aide </a> | <a href="{{ path('article_new') }}">Ajouter une publication</a>
             {% endif %}
         </div>
         <div class="allArticles">
@@ -20,7 +20,6 @@
                     {% endif %}
                 {% endfor %}
             </h4>
-
 
             <div class="row">
                 {% for article in articles %}

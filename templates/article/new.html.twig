@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une publication{% endblock %}
+
+{% block body %}
+    <div class="ctn">
+        <h1 class="detailsTitle">Créer une publication <br>
+            <i class="fa fa-info-circle helpIcon" aria-hidden="true"></i>
+            <a class="helpLink logLink" href="#">Aide</a></h1>
+        {% if app.user %}
+            {{ form_start(form) }}
+            <fieldset class="formFs">
+                <div class="hidden">
+                    {{ form_label(form.author, 'Auteur') }}
+                    {{ form_widget(form.author) }}
+                </div>
+                {{ form_label(form.title, 'Titre de votre publication') }}
+                {{ form_widget(form.title) }}
+                <div class="categorylabel">
+                    <label id="{{ article.category }}">Sélectionnez entre 1 et 3 catégories</label>
+                </div>
+                {{ form_widget(form.category) }}
+                <div class="categorylabel">
+                    <label id="{{ article.classification }}">Choisissez votre classification</label>
+                </div>
+                {{ form_widget(form.classification) }}
+                {{ form_label(form.target, 'A qui s\'addresse votre projet ?') }}
+                {{ form_widget(form.target) }}
+                {{ form_label(form.heading, 'Sélectionnez le type de publication') }}
+                {{ form_widget(form.heading) }}
+                {{ form_label(form.content, 'Contenu de l\'article') }}
+                {{ form_widget(form.content) }}
+                {{ form_label(form.needs, 'Si vous avez besoin d\'aide de la part des ambassadeurs, de matériel (etc.) merci de détailler vos besoins (facultatif)') }}
+                {{ form_widget(form.needs) }}
+                {{ form_label(form.address, 'Veuillez indiquer l\'addresse de votre projet / événement') }}
+                {{ form_widget(form.address) }}
+                {{ form_label(form.photo, 'Ajoutez une image d\'illustration') }}
+                {{ form_widget(form.photo) }}
+
+                <div class="option">
+                    <h4>Optionnel</h4>
+                    {{ form_label(form.photoB, 'Ajoutez une 2e image') }}
+                    {{ form_widget(form.photoB) }}
+                    {{ form_label(form.photoC, 'Ajoutez une 3e image') }}
+                    {{ form_widget(form.photoC) }}
+                    {{ form_label(form.video, 'Ajoutez un lien vers une vidéo') }}
+                    {{ form_widget(form.video) }}
+                    {{ form_label(form.pdf, 'Ajoutez un document PDF') }}
+                    {{ form_widget(form.pdf) }}
+                </div>
+
+                <div class="center">
+                    <button class="loginBtn" id="publishBtn">{{ button_label|default('Publier') }}</button>
+                </div>
+            </fieldset>
+            {{ form_end(form) }}
+
+        {% else %}
+
+            <div class="mustCo">
+                <p class="mustCoBody">Merci de vous connecter pour poster un projet</p>
+                <a class="logLink" href="{{ path('app_login') }}">Se connecter</a> <br>
+                <a class="logLink" href="{{ path('app_register') }}">Créer un compte</a>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
