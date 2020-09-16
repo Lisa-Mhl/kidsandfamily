@@ -96,4 +96,34 @@ class UserController extends AbstractController
 
         return $this->redirectToRoute( 'app_logout' );
     }
+
+    /**
+     * @Route("/profil/{id}/hobbies", name="hobbies", methods={"GET","POST"})
+     * @param User $user
+     * @param Request $request
+     * @return Response
+     */
+    public function hobbies (User $user, Request $request): Response
+    {
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('profile', ['id' => $user->getId()]);
+        }
+
+        return $this->render('user/hobbies.html.twig', [
+            'user' => $user,
+            'form' => $form->createView(),
+        ]);
+    }
 }
+//$form = $this->createForm(UserType::class, $user);
+//$form->handleRequest($request);
+
+//if ($form->isSubmitted() && $form->isValid()) {
+    //$this->getDoctrine()->getManager()->flush();

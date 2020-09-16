@@ -12,7 +12,7 @@
             <a href="#"><i class="fa fa-info-circle"></i> Information</a>
             <a href="#"><i class="fa fa-fw fa-home"></i> Coordonnées</a>
             <a href="#"><i class="fa fa-mobile"></i> Catégories</a>
-            <a href="#"><i class="fa fa-heart"></i> Centres d'intérêts</a>
+            <a href="{{ path('hobbies', {'id': user.id}) }}"><i class="fa fa-heart"></i> Centres d'intérêts</a>
             <a href="#"><i class="fa fa-picture-o"></i> Mes publications</a>
             <a href="#"><i class="fa fa-users"></i> Discussion</a>
         </div>
@@ -25,7 +25,7 @@
                 <a href="#"><i class="fa fa-info-circle"></i><li> Information</li></a>
                 <a href="#"><i class="fa fa-fw fa-home"></i><li> Coordonnées</li></a>
                 <a href="#"><i class="fa fa-mobile"></i><li> Catégories</li></a>
-                <a href="#"><i class="fa fa-heart"></i><li> Centres d'intérêts</li></a>
+                <a href="{{ path('hobbies', {'id': user.id}) }}"><i class="fa fa-heart"></i><li> Centres d'intérêts</li></a>
                 <a href="#"><i class="fa fa-picture-o"></i><li> Mes publications</li></a>
                 <a href="#"><i class="fa fa-users"></i><li> Discussion</li></a>
             </div>
