@@ -138,7 +138,7 @@ body {
     transition: 0.5s;
 }
 
-#detLink{
+#detLink {
     margin-top: 1em;
 }
 
@@ -685,8 +685,7 @@ hr {
 #aboutCtn {
     margin: 0;
     padding-top: 5em;
-    background-size: cover;
-    background-image: linear-gradient(lightskyblue, pink);
+    background-image: url("https://i.postimg.cc/rpKthsf2/3558.jpg");
 }
 
 .aboutArticle {
@@ -1265,7 +1264,6 @@ hr {
         width: 90%;
     }
 
-
     .news {
         display: flex;
         flex-direction: column;
@@ -1320,7 +1318,7 @@ hr {
         margin: auto;
     }
 
-    .contributeStepTitle{
+    .contributeStepTitle {
         text-align: center;
         margin-bottom: 1em;
     }
@@ -1330,6 +1328,46 @@ hr {
         text-align: justify;
     }
 
+    /* ABOUT */
+    .aboutArticle {
+        width: 90%;
+    }
+
+    .aboutVideo {
+        margin: auto;
+    }
+
+    #vision {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .visionBody {
+        width: 100%;
+    }
+
+    .aboutList {
+        flex-direction: column;
+        margin-top: 3em;
+    }
+
+    .serviceList {
+        margin-top: 2em;
+    }
+
+    .serviceImg {
+        height: auto;
+        width: 70%;
+    }
+
+    .serviceListTitle {
+        font-size: 2em;
+        font-weight: bold;
+    }
+
+    .join {
+        width: 90%;
+    }
 
 
     /*////////////////////////// MOBILE ///////////////////////*/
@@ -1480,12 +1518,13 @@ hr {
         .contributeStep {
             margin-bottom: 0;
         }
+
         .contributeStepImg {
             height: 350px;
             width: 300px;
         }
 
-        .contributeStepTitle{
+        .contributeStepTitle {
             width: 90%;
             margin-left: auto;
             margin-right: auto;
@@ -1495,8 +1534,23 @@ hr {
             width: 100%;
         }
 
+        /* ABOUT */
+        #aboutTitle {
+            font-size: 1.5em;
+        }
 
+        .aboutVideo {
+            width: 90%;
+        }
 
+        .aboutImg {
+            height: 250px;
+        }
+
+        .aboutList {
+            padding: 0;
+            margin: 0;
+        }
     }
 
 }
