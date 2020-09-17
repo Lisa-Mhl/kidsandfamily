@@ -87,7 +87,7 @@
     <h2 class="newsTitle bold">Nos dernières publications</h2>
     <div class="news">
         {% for article in articles %}
-            {% if article.author.firstname == "Kids & Family" %}    {# TO DO : OPTIMISER / SECURISER (role admin ?) + BLOQUER A 3 MAX #}
+            {% if article.author.username == "Kids & Family" %}    {# TO DO : OPTIMISER / SECURISER (role admin ?) + BLOQUER A 3 MAX #}
                 <div class="card articleCard" id="articleCard">
                     <img class="card-img articleImg" src="{{ article.photo }}"
                          alt="{{ article.title }}">
@@ -104,7 +104,7 @@
                     </div>
                     <hr>
                     <div class="bottomCard">
-                        {# TO DO : AJOUTER PHOTO DE PROFIL DE L'AUTEUR #} {{ article.author }}
+                        {# TO DO : AJOUTER PHOTO DE PROFIL DE L'AUTEUR #} {{ article.author.username }}
                         <div class="commentCtn">
                             <section class="iconCard">
                                 <i class="fa fa-commenting-o"></i>
@@ -127,7 +127,7 @@
         ambassadeurs</h2>  {# TO DO : OPTIMISER / SECURISER (role user ?) + BLOQUER A 3 MAX #}
     <div class="news">
         {% for article in articles %}
-            {% if article.author.firstname != "Kids & Family" %}
+            {% if article.author.username != "Kids & Family" %}
                 <div class="card articleCard" id="articleCard">
                     <img class="card-img articleImg" src="{{ article.photo }}"
                          alt="{{ article.title }}">
@@ -144,7 +144,7 @@
                     </div>
                     <hr>
                     <div class="bottomCard">
-                        {# TO DO : AJOUTER PHOTO DE PROFIL DE L'AUTEUR #} {{ article.author }}
+                        {# TO DO : AJOUTER PHOTO DE PROFIL DE L'AUTEUR #} {{ article.author.username }}
                         <div class="commentCtn">
                             <section class="iconCard">
                                 <i class="fa fa-commenting-o"></i>
@@ -183,7 +183,7 @@
                     </div>
                     <hr>
                     <div class="bottomCard">
-                        {# TO DO : AJOUTER PHOTO DE PROFIL DE L'AUTEUR #} {{ article.author }}
+                        {# TO DO : AJOUTER PHOTO DE PROFIL DE L'AUTEUR #} {{ article.author.username }}
                         <div class="commentCtn">
                             <section class="iconCard">
                                 <i class="fa fa-commenting-o"></i>

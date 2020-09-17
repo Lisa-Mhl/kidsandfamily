@@ -9,7 +9,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
- * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
+ * @UniqueEntity(fields={"email"}, message="Un compte avec cette adresse email existe déjà")
+ * @UniqueEntity(fields={"username"}, message="Ce pseudo est déjà pris")
  */
 class User implements UserInterface
 {
@@ -116,10 +117,15 @@ class User implements UserInterface
      */
     private $hobbies = [];
 
+    /**
+     * @ORM\Column(type="string", length=20)
+     */
+    private $username;
+
 
     public function __toString()
     {
-        return $this->getFirstname();
+        return $this->getUsername();
     }
 
 
@@ -147,7 +153,7 @@ class User implements UserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->email;
+        return (string) $this->username;
     }
 
     /**
@@ -389,6 +395,13 @@ class User implements UserInterface
     public function setHobbies(?array $hobbies): self
     {
         $this->hobbies = $hobbies;
+
+        return $this;
+    }
+
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
 
         return $this;
     }
