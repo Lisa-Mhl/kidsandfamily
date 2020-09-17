@@ -34,13 +34,19 @@
                 </li>
             {% endif %}
             <li class="nav-item">
+                <i class="fas fa-edit navIcon"></i>
+                <a id="nav-link" class="nav-link" href="{{ path('all_articles') }}#Kids&Family">Publications</a>
+            </li>
+            <li class="nav-item">
                 <i class="fas fa-shopping-cart navIcon"></i>
                 <a id="nav-link" target="_blank" class="nav-link" href="#">E-Shop</a>
             </li>
             {% if app.user %}
                 <li class="nav-item">
-                    <a id="navMap" class="nav-link" href="#">La Carte</a>
+                    <i class="fas fa-map-marked-alt navIcon"></i>
+                    <a id="nav-link" class="nav-link" href="#">La Carte</a>
                 </li>
+
             {% endif %}
 
             {# <li class="nav-item dropdown">
@@ -53,12 +59,14 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Something else here</a>
                         </div>
-                   </li>  #}
+                   </li> #}
         </ul>
-        <form class="form-inline my-2 my-lg-0 ">
-            <input class="form-control mr-sm-2" type="search" placeholder="Rechercher..." aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
-        </form>
+        <div class="searchBar">
+            <form class="form-inline my-2 my-lg-0 ">
+                <input class="form-control mr-sm-2" type="search" placeholder="Rechercher..." aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
+            </form>
+        </div>
         <div id="nav" class="col-md-4 col-sm-6 col-xs-12">
             <div class="connexionLink">
                 {% if app.user %}
@@ -93,6 +101,9 @@
                         Compte</a>
                 </li>
             {% endif %}
+            <li class="nav-item">
+                <a id="navMobile-link" class="nav-link text-center" href="{{ path('all_articles') }}#Kids&Family">Publications</a>
+            </li>
             <li class="nav-item">
                 <a id="navMobile-link" class="nav-link text-center" href="#">E-Shop</a>
             </li>
@@ -136,7 +147,8 @@
                 <!-- Content -->
                 <div class="footer-body">
                     <h5 class="text-uppercase font-weight-bold">Footer text 1</h5>
-                    <p class="footerText">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita sapiente sint, nulla, nihil
+                    <p class="footerText">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita sapiente
+                        sint, nulla, nihil
                         repudiandae commodi voluptatibus corrupti animi sequi aliquid magnam debitis, maxime quam
                         recusandae
                         harum esse fugiat. Itaque, culpa?</p>
@@ -158,6 +170,7 @@
                     <li class="fl"><a href="{{ path('about') }}">A propos</a></li>
                     <li class="fl"><a href="#">Contribuer</a></li>
                     <li class="fl"><a href="#">Contact</a></li>
+                    <li class="fl"><a href="{{ path('all_articles') }}#Kids&Family">Publications</a></li>
                     <li class="fl"><a href="#">Conditions d'utilisation</a></li>
                 </ul>
             </div>

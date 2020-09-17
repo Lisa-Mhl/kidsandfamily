@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Article;
 use App\Entity\User;
 use App\Form\UserType;
+use App\Repository\ArticleRepository;
+use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -83,7 +86,7 @@ class UserController extends AbstractController
      */
     public function delete(Request $request, User $user): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($user);
             $entityManager->flush();
@@ -91,10 +94,10 @@ class UserController extends AbstractController
             $session = new Session();
             $session->invalidate();
 
-            $this->addFlash('sup', 'Votre compte a bien été supprimée');
+            $this->addFlash('sup', 'Votre compte a bien été supprimé');
         }
 
-        return $this->redirectToRoute( 'app_logout' );
+        return $this->redirectToRoute('app_logout');
     }
 
     /**
@@ -103,7 +106,7 @@ class UserController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function hobbies (User $user, Request $request): Response
+    public function hobbies(User $user, Request $request): Response
     {
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
@@ -121,9 +124,29 @@ class UserController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-}
-//$form = $this->createForm(UserType::class, $user);
-//$form->handleRequest($request);
 
-//if ($form->isSubmitted() && $form->isValid()) {
-    //$this->getDoctrine()->getManager()->flush();
+    /**
+     * @Route("/profil/{id}/mes_publications", name = "my_articles", methods = {
+    "GET"
+    })
+     *
+    @param User $user
+     * @param ArticleRepository $articleRepository
+     * @param CategoryRepository $categoryRepository
+     * @param Article $article
+     * @return Response
+     */
+    public function showMyArticles(User $user, ArticleRepository $articleRepository, CategoryRepository $categoryRepository, Article $article): Response
+    {
+        return $this->render('user/my_articles.html.twig', [
+            'user' => $user,
+            'articles' => $articleRepository->findAll(),
+            'categories' => $categoryRepository->findAll(),
+            'article' => $article,
+
+        ]);
+
+
+    }
+}
+
