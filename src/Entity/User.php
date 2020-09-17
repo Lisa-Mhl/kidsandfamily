@@ -111,6 +111,11 @@ class User implements UserInterface
      */
     private $mobile;
 
+    /**
+     * @ORM\Column(type="array", nullable=true)
+     */
+    private $hobbies = [];
+
 
     public function __toString()
     {
@@ -372,6 +377,18 @@ class User implements UserInterface
     public function setMobile(?string $mobile): self
     {
         $this->mobile = $mobile;
+
+        return $this;
+    }
+
+    public function getHobbies(): ?array
+    {
+        return $this->hobbies;
+    }
+
+    public function setHobbies(?array $hobbies): self
+    {
+        $this->hobbies = $hobbies;
 
         return $this;
     }

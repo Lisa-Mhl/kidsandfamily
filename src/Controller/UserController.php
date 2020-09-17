@@ -86,7 +86,7 @@ class UserController extends AbstractController
      */
     public function delete(Request $request, User $user): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($user);
             $entityManager->flush();
@@ -97,12 +97,40 @@ class UserController extends AbstractController
             $this->addFlash('sup', 'Votre compte a bien été supprimé');
         }
 
-        return $this->redirectToRoute( 'app_logout' );
+        return $this->redirectToRoute('app_logout');
     }
 
     /**
-     * @Route("/profil/{id}/mes_publications", name="my_articles", methods={"GET"})
+     * @Route("/profil/{id}/hobbies", name="hobbies", methods={"GET","POST"})
      * @param User $user
+     * @param Request $request
+     * @return Response
+     */
+    public function hobbies(User $user, Request $request): Response
+    {
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('profile', ['id' => $user->getId()]);
+        }
+
+        return $this->render('user/hobbies.html.twig', [
+            'user' => $user,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/profil/{id}/mes_publications", name = "my_articles", methods = {
+    "GET"
+    })
+     *
+    @param User $user
      * @param ArticleRepository $articleRepository
      * @param CategoryRepository $categoryRepository
      * @param Article $article
@@ -115,6 +143,10 @@ class UserController extends AbstractController
             'articles' => $articleRepository->findAll(),
             'categories' => $categoryRepository->findAll(),
             'article' => $article,
+
         ]);
+
+
     }
 }
+
