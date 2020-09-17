@@ -76,11 +76,14 @@
                         </div>
                         <div class="articleCrudLink">
 
-                                <a class="cardUpdateLink bold" href="{{ path('article_edit', {'id': article.id}) }}">Modifier</a>
-                                {{ include('article/_delete_form.html.twig') }}
+                            <a class="cardUpdateLink bold" href="{{ path('article_edit', {'id': article.id}) }}">Modifier</a>
+                            {{ include('article/_delete_form.html.twig') }}
 
                         </div>
+                        <a class="detailsLink" id="detLink"
+                           href="{{ path('article_details', {'id': article.id}) }}">Voir la publication</a>
                     </div>
+
                 {% endif %}
             {% endfor %}
         </div>

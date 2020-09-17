@@ -26,7 +26,7 @@
                 <a href="#"><i class="fa fa-fw fa-home"></i><li> Coordonnées</li></a>
                 <a href="#"><i class="fa fa-mobile"></i><li> Catégories</li></a>
                 <a href="{{ path('hobbies', {'id': user.id}) }}"><i class="fa fa-heart"></i><li> Centres d'intérêts</li></a>
-                <a href="#"><i class="fa fa-picture-o"></i><li> Mes publications</li></a>
+                <a href="{{ path('my_articles', {'id': user.id}) }}"><i class="fa fa-picture-o"></i><li> Mes publications</li></a>
                 <a href="#"><i class="fa fa-users"></i><li> Discussion</li></a>
             </div>
         </div>

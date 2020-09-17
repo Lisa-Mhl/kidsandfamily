@@ -13,7 +13,7 @@
             <div id="Kids&Family"></div>
             <h4 class="allArticlesNav">Publications de Kids & Family
                 {% for article in articles %}
-                    {% if article.author.firstname == "Kids & Family" %}
+                    {% if article.author.username == "Kids & Family" %}
                         {% for category in article.category %}
                             <a href="#{{ category.id }}">{{ category.name }}</a>
                         {% endfor %}
@@ -23,7 +23,7 @@
 
             <div class="row">
                 {% for article in articles %}
-                    {% if article.author.firstname == "Kids & Family" %}    {# TO DO : OPTIMISER / SECURISER (role admin ?) #}
+                    {% if article.author.username == "Kids & Family" %}    {# TO DO : OPTIMISER / SECURISER (role admin ?) #}
                         <div class="card articleCard" id="allArticlesCard">
                             <img class="card-img allArticlesImg" src="{{ article.photo }}"
                                  alt="{{ article.title }}">
@@ -40,7 +40,7 @@
                             </div>
                             <hr>
                             <div class="bottomCard">
-                                {# TO DO : AJOUTER PHOTO DE PROFIL DE L'AUTEUR #} {{ article.author }}
+                                {# TO DO : AJOUTER PHOTO DE PROFIL DE L'AUTEUR #} {{ article.author.username}}
                                 <div class="commentCtn" id="allCommentCtn">
                                     <section class="iconCard">
                                         <i class="fa fa-commenting-o"></i>
@@ -90,7 +90,7 @@
                             </div>
                             <hr>
                             <div class="bottomCard">
-                                {# TO DO : AJOUTER PHOTO DE PROFIL DE L'AUTEUR #} {{ article.author }}
+                                {# TO DO : AJOUTER PHOTO DE PROFIL DE L'AUTEUR #} {{ article.author.username }}
                                 <div class="commentCtn" id="allCommentCtn">
                                     <section class="iconCard">
                                         <i class="fa fa-commenting-o"></i>
@@ -133,7 +133,7 @@
                             </div>
                             <hr>
                             <div class="bottomCard">
-                                {# TO DO : AJOUTER PHOTO DE PROFIL DE L'AUTEUR #} {{ article.author }}
+                                {# TO DO : AJOUTER PHOTO DE PROFIL DE L'AUTEUR #} {{ article.author.username }}
                                 <div class="commentCtn" id="allCommentCtn">
                                     <section class="iconCard">
                                         <i class="fa fa-commenting-o"></i>

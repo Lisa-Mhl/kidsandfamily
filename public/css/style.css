@@ -27,9 +27,6 @@ body {
     z-index: 1;
 }
 
-.hidden{
-    display: none;
-}
 /*.bg-profile {
     background-image: url("https://cdn.pixabay.com/photo/2017/10/13/12/29/hands-2847508_960_720.jpg");
     background-repeat: no-repeat;
@@ -100,7 +97,7 @@ body {
 }
 
 #myArticlesCard {
-    height: 430px;
+    height: 450px;
     margin-bottom: 2em;
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
@@ -139,6 +136,10 @@ body {
     background-color: dodgerblue;
     color: white;
     transition: 0.5s;
+}
+
+#detLink{
+    margin-top: 1em;
 }
 
 /* SideBAR */
@@ -1300,6 +1301,40 @@ hr {
         top: 72%;
     }
 
+    /* CONTRIBUTE */
+    .contributeCtn {
+        padding-top: 10em;
+        width: 65%;
+        margin: auto;
+    }
+
+    .contributeStep {
+        margin-bottom: 5em;
+    }
+
+    .stepCtn {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .contributeStepTitle {
+        margin-top: 2em;
+    }
+
+    .contributeStepImg {
+        height: 450px;
+        width: 700px;
+    }
+
+    .contributeStepBody {
+        width: 45%;
+        padding: 2em;
+        font-size: 1.5em;
+    }
+
+
+
     /*////////////////////////// MOBILE ///////////////////////*/
     @media only screen and (max-width: 640px) {
 
@@ -1312,7 +1347,7 @@ hr {
             position: fixed;
             top: -6%;
             left: 60%;
-            z-index: 3;
+            z-index: 6;
             background-color: transparent;
         }
 
