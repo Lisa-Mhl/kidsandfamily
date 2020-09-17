@@ -138,7 +138,7 @@ body {
     transition: 0.5s;
 }
 
-#detLink{
+#detLink {
     margin-top: 1em;
 }
 
@@ -685,8 +685,7 @@ hr {
 #aboutCtn {
     margin: 0;
     padding-top: 5em;
-    background-size: cover;
-    background-image: linear-gradient(lightskyblue, pink);
+    background-image: url("https://i.postimg.cc/rpKthsf2/3558.jpg");
 }
 
 .aboutArticle {
@@ -728,6 +727,7 @@ hr {
     margin-bottom: 1em;
     display: flex;
     flex-direction: column;
+    padding: 1em;
 }
 
 .serviceImg {
@@ -770,7 +770,7 @@ hr {
 }
 
 .aboutVideo {
-    margin-left: 25%;
+    margin: auto;
     padding-bottom: 2em;
 }
 
@@ -788,38 +788,68 @@ hr {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    background-color: orange;
+    background-color: cornflowerblue;
     padding: 1em;
     position: fixed;
-    top: 6.7%;
+    top: 6.6%;
     left: 0;
     width: 100%;
     z-index: 2;
 }
 
 .articlesCategory a {
-    color: mediumvioletred;
-    font-size: 1.5em;
+    color: whitesmoke;
+    font-size: 1em;
+    padding: 0.5em 1em;
+    border-radius: 15px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: whitesmoke;
+    width: 220px;
+    text-align: center;
+    font-weight: bold;
+    transition: 0.5s;
 }
 
 .articlesCategory a:hover {
     text-decoration: none;
-    color: #718C00;
+    background-color: whitesmoke;
+    color: cornflowerblue;
+    border-color: cornflowerblue;
+    transition: 0.5s;
 }
 
 .allArticles {
     margin-bottom: 5em;
 }
 
+.allArticlesTitle {
+    font-size: 1.5em;
+    padding-top: 0.3em;
+}
+
+.helpTitle {
+    font-size: 1.5em;
+    margin: auto
+}
+
+.allArticlesKidsCtn {
+    margin-top: 5em;
+}
+
 .allArticlesNav {
+    position: relative;
+    top: 1em;
+    left: 0;
     background-color: white;
     padding: 1em;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: bold;
+    width: 100%;
 }
 
 .allArticlesNav a {
@@ -827,11 +857,16 @@ hr {
     padding: 0.7em;
     border-radius: 15px;
     color: lightyellow;
+    width: 100px;
+    text-align: center;
+    transition: 0.5s;
 }
 
 .allArticlesNav a:hover {
     text-decoration: none;
-    color: yellow;
+    color: black;
+    background-color: palegreen;
+    transition: 0.5s;
 }
 
 .catId {
@@ -840,7 +875,10 @@ hr {
 
 .catTitle {
     text-align: center;
-    padding: 1em;
+    padding: 0.5em;
+    color: lightseagreen;
+    font-weight: bold;
+    font-size: 2em;
 }
 
 #Ambassadeurs {
@@ -1214,7 +1252,6 @@ hr {
         display: flex;
         color: whitesmoke;
         z-index: 4;
-
     }
 
     #nav-desktop {
@@ -1265,11 +1302,9 @@ hr {
         width: 90%;
     }
 
-
     .news {
         display: flex;
         flex-direction: column;
-
     }
 
     #articleCard {
@@ -1303,36 +1338,106 @@ hr {
 
     /* CONTRIBUTE */
     .contributeCtn {
-        padding-top: 10em;
-        width: 65%;
-        margin: auto;
+        width: 100%;
     }
 
     .contributeStep {
-        margin-bottom: 5em;
+        margin-bottom: 3em;
     }
 
     .stepCtn {
-        display: flex;
         flex-direction: column;
-        justify-content: center;
-    }
-
-    .contributeStepTitle {
-        margin-top: 2em;
     }
 
     .contributeStepImg {
         height: 450px;
-        width: 700px;
+        width: 550px;
+        margin: auto;
+    }
+
+    .contributeStepTitle {
+        text-align: center;
+        margin-bottom: 1em;
     }
 
     .contributeStepBody {
-        width: 45%;
-        padding: 2em;
-        font-size: 1.5em;
+        width: 100%;
+        text-align: justify;
     }
 
+    /* ABOUT */
+    .aboutArticle {
+        width: 90%;
+    }
+
+    .aboutVideo {
+        margin: auto;
+    }
+
+    #vision {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .visionBody {
+        width: 100%;
+    }
+
+    .aboutList {
+        flex-direction: column;
+        margin-top: 3em;
+    }
+
+    .serviceList {
+        margin-top: 2em;
+    }
+
+    .serviceImg {
+        height: auto;
+        width: 70%;
+    }
+
+    .serviceListTitle {
+        font-size: 2em;
+        font-weight: bold;
+    }
+
+    .join {
+        width: 90%;
+    }
+
+    /* ALL ARTICLES */
+    .articlesCategory {
+        top: 5%;
+    }
+
+    .articlesCategory a {
+        padding: 1em;
+        width: 150px;
+    }
+
+    #Ambassadeurs {
+        padding-top: 8em;
+    }
+
+    #Kids\&Family {
+        padding-top: 9em;
+    }
+
+    #Help {
+        padding-top: 8em;
+    }
+
+    .allArticlesNav {
+        justify-content: space-between;
+    }
+
+    .allArticlesNav a{
+        margin-top: auto;
+        margin-bottom: auto;
+        height: 45px;
+        margin-right: 1em;
+    }
 
 
     /*////////////////////////// MOBILE ///////////////////////*/
@@ -1471,6 +1576,64 @@ hr {
             width: 80%;
 
         }
+
+        /* CONTRIBUTE */
+        .contributeCtn {
+            width: 100%;
+            padding-left: 1em;
+            padding-right: 1em;
+            margin-bottom: 5em;
+        }
+
+        .contributeStep {
+            margin-bottom: 0;
+        }
+
+        .contributeStepImg {
+            height: 350px;
+            width: 300px;
+        }
+
+        .contributeStepTitle {
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contributeStepBody {
+            width: 100%;
+        }
+
+        /* ABOUT */
+        #aboutTitle {
+            font-size: 1.5em;
+        }
+
+        .aboutVideo {
+            width: 90%;
+        }
+
+        .aboutImg {
+            height: 250px;
+        }
+
+        .aboutList {
+            padding: 0;
+            margin: 0;
+        }
+
+        /* ALL ARTICLES */
+
+        .articlesCategory {
+            flex-direction: column;
+            padding-top: 2em;
+        }
+
+        .articlesCategory a{
+            width: 350px;
+            border: none;
+        }
+
     }
 
 }
