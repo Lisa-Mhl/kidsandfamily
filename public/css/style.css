@@ -1303,34 +1303,31 @@ hr {
 
     /* CONTRIBUTE */
     .contributeCtn {
-        padding-top: 10em;
-        width: 65%;
-        margin: auto;
+        width: 100%;
     }
 
     .contributeStep {
-        margin-bottom: 5em;
+        margin-bottom: 3em;
     }
 
     .stepCtn {
-        display: flex;
         flex-direction: column;
-        justify-content: center;
-    }
-
-    .contributeStepTitle {
-        margin-top: 2em;
     }
 
     .contributeStepImg {
         height: 450px;
-        width: 700px;
+        width: 550px;
+        margin: auto;
+    }
+
+    .contributeStepTitle{
+        text-align: center;
+        margin-bottom: 1em;
     }
 
     .contributeStepBody {
-        width: 45%;
-        padding: 2em;
-        font-size: 1.5em;
+        width: 100%;
+        text-align: justify;
     }
 
 
@@ -1471,6 +1468,35 @@ hr {
             width: 80%;
 
         }
+
+        /* CONTRIBUTE */
+        .contributeCtn {
+            width: 100%;
+            padding-left: 1em;
+            padding-right: 1em;
+            margin-bottom: 5em;
+        }
+
+        .contributeStep {
+            margin-bottom: 0;
+        }
+        .contributeStepImg {
+            height: 350px;
+            width: 300px;
+        }
+
+        .contributeStepTitle{
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contributeStepBody {
+            width: 100%;
+        }
+
+
+
     }
 
 }
