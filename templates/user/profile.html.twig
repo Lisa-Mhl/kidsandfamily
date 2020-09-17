@@ -9,12 +9,12 @@
     {% if is_granted('ROLE_USER') %}
         <!-- The sidebar -->
         <div class="sidebar">
-            <a href="#"><i class="fa fa-info-circle"></i> Information</a>
-            <a href="#"><i class="fa fa-fw fa-home"></i> Coordonnées</a>
-            <a href="#"><i class="fa fa-mobile"></i> Catégories</a>
-            <a href="{{ path('hobbies', {'id': user.id}) }}"><i class="fa fa-heart"></i> Centres d'intérêts</a>
-            <a href="{{ path('my_articles', {'id': user.id}) }}"><i class="fa fa-picture-o"></i> Mes publications</a>
-            <a href="#"><i class="fa fa-users"></i> Discussion</a>
+            <a href="#"><i class="fa fa-info-circle" id="iconsProfile"></i> Information</a>
+            <a href="#"><i class="fa fa-fw fa-home" id="iconsProfile"></i> Coordonnées</a>
+            <a href="#"><i class="fa fa-mobile" id="iconsProfile"></i> Catégories</a>
+            <a href="{{ path('hobbies', {'id': user.id}) }}"><i class="fa fa-heart" id="iconsProfile"></i> Centres d'intérêts</a>
+            <a href="{{ path('my_articles', {'id': user.id}) }}"><i class="fa fa-picture-o" id="iconsProfile"></i> Mes publications</a>
+            <a href="#"><i class="fa fa-users" id="iconsProfile"></i> Discussion</a>
         </div>
         <!-- dropdown -->
         <div class="dropdown">
@@ -22,12 +22,12 @@
                 <i class="fa fa-cog" aria-hidden="true"></i>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <a href="#"><i class="fa fa-info-circle"></i><li> Information</li></a>
-                <a href="#"><i class="fa fa-fw fa-home"></i><li> Coordonnées</li></a>
-                <a href="#"><i class="fa fa-mobile"></i><li> Catégories</li></a>
-                <a href="{{ path('hobbies', {'id': user.id}) }}"><i class="fa fa-heart"></i><li> Centres d'intérêts</li></a>
-                <a href="{{ path('my_articles', {'id': user.id}) }}"><i class="fa fa-picture-o"></i><li> Mes publications</li></a>
-                <a href="#"><i class="fa fa-users"></i><li> Discussion</li></a>
+                <a href="#"><i class="fa fa-info-circle" id="iconsProfile"></i><li> Information</li></a>
+                <a href="#"><i class="fa fa-fw fa-home" id="iconsProfile"></i><li> Coordonnées</li></a>
+                <a href="#"><i class="fa fa-mobile" id="iconsProfile"></i><li> Catégories</li></a>
+                <a href="{{ path('hobbies', {'id': user.id}) }}"><i class="fa fa-heart" id="iconsProfile"></i><li> Centres d'intérêts</li></a>
+                <a href="{{ path('my_articles', {'id': user.id}) }}"><i class="fa fa-picture-o" id="iconsProfile"></i><li> Mes publications</li></a>
+                <a href="#"><i class="fa fa-users" id="iconsProfile"></i><li> Discussion</li></a>
             </div>
         </div>
 
@@ -42,16 +42,14 @@
 
                 <div class="card cardProfile" id="cardProfile">
                     <div class="card-body">
-                        <img class="card-img-top imgProfile" src="https://via.placeholder.com/300
-C/O https://placeholder.com/" alt="John" style="width:10% ">
+                        <img class="card-img-top imgProfile" src="{{ user.avatar }}" alt="John">
                         <h1>{{ user.firstname }} {{ user.lastname }}</h1>
                         <p class="title">{{ user.email }}</p>
-                        <p>{{ user.categ }}</p>
+                        <p>{{ user.username }}</p>
                         <p>{{ user.channelnum }}</p>
                         <p>{{ user.complement }}</p>
                         <p>{{ user.namevoie }}</p>
-                        <p>{{ user.cp }}</p>
-                        <p>{{ user.city }}</p>
+                        <p>{{ user.cp }} {{ user.city }}</p>
                         <p>{{ user.country }}</p>
                         <p>{{ user.phone }}</p>
                         <p>{{ user.mobile }}</p>
