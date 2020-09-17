@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Article;
 use App\Entity\User;
 use App\Form\UserType;
+use App\Repository\ArticleRepository;
+use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -91,9 +94,27 @@ class UserController extends AbstractController
             $session = new Session();
             $session->invalidate();
 
-            $this->addFlash('sup', 'Votre compte a bien été supprimée');
+            $this->addFlash('sup', 'Votre compte a bien été supprimé');
         }
 
         return $this->redirectToRoute( 'app_logout' );
+    }
+
+    /**
+     * @Route("/profil/{id}/mes_publications", name="my_articles", methods={"GET"})
+     * @param User $user
+     * @param ArticleRepository $articleRepository
+     * @param CategoryRepository $categoryRepository
+     * @param Article $article
+     * @return Response
+     */
+    public function showMyArticles(User $user, ArticleRepository $articleRepository, CategoryRepository $categoryRepository, Article $article): Response
+    {
+        return $this->render('user/my_articles.html.twig', [
+            'user' => $user,
+            'articles' => $articleRepository->findAll(),
+            'categories' => $categoryRepository->findAll(),
+            'article' => $article,
+        ]);
     }
 }

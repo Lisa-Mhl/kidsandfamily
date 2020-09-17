@@ -6,7 +6,6 @@
         <h1 class="detailsTitle">{{ article.title }} <br> <span class="detailsSubtitle grey"> par {{ article.author }} | publié le DATE {# AJOUTER DATE DANS BDD #}</span>
         </h1>
 
-
         <p class="detailsContent">{{ article.content }}</p>
         <div class="detailsPhotoCtn">
             <img class="detailsPhoto" src="{{ article.photo }}" alt="Illustration Article {{ article.title }}">
@@ -55,7 +54,7 @@
         <div class="articleSideBar">
             <div class="detailsCatCtn">
                 <p class="detailsCat"><i class="fa fa-folder-open" aria-hidden="true"></i>
-                    Catégorie : <br>
+                    Catégorie(s) : <br>
                     {% for category in article.category %}
                     {{ category.name }}</p>
                 {% endfor %}
