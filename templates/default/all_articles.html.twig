@@ -11,7 +11,7 @@
         </div>
         <div class="allArticles">
             <div id="Kids&Family"></div>
-            <h4 class="allArticlesNav">Publications de Kids & Family
+            <h4 class="allArticlesNav"><span class="allArticlesTitle">Publications de Kids & Family</span>
                 {% for article in articles %}
                     {% if article.author.username == "Kids & Family" %}
                         {% for category in article.category %}
@@ -21,7 +21,7 @@
                 {% endfor %}
             </h4>
 
-            <div class="row">
+            <div class="row allArticlesKidsCtn">
                 {% for article in articles %}
                     {% if article.author.username == "Kids & Family" %}    {# TO DO : OPTIMISER / SECURISER (role admin ?) #}
                         <div class="card articleCard" id="allArticlesCard">
@@ -63,15 +63,15 @@
 
 
             <div id="Ambassadeurs"></div>
-            <h4 class="allArticlesNav">Publications des Ambassadeurs
+            <h4 class="allArticlesNav"><span class="allArticlesTitle">Publications des Ambassadeurs</span>
                 {% for category in categories %}
-                    <a href="#{{ category.id }}">{{ category.name }}</a>
+                    <a href="#{{ category.name }}">{{ category.name }}</a>
                 {% endfor %}
             </h4>
 
             {% for category in categories %}
-                <div class="catId" id="{{ category.id }}"></div>
-                <h4 class="catTitle" id="{{ category.id }}">{{ category.name }}</h4>
+                <div class="catId" id="{{ category.name }}"></div>
+                <h4 class="catTitle" id="{{ category.id }}">{{ category.name | upper }}</h4>
                 <div class="row">
                     {% for article in category.article %}
                         <div class="card articleCard" id="allArticlesCard">
@@ -113,7 +113,7 @@
 
 
             <div id="Help"></div>
-            <h4 class="allArticlesNav">Ils ont besoin d'aide !</h4>
+            <h4 class="allArticlesNav"><span class="helpTitle">Ils ont besoin d'aide !</span></h4>
             <div class="row">
                 {% for article in articles %}
                     {% if article.needs %}

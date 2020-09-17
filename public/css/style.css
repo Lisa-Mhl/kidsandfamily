@@ -823,9 +823,23 @@ hr {
     margin-bottom: 5em;
 }
 
+.allArticlesTitle {
+    font-size: 1.5em;
+    padding-top: 0.3em;
+}
+
+.helpTitle {
+    font-size: 1.5em;
+    margin: auto
+}
+
+.allArticlesKidsCtn {
+    margin-top: 5em;
+}
+
 .allArticlesNav {
     position: relative;
-    top: 0;
+    top: 1em;
     left: 0;
     background-color: white;
     padding: 1em;
@@ -833,7 +847,7 @@ hr {
     flex-direction: row;
     justify-content: space-between;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: bold;
     width: 100%;
 }
@@ -843,11 +857,16 @@ hr {
     padding: 0.7em;
     border-radius: 15px;
     color: lightyellow;
+    width: 100px;
+    text-align: center;
+    transition: 0.5s;
 }
 
 .allArticlesNav a:hover {
     text-decoration: none;
-    color: yellow;
+    color: black;
+    background-color: palegreen;
+    transition: 0.5s;
 }
 
 .catId {
@@ -856,7 +875,10 @@ hr {
 
 .catTitle {
     text-align: center;
-    padding: 1em;
+    padding: 0.5em;
+    color: lightseagreen;
+    font-weight: bold;
+    font-size: 2em;
 }
 
 #Ambassadeurs {
@@ -1230,7 +1252,6 @@ hr {
         display: flex;
         color: whitesmoke;
         z-index: 4;
-
     }
 
     #nav-desktop {
@@ -1284,7 +1305,6 @@ hr {
     .news {
         display: flex;
         flex-direction: column;
-
     }
 
     #articleCard {
@@ -1384,6 +1404,39 @@ hr {
 
     .join {
         width: 90%;
+    }
+
+    /* ALL ARTICLES */
+    .articlesCategory {
+        top: 5%;
+    }
+
+    .articlesCategory a {
+        padding: 1em;
+        width: 150px;
+    }
+
+    #Ambassadeurs {
+        padding-top: 8em;
+    }
+
+    #Kids\&Family {
+        padding-top: 9em;
+    }
+
+    #Help {
+        padding-top: 8em;
+    }
+
+    .allArticlesNav {
+        justify-content: space-between;
+    }
+
+    .allArticlesNav a{
+        margin-top: auto;
+        margin-bottom: auto;
+        height: 45px;
+        margin-right: 1em;
     }
 
 
@@ -1568,6 +1621,19 @@ hr {
             padding: 0;
             margin: 0;
         }
+
+        /* ALL ARTICLES */
+
+        .articlesCategory {
+            flex-direction: column;
+            padding-top: 2em;
+        }
+
+        .articlesCategory a{
+            width: 350px;
+            border: none;
+        }
+
     }
 
 }
