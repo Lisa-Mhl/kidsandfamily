@@ -46,7 +46,10 @@ class ArticleController extends AbstractController
             $entityManager->persist($article);
             $entityManager->flush();
 
-            return $this->redirectToRoute('article_index');
+            return $this->redirectToRoute('article_details', [
+                    'id' => $article->getId()
+                ]
+            );
         }
 
         return $this->render('article/new.html.twig', [
@@ -71,7 +74,7 @@ class ArticleController extends AbstractController
      * @param Article $article
      * @return Response
      */
-    public function edit(Request $request, Article $article): Response
+    public function edit(Request $request, Article $article, User $user): Response
     {
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
@@ -79,7 +82,10 @@ class ArticleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('all_articles'); /* TO DO : REMPLACER PAR PROFILE ID */
+            return $this->redirectToRoute('my_articles', [
+                'id' => $user->getId()
+            ]
+            );
         }
 
         return $this->render('article/edit.html.twig', [
@@ -99,7 +105,7 @@ class ArticleController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('article_index');
+        return $this->redirectToRoute('home');
     }
 
 }

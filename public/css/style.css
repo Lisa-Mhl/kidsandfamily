@@ -727,6 +727,7 @@ hr {
     margin-bottom: 1em;
     display: flex;
     flex-direction: column;
+    padding: 1em;
 }
 
 .serviceImg {
@@ -769,7 +770,7 @@ hr {
 }
 
 .aboutVideo {
-    margin-left: 25%;
+    margin: auto;
     padding-bottom: 2em;
 }
 
@@ -787,23 +788,35 @@ hr {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    background-color: orange;
+    background-color: cornflowerblue;
     padding: 1em;
     position: fixed;
-    top: 6.7%;
+    top: 6.6%;
     left: 0;
     width: 100%;
     z-index: 2;
 }
 
 .articlesCategory a {
-    color: mediumvioletred;
-    font-size: 1.5em;
+    color: whitesmoke;
+    font-size: 1em;
+    padding: 0.5em 1em;
+    border-radius: 15px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: whitesmoke;
+    width: 220px;
+    text-align: center;
+    font-weight: bold;
+    transition: 0.5s;
 }
 
 .articlesCategory a:hover {
     text-decoration: none;
-    color: #718C00;
+    background-color: whitesmoke;
+    color: cornflowerblue;
+    border-color: cornflowerblue;
+    transition: 0.5s;
 }
 
 .allArticles {
@@ -811,14 +824,18 @@ hr {
 }
 
 .allArticlesNav {
+    position: relative;
+    top: 0;
+    left: 0;
     background-color: white;
     padding: 1em;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     font-size: 1.2em;
     font-weight: bold;
+    width: 100%;
 }
 
 .allArticlesNav a {

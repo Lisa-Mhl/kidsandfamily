@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Article;
+use App\Entity\Category;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
@@ -37,7 +39,11 @@ class ArticleType extends AbstractType
             ->add('photoB')
             ->add('photoC')
             ->add('target')
-            ->add('category')
+            ->add('category', EntityType::class, [
+                'class' => Category::class,
+                'expanded' => true,
+                'multiple' => true,
+                'by_reference' => false])
             ->add('author')
             ->add('telephone')
             ->add('email')
