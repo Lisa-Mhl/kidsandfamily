@@ -27,13 +27,16 @@
 
         <h3 id="comment" class="commentTitle">Commentaires</h3>
         <div class="articleCommentCtn">
-            {% for comment in article.comments %}
-
-                {# {% if comment.author.photo %}
-                         <img class="profilePix" src="{{ comment.author.photo }}" alt="Photo de Profil">
-                     {% endif %} #}
-                <p class="bold green">{{ comment.author }}<br>
-                    <span class="grey">{{ comment.comment }}</span></p>
+            <div class="detailsComCtn">
+                {% for comment in article.comments %}
+                <div class="profileCom">
+                    {% if comment.author.avatar %}
+                        <img id="avatarCom" src="{{ comment.author.avatar }}">
+                    {% endif %}
+                    <span id="authorCom" class="green"> {{ comment.author }}</span>
+                </div>
+                <p class="grey comment">{{ comment.comment }}</p>
+            </div>
             {% endfor %}
 
             <hr class="commentLine">

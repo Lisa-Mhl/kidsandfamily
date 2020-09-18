@@ -40,7 +40,12 @@
                             </div>
                             <hr>
                             <div class="bottomCard">
-                                {# TO DO : AJOUTER PHOTO DE PROFIL DE L'AUTEUR #} {{ article.author.username }}
+                                <div class="profileCard">
+                                    {% if article.author.avatar %}
+                                        <img class="avatarCard" src="{{ article.author.avatar }}" alt="Photo du Profil">
+                                    {% endif %}
+                                    <span id="authorCard">{{ article.author.username }}</span>
+                                </div>
                                 <div class="commentCtn" id="allCommentCtn">
                                     <section class="iconCard">
                                         <i class="fa fa-commenting-o"></i>
@@ -90,7 +95,12 @@
                             </div>
                             <hr>
                             <div class="bottomCard">
-                                {# TO DO : AJOUTER PHOTO DE PROFIL DE L'AUTEUR #} {{ article.author.username }}
+                                <div class="profileCard">
+                                    {% if article.author.avatar %}
+                                        <img class="avatarCard" src="{{ article.author.avatar }}" alt="Photo du Profil">
+                                    {% endif %}
+                                    <span id="authorCard">{{ article.author.username }}</span>
+                                </div>
                                 <div class="commentCtn" id="allCommentCtn">
                                     <section class="iconCard">
                                         <i class="fa fa-commenting-o"></i>
@@ -133,7 +143,12 @@
                             </div>
                             <hr>
                             <div class="bottomCard">
-                                {# TO DO : AJOUTER PHOTO DE PROFIL DE L'AUTEUR #} {{ article.author.username }}
+                                <div class="profileCard">
+                                    {% if article.author.avatar %}
+                                        <img class="avatarCard" src="{{ article.author.avatar }}" alt="Photo du Profil">
+                                    {% endif %}
+                                    <span id="authorCard">{{ article.author.username }}</span>
+                                </div>
                                 <div class="commentCtn" id="allCommentCtn">
                                     <section class="iconCard">
                                         <i class="fa fa-commenting-o"></i>
