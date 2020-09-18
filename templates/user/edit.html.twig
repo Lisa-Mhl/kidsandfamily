@@ -5,9 +5,53 @@
 {% block body %}
     <h1>Edit User</h1>
 
-    {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
+    <div class="hidden">}
+        {{ form_widget(form.namevoie) }}
+        {{ form_widget(form.complement) }}
+    </div>
 
-    <a href="{{ path('profile', {'id': app.user.id }) }}">back to list</a>
 
-    {{ include('user/_delete_form.html.twig') }}
+    <fieldset class="formUser">
+        {{ form_start(form) }}
+        {{ form_label(form.username, 'Nom d\'utilisateur') }}
+        {{ form_widget(form.username) }}
+        {{ form_label(form.avatar, 'Avatar') }}
+        {{ form_widget(form.avatar) }}
+        {{ form_label(form.firstname, 'Prénom') }}
+        {{ form_widget(form.firstname) }}
+        {{ form_label(form.lastname, 'Nom') }}
+        {{ form_widget(form.lastname) }}
+        {{ form_label(form.channelnum, 'Adresse') }}
+        {{ form_widget(form.channelnum) }}
+        {{ form_label(form.cp, 'Code postal') }}
+        {{ form_widget(form.cp) }}
+        {{ form_label(form.city, 'Ville') }}
+        {{ form_widget(form.city) }}
+        {{ form_label(form.country, 'Pays') }}
+        {{ form_widget(form.country) }}
+        {{ form_label(form.phone, 'Téléphone') }}
+        {{ form_widget(form.phone) }}
+        {{ form_label(form.mobile, 'Portable') }}
+        {{ form_widget(form.mobile) }}
+        {{ form_label(form.gender, 'Sexe') }}
+        {{ form_widget(form.gender) }}
+        {{ form_label(form.profession, 'Profession') }}
+        {{ form_widget(form.profession) }}
+        {{ form_label(form.marital, 'Statut marital') }}
+        {{ form_widget(form.marital) }}
+        {{ form_label(form.hobbies, 'Centre d\'interets') }}
+        {{ form_widget(form.hobbies) }}
+
+        <div class="center">
+            <a class="logLink" id="publishBtn">{{ button_label|default('Sauvegarder') }}</a>
+        </div>
+        <div class="center">
+            <a class="logLink" href="{{ path('profile', {'id': app.user.id }) }}">Retour</a>
+        </div>
+        {{ form_end(form) }}
+    </fieldset>
+
+    <div class="center">
+        {{ include('user/_delete_form.html.twig') }}
+    </div>
 {% endblock %}
