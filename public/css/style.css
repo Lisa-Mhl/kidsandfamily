@@ -1738,6 +1738,10 @@ hr {
             margin: 0;
         }
 
+        #loginBtn{
+            width: 30%;
+        }
+
         /* ALL ARTICLES */
         .articlesCategory {
             flex-direction: column;
