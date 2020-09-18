@@ -35,6 +35,7 @@ body {
 
 .imgProfile {
     border-radius: 100%;
+    width: 10%;
 }
 
 .title {
@@ -157,7 +158,6 @@ body {
     top: 0;
     left: 0;
     z-index: 4;
-    background-color: white;
     padding-top: 16px;
     margin-top: 64px;
 }
@@ -169,7 +169,7 @@ body {
     font-size: 20px;
     color: #818181;
     display: block;
-    text-align: right;
+    text-align: center;
 }
 
 /* Style links on mouse-over */
@@ -948,6 +948,22 @@ hr {
     margin-bottom: 5em;
 }
 
+.formUser {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5em;
+    padding-top: 5%;
+}
+
+.formReset {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5em;
+    padding-top: 5%;
+}
+
 .mustCoBody {
     font-weight: bold;
     font-size: 2em;
@@ -1147,6 +1163,7 @@ hr {
     color: #737373;
     display: block;
     z-index: 2;
+    bottom: 0;
 }
 
 .page-footer hr {
@@ -1281,6 +1298,7 @@ hr {
 /*////////////////////////// TABLETTE ///////////////////////*/
 
 @media only screen and (max-width: 1200px) {
+
 
     /* NAVBAR*/
     #nav-mobile {
@@ -1451,6 +1469,14 @@ hr {
         width: 150px;
     }
 
+    #iconsProfile {
+        display: none;
+    }
+
+    .imgProfile {
+        width: 30%;
+    }
+
     #Ambassadeurs {
         padding-top: 8em;
     }
@@ -1477,6 +1503,10 @@ hr {
 
     /*////////////////////////// MOBILE ///////////////////////*/
     @media only screen and (max-width: 640px) {
+
+        #iconsProfile {
+            display: none;
+        }
 
         .sidebar {
             display: none;
@@ -1609,7 +1639,10 @@ hr {
 
         .loginBtn {
             width: 80%;
+        }
 
+        .imgProfile {
+            width: 30%;
         }
 
         /* CONTRIBUTE */
@@ -1668,7 +1701,9 @@ hr {
             border: none;
         }
 
-    }
 
+    }
 }
+
+
 
