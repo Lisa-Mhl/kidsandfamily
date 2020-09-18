@@ -143,6 +143,10 @@ body {
     margin-top: 1em;
 }
 
+.editArtCtn {
+    margin-bottom: 5em;
+}
+
 /* SideBAR */
 
 /* Style the sidebar - fixed full height */
@@ -550,6 +554,17 @@ div.targetCard:hover .enfant {
     margin-left: 1em;
 }
 
+.profileCard{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+
+#authorCard{
+    padding-top: 0.2em;
+    padding-left: 0.2em;
+}
+
 .articleTitle {
     margin-left: 0.9em;
     font-weight: bold;
@@ -574,6 +589,17 @@ div.targetCard:hover .enfant {
 .articleImg {
     height: 260px;
     border-radius: 5% 5% 0 0;
+}
+
+.avatarCard {
+    margin-top: 0.2em;
+    height: 27px;
+    width: 27px;
+    border-radius: 100%;
+}
+
+#authorCard {
+    font-size: 1.2em;
 }
 
 .articleLink {
@@ -1032,6 +1058,32 @@ hr {
     margin: auto;
 }
 
+.detailsComCtn{
+    background-color: white;
+    padding: 1em;
+}
+
+.profileCom{
+    display: flex;
+    flex-direction: row;
+}
+
+#avatarCom{
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+}
+
+#authorCom{
+    padding-top: 0.3em;
+    padding-left: 0.3em;
+    font-size: 1.3em;
+}
+
+.comment{
+    padding-top: 0.5em;
+}
+
 .commentTitle {
     width: 60%;
     margin-left: auto;
@@ -1062,6 +1114,14 @@ hr {
     height: 100%;
 }
 
+.detailsCatName {
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 0.2em;
+    color: hotpink;
+    background-color: lightblue;
+}
+
 .map {
     width: 95%;
 }
@@ -1083,6 +1143,29 @@ hr {
     transition: 1s;
 }
 
+.articleContact {
+    position: absolute;
+    top: 10%;
+    left: 83%;
+    width: 15%;
+    background-color: #bdc902;
+    border-radius: 100%;
+    text-align: center;
+    height: 250px;
+}
+
+.articleContactBody {
+    padding-top: 3.5em;
+    margin: auto;
+    font-size: 1.2em;
+    width: 95%;
+}
+
+.contactIcon {
+    margin-right: 0.5em;
+    margin-bottom: 1em;
+}
+
 /* CONTRIBUTE  */
 .contributeCtn {
     padding-top: 10em;
@@ -1091,7 +1174,7 @@ hr {
 }
 
 .contributeStep {
-    margin-bottom: 5em;
+    margin-bottom: 5.5em;
 }
 
 .stepCtn {

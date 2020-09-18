@@ -27,13 +27,16 @@
 
         <h3 id="comment" class="commentTitle">Commentaires</h3>
         <div class="articleCommentCtn">
-            {% for comment in article.comments %}
-
-                {# {% if comment.author.photo %}
-                         <img class="profilePix" src="{{ comment.author.photo }}" alt="Photo de Profil">
-                     {% endif %} #}
-                <p class="bold green">{{ comment.author }}<br>
-                    <span class="grey">{{ comment.comment }}</span></p>
+            <div class="detailsComCtn">
+                {% for comment in article.comments %}
+                <div class="profileCom">
+                    {% if comment.author.avatar %}
+                        <img id="avatarCom" src="{{ comment.author.avatar }}">
+                    {% endif %}
+                    <span id="authorCom" class="green"> {{ comment.author }}</span>
+                </div>
+                <p class="grey comment">{{ comment.comment }}</p>
+            </div>
             {% endfor %}
 
             <hr class="commentLine">
@@ -50,13 +53,12 @@
             {% endif %}
         </div>
 
-
         <div class="articleSideBar">
             <div class="detailsCatCtn">
                 <p class="detailsCat"><i class="fa fa-folder-open" aria-hidden="true"></i>
                     Catégorie(s) : <br>
                     {% for category in article.category %}
-                    {{ category.name }}</p>
+                    <span class="detailsCatName">{{ category.name | upper }}</span></p>
                 {% endfor %}
             </div>
             <h4 class="needsTitle">Lieu : </h4>
@@ -72,7 +74,20 @@
             <a class="instagram" href="#"><i class="fa fa-twitter"></i></a>
         </div>
 
-
+        {% if article.telephone or article.email or article.website %}
+            <div class="articleContact">
+                {% if article.telephone %}
+                <p class="articleContactBody"><i class="fas fa-phone-alt contactIcon"></i> 0{{ article.telephone }} <br>
+                    {% endif %}
+                    {% if article.email %}
+                        <i class="fa fa-envelope contactIcon" aria-hidden="true"></i>
+                        {{ article.email }} <br>
+                    {% endif %}
+                    {% if article.website %}
+                    <i class="fas fa-globe contactIcon"></i> {{ article.website }}</p>
+                {% endif %}
+            </div>
+        {% endif %}
     </div>
 
 

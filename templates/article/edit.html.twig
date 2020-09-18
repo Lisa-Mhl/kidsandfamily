@@ -3,12 +3,76 @@
 {% block title %}Edit Article{% endblock %}
 
 {% block body %}
-    <h1>Edit Article</h1>
+    <div class="ctn editArtCtn">
+        <h1 class="detailsTitle">Modifier ma Publication</h1>
+        {% if app.user %}
 
-    {{ include('article/_form.html.twig', {'button_label': 'Update'}) }}
+            {{ form_start(form) }}
+            <fieldset class="formFs">
+                <div class="hidden">
+                    {{ form_label(form.author, 'Auteur') }}
+                    {{ form_widget(form.author) }}
+                </div>
+                {{ form_label(form.title, 'Titre de votre publication') }}
+                {{ form_widget(form.title) }}
+                <label>Sélectionnez entre 1 et 3 catégories</label>
+                {{ form_widget(form.category) }}
+                <label>Choisissez votre classification</label>
+                {{ form_widget(form.classification) }}
+                {{ form_label(form.target, 'A qui s\'addresse votre projet ?') }}
+                {{ form_widget(form.target) }}
+                {{ form_label(form.heading, 'Sélectionnez le type de publication') }}
+                {{ form_widget(form.heading) }}
+                {{ form_label(form.content, 'Contenu de l\'article') }}
+                {{ form_widget(form.content) }}
+                {{ form_label(form.needs, 'Si vous avez besoin d\'aide de la part des ambassadeurs, de matériel (etc.) merci de détailler vos besoins (facultatif)') }}
+                {{ form_widget(form.needs) }}
+                {{ form_label(form.address, 'Veuillez indiquer l\'addresse de votre projet / événement') }}
+                {{ form_widget(form.address) }}
+                {{ form_label(form.photo, 'Ajoutez une image d\'illustration') }}
+                {{ form_widget(form.photo) }}
+                <div class="option">
+                    <h4 class="optionTitle">Optionnel</h4>
+                    {{ form_label(form.photoB, 'Ajoutez une 2e image') }}
+                    {{ form_widget(form.photoB) }}
+                    {{ form_label(form.photoC, 'Ajoutez une 3e image') }}
+                    {{ form_widget(form.photoC) }}
+                    {{ form_label(form.video, 'Ajoutez un lien vers une vidéo') }}
+                    {{ form_widget(form.video) }}
+                    {{ form_label(form.pdf, 'Ajoutez un document PDF') }}
+                    {{ form_widget(form.pdf) }}
+                    <h5 class="newArticleContact">Contact</h5>
+                    <i class="fa fa-phone-square" aria-hidden="true"></i>
+                    {{ form_label(form.telephone, 'Téléphone') }}
+                    {{ form_widget(form.telephone) }}
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    {{ form_label(form.email, 'Email') }}
+                    {{ form_widget(form.email) }}
+                    <i class="fas fa-globe"></i>
+                    {{ form_label(form.website, 'Site Web') }}
+                    {{ form_widget(form.website) }}
+                    <div class="center">
+                        <button class="loginBtn" id="publishBtn">{{ button_label|default('Publier') }}</button>
+                    </div>
+                </div>
+            </fieldset>
 
-    <a href="{{ path('article_index') }}">back to list</a>
+            {{ form_end(form) }}
+            <div class="center">
+                <a class="logLink" href="{{ path('my_articles', {'id': app.user.id}) }}">Retour à mes publications</a>
+            </div>
+            <hr>
+            <div class="center">
+                {{ include('article/_delete_form.html.twig') }}
+            </div>
 
+        {% else %}
+            <div class="mustCo">
+                <p class="mustCoBody">Merci de vous connecter pour modifier une publication</p>
+                <a class="logLink" href="{{ path('app_login') }}">Se connecter</a> <br>
+                <a class="logLink" href="{{ path('app_register') }}">Créer un compte</a>
+            </div>
 
-    {{ include('article/_delete_form.html.twig') }}
+        {% endif %}
+    </div>
 {% endblock %}
