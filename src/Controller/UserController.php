@@ -13,12 +13,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\Session;
 
-
+/**
+ * @Route("/profil")
+ */
 class UserController extends AbstractController
 {
 
     /**
-     * @Route("/profil/{id}", name="profile", methods={"GET"})
+     * @Route("/{id}", name="profile", methods={"GET"})
      * @param User $user
      * @return Response
      */
@@ -101,7 +103,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/profil/{id}/hobbies", name="hobbies", methods={"GET","POST"})
+     * @Route("/{id}/hobbies", name="hobbies", methods={"GET","POST"})
      * @param User $user
      * @param Request $request
      * @return Response
@@ -126,11 +128,9 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/profil/{id}/mes_publications", name = "my_articles", methods = {
-    "GET"
-    })
+     * @Route("/{id}/mes_publications", name = "my_articles", methods = {"GET"})
      *
-    @param User $user
+     * @param User $user
      * @param ArticleRepository $articleRepository
      * @param CategoryRepository $categoryRepository
      * @param Article $article
@@ -145,8 +145,6 @@ class UserController extends AbstractController
             'article' => $article,
 
         ]);
-
-
     }
 }
 
