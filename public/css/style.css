@@ -142,6 +142,10 @@ body {
     margin-top: 1em;
 }
 
+.editArtCtn {
+    margin-bottom: 5em;
+}
+
 /* SideBAR */
 
 /* Style the sidebar - fixed full height */
@@ -1046,6 +1050,14 @@ hr {
     height: 100%;
 }
 
+.detailsCatName {
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 0.2em;
+    color: hotpink;
+    background-color: lightblue;
+}
+
 .map {
     width: 95%;
 }
@@ -1067,6 +1079,29 @@ hr {
     transition: 1s;
 }
 
+.articleContact {
+    position: absolute;
+    top: 10%;
+    left: 83%;
+    width: 15%;
+    background-color: #bdc902;
+    border-radius: 100%;
+    text-align: center;
+    height: 250px;
+}
+
+.articleContactBody {
+    padding-top: 3.5em;
+    margin: auto;
+    font-size: 1.2em;
+    width: 95%;
+}
+
+.contactIcon {
+    margin-right: 0.5em;
+    margin-bottom: 1em;
+}
+
 /* CONTRIBUTE  */
 .contributeCtn {
     padding-top: 10em;
@@ -1075,7 +1110,7 @@ hr {
 }
 
 .contributeStep {
-    margin-bottom: 5em;
+    margin-bottom: 5.5em;
 }
 
 .stepCtn {
@@ -1432,7 +1467,7 @@ hr {
         justify-content: space-between;
     }
 
-    .allArticlesNav a{
+    .allArticlesNav a {
         margin-top: auto;
         margin-bottom: auto;
         height: 45px;
@@ -1623,13 +1658,12 @@ hr {
         }
 
         /* ALL ARTICLES */
-
         .articlesCategory {
             flex-direction: column;
             padding-top: 2em;
         }
 
-        .articlesCategory a{
+        .articlesCategory a {
             width: 350px;
             border: none;
         }
