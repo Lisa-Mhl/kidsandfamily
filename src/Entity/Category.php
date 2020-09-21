@@ -29,6 +29,11 @@ class Category
      */
     private $articles;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $poster;
+
     public function __toString()
     {
         return $this->getName();
@@ -80,6 +85,18 @@ class Category
             $this->articles->removeElement($article);
             $article->removeCategory($this);
         }
+
+        return $this;
+    }
+
+    public function getPoster(): ?string
+    {
+        return $this->poster;
+    }
+
+    public function setPoster(string $poster): self
+    {
+        $this->poster = $poster;
 
         return $this;
     }

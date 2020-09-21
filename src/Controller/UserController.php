@@ -146,5 +146,33 @@ class UserController extends AbstractController
 
         ]);
     }
+
+    /**
+     * @Route("/{id}/mes_coordonnees", name = "my_address", methods = {"GET"})
+     *
+     * @param User $user
+     * * @return Response
+     */
+    public function showMyAddress(User $user): Response
+    {
+        return $this->render('user/address.html.twig', [
+            'user' => $user,
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/categories", name = "categories", methods = {"GET"})
+     *
+     * @param User $user
+     * @param CategoryRepository $categoryRepository
+     * @return Response
+     */
+    public function showCategories(User $user, CategoryRepository $categoryRepository): Response
+    {
+        return $this->render('user/categories.html.twig', [
+            'user' => $user,
+            'categories' => $categoryRepository->findAll(),
+        ]);
+    }
 }
 
