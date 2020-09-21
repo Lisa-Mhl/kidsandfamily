@@ -92,6 +92,11 @@ class Homepage
      */
     private $targetBody2;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $banner;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -273,6 +278,18 @@ class Homepage
     public function setTargetBody2(string $targetBody2): self
     {
         $this->targetBody2 = $targetBody2;
+
+        return $this;
+    }
+
+    public function getBanner(): ?string
+    {
+        return $this->banner;
+    }
+
+    public function setBanner(?string $banner): self
+    {
+        $this->banner = $banner;
 
         return $this;
     }

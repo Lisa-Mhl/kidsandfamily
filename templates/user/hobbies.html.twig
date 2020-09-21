@@ -1,33 +1,6 @@
 {% extends 'base_user.html.twig' %}
-
 {% block title %}Centres d'interets{% endblock %}
-
 {% block body %}
-    <h1>Centre d'interets</h1>
-                <div class="hidden">
-                    {{ form_widget(form.firstname) }}
-                    {{ form_widget(form.lastname) }}
-                    {{ form_widget(form.channelnum) }}
-                    {{ form_widget(form.namevoie) }}
-                    {{ form_widget(form.complement) }}
-                    {{ form_widget(form.cp) }}
-                    {{ form_widget(form.city) }}
-                    {{ form_widget(form.country) }}
-                    {{ form_widget(form.phone) }}
-                    {{ form_widget(form.mobile) }}
-                    {{ form_widget(form.gender) }}
-                    {{ form_widget(form.profession) }}
-                    {{ form_widget(form.marital) }}
-                    {{ form_widget(form.avatar) }}
-                    {{ form_widget(form.username) }}
-                </div>
-
-                    {{ form_start(form) }}
-                    {{ form_label(form.hobbies, 'Centre d\'interets') }}
-                    {{ form_widget(form.hobbies, {'attr':{'class':'formHobbies'}} ) }}
-                    <a href="{{ path('profile', {'id': app.user.id }) }}">back to list</a>
-                    {{ form_end(form) }}
-
     <div class="ctn hobbiesCtn">
         <h1 class="detailsTitle"> Mes Centres d'Intérêts</h1>
         <div class="hidden">

@@ -62,8 +62,6 @@ easy_admin:
             - { property: 'telephone', label: 'telephone :' }
             - { property: 'email', label: 'email :' }
             - { property: 'website', label: 'website :' }
-    Banner:
-      class: App\Entity\Banner
     Category:
       class: App\Entity\Category
     Comment:
