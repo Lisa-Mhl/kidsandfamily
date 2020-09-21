@@ -368,12 +368,6 @@ class Article
 
 
     /**
-     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
-     * of 'UploadedFile' is injected into this setter to trigger the update. If this
-     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
-     * must be able to accept an instance of 'File' as the bundle will inject one here
-     * during Doctrine hydration.
-     *
      * @param File|UploadedFile|null $photoFile
      */
     public function setPhotoFile(?File $photoFile = null): void
@@ -387,6 +381,9 @@ class Article
         }
     }
 
+    /**
+     * @param File|UploadedFile|null $videoFile
+     */
     public function setVideoFile(?File $videoFile = null): void
     {
         $this->videoFile = $videoFile;
@@ -398,6 +395,9 @@ class Article
         }
     }
 
+    /**
+     * @param File|UploadedFile|null $pdfFile
+     */
     public function setPdfFile(?File $pdfFile = null): void
     {
         $this->pdfFile = $pdfFile;
@@ -409,6 +409,9 @@ class Article
         }
     }
 
+    /**
+     * @param File|UploadedFile|null $photoBFile
+     */
     public function setPhotoBFile(?File $photoBFile = null): void
     {
         $this->photoBFile = $photoBFile;
@@ -420,6 +423,9 @@ class Article
         }
     }
 
+    /**
+     * @param File|UploadedFile|null $photoCFile
+     */
     public function setPhotoCFile(?File $photoCFile= null): void
     {
         $this->photoCFile = $photoCFile;

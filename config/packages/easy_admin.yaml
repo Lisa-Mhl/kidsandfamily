@@ -64,6 +64,23 @@ easy_admin:
             - { property: 'website', label: 'website :' }
     Category:
       class: App\Entity\Category
+      label: "Categories"
+      form:
+          fields:
+            - { property: 'name', label: 'Titre' }
+            - { property: 'posterFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+          list:
+            collapse_actions: true
+            actions: [ 'show', 'edit', 'delete' ]
+            batch_actions: [ 'delete' ]
+            fields:
+              - { property: 'name', label: 'Titre' }
+              - { property: 'File', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+          show:
+            fields:
+              - { property: 'title', label: 'Titre' }
+              - { property: 'File', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+
     Comment:
       class: App\Entity\Comment
     Homepage:
