@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Article{% endblock %}
+{% block title %}Modifier ma Publication{% endblock %}
 
 {% block body %}
     <div class="ctn editArtCtn">
-        <h1 class="detailsTitle">Modifier ma Publication</h1>
-        {% if app.user %}
+        {% if app.user is same as (article.author) %}
 
+            <h1 class="detailsTitle">Modifier ma Publication</h1>
             {{ form_start(form) }}
             <fieldset class="formFs">
                 <div class="hidden">
@@ -55,9 +55,8 @@
                         <button class="loginBtn" id="publishBtn">{{ button_label|default('Publier') }}</button>
                     </div>
                 </div>
+                {{ form_end(form) }}
             </fieldset>
-
-            {{ form_end(form) }}
             <div class="center">
                 <a class="logLink" href="{{ path('my_articles', {'id': app.user.id}) }}">Retour à mes publications</a>
             </div>
@@ -68,7 +67,7 @@
 
         {% else %}
             <div class="mustCo">
-                <p class="mustCoBody">Merci de vous connecter pour modifier une publication</p>
+                <p class="mustCoBody">Seul l'auteur d'une publication peut la modifier</p>
                 <a class="logLink" href="{{ path('app_login') }}">Se connecter</a> <br>
                 <a class="logLink" href="{{ path('app_register') }}">Créer un compte</a>
             </div>

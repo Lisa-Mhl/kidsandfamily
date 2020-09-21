@@ -3,11 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Article;
-use App\Entity\Category;
-use App\Entity\User;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
-use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,6 +17,8 @@ class ArticleController extends AbstractController
 {
     /**
      * @Route("/", name="article_index", methods={"GET"})
+     * @param ArticleRepository $articleRepository
+     * @return Response
      */
     public function index(ArticleRepository $articleRepository): Response
     {
@@ -60,6 +59,8 @@ class ArticleController extends AbstractController
 
     /**
      * @Route("/{id}", name="article_show", methods={"GET"})
+     * @param Article $article
+     * @return Response
      */
     public function show(Article $article): Response
     {
@@ -74,7 +75,7 @@ class ArticleController extends AbstractController
      * @param Article $article
      * @return Response
      */
-    public function edit(Request $request, Article $article, User $user): Response
+    public function editArticle(Request $request, Article $article): Response
     {
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
@@ -82,10 +83,7 @@ class ArticleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('my_articles', [
-                'id' => $user->getId()
-            ]
-            );
+            return $this->redirectToRoute('home');
         }
 
         return $this->render('article/edit.html.twig', [
@@ -94,8 +92,12 @@ class ArticleController extends AbstractController
         ]);
     }
 
+
     /**
      * @Route("/{id}", name="article_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Article $article
+     * @return Response
      */
     public function delete(Request $request, Article $article): Response
     {
