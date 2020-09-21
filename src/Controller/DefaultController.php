@@ -4,10 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Entity\Comment;
+use App\Entity\Homepage;
 use App\Form\CommentType;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\CommentRepository;
+use App\Repository\HomepageRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,10 +22,11 @@ class DefaultController extends AbstractController
      * @param ArticleRepository $articleRepository
      * @return Response
      */
-    public function index(ArticleRepository $articleRepository)
+    public function index(ArticleRepository $articleRepository, HomepageRepository $homepageRepository)
     {
         return $this->render('default/index.html.twig', [
-            'articles' => $articleRepository->findAll()
+            'articles' => $articleRepository->findAll(),
+            'homepages' =>$homepageRepository->findAll(),
         ]);
     }
 
