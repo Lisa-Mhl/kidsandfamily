@@ -1,6 +1,76 @@
-#easy_admin:
-#    entities:
-#        # List the entity class name you want to manage
-#        - App\Entity\Product
-#        - App\Entity\Category
-#        - App\Entity\User
+easy_admin:
+  site_name: 'KIDS & FAMILY'
+  entities:
+    Article:
+      class: App\Entity\Article
+      label: "Article"
+      form:
+        fields:
+          - { property: 'title', label: 'Titre' }
+          - { property: 'classification', label: 'classification :' }
+          - { property: 'address', label: 'addresse :' }
+          - { property: 'heading', label: 'heading :' }
+          - { property: 'photoFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+          - { property: 'videoFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+          - { property: 'pdfFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+          - { property: 'needs', label: 'needs:' }
+          - { property: 'target', label: 'target :' }
+          - { property: 'category', label: 'category :' }
+          - { property: 'content', label: "contenu :" }
+          - { property: 'photoBFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+          - { property: 'photoCFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+          - { property: 'author', label: 'Auteur :' }
+          - { property: 'telephone', label: 'telephone :' }
+          - { property: 'email', label: 'email :' }
+          - { property: 'website', label: 'website :' }
+        list:
+          collapse_actions: true
+          actions: [ 'show', 'edit', 'delete' ]
+          batch_actions: [ 'delete' ]
+          fields:
+            - { property: 'title', label: 'Titre' }
+            - { property: 'classification', label: 'classification :' }
+            - { property: 'address', label: 'addresse :' }
+            - { property: 'photoFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+            - { property: 'videoFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+            - { property: 'pdfFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+            - { property: 'needs', label: 'needs:' }
+            - { property: 'target', label: 'target :' }
+            - { property: 'category', label: 'category :' }
+            - { property: 'content', label: "contenu :" }
+            - { property: 'photoBFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+            - { property: 'photoCFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+            - { property: 'author', label: 'Auteur :' }
+            - { property: 'telephone', label: 'telephone :' }
+            - { property: 'email', label: 'email :' }
+            - { property: 'website', label: 'website :' }
+        show:
+          fields:
+            - { property: 'title', label: 'Titre' }
+            - { property: 'classification', label: 'classification :' }
+            - { property: 'address', label: 'addresse :' }
+            - { property: 'photoFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+            - { property: 'videoFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+            - { property: 'pdfFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+            - { property: 'needs', label: 'needs:' }
+            - { property: 'target', label: 'target :' }
+            - { property: 'category', label: 'category :' }
+            - { property: 'content', label: "contenu :" }
+            - { property: 'photoBFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+            - { property: 'photoCFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+            - { property: 'author', label: 'Auteur :' }
+            - { property: 'telephone', label: 'telephone :' }
+            - { property: 'email', label: 'email :' }
+            - { property: 'website', label: 'website :' }
+    Banner:
+      class: App\Entity\Banner
+    Category:
+      class: App\Entity\Category
+    Comment:
+      class: App\Entity\Comment
+    Homepage:
+      class: App\Entity\Homepage
+    Target:
+      class: App\Entity\Target
+    User:
+      class: App\Entity\User

@@ -1,0 +1,23 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        article_photo:
+            uri_prefix: '%uploads_path%'
+            upload_destination: '%kernel.project_dir%/public/%uploads_path%'
+        article_video:
+            uri_prefix: '%uploads_path%'
+            upload_destination: '%kernel.project_dir%/public/%uploads_path%'
+        article_pdf:
+            uri_prefix: '%uploads_path%'
+            upload_destination: '%kernel.project_dir%/public/%uploads_path%'
+        article_photoB:
+            uri_prefix: '%uploads_path%'
+            upload_destination: '%kernel.project_dir%/public/%uploads_path%'
+        article_photoC:
+            uri_prefix: '%uploads_path%'
+            upload_destination: '%kernel.project_dir%/public/%uploads_path%'
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
