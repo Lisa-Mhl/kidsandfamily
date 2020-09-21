@@ -4,7 +4,7 @@
 
     <div class="ctn">
         <h1 class="detailsTitle">Contactez-Nous</h1>
-        <div class="form-contact-ctn">
+        <div class="contactCtn">
             {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
             <div>
                 {{ form_row(form.subject, {'label': 'Sujet'}) }}
@@ -15,11 +15,11 @@
             <div>
                 {{ form_row(form.email, {'label': 'Email'}) }}
             </div>
-            <div>
-                {{ form_row(form.message, {'label': 'Message'}) }}
+            <div class="contactMessage">
+                {{ form_row(form.message, {'attr':{'class':'formMessage'}}) }}
             </div>
             <div class="row justify-content-center">
-                <button class="linkQuote">{{ button_label|default('Envoyer') }}</button>
+                <button class="btn loginBtn" id="sendMessage">{{ button_label|default('Envoyer') }}</button>
                 {{ form_end(form) }}
             </div>
         </div>

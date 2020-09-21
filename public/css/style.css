@@ -194,7 +194,7 @@ body {
     height: 150px;
 }
 
-#catCard{
+#catCard {
     padding-top: 2em;
 }
 
@@ -858,6 +858,36 @@ hr {
 
 .visionBody {
     width: 45%;
+}
+
+/* CONTACT  */
+.contactCtn {
+    width: 30%;
+    margin: auto;
+    padding-bottom: 5em;
+    padding-top: 5em;
+}
+
+#sendMessage {
+    width: 15%;
+}
+
+.formMessage{
+    padding: 8em;
+}
+
+/* THANKS  */
+.thanksCtn {
+    margin-top: 15em;
+    margin-bottom: 20em;
+}
+
+.thanksCtn a{
+    padding-left: 0.5em;
+}
+
+.thanksBody{
+    font-size: 0.7em;
 }
 
 /* ALL ARTICLES  */
