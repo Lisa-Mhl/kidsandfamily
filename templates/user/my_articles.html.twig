@@ -1,5 +1,4 @@
-{% extends 'base.html.twig' %}
-
+{% extends 'base_user.html.twig' %}
 
 {% block title %}Mon compte{% endblock %}
 
@@ -12,43 +11,6 @@
                 {# {% if article.author == app.user %} #} {# NE FONCTIONNE PAS / A CHECKER #}
                 <a id="addArticleLink" href="{{ path('article_new') }}">Ajouter une publication</a>
                 {# {% endif %} #}
-            </div>
-
-            <!-- The sidebar -->
-            <div class="sidebar">
-                <a href="#"><i class="fa fa-info-circle"></i> Information</a>
-                <a href="#"><i class="fa fa-fw fa-home"></i> Coordonnées</a>
-                <a href="#"><i class="fa fa-mobile"></i> Catégories</a>
-                <a href="#"><i class="fa fa-heart"></i> Centres d'intérêts</a>
-                <a href="#"><i class="fa fa-picture-o"></i> Mes publications</a>
-                <a href="#"><i class="fa fa-users"></i> Discussion</a>
-            </div>
-            <!-- dropdown -->
-            <div class="dropdown">
-                <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                    <i class="fa fa-cog" aria-hidden="true"></i>
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <a href="#"><i class="fa fa-info-circle"></i>
-                        <li> Information</li>
-                    </a>
-                    <a href="#"><i class="fa fa-fw fa-home"></i>
-                        <li> Coordonnées</li>
-                    </a>
-                    <a href="#"><i class="fa fa-mobile"></i>
-                        <li> Catégories</li>
-                    </a>
-                    <a href="#"><i class="fa fa-heart"></i>
-                        <li> Centres d'intérêts</li>
-                    </a>
-                    <a href="#"><i class="fa fa-picture-o"></i>
-                        <li> Mes publications</li>
-                    </a>
-                    <a href="#"><i class="fa fa-users"></i>
-                        <li> Discussion</li>
-                    </a>
-                </div>
             </div>
 
         {% else %}

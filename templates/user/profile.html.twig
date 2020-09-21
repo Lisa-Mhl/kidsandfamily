@@ -1,76 +1,45 @@
-{% extends 'base.html.twig' %}
-
+{% extends 'base_user.html.twig' %}
 
 {% block title %}Mon compte{% endblock %}
 
 {% block body %}
     <h1>Mon compte</h1>
 
-    {% if is_granted('ROLE_USER') %}
-        <!-- The sidebar -->
-        <div class="sidebar">
-            <a href="#"><i class="fa fa-info-circle" id="iconsProfile"></i> Information</a>
-            <a href="#"><i class="fa fa-fw fa-home" id="iconsProfile"></i> Coordonnées</a>
-            <a href="#"><i class="fa fa-mobile" id="iconsProfile"></i> Catégories</a>
-            <a href="{{ path('hobbies', {'id': user.id}) }}"><i class="fa fa-heart" id="iconsProfile"></i> Centres d'intérêts</a>
-            <a href="{{ path('my_articles', {'id': user.id}) }}"><i class="fa fa-picture-o" id="iconsProfile"></i> Mes publications</a>
-            <a href="#"><i class="fa fa-users" id="iconsProfile"></i> Discussion</a>
-        </div>
-        <!-- dropdown -->
-        <div class="dropdown">
-            <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fa fa-cog" aria-hidden="true"></i>
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <a href="#"><i class="fa fa-info-circle" id="iconsProfile"></i><li> Information</li></a>
-                <a href="#"><i class="fa fa-fw fa-home" id="iconsProfile"></i><li> Coordonnées</li></a>
-                <a href="#"><i class="fa fa-mobile" id="iconsProfile"></i><li> Catégories</li></a>
-                <a href="{{ path('hobbies', {'id': user.id}) }}"><i class="fa fa-heart" id="iconsProfile"></i><li> Centres d'intérêts</li></a>
-                <a href="{{ path('my_articles', {'id': user.id}) }}"><i class="fa fa-picture-o" id="iconsProfile"></i><li> Mes publications</li></a>
-                <a href="#"><i class="fa fa-users" id="iconsProfile"></i><li> Discussion</li></a>
-            </div>
-        </div>
-
-    {% else %}
-        <p class="text-center">Seuls les users peuvent accéder à cette page <br>
-            <a href="{{ path('app_login') }}">Connexion</a>
-        </p>
-    {% endif %}
-
     {% if app.user %}
         {% if is_granted('ROLE_USER') %}
 
-                <div class="card cardProfile" id="cardProfile">
-                    <div class="card-body">
-                        <img class="card-img-top imgProfile" src="{{ user.avatar }}" alt="John">
-                        <h1>{{ user.firstname }} {{ user.lastname }}</h1>
-                        <p class="title">{{ user.email }}</p>
-                        <p>{{ user.username }}</p>
-                        <p>{{ user.channelnum }}</p>
-                        <p>{{ user.complement }}</p>
-                        <p>{{ user.namevoie }}</p>
-                        <p>{{ user.cp }} {{ user.city }}</p>
-                        <p>{{ user.country }}</p>
-                        <p>{{ user.phone }}</p>
-                        <p>{{ user.mobile }}</p>
-                        <p>{{ user.gender }}</p>
-                        <p>{{ user.birthday | date }}</p>
-                        <p>{{ user.profession }}</p>
-                        <p>{{ user.marital }}</p>
+            <div class="card cardProfile" id="cardProfile">
+                <div class="card-body">
+                    <img class="card-img-top imgProfile" src="{{ user.avatar }}" alt="John">
+                    <h1>{{ user.username }}</h1>
+                    <p>{{ user.firstname }}  {{ user.lastname }}</p>
+                    <p class="title">{{ user.email }}</p>
+                    <p>{{ user.phone }}</p>
+                    <p>{{ user.mobile }}</p>
+                    <p>{{ user.gender }}</p>
+                    <p>{{ user.birthday | date }}</p>
+                    <p>{{ user.profession }}</p>
+                    <p>{{ user.marital }}</p>
 
-                        <p>
-                            <button class="btnProfile"><a class="linkProfile" href="{{ path('user_edit', {'id': user.id}) }}">Modifier</a></button>
-                        </p>
-                        <p>
-                            <button class="btnProfile"><a class="linkProfile" href="{{ path('app_forgot_password_request') }}">Modifier Mon Mot de passe</a></button>
-                        </p>
-                    </div>
+                    {# TO DO : AJOUTER SECURITE POUR QUE SEUL LE USER PUISSE MODIFIER SON PROFIL #}
+                    <p>
+                        <button class="btnProfile"><a class="linkProfile"
+                                                      href="{{ path('user_edit', {'id': user.id}) }}">Modifier mes
+                                informations</a>
+                        </button>
+                    </p>
+                    <p>
+                        <button class="btnProfile"><a class="linkProfile"
+                                                      href="{{ path('app_forgot_password_request') }}">Modifier mon mot
+                                de passe</a></button>
+                    </p>
                 </div>
+            </div>
 
-            {% else %}
-                <tr>
-                    <td colspan="13">no records found</td>
-                </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">Aucun résultat trouvé</td>
+            </tr>
         {% endif %}
     {% endif %}
 {% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base_user.html.twig' %}
+
+{% block title %}Mon compte{% endblock %}
+
+{% block body %}
+    <h1>Mon compte</h1>
+    {% if app.user %}
+        {% if is_granted('ROLE_USER') %}
+            <div class="ctn addressCtn">
+            <h1 class="detailsTitle">Mes Coordonnées</h1>
+            <p class="addressBody">{{ user.channelnum }}<br>
+                {{ user.complement }}<br>
+                {{ user.namevoie }}<br>
+                {{ user.cp }}, {{ user.city }}<br>
+                {{ user.country }}</p>
+
+            {# TO DO : AJOUTER SECURITE POUR QUE SEUL UTILISATEUR CO SUR SON PROFIL PUISSE MODIFIER #}
+            <button class="btnProfile update"><a class="linkProfile"
+                                                 href="{{ path('user_edit', {'id': user.id}) }}">Modifier</a>
+            </button>
+
+        {% else %}
+            <p class="text-center">Seuls les utilisateurs peuvent accéder à cette page <br>
+                <a href="{{ path('app_login') }}">Connexion</a>
+            </p>
+        {% endif %}
+        </div>
+    {% endif %}
+{% endblock %}

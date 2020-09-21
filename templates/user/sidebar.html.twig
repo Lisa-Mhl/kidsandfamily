@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Mon compte{% endblock %}
+
+{% block body %}
+    <h1>Mon compte</h1>
+
+    {% if is_granted('ROLE_USER') %}
+        <!-- The sidebar -->
+        <div class="sidebar">
+            <a href="{{ path('profile', {'id': user.id }) }}"><i class="fa fa-info-circle" id="iconsProfile"></i>
+                Information</a>
+            <a href="#"><i class="fa fa-fw fa-home" id="iconsProfile"></i> Coordonnées</a>
+            <a href="#"><i class="fa fa-mobile" id="iconsProfile"></i> Catégories</a>
+            <a href="{{ path('hobbies', {'id': user.id}) }}"><i class="fa fa-heart" id="iconsProfile"></i> Centres
+                d'intérêts</a>
+            <a href="{{ path('my_articles', {'id': user.id}) }}"><i class="fa fa-picture-o" id="iconsProfile"></i> Mes
+                publications</a>
+            <a href="#"><i class="fa fa-users" id="iconsProfile"></i> Discussion</a>
+        </div>
+        <!-- dropdown -->
+        <div class="dropdown">
+            <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-cog" aria-hidden="true"></i>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <a href="#"><i class="fa fa-info-circle" id="iconsProfile"></i>
+                    <li> Information</li>
+                </a>
+                <a href="#"><i class="fa fa-fw fa-home" id="iconsProfile"></i>
+                    <li> Coordonnées</li>
+                </a>
+                <a href="#"><i class="fa fa-mobile" id="iconsProfile"></i>
+                    <li> Catégories</li>
+                </a>
+                <a href="{{ path('hobbies', {'id': user.id}) }}"><i class="fa fa-heart" id="iconsProfile"></i>
+                    <li> Centres d'intérêts</li>
+                </a>
+                <a href="{{ path('my_articles', {'id': user.id}) }}"><i class="fa fa-picture-o" id="iconsProfile"></i>
+                    <li> Mes publications</li>
+                </a>
+                <a href="#"><i class="fa fa-users" id="iconsProfile"></i>
+                    <li> Discussion</li>
+                </a>
+            </div>
+        </div>
+
+    {% else %}
+        <p class="text-center">Seuls les users peuvent accéder à cette page <br>
+            <a href="{{ path('app_login') }}">Connexion</a>
+        </p>
+    {% endif %}
+{% endblock %}
