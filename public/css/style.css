@@ -66,6 +66,8 @@ body {
     opacity: 0.7;
 }
 
+/* My_Articles */
+
 .myArticlesCtn {
     width: 50%;
     margin: auto;
@@ -145,6 +147,55 @@ body {
 
 .editArtCtn {
     margin-bottom: 5em;
+}
+
+/* My_Address */
+.addressCtn {
+    width: 50%;
+    margin: auto;
+}
+
+.update {
+    width: 15%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 12em;
+}
+
+.addressBody {
+    font-size: 1.5em;
+    text-align: center;
+    padding-bottom: 3em;
+}
+
+/* Hobbies */
+.hobbiesCtn {
+    width: 30%;
+    padding-bottom: 5em;
+    font-size: 1.5em;
+    margin: auto;
+}
+
+/* Categories */
+.categoryCtn {
+    width: 50%;
+    margin: 5em auto 20em;
+}
+
+#categoryCard {
+    text-align: center;
+    width: 20%;
+    margin: auto;
+}
+
+.categoryPoster {
+    width: 170px;
+    margin: auto;
+    height: 150px;
+}
+
+#catCard{
+    padding-top: 2em;
 }
 
 /* SideBAR */
@@ -554,13 +605,13 @@ div.targetCard:hover .enfant {
     margin-left: 1em;
 }
 
-.profileCard{
+.profileCard {
     display: flex;
     flex-direction: row;
     justify-content: left;
 }
 
-#authorCard{
+#authorCard {
     padding-top: 0.2em;
     padding-left: 0.2em;
 }
@@ -1058,29 +1109,29 @@ hr {
     margin: auto;
 }
 
-.detailsComCtn{
+.detailsComCtn {
     background-color: white;
     padding: 1em;
 }
 
-.profileCom{
+.profileCom {
     display: flex;
     flex-direction: row;
 }
 
-#avatarCom{
+#avatarCom {
     height: 40px;
     width: 40px;
     border-radius: 100%;
 }
 
-#authorCom{
+#authorCom {
     padding-top: 0.3em;
     padding-left: 0.3em;
     font-size: 1.3em;
 }
 
-.comment{
+.comment {
     padding-top: 0.5em;
 }
 
@@ -1738,7 +1789,7 @@ hr {
             margin: 0;
         }
 
-        #loginBtn{
+        #loginBtn {
             width: 30%;
         }
 
