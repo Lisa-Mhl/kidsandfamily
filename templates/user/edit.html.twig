@@ -43,7 +43,7 @@
         {{ form_widget(form.hobbies) }}
 
         <div class="center">
-            <a class="logLink" id="publishBtn">{{ button_label|default('Sauvegarder') }}</a>
+            <button class="loginBtn" id="publishBtn">{{ button_label|default('Sauvegarder') }}</button>
         </div>
         <div class="center">
             <a class="logLink" href="{{ path('profile', {'id': app.user.id }) }}">Retour</a>

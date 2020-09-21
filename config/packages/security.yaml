@@ -1,4 +1,4 @@
-security:
+gcosecurity:
     encoders:
         App\Entity\User:
             algorithm: auto

@@ -23,9 +23,9 @@
                 </div>
 
                     {{ form_start(form) }}
-                    {{ form_label(form.hobbies, 'centre d\'interets') }}
+                    {{ form_label(form.hobbies, 'Centre d\'interets') }}
                     {{ form_widget(form.hobbies, {'attr':{'class':'formHobbies'}} ) }}
-                    <button class="loginBtn" id="publishBtn">{{ button_label|default('sauvegarder') }}</button>
+                    <a href="{{ path('profile', {'id': app.user.id }) }}">back to list</a>
                     {{ form_end(form) }}
 
 {% endblock %}
