@@ -16,7 +16,7 @@
                 {{ form_row(form.email, {'label': 'Email'}) }}
             </div>
             <div class="contactMessage">
-                {{ form_row(form.message, {'attr':{'class':'formMessage'}}) }}
+                {{ form_row(form.message, {'attr' : {'style': 'height: 200px', 'label': 'Message'}}) }}
             </div>
             <div class="row justify-content-center">
                 <button class="btn loginBtn" id="sendMessage">{{ button_label|default('Envoyer') }}</button>

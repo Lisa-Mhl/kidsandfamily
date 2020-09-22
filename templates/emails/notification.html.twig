@@ -1,0 +1,58 @@
+{% apply inky_to_html %}
+    <container>
+        <row class="header">
+            <columns>
+                <a href="{{ url('home') }}">
+                    <img src="https://cdn.pixabay.com/photo/2017/10/13/12/29/hands-2847508_960_720.jpg">
+                </a>
+            </columns>
+        </row>
+        <row class="welcome">
+            <columns>
+                <spacer size="35"></spacer>
+                <h1>
+                    <center>
+                        Merci pour votre message, nous vous répondrons dès que possible !
+                    </center>
+                </h1>
+                <spacer size="10"></spacer>
+            </columns>
+        </row>
+        <row class="message">
+            <columns>
+                <spacer size="35"></spacer>
+                <h2>
+                    <center>
+                        Votre Message :
+                    </center>
+                </h2>
+                <spacer size="20"></spacer>
+            </columns>
+        </row>
+        <row>
+            <columns>
+                <p>
+                    {{ contact.message }}
+                </p>
+            </columns>
+        </row>
+        <hr>
+        <row>
+            <columns>
+                <center>
+                    <button href="{{ url('home') }}">Accueil</button>
+                </center>
+            </columns>
+        </row>
+        <row class="bottom">
+            <columns>
+                <center>
+                    <spacer size="20"></spacer>
+                    <div>
+                        Envoyé avec ❤️ de la part de Kids & Family
+                    </div>
+                </center>
+            </columns>
+        </row>
+    </container>
+{% endapply %}
