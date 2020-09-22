@@ -114,6 +114,9 @@ class DefaultController extends AbstractController
             $entityManager->flush();
 
             $mailer->notifEmailClient($contact);
+
+            $mailer->notifEmailAdmin($contact);
+
             return $this->redirectToRoute('merci');
         }
 

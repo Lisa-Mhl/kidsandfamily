@@ -1,0 +1,30 @@
+{% apply inky_to_html|inline_css(source('@styles/foundation-emails.css'), source('@styles/email.css')) %}
+    <container>
+        <row class="header">
+            <columns>
+                <a href="{{ url('home') }}">
+                    {# <img src="{{ email.image('@images/email/logo.png') }}" class="logo" alt="Balise Studio"> #}
+                    <img src="https://cdn.pixabay.com/photo/2017/10/13/12/29/hands-2847508_960_720.jpg">
+                </a>
+            </columns>
+        </row>
+        {% block body %}
+        {% endblock %}
+        <row class="footer">
+            <columns>
+                <p>Cordialement,</p>
+                <p><em>La Team Kids & Family</em></p>
+            </columns>
+        </row>
+        <row class="bottom">
+            <columns>
+                <center>
+                    <spacer size="20"></spacer>
+                    <div>
+                        Envoyé avec ❤️ de la part de Kids & Family
+                    </div>
+                </center>
+            </columns>
+        </row>
+    </container>
+{% endapply %}
