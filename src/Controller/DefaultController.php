@@ -10,6 +10,7 @@ use App\Form\ContactType;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\CommentRepository;
+use App\Repository\ContributeRepository;
 use App\Repository\HomepageRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -86,10 +87,14 @@ class DefaultController extends AbstractController
 
     /**
      * @Route("/contribuer", name="contribute")
+     * @param ContributeRepository $contributeRepository
+     * @return Response
      */
-    public function contribute()
+    public function contribute(ContributeRepository $contributeRepository)
     {
-        return $this->render('default/contribute.html.twig');
+        return $this->render('default/contribute.html.twig',[
+            'contributes'=>$contributeRepository->findAll(),
+            ]);
     }
 
     /**
