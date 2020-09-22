@@ -7,9 +7,11 @@ use App\Entity\Comment;
 use App\Entity\Contact;
 use App\Form\CommentType;
 use App\Form\ContactType;
+use App\Repository\AboutRepository;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\CommentRepository;
+use App\Repository\ContributeRepository;
 use App\Repository\HomepageRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,7 +31,7 @@ class DefaultController extends AbstractController
     {
         return $this->render('default/index.html.twig', [
             'articles' => $articleRepository->findAll(),
-            'homepages' =>$homepageRepository->findAll(),
+            'homepages' => $homepageRepository->findAll(),
         ]);
     }
 
@@ -37,9 +39,11 @@ class DefaultController extends AbstractController
      * @Route("/a-propos", name="about")
      * @return Response
      */
-    public function about()
+    public function about(AboutRepository $aboutRepository)
     {
-        return $this->render('default/about.html.twig');
+        return $this->render('default/about.html.twig', [
+            'abouts' => $aboutRepository->findAll(),
+        ]);
     }
 
     /**
@@ -86,10 +90,14 @@ class DefaultController extends AbstractController
 
     /**
      * @Route("/contribuer", name="contribute")
+     * @param ContributeRepository $contributeRepository
+     * @return Response
      */
-    public function contribute()
+    public function contribute(ContributeRepository $contributeRepository)
     {
-        return $this->render('default/contribute.html.twig');
+        return $this->render('default/contribute.html.twig', [
+            'contributes' => $contributeRepository->findAll(),
+        ]);
     }
 
     /**
@@ -104,7 +112,7 @@ class DefaultController extends AbstractController
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted()&& $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($contact);
             $em->flush();
@@ -114,7 +122,7 @@ class DefaultController extends AbstractController
         }
 
         return $this->render('default/contact.html.twig', [
-            'form' =>$form->createView(),
+            'form' => $form->createView(),
         ]);
     }
 
