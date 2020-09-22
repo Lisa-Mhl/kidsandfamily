@@ -15,10 +15,9 @@ use App\Repository\ContributeRepository;
 use App\Repository\HomepageRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mailer\Mailer;
-use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Service\Mailer;
 
 class DefaultController extends AbstractController
 {
@@ -99,25 +98,22 @@ class DefaultController extends AbstractController
             'contributes' => $contributeRepository->findAll(),
         ]);
     }
-
     /**
      * @Route("/contact", name="contact")
-     * @param Request $request
-     * @param MailerInterface $mailer
-     * @return Response
      */
-    public function contact(Request $request, MailerInterface $mailer)
+    public function contact(Request $request, Mailer $mailer) : Response
     {
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($contact);
-            $em->flush();
+            $entityManager = $this->getDoctrine()->getManager();
+            $contact->setCreatedAt(new \DateTime());
+            $entityManager->persist($contact);
+            $entityManager->flush();
 
-            #TO DO : AJOUTER NOTIFICATION / CONFIRMATION
+            $mailer->notifEmailClient($contact);
             return $this->redirectToRoute('merci');
         }
 
