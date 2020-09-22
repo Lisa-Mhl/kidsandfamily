@@ -50,7 +50,7 @@ class Homepage
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="home_targetImgFam", fileNameProperty="homefam")
+     * @Vich\UploadableField(mapping="home_targetImgFam", fileNameProperty="targetImgFam")
      *
      * @var File|null
      */
@@ -64,7 +64,7 @@ class Homepage
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="home_targetImgPlace", fileNameProperty="homeplace")
+     * @Vich\UploadableField(mapping="home_targetImgPlace", fileNameProperty="targetImgPlace")
      *
      * @var File|null
      */
@@ -98,7 +98,7 @@ class Homepage
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="home_sectionImg", fileNameProperty="homesection")
+     * @Vich\UploadableField(mapping="home_sectionImg", fileNameProperty="sectionImg")
      *
      * @var File|null
      */
@@ -132,7 +132,7 @@ class Homepage
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="home_banner", fileNameProperty="homesection")
+     * @Vich\UploadableField(mapping="home_banner", fileNameProperty="banner")
      *
      * @var File|null
      */

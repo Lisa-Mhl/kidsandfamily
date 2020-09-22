@@ -3,10 +3,15 @@
 namespace App\Entity;
 
 use App\Repository\AboutRepository;
+use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=AboutRepository::class)
+ * @Vich\Uploadable
  */
 class About
 {
@@ -33,6 +38,15 @@ class About
     private $presentationVideo;
 
     /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="about_video", fileNameProperty="presentationVideo")
+     *
+     * @var File|null
+     */
+    private $presentationVideoFile;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $visionTitle;
@@ -46,6 +60,15 @@ class About
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $visionImg;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="about_vision", fileNameProperty="visionImg")
+     *
+     * @var File|null
+     */
+    private $visionImgFile;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -68,6 +91,15 @@ class About
     private $localImg;
 
     /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="about_local", fileNameProperty="localImg")
+     *
+     * @var File|null
+     */
+    private $localImgFile;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $localTitle;
@@ -83,9 +115,27 @@ class About
     private $messageImg;
 
     /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="about_message", fileNameProperty="messageImg")
+     *
+     * @var File|null
+     */
+    private $messageImgFile;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $dealsImg;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="about_deals", fileNameProperty="dealsImg")
+     *
+     * @var File|null
+     */
+    private $dealsImgFile;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -98,6 +148,15 @@ class About
     private $eventImg;
 
     /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="about_event", fileNameProperty="eventImg")
+     *
+     * @var File|null
+     */
+    private $eventImgFile;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $eventTitle;
@@ -106,6 +165,15 @@ class About
      * @ORM\Column(type="string", length=255)
      */
     private $helpImg;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="about_help", fileNameProperty="helpImg")
+     *
+     * @var File|null
+     */
+    private $helpImgFile;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -123,6 +191,15 @@ class About
     private $giveImg;
 
     /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="about_give", fileNameProperty="giveImg")
+     *
+     * @var File|null
+     */
+    private $giveImgFile;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $communityTitle;
@@ -131,6 +208,11 @@ class About
      * @ORM\Column(type="text")
      */
     private $communityBody;
+
+    /**
+     * @var DateTimeImmutable
+     */
+    private $updatedAt;
 
     public function getId(): ?int
     {
@@ -411,5 +493,180 @@ class About
         $this->communityBody = $communityBody;
 
         return $this;
+    }
+
+    /**
+     * @param File|UploadedFile|null $presentationVideoFile
+     */
+    public function setPresentationVideoFile(?File $presentationVideoFile = null): void
+    {
+        $this->presentationVideoFile = $presentationVideoFile;
+
+        if (null !== $presentationVideoFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new DateTimeImmutable();
+        }
+    }
+
+    /**
+     * @param File|UploadedFile|null $visionImgFile
+     */
+    public function setVisionImgFile(?File $visionImgFile = null): void
+    {
+        $this->visionImgFile = $visionImgFile;
+
+        if (null !== $visionImgFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new DateTimeImmutable();
+        }
+    }
+
+    /**
+     * @param File|UploadedFile|null $localImgFile
+     */
+    public function setLocalImgFile(?File $localImgFile = null): void
+    {
+        $this->localImgFile = $localImgFile;
+
+        if (null !== $localImgFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new DateTimeImmutable();
+        }
+    }
+
+    /**
+     * @param File|UploadedFile|null $dealsImgFile
+     */
+    public function setDealsImgFile(?File $dealsImgFile = null): void
+    {
+        $this->dealsImgFile = $dealsImgFile;
+
+        if (null !== $dealsImgFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new DateTimeImmutable();
+        }
+    }
+
+    /**
+     * @param File|UploadedFile|null $messageImgFile
+     */
+    public function setMessageImgFile(?File $messageImgFile = null): void
+    {
+        $this->messageImgFile = $messageImgFile;
+
+        if (null !== $messageImgFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new DateTimeImmutable();
+        }
+    }
+
+    /**
+     * @param File|UploadedFile|null $eventImgFile
+     */
+    public function setEventImgFile(?File $eventImgFile = null): void
+    {
+        $this->eventImgFile = $eventImgFile;
+
+        if (null !== $eventImgFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new DateTimeImmutable();
+        }
+    }
+
+    /**
+     * @param File|UploadedFile|null $helpImgFile
+     */
+    public function setHelpImgFile(?File $helpImgFile = null): void
+    {
+        $this->helpImgFile = $helpImgFile;
+
+        if (null !== $helpImgFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new DateTimeImmutable();
+        }
+    }
+
+    /**
+     * @param File|UploadedFile|null $giveImgFile
+     */
+    public function setGiveImgFile(?File $giveImgFile = null): void
+    {
+        $this->giveImgFile = $giveImgFile;
+
+        if (null !== $giveImgFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new DateTimeImmutable();
+        }
+    }
+    /**
+     * @return File|null
+     */
+    public function getPresentationVideoFile(): ?File
+    {
+        return $this->presentationVideoFile;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getVisionImgFile(): ?File
+    {
+        return $this->visionImgFile;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getLocalImgFile(): ?File
+    {
+        return $this->localImgFile;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getDealsImgFile(): ?File
+    {
+        return $this->dealsImgFile;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getMessageImgFile(): ?File
+    {
+        return $this->messageImgFile;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getEventImgFile(): ?File
+    {
+        return $this->eventImgFile;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getHelpImgFile(): ?File
+    {
+        return $this->helpImgFile;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getGiveImgFile(): ?File
+    {
+        return $this->giveImgFile;
     }
 }

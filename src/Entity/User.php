@@ -35,7 +35,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="json")
      */
-    private $roles = [];
+    private $roles = ["ROLE_USER"];
 
     /**
      * @var string The hashed password
@@ -72,11 +72,6 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $marital;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $categ;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -142,7 +137,7 @@ class User implements UserInterface
      */
     private $avatarFile;
 
-    /**
+    /**gst
      * @var DateTimeImmutable
      */
     private $updatedAt;
@@ -300,18 +295,6 @@ class User implements UserInterface
     public function setMarital(?string $marital): self
     {
         $this->marital = $marital;
-
-        return $this;
-    }
-
-    public function getCateg(): ?string
-    {
-        return $this->categ;
-    }
-
-    public function setCateg(?string $categ): self
-    {
-        $this->categ = $categ;
 
         return $this;
     }

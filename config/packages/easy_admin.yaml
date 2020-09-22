@@ -1,91 +1,407 @@
 easy_admin:
   site_name: 'KIDS & FAMILY'
   entities:
-    Article:
-      class: App\Entity\Article
-      label: "Article"
-      form:
-        fields:
-          - { property: 'title', label: 'Titre' }
-          - { property: 'classification', label: 'classification :' }
-          - { property: 'address', label: 'addresse :' }
-          - { property: 'heading', label: 'heading :' }
-          - { property: 'photoFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
-          - { property: 'videoFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
-          - { property: 'pdfFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
-          - { property: 'needs', label: 'needs:' }
-          - { property: 'target', label: 'target :' }
-          - { property: 'category', label: 'category :' }
-          - { property: 'content', label: "contenu :" }
-          - { property: 'photoBFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
-          - { property: 'photoCFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
-          - { property: 'author', label: 'Auteur :' }
-          - { property: 'telephone', label: 'telephone :' }
-          - { property: 'email', label: 'email :' }
-          - { property: 'website', label: 'website :' }
-        list:
-          collapse_actions: true
-          actions: [ 'show', 'edit', 'delete' ]
-          batch_actions: [ 'delete' ]
-          fields:
-            - { property: 'title', label: 'Titre' }
-            - { property: 'classification', label: 'classification :' }
-            - { property: 'address', label: 'addresse :' }
-            - { property: 'photoFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
-            - { property: 'videoFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
-            - { property: 'pdfFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
-            - { property: 'needs', label: 'needs:' }
-            - { property: 'target', label: 'target :' }
-            - { property: 'category', label: 'category :' }
-            - { property: 'content', label: "contenu :" }
-            - { property: 'photoBFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
-            - { property: 'photoCFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
-            - { property: 'author', label: 'Auteur :' }
-            - { property: 'telephone', label: 'telephone :' }
-            - { property: 'email', label: 'email :' }
-            - { property: 'website', label: 'website :' }
-        show:
-          fields:
-            - { property: 'title', label: 'Titre' }
-            - { property: 'classification', label: 'classification :' }
-            - { property: 'address', label: 'addresse :' }
-            - { property: 'photoFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
-            - { property: 'videoFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
-            - { property: 'pdfFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
-            - { property: 'needs', label: 'needs:' }
-            - { property: 'target', label: 'target :' }
-            - { property: 'category', label: 'category :' }
-            - { property: 'content', label: "contenu :" }
-            - { property: 'photoBFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
-            - { property: 'photoCFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
-            - { property: 'author', label: 'Auteur :' }
-            - { property: 'telephone', label: 'telephone :' }
-            - { property: 'email', label: 'email :' }
-            - { property: 'website', label: 'website :' }
-    Category:
-      class: App\Entity\Category
-      label: "Categories"
-      form:
-          fields:
-            - { property: 'name', label: 'Titre' }
-            - { property: 'posterFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
-          list:
-            collapse_actions: true
-            actions: [ 'show', 'edit', 'delete' ]
-            batch_actions: [ 'delete' ]
-            fields:
-              - { property: 'name', label: 'Titre' }
-              - { property: 'File', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
-          show:
-            fields:
-              - { property: 'title', label: 'Titre' }
-              - { property: 'File', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+        Article:
+            class: App\Entity\Article
+            label: "Article"
+            form:
+                fields:
+                  - { property: 'title', label: 'Titre' }
+                  - { property: 'classification', label: 'classification :' }
+                  - { property: 'address', label: 'addresse :' }
+                  - { property: 'heading', label: 'heading :' }
+                  - { property: 'photoFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+                  - { property: 'videoFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+                  - { property: 'pdfFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+                  - { property: 'needs', label: 'needs:' }
+                  - { property: 'target', label: 'target :' }
+                  - { property: 'category', label: 'category :' }
+                  - { property: 'content', label: "contenu :" }
+                  - { property: 'photoBFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+                  - { property: 'photoCFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+                  - { property: 'author', label: 'Auteur :' }
+                  - { property: 'telephone', label: 'telephone :' }
+                  - { property: 'email', label: 'email :' }
+                  - { property: 'website', label: 'website :' }
+            list:
+                collapse_actions: true
+                actions: [ 'show', 'edit', 'delete' ]
+                batch_actions: [ 'delete' ]
+                fields:
+                  - { property: 'title', label: 'Titre' }
+                  - { property: 'classification', label: 'classification :' }
+                  - { property: 'address', label: 'addresse :' }
+                  - { property: 'photoFile', type: 'image', base_path: 'uploads_path%' }
+                  - { property: 'videoFile', type: 'image', base_path: 'uploads_path%' }
+                  - { property: 'pdfFile', type: 'file', base_path: 'uploads_path%' }
+                  - { property: 'needs', label: 'needs:' }
+                  - { property: 'target', label: 'target :' }
+                  - { property: 'category', label: 'category :' }
+                  - { property: 'content', label: "contenu :" }
+                  - { property: 'photoBFile', type: 'image', base_path: 'uploads_path%' }
+                  - { property: 'photoCFile', type: 'image', base_path: 'uploads_path%' }
+                  - { property: 'author', label: 'Auteur :' }
+                  - { property: 'telephone', label: 'telephone :' }
+                  - { property: 'email', label: 'email :' }
+                  - { property: 'website', label: 'website :' }
+            show:
+                fields:
+                  - { property: 'title', label: 'Titre' }
+                  - { property: 'classification', label: 'classification :' }
+                  - { property: 'address', label: 'addresse :' }
+                  - { property: 'photoFile', type: 'image', base_path: 'uploads_path%' }
+                  - { property: 'videoFile', type: 'image', base_path: 'uploads_path%' }
+                  - { property: 'pdfFile', type: 'file', base_path: 'uploads_path%' }
+                  - { property: 'needs', label: 'needs:' }
+                  - { property: 'target', label: 'target :' }
+                  - { property: 'category', label: 'category :' }
+                  - { property: 'content', label: "contenu :" }
+                  - { property: 'photoBFile', type: 'image', base_path: 'uploads_path%' }
+                  - { property: 'photoCFile', type: 'image', base_path: 'uploads_path%' }
+                  - { property: 'author', label: 'Auteur :' }
+                  - { property: 'telephone', label: 'telephone :' }
+                  - { property: 'email', label: 'email :' }
+                  - { property: 'website', label: 'website :' }
 
-    Comment:
-      class: App\Entity\Comment
-    Homepage:
-      class: App\Entity\Homepage
-    Target:
-      class: App\Entity\Target
-    User:
-      class: App\Entity\User
+        Category:
+             class: App\Entity\Category
+             label: "Categories"
+             form:
+                 fields:
+                   - { property: 'name', label: 'Name' }
+                   - { property: 'posterFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+             list:
+                 collapse_actions: true
+                 actions: [ 'show', 'edit', 'delete' ]
+                 batch_actions: [ 'delete' ]
+                 fields:
+                   - { property: 'name', label: 'Titre' }
+                   - { property: 'posterFile', type: 'image', base_path: 'uploads_path%' }
+             show:
+                 fields:
+                   - { property: 'title', label: 'Titre' }
+                   - { property: 'posterFile', type: 'image', base_path: 'uploads_path%' }
+
+        About:
+             class: App\Entity\About
+             label: "En savoir plus"
+             form:
+                 fields:
+                   - { property: 'presentationTitle', label: 'presentationTitle' }
+                   - { property: 'presentationBody', label: 'presentationBody' }
+                   - { property: 'presentationVideo', label: 'presentationVideo' }
+                   - { property: 'presentationVideoFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+                   - { property: 'visionTitle', label: 'visionTitle' }
+                   - { property: 'visionBody', label: 'visionBody' }
+                   - { property: 'visionImg', label: 'visionImg' }
+                   - { property: 'visionImgFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+                   - { property: 'valuesTitle', label: 'valuesTitle' }
+                   - { property: 'valuesBody', label: 'valuesBody' }
+                   - { property: 'servicesTitle', label: 'servicesTitle' }
+                   - { property: 'localImg', label: 'localImg' }
+                   - { property: 'localImgFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+                   - { property: 'localTitle', label: 'localTitle' }
+                   - { property: 'messageTitle', label: 'messageTitle' }
+                   - { property: 'messageImg', label: 'messageImg' }
+                   - { property: 'messageImgFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+                   - { property: 'dealsImg', label: 'dealsImg' }
+                   - { property: 'dealsImgFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+                   - { property: 'dealsTitle', label: 'ddealsTitle' }
+                   - { property: 'eventImg', label: 'eventImg' }
+                   - { property: 'eventImgFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+                   - { property: 'eventTitle', label: 'eventTitle' }
+                   - { property: 'helpImg', label: 'helpImg' }
+                   - { property: 'helpImgFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+                   - { property: 'helpTitle', label: 'helpTitle' }
+                   - { property: 'giveTitle', label: 'giveTitle' }
+                   - { property: 'giveImg', label: 'giveImg' }
+                   - { property: 'giveImgFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+                   - { property: 'communityTitle', label: 'communityTitle' }
+                   - { property: 'communityBody', label: 'communityBody' }
+             list:
+                 collapse_actions: true
+                 actions: [ 'show', 'edit', 'delete' ]
+                 batch_actions: [ 'delete' ]
+                 fields:
+                   - { property: 'presentationTitle', label: 'presentationTitle' }
+                   - { property: 'presentationBody', label: 'presentationBody' }
+                   - { property: 'presentationVideo', label: 'presentationVideo' }
+                   - { property: 'presentationVideoFile', type: 'image', base_path: 'uploads_path%' }
+                   - { property: 'visionTitle', label: 'visionTitle' }
+                   - { property: 'visionBody', label: 'visionBody' }
+                   - { property: 'visionImg', label: 'visionImg' }
+                   - { property: 'visionImgFile', type: 'image', base_path: 'uploads_path%' }
+                   - { property: 'valuesTitle', label: 'valuesTitle' }
+                   - { property: 'valuesBody', label: 'valuesBody' }
+                   - { property: 'servicesTitle', label: 'servicesTitle' }
+                   - { property: 'localImg', label: 'localImg' }
+                   - { property: 'localImgFile', type: 'image', base_path: 'uploads_path%' }
+                   - { property: 'localTitle', label: 'localTitle' }
+                   - { property: 'messageTitle', label: 'messageTitle' }
+                   - { property: 'messageImg', label: 'messageImg' }
+                   - { property: 'messageImgFile', type: 'image', base_path: 'uploads_path%' }
+                   - { property: 'dealsImg', label: 'dealsImg' }
+                   - { property: 'dealsImgFile', type: 'image', base_path: 'uploads_path%' }
+                   - { property: 'dealsTitle', label: 'ddealsTitle' }
+                   - { property: 'eventImg', label: 'eventImg' }
+                   - { property: 'eventImgFile', type: 'image', base_path: 'uploads_path%' }
+                   - { property: 'eventTitle', label: 'eventTitle' }
+                   - { property: 'helpImg', label: 'helpImg' }
+                   - { property: 'helpImgFile', type: 'image', base_path: 'uploads_path%' }
+                   - { property: 'helpTitle', label: 'helpTitle' }
+                   - { property: 'giveTitle', label: 'giveTitle' }
+                   - { property: 'giveImg', label: 'giveImg' }
+                   - { property: 'giveImgFile', type: 'image', base_path: 'uploads_path%' }
+                   - { property: 'communityTitle', label: 'communityTitle' }
+                   - { property: 'communityBody', label: 'communityBody' }
+             show:
+                 fields:
+                   - { property: 'presentationTitle', label: 'presentationTitle' }
+                   - { property: 'presentationBody', label: 'presentationBody' }
+                   - { property: 'presentationVideo', label: 'presentationVideo' }
+                   - { property: 'presentationVideoFile', type: 'image', base_path: 'uploads_path%' }
+                   - { property: 'visionTitle', label: 'visionTitle' }
+                   - { property: 'visionBody', label: 'visionBody' }
+                   - { property: 'visionImg', label: 'visionImg' }
+                   - { property: 'visionImgFile', type: 'image', base_path: 'uploads_path%' }
+                   - { property: 'valuesTitle', label: 'valuesTitle' }
+                   - { property: 'valuesBody', label: 'valuesBody' }
+                   - { property: 'servicesTitle', label: 'servicesTitle' }
+                   - { property: 'localImg', label: 'localImg' }
+                   - { property: 'localImgFile', type: 'image', base_path: 'uploads_path%' }
+                   - { property: 'localTitle', label: 'localTitle' }
+                   - { property: 'messageTitle', label: 'messageTitle' }
+                   - { property: 'messageImg', label: 'messageImg' }
+                   - { property: 'messageImgFile', type: 'image', base_path: 'uploads_path%' }
+                   - { property: 'dealsImg', label: 'dealsImg' }
+                   - { property: 'dealsImgFile', type: 'image', base_path: 'uploads_path%' }
+                   - { property: 'dealsTitle', label: 'ddealsTitle' }
+                   - { property: 'eventImg', label: 'eventImg' }
+                   - { property: 'eventImgFile', type: 'image', base_path: 'uploads_path%' }
+                   - { property: 'eventTitle', label: 'eventTitle' }
+                   - { property: 'helpImg', label: 'helpImg' }
+                   - { property: 'helpImgFile', type: 'image', base_path: 'uploads_path%' }
+                   - { property: 'helpTitle', label: 'helpTitle' }
+                   - { property: 'giveTitle', label: 'giveTitle' }
+                   - { property: 'giveImg', label: 'giveImg' }
+                   - { property: 'giveImgFile', type: 'image', base_path: 'uploads_path%' }
+                   - { property: 'communityTitle', label: 'communityTitle' }
+                   - { property: 'communityBody', label: 'communityBody' }
+
+        Contribute:
+               class: App\Entity\Contribute
+               label: "Contribute"
+               form:
+                   fields:
+                     - { property: 'step1Title', label: 'step1Title' }
+                     - { property: 'step1Img', label: 'step1Img' }
+                     - { property: 'step1ImgFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+                     - { property: 'step1Body', label: 'step1Body' }
+                     - { property: 'step2Title', label: 'step2Title' }
+                     - { property: 'step2Img', label: 'step2Img' }
+                     - { property: 'step2ImgFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+                     - { property: 'step2Body', label: 'step2Body' }
+                     - { property: 'step3Title', label: 'step3Title' }
+                     - { property: 'step3Img', label: 'step3Img' }
+                     - { property: 'step3ImgFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+                     - { property: 'step3Body', label: 'step3Body' }
+                     - { property: 'step4Title', label: 'step4Title' }
+                     - { property: 'step4Img', label: 'step4Img' }
+                     - { property: 'step4ImgFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+                     - { property: 'step4Body', label: 'step4Body' }
+                     - { property: 'contributeTitle', label: 'contributeTitle' }
+               list:
+                   collapse_actions: true
+                   actions: [ 'show', 'edit', 'delete' ]
+                   batch_actions: [ 'delete' ]
+                   fields:
+                     - { property: 'step1Title', label: 'step1Title' }
+                     - { property: 'step1Img', label: 'step1Img' }
+                     - { property: 'step1ImgFile', type: 'image', base_path: 'uploads_path%' }
+                     - { property: 'step1Body', label: 'step1Body' }
+                     - { property: 'step2Title', label: 'step2Title' }
+                     - { property: 'step2Img', label: 'step2Img' }
+                     - { property: 'step2ImgFile', type: 'image', base_path: 'uploads_path%' }
+                     - { property: 'step2Body', label: 'step2Body' }
+                     - { property: 'step3Title', label: 'step3Title' }
+                     - { property: 'step3Img', label: 'step3Img' }
+                     - { property: 'step3ImgFile', type: 'image', base_path: 'uploads_path%' }
+                     - { property: 'step3Body', label: 'step3Body' }
+                     - { property: 'step4Title', label: 'step4Title' }
+                     - { property: 'step4Img', label: 'step4Img' }
+                     - { property: 'step4ImgFile', type: 'image', base_path: 'uploads_path%' }
+                     - { property: 'step4Body', label: 'step4Body' }
+                     - { property: 'contributeTitle', label: 'contributeTitle' }
+               show:
+                   fields:
+                     - { property: 'step1Title', label: 'step1Title' }
+                     - { property: 'step1Img', label: 'step1Img' }
+                     - { property: 'step1ImgFile', type: 'image', base_path: 'uploads_path%' }
+                     - { property: 'step1Body', label: 'step1Body' }
+                     - { property: 'step2Title', label: 'step2Title' }
+                     - { property: 'step2Img', label: 'step2Img' }
+                     - { property: 'step2ImgFile', type: 'image', base_path: 'uploads_path%' }
+                     - { property: 'step2Body', label: 'step2Body' }
+                     - { property: 'step3Title', label: 'step3Title' }
+                     - { property: 'step3Img', label: 'step3Img' }
+                     - { property: 'step3ImgFile', type: 'image', base_path: 'uploads_path%' }
+                     - { property: 'step3Body', label: 'step3Body' }
+                     - { property: 'step4Title', label: 'step4Title' }
+                     - { property: 'step4Img', label: 'step4Img' }
+                     - { property: 'step4ImgFile', type: 'image', base_path: 'uploads_path%' }
+                     - { property: 'step4Body', label: 'step4Body' }
+                     - { property: 'contributeTitle', label: 'contributeTitle' }
+
+
+
+        Homepage:
+             class: App\Entity\Homepage
+             label: "Page d'acceuil"
+             form:
+                 fields:
+                   - { property: 'goalTitle', label: 'goalTitle' }
+                   - { property: 'goalBody', label: 'goalBody' }
+                   - { property: 'targetTitle', label: 'targetTitle' }
+                   - { property: 'targetBody', label: 'targetBody' }
+                   - { property: 'targetImgFam', label: 'targetImgFam' }
+                   - { property: 'targetImgFamFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+                   - { property: 'targetImgPlace', label: 'targetImgPlace' }
+                   - { property: 'targetImgPlaceFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+                   - { property: 'approachTitle', label: 'approachTitle' }
+                   - { property: 'approachSubTitle', label: 'approachSubTitle' }
+                   - { property: 'approachBody', label: 'approachBody' }
+                   - { property: 'sectionTitle', label: 'sectionTitle' }
+                   - { property: 'sectionImg', label: 'sectionImg' }
+                   - { property: 'sectionImgFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+                   - { property: 'sectionBody', label: 'sectionBody' }
+                   - { property: 'targetTitle1', label: 'targetTitle1' }
+                   - { property: 'targetTitle2', label: 'targetTitle2' }
+                   - { property: 'banner', label: 'banner' }
+                   - { property: 'bannerFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+             list:
+                 collapse_actions: true
+                 actions: [ 'show', 'edit', 'delete' ]
+                 batch_actions: [ 'delete' ]
+                 fields:
+                   - { property: 'goalTitle', label: 'goalTitle' }
+                   - { property: 'goalBody', label: 'goalBody' }
+                   - { property: 'targetTitle', label: 'targetTitle' }
+                   - { property: 'targetBody', label: 'targetBody' }
+                   - { property: 'targetImgFam', label: 'targetImgFam' }
+                   - { property: 'targetImgFamFile', type: 'image', base_path: 'uploads_path%' }
+                   - { property: 'targetImgPlace', label: 'targetImgPlace' }
+                   - { property: 'targetImgPlaceFile', type: 'image', base_path: 'uploads_path%' }
+                   - { property: 'approachTitle', label: 'approachTitle' }
+                   - { property: 'approachSubTitle', label: 'approachSubTitle' }
+                   - { property: 'approachBody', label: 'approachBody' }
+                   - { property: 'sectionTitle', label: 'sectionTitle' }
+                   - { property: 'sectionImg', label: 'sectionImg' }
+                   - { property: 'sectionImgFile', type: 'image', base_path: 'uploads_path%' }
+                   - { property: 'sectionBody', label: 'sectionBody' }
+                   - { property: 'targetTitle1', label: 'targetTitle1' }
+                   - { property: 'targetTitle2', label: 'targetTitle2' }
+                   - { property: 'banner', label: 'banner' }
+                   - { property: 'bannerFile', type: 'image', base_path: 'uploads_path%' }
+             show:
+                 fields:
+                   - { property: 'goalTitle', label: 'goalTitle' }
+                   - { property: 'goalBody', label: 'goalBody' }
+                   - { property: 'targetTitle', label: 'targetTitle' }
+                   - { property: 'targetBody', label: 'targetBody' }
+                   - { property: 'targetImgFam', label: 'targetImgFam' }
+                   - { property: 'targetImgFam', type: 'image', base_path: '%uploads_path%' }
+                   - { property: 'targetImgPlace', label: 'targetImgPlace' }
+                   - { property: 'targetImgPlace', type: 'image', base_path: '%uploads_path%' }
+                   - { property: 'approachTitle', label: 'approachTitle' }
+                   - { property: 'approachSubTitle', label: 'approachSubTitle' }
+                   - { property: 'approachBody', label: 'approachBody' }
+                   - { property: 'sectionTitle', label: 'sectionTitle' }
+                   - { property: 'sectionImg', label: 'sectionImg' }
+                   - { property: 'sectionImg', type: 'image', base_path: '%uploads_path%' }
+                   - { property: 'sectionBody', label: 'sectionBody' }
+                   - { property: 'targetTitle1', label: 'targetTitle1' }
+                   - { property: 'targetTitle2', label: 'targetTitle2' }
+                   - { property: 'banner', label: 'banner' }
+                   - { property: 'banner', type: 'image', base_path: '%uploads_path%' }
+        Target:
+            class: App\Entity\Target
+            label: "Target"
+            form:
+                fields:
+                  - { property: 'name', label: 'Cible' }
+            list:
+                collapse_actions: true
+                actions: [ 'show', 'edit', 'delete' ]
+                batch_actions: [ 'delete' ]
+                fields:
+                  - { property: 'name', label: 'Cible' }
+            show:
+                fields:
+                  - { property: 'name', label: 'Cible' }
+
+        User:
+            class: App\Entity\User
+            label: "Utilisateurs"
+            form:
+                fields:
+                  - { property: 'email', label: 'email' }
+                  - { property: 'firstname', label: 'firstname' }
+                  - { property: 'lastname', label: 'lastname' }
+                  - { property: 'gender', label: 'gender' }
+                  - { property: 'birthday', label: 'birthday' }
+                  - { property: 'profession', label: 'profession' }
+                  - { property: 'marital', label: 'marital' }
+                  - { property: 'channelnum', label: 'channelnum' }
+                  - { property: 'complement', label: 'complement' }
+                  - { property: 'namevoie', label: 'namevoie' }
+                  - { property: 'cp', label: 'cp' }
+                  - { property: 'city', label: 'city' }
+                  - { property: 'country', label: 'country' }
+                  - { property: 'phone', label: 'phone' }
+                  - { property: 'mobile', label: 'mobile' }
+                  - { property: 'hobbies', label: 'hobbies' }
+                  - { property: 'username', label: 'username' }
+                  - { property: 'avatarFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
+            list:
+                collapse_actions: true
+                actions: [ 'show', 'edit', 'delete' ]
+                batch_actions: [ 'delete' ]
+                fields:
+                  - { property: 'email', label: 'email' }
+                  - { property: 'firstname', label: 'firstname' }
+                  - { property: 'lastname', label: 'lastname' }
+                  - { property: 'gender', label: 'gender' }
+                  - { property: 'birthday', label: 'birthday' }
+                  - { property: 'profession', label: 'profession' }
+                  - { property: 'marital', label: 'marital' }
+                  - { property: 'channelnum', label: 'channelnum' }
+                  - { property: 'complement', label: 'complement' }
+                  - { property: 'namevoie', label: 'namevoie' }
+                  - { property: 'cp', label: 'cp' }
+                  - { property: 'city', label: 'city' }
+                  - { property: 'country', label: 'country' }
+                  - { property: 'phone', label: 'phone' }
+                  - { property: 'mobile', label: 'mobile' }
+                  - { property: 'hobbies', label: 'hobbies' }
+                  - { property: 'username', label: 'username' }
+                  - { property: 'avatar', type: 'image', base_path: '%uploads_path%' }
+            show:
+                fields:
+                  - { property: 'email', label: 'email' }
+                  - { property: 'firstname', label: 'firstname' }
+                  - { property: 'lastname', label: 'lastname' }
+                  - { property: 'gender', label: 'gender' }
+                  - { property: 'birthday', label: 'birthday' }
+                  - { property: 'profession', label: 'profession' }
+                  - { property: 'marital', label: 'marital' }
+                  - { property: 'channelnum', label: 'channelnum' }
+                  - { property: 'complement', label: 'complement' }
+                  - { property: 'namevoie', label: 'namevoie' }
+                  - { property: 'cp', label: 'cp' }
+                  - { property: 'city', label: 'city' }
+                  - { property: 'country', label: 'country' }
+                  - { property: 'phone', label: 'phone' }
+                  - { property: 'mobile', label: 'mobile' }
+                  - { property: 'hobbies', label: 'hobbies' }
+                  - { property: 'username', label: 'username' }
+                  - { property: 'avatar', type: 'image', base_path: '%uploads_path%' }
