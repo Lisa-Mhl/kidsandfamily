@@ -4,14 +4,19 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Entity\Comment;
-use App\Entity\Homepage;
+use App\Entity\Contact;
 use App\Form\CommentType;
+use App\Form\ContactType;
+use App\Repository\AboutRepository;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\CommentRepository;
+use App\Repository\ContributeRepository;
 use App\Repository\HomepageRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\Mailer;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -26,7 +31,7 @@ class DefaultController extends AbstractController
     {
         return $this->render('default/index.html.twig', [
             'articles' => $articleRepository->findAll(),
-            'homepages' =>$homepageRepository->findAll(),
+            'homepages' => $homepageRepository->findAll(),
         ]);
     }
 
@@ -34,9 +39,11 @@ class DefaultController extends AbstractController
      * @Route("/a-propos", name="about")
      * @return Response
      */
-    public function about()
+    public function about(AboutRepository $aboutRepository)
     {
-        return $this->render('default/about.html.twig');
+        return $this->render('default/about.html.twig', [
+            'abouts' => $aboutRepository->findAll(),
+        ]);
     }
 
     /**
@@ -83,10 +90,49 @@ class DefaultController extends AbstractController
 
     /**
      * @Route("/contribuer", name="contribute")
+     * @param ContributeRepository $contributeRepository
+     * @return Response
      */
-    public function contribute()
+    public function contribute(ContributeRepository $contributeRepository)
     {
-        return $this->render('default/contribute.html.twig');
+        return $this->render('default/contribute.html.twig', [
+            'contributes' => $contributeRepository->findAll(),
+        ]);
     }
+
+    /**
+     * @Route("/contact", name="contact")
+     * @param Request $request
+     * @param MailerInterface $mailer
+     * @return Response
+     */
+    public function contact(Request $request, MailerInterface $mailer)
+    {
+        $contact = new Contact();
+        $form = $this->createForm(ContactType::class, $contact);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($contact);
+            $em->flush();
+
+            #TO DO : AJOUTER NOTIFICATION / CONFIRMATION
+            return $this->redirectToRoute('merci');
+        }
+
+        return $this->render('default/contact.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/merci", name="merci")
+     */
+    public function thanks()
+    {
+        return $this->render('default/thanks.html.twig');
+    }
+
 
 }
