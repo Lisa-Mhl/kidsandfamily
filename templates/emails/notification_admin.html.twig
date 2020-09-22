@@ -1,0 +1,40 @@
+{% extends 'base_email.html.twig' %}
+
+{% block body %}
+    <row>
+        <columns>
+            <p>
+                Vous avez reçu un message depuis le site Kids & Family.
+            </p>
+        </columns>
+    </row>
+    <row class="message">
+        <columns>
+            <spacer size="35"></spacer>
+            <h2>
+                <center>
+                    Message :
+                </center>
+            </h2>
+            <spacer size="20"></spacer>
+        </columns>
+    </row>
+    <row>
+        <columns>
+            <p>
+                {{ contact.message }}
+            </p>
+            <p>
+                Provenant de : <b>{{ contact.email }}</b>
+            </p>
+        </columns>
+    </row>
+    <hr>
+    <row>
+        <columns>
+            <center>
+                <button href="{{ url('home') }}">Kids & Family</button>
+            </center>
+        </columns>
+    </row>
+{% endblock %}
