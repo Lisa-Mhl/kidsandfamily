@@ -1,0 +1,101 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+
+        article_photo:
+            uri_prefix: '%uploads_path%'
+            upload_destination: '%kernel.project_dir%/public/%uploads_path%'
+
+        article_video:
+            uri_prefix: '%uploads_path%'
+            upload_destination: '%kernel.project_dir%/public/%uploads_path%'
+
+        article_pdf:
+            uri_prefix: '%uploads_path%'
+            upload_destination: '%kernel.project_dir%/public/%uploads_path%'
+
+        article_photoB:
+            uri_prefix: '%uploads_path%'
+            upload_destination: '%kernel.project_dir%/public/%uploads_path%'
+
+        article_photoC:
+            uri_prefix: '%uploads_path%'
+            upload_destination: '%kernel.project_dir%/public/%uploads_path%'
+
+        category_poster:
+            uri_prefix: '%uploads_path%'
+            upload_destination: '%kernel.project_dir%/public/%uploads_path%'
+
+        home_targetImgFam:
+            uri_prefix: '%uploads_path%'
+            upload_destination: '%kernel.project_dir%/public/%uploads_path%'
+
+        home_targetImgPlace:
+            uri_prefix: '%uploads_path%'
+            upload_destination: '%kernel.project_dir%/public/%uploads_path%'
+
+        home_sectionImg:
+            uri_prefix: '%uploads_path%'
+            upload_destination: '%kernel.project_dir%/public/%uploads_path%'
+
+        home_banner:
+            uri_prefix: '%uploads_path%'
+            upload_destination: '%kernel.project_dir%/public/%uploads_path%'
+
+        user_avatar:
+            uri_prefix: '%uploads_path%'
+            upload_destination: '%kernel.project_dir%/public/%uploads_path%'
+
+        about_video:
+            uri_prefix: '%uploads_path%'
+            upload_destination: '%kernel.project_dir%/public/%uploads_path%'
+
+        about_vision:
+            uri_prefix: '%uploads_path%'
+            upload_destination: '%kernel.project_dir%/public/%uploads_path%'
+
+        about_local:
+            uri_prefix: '%uploads_path%'
+            upload_destination: '%kernel.project_dir%/public/%uploads_path%'
+
+        about_message:
+            uri_prefix: '%uploads_path%'
+            upload_destination: '%kernel.project_dir%/public/%uploads_path%'
+
+        about_deals:
+            uri_prefix: '%uploads_path%'
+            upload_destination: '%kernel.project_dir%/public/%uploads_path%'
+
+        about_event:
+            uri_prefix: '%uploads_path%'
+            upload_destination: '%kernel.project_dir%/public/%uploads_path%'
+
+        about_help:
+            uri_prefix: '%uploads_path%'
+            upload_destination: '%kernel.project_dir%/public/%uploads_path%'
+
+        about_give:
+            uri_prefix: '%uploads_path%'
+            upload_destination: '%kernel.project_dir%/public/%uploads_path%'
+
+        contribute_step1:
+            uri_prefix: '%uploads_path%'
+            upload_destination: '%kernel.project_dir%/public/%uploads_path%'
+
+        contribute_step2:
+            uri_prefix: '%uploads_path%'
+            upload_destination: '%kernel.project_dir%/public/%uploads_path%'
+
+        contribute_step3:
+            uri_prefix: '%uploads_path%'
+            upload_destination: '%kernel.project_dir%/public/%uploads_path%'
+
+        contribute_step4:
+            uri_prefix: '%uploads_path%'
+            upload_destination: '%kernel.project_dir%/public/%uploads_path%'
+
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true

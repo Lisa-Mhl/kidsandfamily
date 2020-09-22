@@ -3,12 +3,18 @@
 namespace App\Entity;
 
 use App\Repository\ArticleRepository;
+use DateTimeImmutable;
+use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
+ * @Vich\Uploadable
  */
 class Article
 {
@@ -45,14 +51,41 @@ class Article
     private $photo;
 
     /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="article_photo", fileNameProperty="photo")
+     *
+     * @var File|null
+     */
+    private $photoFile;
+
+    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $video;
 
     /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="article_video", fileNameProperty="video")
+     *
+     * @var File|null
+     */
+    private $videoFile;
+
+    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $pdf;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="article_pdf", fileNameProperty="pdf")
+     *
+     * @var File|null
+     */
+    private $pdfFile;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -81,9 +114,27 @@ class Article
     private $photoB;
 
     /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="article_photoB", fileNameProperty="photoB")
+     *
+     * @var File|null
+     */
+    private $photoBFile;
+
+    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $photoC;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="article_photoC", fileNameProperty="photoC")
+     *
+     * @var File|null
+     */
+    private $photoCFile;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="articles")
@@ -109,6 +160,13 @@ class Article
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $website;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     *
+     * @var DateTimeInterface|null
+     */
+    private $updatedAt;
 
     public function __toString()
     {
@@ -308,6 +366,77 @@ class Article
         return $this;
     }
 
+
+    /**
+     * @param File|UploadedFile|null $photoFile
+     */
+    public function setPhotoFile(?File $photoFile = null): void
+    {
+        $this->photoFile = $photoFile;
+
+        if (null !== $photoFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new DateTimeImmutable();
+        }
+    }
+
+    /**
+     * @param File|UploadedFile|null $videoFile
+     */
+    public function setVideoFile(?File $videoFile = null): void
+    {
+        $this->videoFile = $videoFile;
+
+        if (null !== $videoFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new DateTimeImmutable();
+        }
+    }
+
+    /**
+     * @param File|UploadedFile|null $pdfFile
+     */
+    public function setPdfFile(?File $pdfFile = null): void
+    {
+        $this->pdfFile = $pdfFile;
+
+        if (null !== $pdfFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new DateTimeImmutable();
+        }
+    }
+
+    /**
+     * @param File|UploadedFile|null $photoBFile
+     */
+    public function setPhotoBFile(?File $photoBFile = null): void
+    {
+        $this->photoBFile = $photoBFile;
+
+        if (null !== $photoBFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new DateTimeImmutable();
+        }
+    }
+
+    /**
+     * @param File|UploadedFile|null $photoCFile
+     */
+    public function setPhotoCFile(?File $photoCFile= null): void
+    {
+        $this->photoCFile = $photoCFile;
+
+        if (null !== $photoCFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new DateTimeImmutable();
+        }
+    }
+
     /**
      * @return Collection|Comment[]
      */
@@ -373,5 +502,61 @@ class Article
         $this->website = $website;
 
         return $this;
+    }
+
+    /**
+     * @return DateTimeInterface|null
+     */
+    public function getUpdatedAt(): ?DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param DateTimeInterface|null $updatedAt
+     */
+    public function setUpdatedAt(?DateTimeInterface $updatedAt): void
+    {
+        $this->updatedAt = $updatedAt;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getPhotoFile(): ?File
+    {
+        return $this->photoFile;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getPdfFile(): ?File
+    {
+        return $this->pdfFile;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getVideoFile(): ?File
+    {
+        return $this->videoFile;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getPhotoBFile(): ?File
+    {
+        return $this->photoBFile;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getPhotoCFile(): ?File
+    {
+        return $this->photoCFile;
     }
 }

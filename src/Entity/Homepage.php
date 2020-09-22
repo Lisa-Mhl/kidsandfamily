@@ -3,10 +3,15 @@
 namespace App\Entity;
 
 use App\Repository\HomepageRepository;
+use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=HomepageRepository::class)
+ * @Vich\Uploadable
  */
 class Homepage
 {
@@ -43,9 +48,27 @@ class Homepage
     private $targetImgFam;
 
     /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="home_targetImgFam", fileNameProperty="targetImgFam")
+     *
+     * @var File|null
+     */
+    private $targetImgFamFile;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $targetImgPlace;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="home_targetImgPlace", fileNameProperty="targetImgPlace")
+     *
+     * @var File|null
+     */
+    private $targetImgPlaceFile;
 
     /**
      * @ORM\Column(type="text")
@@ -73,6 +96,15 @@ class Homepage
     private $sectionImg;
 
     /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="home_sectionImg", fileNameProperty="sectionImg")
+     *
+     * @var File|null
+     */
+    private $sectionImgFile;
+
+    /**
      * @ORM\Column(type="text")
      */
     private $sectionBody;
@@ -91,6 +123,25 @@ class Homepage
      * @ORM\Column(type="text")
      */
     private $targetBody2;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $banner;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="home_banner", fileNameProperty="banner")
+     *
+     * @var File|null
+     */
+    private $bannerFile;
+    /**
+     * @var DateTimeImmutable
+     */
+    private $updatedAt;
+
 
     public function getId(): ?int
     {
@@ -275,5 +326,121 @@ class Homepage
         $this->targetBody2 = $targetBody2;
 
         return $this;
+    }
+
+    public function getBanner(): ?string
+    {
+        return $this->banner;
+    }
+
+    public function setBanner(?string $banner): self
+    {
+        $this->banner = $banner;
+
+        return $this;
+    }
+
+    /**
+     * @param File|UploadedFile|null $targetImgFamFile
+     */
+    public function setTargetImgFamFile(?File $targetImgFamFile = null): void
+    {
+        $this->targetImgFamFile = $targetImgFamFile;
+
+        if (null !== $targetImgFamFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new DateTimeImmutable();
+        }
+    }
+
+    /**
+     * @param File|UploadedFile|null $targetImgPlaceFile
+     */
+    public function setTargetImgPlaceFile(?File $targetImgPlaceFile = null): void
+    {
+        $this->targetImgPlaceFile = $targetImgPlaceFile;
+
+        if (null !== $targetImgPlaceFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new DateTimeImmutable();
+        }
+    }
+
+    /**
+     * @param File|UploadedFile|null $sectionImgFile
+     */
+    public function setSectionImgFile(?File $sectionImgFile = null): void
+    {
+        $this->targetImgPlaceFile = $sectionImgFile;
+
+        if (null !== $sectionImgFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new DateTimeImmutable();
+        }
+    }
+
+    /**
+     * @param File|UploadedFile|null $bannerFile
+     */
+    public function setBannerFile(?File $bannerFile = null): void
+    {
+        $this->bannerFile = $bannerFile;
+
+        if (null !== $bannerFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new DateTimeImmutable();
+        }
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getTargetImgFamFile(): ?File
+    {
+        return $this->targetImgFamFile;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getTargetImgPlaceFile(): ?File
+    {
+        return $this->targetImgPlaceFile;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getSectionImgFile(): ?File
+    {
+        return $this->sectionImgFile;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getBannerFile(): ?File
+    {
+        return $this->bannerFile;
+    }
+
+    /**
+     * @return DateTimeImmutable
+     */
+    public function getUpdatedAt(): DateTimeImmutable
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param DateTimeImmutable $updatedAt
+     */
+    public function setUpdatedAt(DateTimeImmutable $updatedAt): void
+    {
+        $this->updatedAt = $updatedAt;
     }
 }
