@@ -3,14 +3,20 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @UniqueEntity(fields={"email"}, message="Un compte avec cette adresse email existe déjà")
  * @UniqueEntity(fields={"username"}, message="Ce pseudo est déjà pris")
+ * @Vich\Uploadable
  */
 class User implements UserInterface
 {
@@ -126,6 +132,20 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $avatar;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="user_avatar", fileNameProperty="avatar")
+     *
+     * @var File|null
+     */
+    private $avatarFile;
+
+    /**
+     * @var DateTimeImmutable
+     */
+    private $updatedAt;
 
 
     public function __toString()
@@ -411,6 +431,20 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+     * @param File|UploadedFile|null $avatarFile
+     */
+    public function setAvatarFile(?File $avatarFile = null): void
+    {
+        $this->avatarFile = $avatarFile;
+
+        if (null !== $avatarFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new DateTimeImmutable();
+        }
+    }
+
     public function getAvatar(): ?string
     {
         return $this->avatar;
@@ -421,5 +455,29 @@ class User implements UserInterface
         $this->avatar = $avatar;
 
         return $this;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getAvatarFile(): ?File
+    {
+        return $this->avatarFile;
+    }
+
+    /**
+     * @return DateTimeImmutable
+     */
+    public function getUpdatedAt(): DateTimeImmutable
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param DateTimeImmutable $updatedAt
+     */
+    public function setUpdatedAt(DateTimeImmutable $updatedAt): void
+    {
+        $this->updatedAt = $updatedAt;
     }
 }
