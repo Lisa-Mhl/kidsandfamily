@@ -57,4 +57,20 @@ class Mailer
         $this->mailer->send($email);
     }
 
+
+    public function notifReport($entity)
+    {
+        $email = (new TemplatedEmail())
+            ->from(new Address ($this->param->get('mailer_from'), "Kids & Family"))
+            ->to($this->param->get('mailer_from'))
+            ->subject("Une publication a été signalée")
+            ->htmlTemplate('emails/report_notification.html.twig')
+            ->context([
+                'report' => $entity,
+                'article' => $entity,
+            ]);
+
+        $this->mailer->send($email);
+    }
+
 }

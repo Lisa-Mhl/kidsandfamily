@@ -1,0 +1,43 @@
+{% extends 'base_email.html.twig' %}
+
+{% block body %}
+    <row>
+        <columns>
+            <p>
+                Une publication vient d'être signalée par un utilisateur de Kids & Family !
+            </p>
+        </columns>
+    </row>
+    <row class="message">
+        <columns>
+            <spacer size="35"></spacer>
+            <h2>
+                <center>
+                    Détails du signalement :
+                </center>
+            </h2>
+            <spacer size="20"></spacer>
+        </columns>
+    </row>
+    <row>
+        <columns>
+            <p>
+                {{ report.subject }}
+            </p>
+            <p>
+                Publication concernée : <a href="{{ url('article_details', {'id': report.article.id} )}}">{{ report.article }}</a>
+            </p>
+            <p>
+                Provenant de : <b>{{ report.email }}</b>
+            </p>
+        </columns>
+    </row>
+    <hr>
+    <row>
+        <columns>
+            <center>
+                <button href="{{ url('home') }}">Accueil</button>
+            </center>
+        </columns>
+    </row>
+{% endblock %}
