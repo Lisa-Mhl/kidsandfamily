@@ -175,4 +175,14 @@ class DefaultController extends AbstractController
     {
         return $this->render('default/report_thanks.html.twig');
     }
+
+    /**
+     * @Route("/map", name = "map")
+     *
+     */
+    public function showMap()
+    {
+        return $this->render('default/map.html.twig');
+    }
+
 }
