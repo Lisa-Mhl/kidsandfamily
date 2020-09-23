@@ -180,9 +180,11 @@ class DefaultController extends AbstractController
      * @Route("/map", name = "map")
      *
      */
-    public function showMap()
+    public function showMap(ArticleRepository $articleRepository)
     {
-        return $this->render('default/map.html.twig');
+        return $this->render('default/map.html.twig', [
+            'articles' => $articleRepository->findAll(),
+        ]);
     }
 
 }
