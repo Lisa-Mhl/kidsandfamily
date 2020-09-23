@@ -95,6 +95,8 @@ class DefaultController extends AbstractController
             $entityManager->persist($report);
             $entityManager->flush();
 
+            $mailer->notifReport($report);
+
             return $this->redirectToRoute('report_thanks');
         }
         return $this->render('default/report.html.twig', [
