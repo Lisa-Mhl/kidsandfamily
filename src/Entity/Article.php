@@ -162,6 +162,10 @@ class Article
     private $website;
 
     /**
+     * @ORM\OneToMany(targetEntity=Report::class, mappedBy="article")
+     */
+    private $reports;
+
      * @ORM\Column(type="datetime", nullable=true)
      *
      * @var DateTimeInterface|null
@@ -177,6 +181,7 @@ class Article
     {
         $this->category = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->reports = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -505,6 +510,36 @@ class Article
     }
 
     /**
+     * @return Collection|Report[]
+     */
+    public function getReports(): Collection
+    {
+        return $this->reports;
+    }
+
+    public function addReport(Report $report): self
+    {
+        if (!$this->reports->contains($report)) {
+            $this->reports[] = $report;
+            $report->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReport(Report $report): self
+    {
+        if ($this->reports->contains($report)) {
+            $this->reports->removeElement($report);
+            // set the owning side to null (unless already changed)
+            if ($report->getArticle() === $this) {
+                $report->setArticle(null);
+            }
+        }
+
+        return $this;
+
+     /** 
      * @return DateTimeInterface|null
      */
     public function getUpdatedAt(): ?DateTimeInterface

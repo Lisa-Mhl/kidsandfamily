@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="ctn thanksCtn">
+        <h1 class="detailsTitle">Merci pour votre signalement ! <br>
+            <span class="thanksBody">Nous examinons votre requête et procédons à la vérification de la publication</span></h1>
+        <div class="center">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            <a class="logLink bold" href="{{ path('home') }}">Retour à l'accueil</a>
+        </div>
+        <div class="center">
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            <a class="logLink bold" href="{{ path('all_articles') }}">Voir les publications</a>
+        </div>
+    </div>
+{% endblock %}

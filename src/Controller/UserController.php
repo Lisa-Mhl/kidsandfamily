@@ -174,5 +174,6 @@ class UserController extends AbstractController
             'categories' => $categoryRepository->findAll(),
         ]);
     }
+
 }
 

@@ -72,6 +72,11 @@
             <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
             <a class="instagram" href="#"><i class="fa fa-pinterest"></i></a>
             <a class="instagram" href="#"><i class="fa fa-twitter"></i></a>
+
+            <div class="report">
+                <p class="reportTitle">Contenu inapproprié ?</p>
+                <a class="red bold" href="{{ path('report', {'id': article.id}) }}">Signaler cette publication</a>
+            </div>
         </div>
 
         {% if article.telephone or article.email or article.website %}
