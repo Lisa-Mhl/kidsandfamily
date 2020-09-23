@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
+use Serializable;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\HttpFoundation\File\File;
@@ -18,7 +19,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @UniqueEntity(fields={"username"}, message="Ce pseudo est déjà pris")
  * @Vich\Uploadable
  */
-class User implements UserInterface
+class User implements UserInterface, Serializable
 {
     /**
      * @ORM\Id
@@ -462,5 +463,30 @@ class User implements UserInterface
     public function setUpdatedAt(DateTimeImmutable $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
+    }
+
+    public function serialize()
+    {
+        // TODO: Implement serialize() method.
+        return serialize(array(
+            $this->id,
+            $this->avatar,
+            $this->username,
+            $this->email,
+            $this->password,
+        ));
+
+    }
+
+    public function unserialize($serialized)
+    {
+        // TODO: Implement unserialize() method.
+        list (
+            $this->id,
+            $this->avatar,
+            $this->username,
+            $this->email,
+            $this->password,
+            ) = unserialize($serialized);
     }
 }
