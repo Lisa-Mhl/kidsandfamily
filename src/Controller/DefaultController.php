@@ -5,8 +5,10 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Entity\Comment;
 use App\Entity\Contact;
+use App\Entity\Report;
 use App\Form\CommentType;
 use App\Form\ContactType;
+use App\Form\ReportType;
 use App\Repository\AboutRepository;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
@@ -74,6 +76,35 @@ class DefaultController extends AbstractController
     }
 
     /**
+     * @Route("/signaler/{id}", name="report")
+     * @param Article $article
+     * @param Request $request
+     * @param Mailer $mailer
+     * @return Response
+     */
+    public function report(Article $article, Request $request, Mailer $mailer)
+    {
+        $report = new Report();
+        $form = $this->createForm(ReportType::class, $report);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $user = $this->getUser();
+            $report->setEmail($user);
+            $report->setCreatedAt(new \DateTime());
+            $entityManager->persist($report);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('report_thanks');
+        }
+        return $this->render('default/report.html.twig', [
+            'article' => $article,
+            'form' => $form->createView(),
+
+        ]);
+    }
+
+    /**
      * @Route("/articles", name="all_articles")
      * @param ArticleRepository $articleRepository
      * @param CategoryRepository $categoryRepository
@@ -98,10 +129,11 @@ class DefaultController extends AbstractController
             'contributes' => $contributeRepository->findAll(),
         ]);
     }
+
     /**
      * @Route("/contact", name="contact")
      */
-    public function contact(Request $request, Mailer $mailer) : Response
+    public function contact(Request $request, Mailer $mailer): Response
     {
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
@@ -133,5 +165,11 @@ class DefaultController extends AbstractController
         return $this->render('default/thanks.html.twig');
     }
 
-
+    /**
+     * @Route("/signalement", name="report_thanks")
+     */
+    public function reportThanks()
+    {
+        return $this->render('default/report_thanks.html.twig');
+    }
 }

@@ -17,6 +17,10 @@ body {
     justify-content: center;
 }
 
+.red {
+    color: darkred;
+}
+
 /* profile*/
 
 #cardProfile {
@@ -878,12 +882,29 @@ hr {
     margin-bottom: 20em;
 }
 
-.thanksCtn a{
+.thanksCtn a {
     padding-left: 0.5em;
 }
 
-.thanksBody{
+.thanksBody {
     font-size: 0.7em;
+}
+
+/* REPORT  */
+
+.reportCtn {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.reportFs {
+    margin-top: 8em;
+    padding-bottom: 15em;
+}
+
+#reportBtn{
+    width: 20%;
 }
 
 /* ALL ARTICLES  */
@@ -1218,6 +1239,17 @@ hr {
     text-decoration: none;
     color: dodgerblue;
     transition: 1s;
+}
+
+.report {
+    background-color: whitesmoke;
+    padding: 1em;
+    text-align: center;
+    margin-top: 2em
+}
+
+.reportTitle {
+
 }
 
 .articleContact {

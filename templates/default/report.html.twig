@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% if app.user %}
+        <div class="ctn reportCtn">
+            <h1 class="detailsTitle">Signaler la publication "{{ article.title }}"</h1>
+
+            {{ form_start(form) }}
+            <fieldset class="formFs reportFs">
+                <div class="hidden">
+                    {{ form_label(form.email, 'Email') }}
+                    {{ form_widget(form.email) }}
+                </div>
+                {{ form_label(form.subject, 'Pour quel motif souhaitez-vous signaler cette publication ?') }}
+                {{ form_widget(form.subject) }}
+                <div class="center">
+                    <button class="loginBtn" id="reportBtn">{{ button_label|default('Signaler') }}</button>
+                </div>
+                {{ form_end(form) }}
+            </fieldset>
+
+        </div>
+    {% endif %}
+{% endblock %}
