@@ -166,6 +166,7 @@ class Article
      */
     private $reports;
 
+    /**
      * @ORM\Column(type="datetime", nullable=true)
      *
      * @var DateTimeInterface|null
@@ -536,10 +537,10 @@ class Article
                 $report->setArticle(null);
             }
         }
-
         return $this;
+    }
 
-     /** 
+     /**
      * @return DateTimeInterface|null
      */
     public function getUpdatedAt(): ?DateTimeInterface
