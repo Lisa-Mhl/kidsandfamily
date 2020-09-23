@@ -44,7 +44,7 @@
             {% if app.user %}
                 <li class="nav-item">
                     <i class="fas fa-map-marked-alt navIcon"></i>
-                    <a id="nav-link" class="nav-link" href="#">La Carte</a>
+                    <a id="nav-link" class="nav-link" href="{{ path('map') }}">La Carte</a>
                 </li>
 
             {% endif %}
@@ -109,7 +109,7 @@
             </li>
             {% if app.user %}
                 <li class="nav-item">
-                    <a id="navMobile-link" class="nav-link text-center" href="#">La Carte</a>
+                    <a id="navMobile-link" class="nav-link text-center" href=""{{ path('map') }}>La Carte</a>
                 </li>
             {% endif %}
             {% if app.user %}
