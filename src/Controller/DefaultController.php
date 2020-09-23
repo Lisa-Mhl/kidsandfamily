@@ -91,6 +91,7 @@ class DefaultController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $user = $this->getUser();
             $report->setEmail($user);
+            $report->setArticle($article);
             $report->setCreatedAt(new \DateTime());
             $entityManager->persist($report);
             $entityManager->flush();

@@ -67,6 +67,7 @@ class Mailer
             ->htmlTemplate('emails/report_notification.html.twig')
             ->context([
                 'report' => $entity,
+                'article' => $entity,
             ]);
 
         $this->mailer->send($email);

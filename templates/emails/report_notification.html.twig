@@ -13,7 +13,7 @@
             <spacer size="35"></spacer>
             <h2>
                 <center>
-                    Motif du signalement :
+                    Détails du signalement :
                 </center>
             </h2>
             <spacer size="20"></spacer>
@@ -23,6 +23,9 @@
         <columns>
             <p>
                 {{ report.subject }}
+            </p>
+            <p>
+                Publication concernée : <a href="{{ url('article_details', {'id': report.article.id} )}}">{{ report.article }}</a>
             </p>
             <p>
                 Provenant de : <b>{{ report.email }}</b>

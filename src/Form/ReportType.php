@@ -13,6 +13,7 @@ class ReportType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('article')
             ->add('email')
             ->add('subject', ChoiceType::class, [
                 'choices' => [
