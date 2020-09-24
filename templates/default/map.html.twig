@@ -1,10 +1,16 @@
 {% extends 'base_map.html.twig' %}
     {% block body %}
         {% if app.user %}
+            <!-- BARRE DE RECHERCHE -->
+            <input type="search" id="article_address" placeholder="Where are we going?"/>
+
 
             <div id="map">
                 <!-- Ici s'affichera la carte -->
             </div>
+
+
+
         {% else %}
             <div class="mustCo">
                 <p class="mustCoBody">Seul les utilisateurs connectés peuvent accéder à la carte</p>
