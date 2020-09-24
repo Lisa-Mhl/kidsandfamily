@@ -183,6 +183,16 @@ class Article
      */
     private $lng;
 
+    /**
+     * @ORM\Column(type="string", length=45, nullable=true)
+     */
+    private $city;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $zipcode;
+
     public function __toString()
     {
         return $this->getTitle();
@@ -626,6 +636,30 @@ class Article
     public function setLng(float $lng): self
     {
         $this->lng = $lng;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(?string $city): self
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getZipcode(): ?int
+    {
+        return $this->zipcode;
+    }
+
+    public function setZipcode(?int $zipcode): self
+    {
+        $this->zipcode = $zipcode;
 
         return $this;
     }

@@ -32,8 +32,12 @@
                 {{ form_widget(form.content) }}
                 {{ form_label(form.needs, 'Si vous avez besoin d\'aide de la part des ambassadeurs, de matériel (etc.) merci de détailler vos besoins (facultatif)') }}
                 {{ form_widget(form.needs) }}
-                {{ form_label(form.address, 'Veuillez indiquer l\'addresse de votre projet / événement') }}
+                {{ form_label(form.address, 'Adresse') }}
                 {{ form_widget(form.address) }}
+                {{ form_label(form.city, 'Ville') }}
+                {{ form_widget(form.city) }}
+                {{ form_label(form.zipcode, 'Code Postal') }}
+                {{ form_widget(form.zipcode) }}
                 {{ form_label(form.photo, 'Ajoutez une image d\'illustration') }}
                 {{ form_widget(form.photo) }}
 

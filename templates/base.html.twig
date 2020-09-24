@@ -199,6 +199,24 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
             integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
             crossorigin="anonymous"></script>
+
+    {# SEARCH BAR ALGOLIA #}
+    <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
+    <script>
+        let inputAddress = document.querySelector('#article_address')
+        if (inputAddress === null) {
+        }
+        var placesAutocomplete = places({
+            container: document.querySelector('#article_address')
+        });
+        placesAutocomplete.on('change', e => {
+            document.querySelector('#article_city').value = e.suggestion.city
+            document.querySelector('#article_zipcode').value = e.suggestion.postcode
+            document.querySelector('#article_lat').value = e.suggestion.latlng.lat
+            document.querySelector('#article_lng').value = e.suggestion.latlng.lng
+        })
+
+    </script>
 {% endblock %}
 
 
