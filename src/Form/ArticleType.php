@@ -25,6 +25,8 @@ class ArticleType extends AbstractType
                 'expanded' => true,
             ])
             ->add('address')
+            ->add('lat')
+            ->add('lng')
             ->add('heading', ChoiceType::class, [
                 'choices' => [
                     'Projet' => 'Projet',
