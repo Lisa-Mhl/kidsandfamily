@@ -97,7 +97,8 @@
             </li>
             {% if app.user %}
                 <li class="nav-item">
-                    <a id="navMobile-link" class="nav-link text-center" href="{{ path('profile', {'id': app.user.id }) }}">Mon
+                    <a id="navMobile-link" class="nav-link text-center"
+                       href="{{ path('profile', {'id': app.user.id }) }}">Mon
                         Compte</a>
                 </li>
             {% endif %}
@@ -134,12 +135,14 @@
             Information</a>
         <a href="{{ path('my_address', {'id': user.id }) }}"><i class="fa fa-fw fa-home" id="iconsProfile"></i>
             Coordonnées</a>
-        <a href="{{ path('categories', {'id' : user.id}) }}"><i class="fa fa-mobile" id="iconsProfile"></i> Catégories</a>
+        <a href="{{ path('categories', {'id' : user.id}) }}"><i class="fa fa-mobile" id="iconsProfile"></i>
+            Catégories</a>
         <a href="{{ path('hobbies', {'id': user.id}) }}"><i class="fa fa-heart" id="iconsProfile"></i> Centres
             d'intérêts</a>
         <a href="{{ path('my_articles', {'id': user.id}) }}"><i class="fa fa-picture-o" id="iconsProfile"></i> Mes
             publications</a>
-        <a href="#"><i class="fa fa-users" id="iconsProfile"></i> Discussion</a>
+        <a href="#"><i class="fa fa-commenting" id="iconsProfile"></i>
+            Discussion</a>
     </div>
     <!-- dropdown -->
     <div class="dropdown">

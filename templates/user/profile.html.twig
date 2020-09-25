@@ -7,31 +7,37 @@
 
     {% if app.user %}
         {% if is_granted('ROLE_USER') %}
+            <div class="profileCtn">
 
             <div class="card cardProfile" id="cardProfile">
                 <div class="card-body">
-                    <img class="card-img-top imgProfile" src="{{ vich_uploader_asset(user, 'avatarFile')}}" alt="mdr">
+                    <img class="card-img-top imgProfile" src="{{ vich_uploader_asset(user, 'avatarFile') }}"
+                         alt="profile picture">
                     <h1>{{ user.username }}</h1>
-                    <p>{{ user.firstname }}  {{ user.lastname }}</p>
-                    <p class="title">{{ user.email }}</p>
-                    <p>{{ user.phone }}</p>
-                    <p>{{ user.mobile }}</p>
-                    <p>{{ user.gender }}</p>
-                    <p>{{ user.birthday | date }}</p>
-                    <p>{{ user.profession }}</p>
-                    <p>{{ user.marital }}</p>
+                    <p>{{ user.firstname }}  {{ user.lastname }} <br>
+                    <p class="title"><span class="bold"> E-mail :</span> {{ user.email }}<br>
+                        {% if user.phone %}
+                            {{ user.phone }}<br>
+                        {% endif %}
+                        {% if user.mobile %}
+                            {{ user.mobile }}<br>
+                        {% endif %}
+                        {% if user.profession %}
+                            <span class="bold">Profession :</span> {{ user.profession }}<br>
+                        {% endif %}
+                        <span class="bold">Anniversaire :</span> {{ user.birthday | date("d/m") }}</p>
 
                     {# TO DO : AJOUTER SECURITE POUR QUE SEUL LE USER PUISSE MODIFIER SON PROFIL #}
                     <p>
                         <button class="btnProfile"><a class="linkProfile"
                                                       href="{{ path('user_edit', {'id': user.id}) }}">Modifier mes
-                                informations</a>
+                                Informations</a>
                         </button>
                     </p>
                     <p>
                         <button class="btnProfile"><a class="linkProfile"
-                                                      href="{{ path('app_forgot_password_request') }}">Modifier mon mot
-                                de passe</a></button>
+                                                      href="{{ path('app_forgot_password_request') }}">Modifier mon Mot
+                                de Passe</a></button>
                     </p>
                 </div>
             </div>
@@ -41,5 +47,6 @@
                 <td colspan="13">Aucun résultat trouvé</td>
             </tr>
         {% endif %}
+        </div>
     {% endif %}
 {% endblock %}

@@ -42,7 +42,8 @@
                             <div class="bottomCard">
                                 <div class="profileCard">
                                     {% if article.author.avatar %}
-                                        <img class="avatarCard" src="{{ article.author.avatar }}" alt="Photo du Profil">
+                                        {% set user = article.author %}
+                                        <img class="avatarCard" src="{{ vich_uploader_asset(user, 'avatarFile')}}" alt="Photo du Profil">
                                     {% endif %}
                                     <span id="authorCard">{{ article.author.username }}</span>
                                 </div>
@@ -97,7 +98,8 @@
                             <div class="bottomCard">
                                 <div class="profileCard">
                                     {% if article.author.avatar %}
-                                        <img class="avatarCard" src="{{ article.author.avatar }}" alt="Photo du Profil">
+                                        {% set user = article.author %}
+                                        <img class="avatarCard" src="{{ vich_uploader_asset(user, 'avatarFile')}}" alt="Photo du Profil">
                                     {% endif %}
                                     <span id="authorCard">{{ article.author.username }}</span>
                                 </div>
@@ -145,7 +147,8 @@
                             <div class="bottomCard">
                                 <div class="profileCard">
                                     {% if article.author.avatar %}
-                                        <img class="avatarCard" src="{{ article.author.avatar }}" alt="Photo du Profil">
+                                        {% set user = article.author %}
+                                        <img class="avatarCard" src="{{ vich_uploader_asset(user, 'avatarFile')}}" alt="Photo du Profil">
                                     {% endif %}
                                     <span id="authorCard">{{ article.author.username }}</span>
                                 </div>

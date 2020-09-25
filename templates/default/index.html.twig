@@ -48,12 +48,12 @@
                 <div class="card targetCard">
                     <div class="row" id="targetTitle">
                         <i class="fas fa-house-user"></i>
-                        <h4 class="card-title targetTitle">{{homepage.targetTitle2}}</h4></div>
+                        <h4 class="card-title targetTitle">{{ homepage.targetTitle2 }}</h4></div>
                     <img class="card-img targetImg"
-                         src="{{homepage.targetImgPlace}}"
+                         src="{{ homepage.targetImgPlace }}"
                          alt="Photo Famille">
                     <div class="enfant">
-                        {{homepage.targetBody2 }}
+                        {{ homepage.targetBody2 }}
                     </div>
                 </div>
             </div>
@@ -80,7 +80,7 @@
                         <div class="articleHead">
                             <h5 class="card-title articleTitle">{{ article.title }}</h5>
                             <span class="like">
-                    <i class="fas fa-heart"></i> J'aime</span>
+                    <i class="fas fa-heart cardLike"></i> J'aime</span>
                         </div>
                         {# TO DO : AJOUTER SYSTEME DE LIKE #}
                         <div class="row">
@@ -92,7 +92,8 @@
                         <div class="bottomCard">
                             <div class="profileCard">
                                 {% if article.author.avatar %}
-                                    <img class="avatarCard" src="{{ article.author.avatar }}" alt="Photo du Profil">
+                                    {% set user = article.author %}
+                                    <img class="avatarCard" src="{{ vich_uploader_asset(user, 'avatarFile')}}" alt="Photo du Profil">
                                 {% endif %}
                                 <span id="authorCard">{{ article.author.username }}</span>
                             </div>
@@ -139,7 +140,8 @@
                         <div class="bottomCard">
                             <div class="profileCard">
                                 {% if article.author.avatar %}
-                                    <img class="avatarCard" src="{{ article.author.avatar }}" alt="Photo du Profil">
+                                    {% set user = article.author %}
+                                    <img class="avatarCard" src="{{ vich_uploader_asset(user, 'avatarFile')}}" alt="Photo du Profil">
                                 {% endif %}
                                 <span id="authorCard">{{ article.author.username }}</span>
                             </div>
@@ -185,7 +187,8 @@
                         <div class="bottomCard">
                             <div class="profileCard">
                                 {% if article.author.avatar %}
-                                    <img class="avatarCard" src="{{ article.author.avatar }}" alt="Photo du Profil">
+                                    {% set user = article.author %}
+                                    <img class="avatarCard" src="{{ vich_uploader_asset(user, 'avatarFile')}}" alt="Photo du Profil">
                                 {% endif %}
                                 <span id="authorCard">{{ article.author.username }}</span>
                             </div>

@@ -31,7 +31,8 @@
                 {% for comment in article.comments %}
                 <div class="profileCom">
                     {% if comment.author.avatar %}
-                        <img id="avatarCom" src="{{ comment.author.avatar }}">
+                        {% set user = comment.author %}
+                        <img id="avatarCom" src="{{ vich_uploader_asset(user, 'avatarFile')}}">
                     {% endif %}
                     <span id="authorCom" class="green"> {{ comment.author }}</span>
                 </div>
@@ -65,7 +66,7 @@
             <p>{{ article.address }}</p>
             <img class="map" src="https://i.postimg.cc/hGhTSc22/map.png"> <br> {# REMPLACER PAR API MAP #}
             <div class="detailsMapLink">
-                <a class="detMapLink" href="#">Voir la map</a> {# AJOUTER LINK VERS MAP #}
+                <a class="detMapLink" href="{{ path('map') }}">Voir la map</a>
             </div>
             <h4 class="needsTitle">Partager : </h4> {# AJOUTER FONCTION DE PARTAGE VERS RESEAU #}
             <a class="instagram" href="#"><i class="fa fa-instagram"></i></a>
