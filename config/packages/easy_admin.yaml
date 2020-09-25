@@ -32,18 +32,12 @@ easy_admin:
                 fields:
                   - { property: 'title', label: 'Titre publication' }
                   - { property: 'category', label: 'Catégories :' }
-                  - { property: 'classification', label: 'Classification :' }
                   - { property: 'target', label: 'Cible :' }
                   - { property: 'heading', label: 'Type publication :' }
                   - { property: 'content', label: "contenu :" }
                   - { property: 'needs', label: 'needs:' }
-                  - { property: 'address', label: 'addresse :' }
                   - { property: 'city', label: 'ville :' }
-                  - { property: 'zipcode', label: 'Code postal :' }
                   - { property: 'author', label: 'Auteur :' }
-                  - { property: 'telephone', label: 'telephone :' }
-                  - { property: 'email', label: 'email :' }
-                  - { property: 'website', label: 'website :' }
             show:
                 fields:
                   - { property: 'title', label: 'Titre publication' }
@@ -127,11 +121,8 @@ easy_admin:
                  batch_actions: [ 'delete' ]
                  fields:
                    - { property: 'presentationTitle', label: 'Presentation Titre :' }
-                   - { property: 'presentationBody', label: 'Presentation Description :' }
                    - { property: 'visionTitle', label: 'Notre vision titre :' }
-                   - { property: 'visionBody', label: 'Vision Description :' }
                    - { property: 'valuesTitle', label: 'Nos valeur titre :' }
-                   - { property: 'valuesBody', label: 'Nos valeur description' }
                    - { property: 'servicesTitle', label: 'Nos services titre' }
                    - { property: 'localTitle', label: 'Local Titre' }
                    - { property: 'messageTitle', label: 'Message titre : ' }
@@ -140,7 +131,6 @@ easy_admin:
                    - { property: 'helpTitle', label: 'Aide titre' }
                    - { property: 'giveTitle', label: 'Dons Titre' }
                    - { property: 'communityTitle', label: 'Communauté Titre' }
-                   - { property: 'communityBody', label: 'Communauté description' }
              show:
                  fields:
                    - { property: 'presentationTitle', label: 'Presentation Titre :' }
@@ -177,7 +167,7 @@ easy_admin:
 
         Contribute:
                class: App\Entity\Contribute
-               label: "Contribute"
+               label: "Contribuer"
                form:
                    fields:
                      - { property: 'contributeTitle', label: 'contribuer Titre' }
@@ -204,13 +194,9 @@ easy_admin:
                    fields:
                      - { property: 'contributeTitle', label: 'contribuer Titre' }
                      - { property: 'step1Title', label: 'Etape 1 Titre :' }
-                     - { property: 'step1Body', label: 'Etape 1 description' }
                      - { property: 'step2Title', label: 'Etape 2 Titre' }
-                     - { property: 'step2Body', label: 'Etape 2 description' }
                      - { property: 'step3Title', label: 'Etape 3 Titre' }
-                     - { property: 'step3Body', label: 'Etape 3 description' }
                      - { property: 'step4Title', label: 'Etape 4 Titre' }
-                     - { property: 'step4Body', label: 'Etape 4 description' }
                show:
                    fields:
                      - { property: 'contributeTitle', label: 'contribuer Titre' }
@@ -261,18 +247,13 @@ easy_admin:
                  batch_actions: [ 'delete' ]
                  fields:
                    - { property: 'banner', label: 'bannière' }
-                   - { property: 'bannerFile', type: 'image', base_path: 'uploads_path%' }
                    - { property: 'goalTitle', label: 'Titre' }
-                   - { property: 'goalBody', label: 'Description' }
                    - { property: 'targetTitle', label: 'Cible titre' }
                    - { property: 'targetTitle1', label: 'Cible titre 1' }
                    - { property: 'targetTitle2', label: 'Cible titre 2' }
-                   - { property: 'targetBody', label: 'Cible Description' }
                    - { property: 'approachTitle', label: 'Demarche Titre' }
                    - { property: 'approachSubTitle', label: 'Demarche sous titre' }
-                   - { property: 'approachBody', label: 'Demarche description' }
                    - { property: 'sectionTitle', label: 'Section Titre' }
-                   - { property: 'sectionBody', label: 'section description' }
              show:
                  fields:
                    - { property: 'banner', label: 'bannière' }
@@ -296,7 +277,7 @@ easy_admin:
                    - { property: 'sectionImgFile', type: 'image', base_path: 'uploads_path%' }
         Target:
             class: App\Entity\Target
-            label: "Target"
+            label: "Cible"
             form:
                 fields:
                   - { property: 'name', label: 'Cible' }
@@ -343,10 +324,6 @@ easy_admin:
                   - { property: 'lastname', label: 'Nom :' }
                   - { property: 'birthday', label: 'Date de naissance :' }
                   - { property: 'profession', label: 'profession' }
-                  - { property: 'namevoie', label: 'Nom de la voie' }
-                  - { property: 'channelnum', label: 'Numéro de voie' }
-                  - { property: 'complement', label: 'Complement adresse' }
-                  - { property: 'cp', label: 'Code postal' }
                   - { property: 'city', label: 'Ville' }
                   - { property: 'country', label: 'Pays' }
                   - { property: 'phone', label: 'Numéro Tel' }
