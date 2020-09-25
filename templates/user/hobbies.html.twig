@@ -1,7 +1,7 @@
 {% extends 'base_user.html.twig' %}
 {% block title %}Centres d'interets{% endblock %}
 {% block body %}
-    <div class="ctn hobbiesCtn">
+    <div class="hobbiesCtn">
         <h1 class="detailsTitle"> Mes Centres d'Intérêts</h1>
         <div class="hidden">
             {{ form_widget(form.firstname) }}
@@ -17,7 +17,7 @@
             {{ form_widget(form.gender) }}
             {{ form_widget(form.profession) }}
             {{ form_widget(form.marital) }}
-            {{ form_widget(form.avatar) }}
+            {{ form_widget(form.avatarFile) }}
             {{ form_widget(form.username) }}
         </div>
         {{ form_start(form) }}

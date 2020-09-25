@@ -33,6 +33,7 @@ class DefaultController extends AbstractController
         return $this->render('default/index.html.twig', [
             'articles' => $articleRepository->findAll(),
             'homepages' => $homepageRepository->findAll(),
+
         ]);
     }
 
