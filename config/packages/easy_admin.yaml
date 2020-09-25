@@ -40,11 +40,6 @@ easy_admin:
                   - { property: 'address', label: 'addresse :' }
                   - { property: 'city', label: 'ville :' }
                   - { property: 'zipcode', label: 'Code postal :' }
-                  - { property: 'photoFile', type: 'image', base_path: 'uploads_path%' }
-                  - { property: 'videoFile', type: 'image', base_path: 'uploads_path%' }
-                  - { property: 'pdfFile', type: 'file', base_path: 'uploads_path%' }
-                  - { property: 'photoBFile', type: 'image', base_path: 'uploads_path%' }
-                  - { property: 'photoCFile', type: 'image', base_path: 'uploads_path%' }
                   - { property: 'author', label: 'Auteur :' }
                   - { property: 'telephone', label: 'telephone :' }
                   - { property: 'email', label: 'email :' }
@@ -133,33 +128,17 @@ easy_admin:
                  fields:
                    - { property: 'presentationTitle', label: 'Presentation Titre :' }
                    - { property: 'presentationBody', label: 'Presentation Description :' }
-                   - { property: 'presentationVideo', label: 'Presentation Video lien :' }
-                   - { property: 'presentationVideoFile', type: 'image', base_path: 'uploads_path%' }
                    - { property: 'visionTitle', label: 'Notre vision titre :' }
                    - { property: 'visionBody', label: 'Vision Description :' }
-                   - { property: 'visionImg', label: 'Vision Image' }
-                   - { property: 'visionImgFile', type: 'image', base_path: 'uploads_path%' }
                    - { property: 'valuesTitle', label: 'Nos valeur titre :' }
                    - { property: 'valuesBody', label: 'Nos valeur description' }
                    - { property: 'servicesTitle', label: 'Nos services titre' }
                    - { property: 'localTitle', label: 'Local Titre' }
-                   - { property: 'localImg', label: 'Local image lien' }
-                   - { property: 'localImgFile', type: 'image', base_path: 'uploads_path%' }
                    - { property: 'messageTitle', label: 'Message titre : ' }
-                   - { property: 'messageImg', label: 'Message image lien :' }
-                   - { property: 'messageImgFile', type: 'image', base_path: 'uploads_path%' }
                    - { property: 'dealsTitle', label: 'Bons plans titre' }
-                   - { property: 'dealsImg', label: 'Bons plans image lien' }
-                   - { property: 'dealsImgFile', type: 'image', base_path: 'uploads_path%' }
                    - { property: 'eventTitle', label: 'Event Titre' }
-                   - { property: 'eventImg', label: 'Event image lien' }
-                   - { property: 'eventImgFile', type: 'image', base_path: 'uploads_path%' }
                    - { property: 'helpTitle', label: 'Aide titre' }
-                   - { property: 'helpImg', label: 'Aide image lien' }
-                   - { property: 'helpImgFile', type: 'image', base_path: 'uploads_path%' }
                    - { property: 'giveTitle', label: 'Dons Titre' }
-                   - { property: 'giveImg', label: 'Dons image lien' }
-                   - { property: 'giveImgFile', type: 'image', base_path: 'uploads_path%' }
                    - { property: 'communityTitle', label: 'Communauté Titre' }
                    - { property: 'communityBody', label: 'Communauté description' }
              show:
@@ -225,21 +204,13 @@ easy_admin:
                    fields:
                      - { property: 'contributeTitle', label: 'contribuer Titre' }
                      - { property: 'step1Title', label: 'Etape 1 Titre :' }
-                     - { property: 'step1Img', label: 'Etape 1 image lien' }
                      - { property: 'step1Body', label: 'Etape 1 description' }
-                     - { property: 'step1ImgFile', type: 'image', base_path: 'uploads_path%' }
                      - { property: 'step2Title', label: 'Etape 2 Titre' }
-                     - { property: 'step2Img', label: 'Etape 2 image' }
                      - { property: 'step2Body', label: 'Etape 2 description' }
-                     - { property: 'step2ImgFile', type: 'image', base_path: 'uploads_path%' }
                      - { property: 'step3Title', label: 'Etape 3 Titre' }
-                     - { property: 'step3Img', label: 'Etape 3 image' }
                      - { property: 'step3Body', label: 'Etape 3 description' }
-                     - { property: 'step3ImgFile', type: 'image', base_path: 'uploads_path%' }
                      - { property: 'step4Title', label: 'Etape 4 Titre' }
-                     - { property: 'step4Img', label: 'Etape 4 image' }
                      - { property: 'step4Body', label: 'Etape 4 description' }
-                     - { property: 'step4ImgFile', type: 'image', base_path: 'uploads_path%' }
                show:
                    fields:
                      - { property: 'contributeTitle', label: 'contribuer Titre' }
@@ -297,18 +268,11 @@ easy_admin:
                    - { property: 'targetTitle1', label: 'Cible titre 1' }
                    - { property: 'targetTitle2', label: 'Cible titre 2' }
                    - { property: 'targetBody', label: 'Cible Description' }
-                   - { property: 'targetImgFam', label: 'Cible image lien' }
-                   - { property: 'targetImgFamFile', type: 'image', base_path: 'uploads_path%' }
-                   - { property: 'targetImgPlace', label: 'Cible image place lien' }
-                   - { property: 'targetImgPlaceFile', type: 'image', base_path: 'uploads_path%' }
                    - { property: 'approachTitle', label: 'Demarche Titre' }
                    - { property: 'approachSubTitle', label: 'Demarche sous titre' }
                    - { property: 'approachBody', label: 'Demarche description' }
                    - { property: 'sectionTitle', label: 'Section Titre' }
-                   - { property: 'sectionImg', label: 'Section image lien : ' }
                    - { property: 'sectionBody', label: 'section description' }
-                   - { property: 'sectionImgFile', type: 'image', base_path: 'uploads_path%' }
-
              show:
                  fields:
                    - { property: 'banner', label: 'bannière' }
@@ -377,10 +341,8 @@ easy_admin:
                   - { property: 'email', label: 'email :' }
                   - { property: 'firstname', label: 'Prenom :' }
                   - { property: 'lastname', label: 'Nom :' }
-                  - { property: 'gender', label: 'Sexe :' }
                   - { property: 'birthday', label: 'Date de naissance :' }
                   - { property: 'profession', label: 'profession' }
-                  - { property: 'marital', label: 'situation :' }
                   - { property: 'namevoie', label: 'Nom de la voie' }
                   - { property: 'channelnum', label: 'Numéro de voie' }
                   - { property: 'complement', label: 'Complement adresse' }
@@ -391,7 +353,6 @@ easy_admin:
                   - { property: 'mobile', label: ' Tel.mobile' }
                   - { property: 'hobbies', label: 'Centre d\interets' }
                   - { property: 'username', label: 'Pseudo' }
-                  - { property: 'avatar', type: 'image', base_path: '%uploads_path%' }
             show:
                 fields:
                   - { property: 'email', label: 'email :' }

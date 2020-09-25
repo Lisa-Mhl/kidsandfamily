@@ -332,7 +332,7 @@ class About
         return $this->localImg;
     }
 
-    public function setLocalImg(string $localImg): self
+    public function setLocalImg(?string $localImg): self
     {
         $this->localImg = $localImg;
 
@@ -368,7 +368,7 @@ class About
         return $this->messageImg;
     }
 
-    public function setMessageImg(string $messageImg): self
+    public function setMessageImg(?string $messageImg): self
     {
         $this->messageImg = $messageImg;
 
@@ -380,7 +380,7 @@ class About
         return $this->dealsImg;
     }
 
-    public function setDealsImg(string $dealsImg): self
+    public function setDealsImg(?string $dealsImg): self
     {
         $this->dealsImg = $dealsImg;
 
@@ -404,7 +404,7 @@ class About
         return $this->eventImg;
     }
 
-    public function setEventImg(string $eventImg): self
+    public function setEventImg(?string $eventImg): self
     {
         $this->eventImg = $eventImg;
 
@@ -428,7 +428,7 @@ class About
         return $this->helpImg;
     }
 
-    public function setHelpImg(string $helpImg): self
+    public function setHelpImg(?string $helpImg): self
     {
         $this->helpImg = $helpImg;
 
@@ -464,7 +464,7 @@ class About
         return $this->giveImg;
     }
 
-    public function setGiveImg(string $giveImg): self
+    public function setGiveImg(?string $giveImg): self
     {
         $this->giveImg = $giveImg;
 
