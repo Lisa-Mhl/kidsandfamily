@@ -11,8 +11,10 @@
 
             <div class="card cardProfile" id="cardProfile">
                 <div class="card-body">
-                    <img class="card-img-top imgProfile" src="{{ vich_uploader_asset(user, 'avatarFile') }}"
-                         alt="profile picture">
+                    {% if user.avatar %}
+                        <img class="card-img-top imgProfile" src="{{ vich_uploader_asset(user, 'avatarFile') }}"
+                             alt="profile picture">
+                    {% endif %}
                     <h1>{{ user.username }}</h1>
                     <p>{{ user.firstname }}  {{ user.lastname }} <br>
                     <p class="title"><span class="bold"> E-mail :</span> {{ user.email }}<br>
