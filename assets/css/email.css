@@ -5,6 +5,10 @@ body {
     font-family: Helvetica, Arial, sans-serif;
 }
 
+.bold{
+    font-weight: bold;
+}
+
 h1 {
     background-color: #171810;
     color: #29F3E2;

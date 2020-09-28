@@ -2,7 +2,7 @@
 
 
 {% block body %}
-    <div class="ctn detailsCtn" xmlns="http://www.w3.org/1999/html">
+    <div class="ctn detailsCtn">
         <h1 class="detailsTitle">{{ article.title }} <br> <span class="detailsSubtitle grey"> par {{ article.author }} | publié le DATE {# AJOUTER DATE DANS BDD #}</span>
         </h1>
 
@@ -29,18 +29,37 @@
         <div class="articleCommentCtn">
             <div class="detailsComCtn">
                 {% for comment in article.comments %}
-                <div class="profileCom">
-                    {% if comment.author.avatar %}
-                        {% set user = comment.author %}
-                        <img id="avatarCom" src="{{ vich_uploader_asset(user, 'avatarFile')}}">
-                    {% endif %}
-                    <span id="authorCom" class="green"> {{ comment.author }}</span>
-                </div>
-                <p class="grey comment">{{ comment.comment }}</p>
-            </div>
-            {% endfor %}
+                    <div class="profileCom">
+                        {% if comment.author.avatar %}
+                            {% set user = comment.author %}
+                            <img id="avatarCom" src="{{ vich_uploader_asset(user, 'avatarFile') }}">
+                        {% endif %}
+                        <span id="authorCom" class="green"> {{ comment.author }}</span>
+                    </div>
+                    <p class="grey comment">{{ comment.comment }}</p>
 
-            <hr class="commentLine">
+                    <div class="commentMenu">
+                        <li class="nav-item dropdown" id="comMenu">
+                            <a href="#" id="navbarDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-cog" id="comMenuIcon" aria-hidden="true"></i>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                {% if app.user is same as (comment.author) %}
+                                    <a class="dropdown-item" href="#">Supprimer</a>
+                                    <a class="dropdown-item" href="#">Modifier</a>
+                                {% else %}
+                                    <a class="dropdown-item" href="{{ path('report_comment', {'id': comment.id}) }}">Signaler</a>
+                                {% endif %}
+                            </div>
+                        </li>
+                    </div>
+
+
+                    <hr class="commentLine">
+                {% endfor %}
+            </div>
+
             {% if app.user %}
                 <h3 class="needsTitle comTitle">Laisser un commentaire</h3>
                 {{ form_start(form) }}
@@ -49,7 +68,10 @@
                 <button class="loginBtn btn sendComment">{{ button_label|default('Envoyer !') }}</button>
                 {{ form_end(form) }}
             {% else %}
-                <p><a class="detailsLink" href="{{ path('app_login') }}"> Connectez-vous</a> pour laisser un commentaire
+                <p>
+                    <a class="detailsLink" href="{{ path('app_login') }}"> Connectez-vous
+                    </a>
+                    pour laisser un commentaire
                 </p>
             {% endif %}
         </div>
@@ -74,11 +96,13 @@
             <a class="instagram" href="#"><i class="fa fa-pinterest"></i></a>
             <a class="instagram" href="#"><i class="fa fa-twitter"></i></a>
 
+            {% if article.author != "Kids & Family" %} {# TO DO : OPTIMISER AVEC ROLE ADMIN ? #}
             <div class="report">
                 <p class="reportTitle">Contenu inapproprié ?</p>
                 <a class="red bold" href="{{ path('report', {'id': article.id}) }}">Signaler cette publication</a>
             </div>
         </div>
+        {% endif %}
 
         {% if article.telephone or article.email or article.website %}
             <div class="articleContact">

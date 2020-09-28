@@ -1196,6 +1196,8 @@ hr {
 
 .comment {
     padding-top: 0.5em;
+    padding-bottom: 0;
+    margin-bottom: 0;
 }
 
 .commentTitle {
@@ -1215,7 +1217,31 @@ hr {
 }
 
 .commentLine {
-    margin-top: 5em;
+    margin-top: 0;
+    margin-bottom: 1em;
+    color: black;
+}
+
+.reportComment {
+    font-size: 0.6em;
+    font-style: italic;
+}
+
+.commentMenu {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    top: -6em;
+}
+
+#comMenu {
+    padding: 0;
+    margin-bottom: 0;
+    margin-top: 1em;
+}
+
+#comMenuIcon{
+    color: black;
 }
 
 .articleSideBar {
@@ -1674,7 +1700,6 @@ hr {
     }
 
     /* MAP */
-
     /*////////////////////////// MOBILE ///////////////////////*/
     @media only screen and (max-width: 640px) {
 
