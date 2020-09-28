@@ -43,7 +43,8 @@
                                 <div class="profileCard">
                                     {% if article.author.avatar %}
                                         {% set user = article.author %}
-                                        <img class="avatarCard" src="{{ vich_uploader_asset(user, 'avatarFile')}}" alt="Photo du Profil">
+                                        <img class="avatarCard" src="{{ vich_uploader_asset(user, 'avatarFile') }}"
+                                             alt="Photo du Profil">
                                     {% endif %}
                                     <span id="authorCard">{{ article.author.username }}</span>
                                 </div>
@@ -67,12 +68,22 @@
                 {% endfor %}
             </div>
 
-
             <div id="Ambassadeurs"></div>
             <h4 class="allArticlesNav"><span class="allArticlesTitle">Publications des Ambassadeurs</span>
-                {% for category in categories %}
-                    <a href="#{{ category.name }}">{{ category.name }}</a>
-                {% endfor %}
+
+                <li class="nav-item">
+                    <a class="dropdown-toggle categoryDropDwn" href="#" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                       Filtrer par catégories
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        {% for category in categories %}
+                            <a class="dropdown-item" href="#{{ category.name }}">{{ category.name }}</a>
+                        {% endfor %}
+
+                    </div>
+                </li>
+
             </h4>
 
             {% for category in categories %}
@@ -99,7 +110,8 @@
                                 <div class="profileCard">
                                     {% if article.author.avatar %}
                                         {% set user = article.author %}
-                                        <img class="avatarCard" src="{{ vich_uploader_asset(user, 'avatarFile')}}" alt="Photo du Profil">
+                                        <img class="avatarCard" src="{{ vich_uploader_asset(user, 'avatarFile') }}"
+                                             alt="Photo du Profil">
                                     {% endif %}
                                     <span id="authorCard">{{ article.author.username }}</span>
                                 </div>
@@ -148,7 +160,8 @@
                                 <div class="profileCard">
                                     {% if article.author.avatar %}
                                         {% set user = article.author %}
-                                        <img class="avatarCard" src="{{ vich_uploader_asset(user, 'avatarFile')}}" alt="Photo du Profil">
+                                        <img class="avatarCard" src="{{ vich_uploader_asset(user, 'avatarFile') }}"
+                                             alt="Photo du Profil">
                                     {% endif %}
                                     <span id="authorCard">{{ article.author.username }}</span>
                                 </div>

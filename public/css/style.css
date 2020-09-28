@@ -978,35 +978,31 @@ hr {
 }
 
 .allArticlesNav {
+    display: flex;
+    flex-direction: row;
     position: relative;
     top: 1em;
     left: 0;
     background-color: white;
+    justify-content: center;
     padding: 1em;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     font-size: 1em;
     font-weight: bold;
     width: 100%;
 }
 
-.allArticlesNav a {
-    background-color: lightseagreen;
-    padding: 0.7em;
-    border-radius: 15px;
-    color: lightyellow;
-    width: 100px;
-    text-align: center;
-    transition: 0.5s;
+.categoryDropDwn{
+    padding-top: 0.6em;
+    padding-left: 30px;
+    font-size: 1.1em;
+    color: black;
+    font-weight: initial;
 }
 
-.allArticlesNav a:hover {
+.categoryDropDwn:hover{
     text-decoration: none;
     color: black;
-    background-color: palegreen;
-    transition: 0.5s;
 }
 
 .catId {
