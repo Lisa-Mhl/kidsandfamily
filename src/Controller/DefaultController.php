@@ -109,6 +109,38 @@ class DefaultController extends AbstractController
     }
 
     /**
+     * @Route("/signaler_commentaire/{id}", name="report_comment")
+     * @param Comment $comment
+     * @param Request $request
+     * @param Mailer $mailer
+     * @return Response
+     */
+    public function reportComment(Comment $comment, Request $request, Mailer $mailer)
+    {
+        $report = new Report();
+        $form = $this->createForm(ReportType::class, $report);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $user = $this->getUser();
+            $report->setEmail($user);
+            $report->setComment($comment);
+            $report->setCreatedAt(new \DateTime());
+            $entityManager->persist($report);
+            $entityManager->flush();
+
+            $mailer->notifReportCom($report);
+
+            return $this->redirectToRoute('report_thanks');
+        }
+        return $this->render('default/report_comment.html.twig', [
+            'comment' => $comment,
+            'form' => $form->createView(),
+
+        ]);
+    }
+
+    /**
      * @Route("/articles", name="all_articles")
      * @param ArticleRepository $articleRepository
      * @param CategoryRepository $categoryRepository
