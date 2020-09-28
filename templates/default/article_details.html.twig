@@ -46,8 +46,8 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 {% if app.user is same as (comment.author) %}
-                                    <a class="dropdown-item" href="#">Supprimer</a>
-                                    <a class="dropdown-item" href="#">Modifier</a>
+                                    <a href="#">Supprimer</a> {# TO DO : AJOUTER SUPPRESSION DE COMMENTAIRE #}
+                                    <a class="dropdown-item" href="#">Modifier</a> {# TO DO : AJOUTER MODIFICATION DE COMMENTAIRE #}
                                 {% else %}
                                     <a class="dropdown-item" href="{{ path('report_comment', {'id': comment.id}) }}">Signaler</a>
                                 {% endif %}
