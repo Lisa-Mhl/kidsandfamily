@@ -193,6 +193,11 @@ class Article
      */
     private $zipcode;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isPublished;
+
     public function __toString()
     {
         return $this->getTitle();
@@ -660,6 +665,18 @@ class Article
     public function setZipcode(?int $zipcode): self
     {
         $this->zipcode = $zipcode;
+
+        return $this;
+    }
+
+    public function getIsPublished(): ?bool
+    {
+        return $this->isPublished;
+    }
+
+    public function setIsPublished(bool $isPublished): self
+    {
+        $this->isPublished = $isPublished;
 
         return $this;
     }
