@@ -3,7 +3,7 @@
 
 {% block body %}
     <div class="ctn detailsCtn">
-        <h1 class="detailsTitle">{{ article.title }} <br> <span class="detailsSubtitle grey"> par {{ article.author }} | publié le DATE {# AJOUTER DATE DANS BDD #}</span>
+        <h1 class="detailsTitle">{{ article.title }} <br> <span class="detailsSubtitle grey"> par {{ article.author }} | publié le {{ article.updatedAt|date('d/m/Y') }} {# AJOUTER DATE DANS BDD #}</span>
         </h1>
 
         <p class="detailsContent">{{ article.content }}</p>
@@ -37,7 +37,6 @@
                         <span id="authorCom" class="green"> {{ comment.author }}</span>
                     </div>
                     <p class="grey comment">{{ comment.comment }}</p>
-
                     <div class="commentMenu">
                         <li class="nav-item dropdown" id="comMenu">
                             <a href="#" id="navbarDropdown" role="button"
@@ -54,8 +53,6 @@
                             </div>
                         </li>
                     </div>
-
-
                     <hr class="commentLine">
                 {% endfor %}
             </div>

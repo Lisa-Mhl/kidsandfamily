@@ -1183,9 +1183,10 @@ hr {
 }
 
 #avatarCom {
-    height: 40px;
-    width: 40px;
+    height: 35px;
+    width: 35px;
     border-radius: 100%;
+    margin-left: 0.5em;
 }
 
 #authorCom {
@@ -1198,6 +1199,7 @@ hr {
     padding-top: 0.5em;
     padding-bottom: 0;
     margin-bottom: 0;
+    margin-left: 0.5em;
 }
 
 .commentTitle {
