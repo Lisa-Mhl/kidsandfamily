@@ -70,20 +70,17 @@
 
             <div id="Ambassadeurs"></div>
             <h4 class="allArticlesNav"><span class="allArticlesTitle">Publications des Ambassadeurs</span>
-
                 <li class="nav-item">
                     <a class="dropdown-toggle categoryDropDwn" href="#" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                       Filtrer par catégories
+                        Filtrer par catégories
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         {% for category in categories %}
-                            <a class="dropdown-item" href="#{{ category.name }}">{{ category.name }}</a>
+                            <a class="dropdown-item catItemDwn" href="#{{ category.name }}">{{ category.name }}</a>
                         {% endfor %}
-
                     </div>
                 </li>
-
             </h4>
 
             {% for category in categories %}

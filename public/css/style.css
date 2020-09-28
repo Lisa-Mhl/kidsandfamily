@@ -1005,6 +1005,10 @@ hr {
     color: black;
 }
 
+.catItemDwn{
+    width: 225px;
+}
+
 .catId {
     padding-top: 8em;
 }
