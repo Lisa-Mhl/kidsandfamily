@@ -86,7 +86,7 @@ class About
     private $servicesTitle;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $localImg;
 
@@ -110,7 +110,7 @@ class About
     private $messageTitle;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $messageImg;
 
@@ -124,7 +124,7 @@ class About
     private $messageImgFile;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $dealsImg;
 
@@ -143,7 +143,7 @@ class About
     private $dealsTitle;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $eventImg;
 
@@ -162,7 +162,7 @@ class About
     private $eventTitle;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $helpImg;
 
@@ -186,7 +186,7 @@ class About
     private $giveTitle;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $giveImg;
 

@@ -3,7 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use DateTime;
 use DateTimeImmutable;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Serializable;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -126,11 +128,11 @@ class User implements UserInterface, Serializable
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @var string
      */
     private $avatar;
 
     /**
-     * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
      * @Vich\UploadableField(mapping="user_avatar", fileNameProperty="avatar")
      *
@@ -138,10 +140,12 @@ class User implements UserInterface, Serializable
      */
     private $avatarFile;
 
-    /**gst
-     * @var DateTimeImmutable
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @var DateTimeInterface|null
      */
-    private $updatedAt;
+    private $updateAt;
+
 
 
     public function __toString()
@@ -174,7 +178,7 @@ class User implements UserInterface, Serializable
      */
     public function getUsername(): string
     {
-        return (string) $this->username;
+        return (string)$this->username;
     }
 
     /**
@@ -201,7 +205,7 @@ class User implements UserInterface, Serializable
      */
     public function getPassword(): string
     {
-        return (string) $this->password;
+        return (string)$this->password;
     }
 
     public function setPassword(string $password): self
@@ -264,12 +268,12 @@ class User implements UserInterface, Serializable
         return $this;
     }
 
-    public function getBirthday(): ?\DateTimeInterface
+    public function getBirthday(): ?DateTimeInterface
     {
         return $this->birthday;
     }
 
-    public function setBirthday(?\DateTimeInterface $birthday): self
+    public function setBirthday(?DateTimeInterface $birthday): self
     {
         $this->birthday = $birthday;
 
@@ -415,19 +419,6 @@ class User implements UserInterface, Serializable
         return $this;
     }
 
-    /**
-     * @param File|UploadedFile|null $avatarFile
-     */
-    public function setAvatarFile(?File $avatarFile = null): void
-    {
-        $this->avatarFile = $avatarFile;
-
-        if (null !== $avatarFile) {
-            // It is required that at least one field changes if you are using doctrine
-            // otherwise the event listeners won't be called and the file is lost
-            $this->updatedAt = new DateTimeImmutable();
-        }
-    }
 
     public function getAvatar(): ?string
     {
@@ -442,27 +433,26 @@ class User implements UserInterface, Serializable
     }
 
     /**
+     * @param File|UploadedFile|null $avatarFile
+     */
+    public function setAvatarFile(?File $avatarFile = null)
+    {
+        $this->avatarFile = $avatarFile;
+
+        if (null !== $avatarFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updateAt = new DateTimeImmutable();
+        }
+    }
+
+
+    /**
      * @return File|null
      */
     public function getAvatarFile(): ?File
     {
         return $this->avatarFile;
-    }
-
-    /**
-     * @return DateTimeImmutable
-     */
-    public function getUpdatedAt(): DateTimeImmutable
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * @param DateTimeImmutable $updatedAt
-     */
-    public function setUpdatedAt(DateTimeImmutable $updatedAt): void
-    {
-        $this->updatedAt = $updatedAt;
     }
 
     public function serialize()
@@ -488,5 +478,22 @@ class User implements UserInterface, Serializable
             $this->email,
             $this->password,
             ) = unserialize($serialized);
+    }
+
+
+    /**
+     * @return DateTimeInterface|null
+     */
+    public function getUpdateAt(): ?DateTimeInterface
+    {
+        return $this->updateAt;
+    }
+
+    /**
+     * @param DateTimeInterface|null $updateAt
+     */
+    public function setUpdateAt(?DateTimeInterface $updateAt): void
+    {
+        $this->updateAt = $updateAt;
     }
 }

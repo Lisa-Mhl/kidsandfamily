@@ -3,11 +3,16 @@
 namespace App\Form;
 
 use App\Entity\User;
+use DateTime;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichFileType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
+
 
 class UserType extends AbstractType
 {
@@ -15,13 +20,12 @@ class UserType extends AbstractType
     {
         $builder
 
-            ->add('avatarFile', VichFileType::class, [
-                'allow_delete' => true,
-                'download_link' => false,
-                'label' => false,
-                'attr' => ['class' => 'form-control-file']
+            ->add('avatarFile', VichImageType::class, [
+                'required' => false,
+                'download_uri' => false,
+                'allow_delete'=> false,
+                'asset_helper' => true,
             ])
-
             ->add('username')
             ->add('firstname')
             ->add('lastname')

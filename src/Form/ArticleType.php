@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ArticleType extends AbstractType
 {
@@ -36,19 +37,41 @@ class ArticleType extends AbstractType
                     'Événement' => 'Evénement',
                 ]
             ])
-            ->add('photo')
+            ->add('photoFile', VichImageType::class, [
+                'required' => false,
+                'download_uri' => false,
+                'image_uri' => true,
+                'asset_helper' => true,
+                'allow_delete' => false
+            ])
+
             ->add('video')
             ->add('pdf')
             ->add('needs')
             ->add('content')
-            ->add('photoB')
-            ->add('photoC')
+            ->add('photoBFile', VichImageType::class, [
+                'required' => false,
+                'download_uri' => false,
+                'image_uri' => true,
+                'asset_helper' => true,
+                'allow_delete' => false
+            ])
+
+            ->add('photoCFile', VichImageType::class, [
+                'required' => false,
+                'download_uri' => false,
+                'image_uri' => true,
+                'asset_helper' => true,
+                'allow_delete' => false
+            ])
+
             ->add('target')
             ->add('category', EntityType::class, [
                 'class' => Category::class,
                 'expanded' => true,
                 'multiple' => true,
-                'by_reference' => false])
+                'by_reference' => false
+            ])
             ->add('author')
             ->add('telephone')
             ->add('email')

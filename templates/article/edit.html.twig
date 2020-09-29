@@ -25,18 +25,19 @@
                 {{ form_widget(form.heading) }}
                 {{ form_label(form.content, 'Contenu de l\'article') }}
                 {{ form_widget(form.content) }}
+                <label> Ajoutez une image d'illustration</label>
+                {{ form_widget(form.photoFile) }}
                 {{ form_label(form.needs, 'Si vous avez besoin d\'aide de la part des ambassadeurs, de matériel (etc.) merci de détailler vos besoins (facultatif)') }}
                 {{ form_widget(form.needs) }}
                 {{ form_label(form.address, 'Veuillez indiquer l\'addresse de votre projet / événement') }}
                 {{ form_widget(form.address) }}
-                {{ form_label(form.photo, 'Ajoutez une image d\'illustration') }}
-                {{ form_widget(form.photo) }}
+
                 <div class="option">
                     <h4 class="optionTitle">Optionnel</h4>
-                    {{ form_label(form.photoB, 'Ajoutez une 2e image') }}
-                    {{ form_widget(form.photoB) }}
-                    {{ form_label(form.photoC, 'Ajoutez une 3e image') }}
-                    {{ form_widget(form.photoC) }}
+                    {{ form_label(form.photoBFile, 'Ajoutez une 2e image') }}
+                    {{ form_widget(form.photoBFile) }}
+                    {{ form_label(form.photoCFile, 'Ajoutez une 3e image') }}
+                    {{ form_widget(form.photoCFile) }}
                     {{ form_label(form.video, 'Ajoutez un lien vers une vidéo') }}
                     {{ form_widget(form.video) }}
                     {{ form_label(form.pdf, 'Ajoutez un document PDF') }}

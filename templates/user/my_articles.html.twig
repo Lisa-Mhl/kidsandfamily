@@ -23,7 +23,7 @@
             {% for article in articles %}
                 {% if app.user is same as (article.author) %}
                     <div class="card articleCard" id="myArticlesCard">
-                        <img class="card-img allArticlesImg" src="{{ article.photo }}"
+                        <img class="card-img allArticlesImg" src="{{ vich_uploader_asset(article, 'photoFile')}}"
                              alt="{{ article.title }}">
                         <div class="articleHead">
                             <h5 class="card-title articleTitle">{{ article.title }}</h5>

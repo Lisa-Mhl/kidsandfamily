@@ -238,8 +238,8 @@ easy_admin:
                    - { property: 'approachSubTitle', label: 'Demarche sous titre' }
                    - { property: 'approachBody', label: 'Demarche description' }
                    - { property: 'sectionTitle', label: 'Section Titre' }
-                   - { property: 'sectionImg', label: 'Section image lien : ' }
                    - { property: 'sectionBody', label: 'section description' }
+                   - { property: 'sectionImg', label: 'Section image lien : ' }
                    - { property: 'sectionImgFile', type: 'vich_image', label: 'Section Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
              list:
                  collapse_actions: true
@@ -315,9 +315,6 @@ easy_admin:
                   - { property: 'username', label: 'Pseudo' }
                   - { property: 'avatarFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
             list:
-                collapse_actions: true
-                actions: [ 'show', 'edit', 'delete' ]
-                batch_actions: [ 'delete' ]
                 fields:
                   - { property: 'email', label: 'email :' }
                   - { property: 'firstname', label: 'Prenom :' }

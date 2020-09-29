@@ -43,7 +43,7 @@ class Homepage
     private $targetBody;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $targetImgFam;
 
@@ -57,7 +57,7 @@ class Homepage
     private $targetImgFamFile;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $targetImgPlace;
 
@@ -91,7 +91,7 @@ class Homepage
     private $sectionTitle;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $sectionImg;
 
@@ -201,7 +201,7 @@ class Homepage
         return $this->targetImgFam;
     }
 
-    public function setTargetImgFam(string $targetImgFam): self
+    public function setTargetImgFam(?string $targetImgFam): self
     {
         $this->targetImgFam = $targetImgFam;
 
@@ -213,7 +213,7 @@ class Homepage
         return $this->targetImgPlace;
     }
 
-    public function setTargetImgPlace(string $targetImgPlace): self
+    public function setTargetImgPlace(?string $targetImgPlace): self
     {
         $this->targetImgPlace = $targetImgPlace;
 
@@ -273,7 +273,7 @@ class Homepage
         return $this->sectionImg;
     }
 
-    public function setSectionImg(string $sectionImg): self
+    public function setSectionImg(?string $sectionImg): self
     {
         $this->sectionImg = $sectionImg;
 
