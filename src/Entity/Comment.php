@@ -26,7 +26,6 @@ class Comment
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="comments")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $author;
 
@@ -34,16 +33,6 @@ class Comment
      * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="comments")
      */
     private $article;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Report::class, mappedBy="comment")
-     */
-    private $reports;
-
-    public function __construct()
-    {
-        $this->reports = new ArrayCollection();
-    }
 
     public function __toString()
     {
@@ -87,37 +76,6 @@ class Comment
     public function setArticle(?Article $article): self
     {
         $this->article = $article;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Report[]
-     */
-    public function getReports(): Collection
-    {
-        return $this->reports;
-    }
-
-    public function addReport(Report $report): self
-    {
-        if (!$this->reports->contains($report)) {
-            $this->reports[] = $report;
-            $report->setComment($this);
-        }
-
-        return $this;
-    }
-
-    public function removeReport(Report $report): self
-    {
-        if ($this->reports->contains($report)) {
-            $this->reports->removeElement($report);
-            // set the owning side to null (unless already changed)
-            if ($report->getComment() === $this) {
-                $report->setComment(null);
-            }
-        }
 
         return $this;
     }

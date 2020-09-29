@@ -20,6 +20,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Service\Mailer;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class DefaultController extends AbstractController
 {
@@ -74,6 +75,23 @@ class DefaultController extends AbstractController
             'form' => $form->createView(),
             'comments' => $commentRepository->findAll(),
         ]);
+    }
+
+    /**
+     * @Route("/{id}", name="comment_delete", methods={"DELETE"})
+     * @IsGranted("ROLE_USER")
+     * @param Request $request
+     * @param Comment $comment
+     * @return Response
+     */
+    public function deleteComment(Request $request, Comment $comment): Response
+    {
+        if ($this->isCsrfTokenValid('delete' . $comment->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($comment);
+            $entityManager->flush();
+        }
+        return $this->redirectToRoute('home');
     }
 
     /**
