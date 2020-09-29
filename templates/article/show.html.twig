@@ -29,7 +29,7 @@
             </tr>
             <tr>
                 <th>Photo</th>
-                <td>{{ article.photo }}</td>
+                <td><img src="{{ vich_uploader_asset(article, 'photoFile')}}"></td>
             </tr>
             <tr>
                 <th>Video</th>
@@ -49,11 +49,11 @@
             </tr>
             <tr>
                 <th>PhotoB</th>
-                <td>{{ article.photoB }}</td>
+                <td><img src="{{ vich_uploader_asset(article, 'photoBFile')}}"></td>
             </tr>
             <tr>
                 <th>PhotoC</th>
-                <td>{{ article.photoC }}</td>
+                <td><img src="{{ vich_uploader_asset(article, 'photoCFile')}}"></td>
             </tr>
         </tbody>
     </table>

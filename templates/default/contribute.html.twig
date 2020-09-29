@@ -8,7 +8,7 @@
                 <h4 class="contributeStepTitle bold">{{ contribute.step1Title }}</h4>
                 <div class="stepCtn">
                     <img class="contributeStepImg"
-                         src="{{ contribute.step1Img }}">
+                         src="{{ vich_uploader_asset(contribute, 'step1ImgFile') }}">
                     <p class="contributeStepBody">{{ contribute.step1Body }}
                     </p>
                 </div>
@@ -20,15 +20,14 @@
                     <p class="contributeStepBody">{{ contribute.step2Body }}
                     </p>
                     <img class="contributeStepImg"
-                         src="{{ contribute.step2Img }}">
+                         src="{{ vich_uploader_asset(contribute, 'step2ImgFile') }}">
                 </div>
             </div>
-
             <div class="contributeStep">
                 <h4 class="contributeStepTitle bold">{{contribute.step3Title}}</h4>
                 <div class="stepCtn">
                     <img class="contributeStepImg"
-                         src="{{ contribute.step3Img }}">
+                         src="{{ vich_uploader_asset(contribute, 'step3ImgFile') }}">
                     <p class="contributeStepBody">{{ contribute.step3Body }}
                 </div>
             </div>
@@ -39,7 +38,7 @@
                     <p class="contributeStepBody">{{ contribute.step4Body }}
                     </p>
                     <img class="contributeStepImg"
-                         src="{{ contribute.step4Img }}">
+                         src="{{ vich_uploader_asset(contribute, 'step4ImgFile') }}">
                 </div>
             </div>
         </div>

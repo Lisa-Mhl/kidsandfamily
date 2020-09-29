@@ -7,12 +7,12 @@
 
         <p class="detailsContent">{{ article.content }}</p>
         <div class="detailsPhotoCtn">
-            <img class="detailsPhoto" src="{{ article.photo }}" alt="Illustration Article {{ article.title }}">
+            <img class="detailsPhoto" src="{{ vich_uploader_asset(article, 'photoFile')}}" alt="Illustration Article {{ article.title }}">
             {% if article.photoB %}
-                <img class="detailsPhoto" src="{{ article.photoB }}" alt="Illustration Article {{ article.title }}">
+                <img class="detailsPhoto" src="{{ vich_uploader_asset(article, 'photoBFile')}}" alt="Illustration Article {{ article.title }}">
             {% endif %}
             {% if article.photoC %}
-                <img class="detailsPhoto" src="{{ article.photoC }}" alt="Illustration Article {{ article.title }}">
+                <img class="detailsPhoto" src="{{ vich_uploader_asset(article, 'photoCFile')}}" alt="Illustration Article {{ article.title }}">
             {% endif %}
         </div>
 

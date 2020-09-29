@@ -8,16 +8,20 @@
                 <p id="aboutBody">
                     {{ about.presentationBody }}</p> <br>
                 <div class="center">
-                    <iframe class="aboutVideo" width="560" height="315" src="{{ about.presentationVideo }}"
+                    {# TO DO Solution for upload video #}
+                    <video class="aboutVideo" width="560" height="315">
+
+                    <source src="{{ vich_uploader_asset(about, 'presentationVideoFile') }}"
                             frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
+                    type="video/mp4">
+
+                    </video>
                 </div>
             </article>
             <article class="aboutArticle">
                 <h1 id="aboutTitle" class="rightTitle bold pink">{{ about.visionTitle }}</h1>
                 <section id="vision">
-                    <img src="{{ about.visionImg }}" class="aboutImg">
+                    <img src="{{ vich_uploader_asset(about, 'visionImgFile') }}" class="aboutImg">
                     <p id="aboutBody" class="visionBody">
                         {{ about.visionBody }}</p>
                 </section>
@@ -31,31 +35,31 @@
                 <h1 id="aboutTitle" class="aboutServicesTitle bold pink">{{ about.servicesTitle }}</h1>
                 <ul class="aboutList">
                     <li class="serviceList">
-                        <img class="serviceImg" src="{{ about.localImg }}" alt="Vie de quartier">
+                        <img class="serviceImg" src="{{ vich_uploader_asset(about, 'localImgFile') }}" alt="Vie de quartier">
                         <p class="serviceListTitle">{{ about.localTitle }}</p>
                     </li>
                     <li class="serviceList">
-                        <img class="serviceImg" src="{{ about.messageImg }}" alt="Discussions">
+                        <img class="serviceImg" src="{{ vich_uploader_asset(about, 'messageImgFile') }}" alt="Discussions">
                         <p class="serviceListTitle">{{ about.messageTitle }}</p>
                     </li>
                     <li class="serviceList">
-                        <img class="serviceImg" src="{{ about.dealsImg }}" alt="Bons plans locaux">
+                        <img class="serviceImg" src="{{ vich_uploader_asset(about, 'dealsImgFile') }}" alt="Bons plans locaux">
                         <p class="serviceListTitle">{{ about.dealsTitle }}</p>
                     </li>
                     <li class="serviceList">
                         <img class="serviceImg"
-                             src="{{ about.eventImg }}"
+                             src="{{ vich_uploader_asset(about, 'eventImgFile') }}"
                              alt="Evenements">
                         <p class="serviceListTitle">{{ about.eventTitle }}</p>
                     </li>
                     <li class="serviceList">
                         <img class="serviceImg"
-                             src="{{ about.helpImg }}">
+                             src="{{ vich_uploader_asset(about, 'helpImgFile') }}">
                         <p class="serviceListTitle">{{ about.helpTitle }}</p>
                     </li>
                     <li class="serviceList">
                         <img class="serviceImg"
-                             src="{{ about.giveImg }}">
+                             src="{{ vich_uploader_asset(about, 'giveImgFile') }}">
                         <p class="serviceListTitle">{{ about.giveTitle }}</p>
                     </li>
                 </ul>

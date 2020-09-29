@@ -28,7 +28,7 @@ class Contribute
     private $step1Title;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $step1Img;
 
@@ -52,7 +52,7 @@ class Contribute
     private $step2Title;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $step2Img;
 
@@ -76,7 +76,7 @@ class Contribute
     private $step3Title;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $step3Img;
 
@@ -100,7 +100,7 @@ class Contribute
     private $step4Title;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $step4Img;
 
@@ -150,7 +150,7 @@ class Contribute
         return $this->step1Img;
     }
 
-    public function setStep1Img(string $step1Img): self
+    public function setStep1Img(?string $step1Img): self
     {
         $this->step1Img = $step1Img;
 
@@ -186,7 +186,7 @@ class Contribute
         return $this->step2Img;
     }
 
-    public function setStep2Img(string $step2Img): self
+    public function setStep2Img(?string $step2Img): self
     {
         $this->step2Img = $step2Img;
 
@@ -222,7 +222,7 @@ class Contribute
         return $this->step3Img;
     }
 
-    public function setStep3Img(string $step3Img): self
+    public function setStep3Img(?string $step3Img): self
     {
         $this->step3Img = $step3Img;
 
@@ -258,7 +258,7 @@ class Contribute
         return $this->step4Img;
     }
 
-    public function setStep4Img(string $step4Img): self
+    public function setStep4Img(?string $step4Img): self
     {
         $this->step4Img = $step4Img;
 

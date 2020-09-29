@@ -7,6 +7,7 @@ use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -174,7 +175,6 @@ class UserController extends AbstractController
             'categories' => $categoryRepository->findAll(),
         ]);
     }
-
 
 }
 

@@ -38,7 +38,7 @@
                         <h4 class="card-title">{{ homepage.targetTitle1 }}</h4>
                     </div>
                     <img class="card-img targetImg"
-                         src="{{ homepage.targetImgFam }}"
+                         src="{{ vich_uploader_asset(homepage, 'targetImgFamFile') }}"
                          alt="Photo Famille">
                     <div class="enfant">
                         {{ homepage.targetBody }}
@@ -50,7 +50,7 @@
                         <i class="fas fa-house-user"></i>
                         <h4 class="card-title targetTitle">{{ homepage.targetTitle2 }}</h4></div>
                     <img class="card-img targetImg"
-                         src="{{ homepage.targetImgPlace }}"
+                         src="{{ vich_uploader_asset(homepage, 'targetImgPlaceFile') }}"
                          alt="Photo Famille">
                     <div class="enfant">
                         {{ homepage.targetBody2 }}
@@ -177,7 +177,8 @@
                 {% if article.isPublished is same as(true) %}
                     {% if article.needs %}
                         <div class="card articleCard" id="articleCard">
-                            <img class="card-img articleImg" src="{{ article.photo }}"
+                            <img class="card-img articleImg"
+                                 src="{{ article.photo }}" {# {{ vich_uploader_asset(article, 'photoFile')}} #}
                                  alt="{{ article.title }}">
                             <div class="articleHead">
                                 <h5 class="card-title articleTitle">{{ article.title }}</h5>
@@ -228,9 +229,8 @@
         <div class="eshopCtn">
             <div class="eshop">
                 <h2 class="eshopTitle bold">{{ homepage.sectionTitle }}</h2>
-                <iframe class="eshopGif" src="{{ homepage.sectionImg }}" width="480" height="270"
-                        frameBorder="0">
-
+                <iframe src="https://giphy.com/embed/1i3ypX170NWbWMGOXV" width="480" height="270" frameBorder="0"
+                        class="giphy-embed" allowFullScreen>
                 </iframe>
                 <h4 class="servicesBody">{{ homepage.sectionBody }} </h4>
                 <div class="eshopLinkCtn"></div>

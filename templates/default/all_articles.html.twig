@@ -37,11 +37,13 @@
                     {% for article in category.article %}
                         {% if article.author.username == "Kids & Family" %}    {# TO DO : OPTIMISER / SECURISER (role admin ?) #}
                             <div class="card articleCard" id="allArticlesCard">
-                                <img class="card-img allArticlesImg" src="{{ article.photo }}"
+                                <img class="card-img allArticlesImg"
+                                     src="{{ article.photo }}" {# {{ vich_uploader_asset(article, 'photoFile')}} #}
                                      alt="{{ article.title }}">
                                 <div class="articleHead">
                                     <h5 class="card-title articleTitle">{{ article.title }}</h5>
                                     <span class="like">
+
                     <i class="fas fa-heart cardLike"></i> J'aime</span>
                                 </div>
                                 {# TO DO : AJOUTER SYSTEME DE LIKE #}
@@ -80,7 +82,6 @@
                     {% endfor %}
                 </div>
             {% endfor %}
-
             <div id="Ambassadeurs"></div> {# FILTRE SUR LES CATEGORIES DES ARTICLES DES AMBASSADEURS #}
             <h4 class="allArticlesNav"><span class="allArticlesTitle">Publications des Ambassadeurs</span>
                 <li class="nav-item">
@@ -95,7 +96,6 @@
                     </div>
                 </li>
             </h4>
-
             {% for category in categories %} {# TRI PAR CATEGORIES #}  {# TO DO : N'AFFICHER QUE LES CATEGORIES QUI CONTIENNENT DES ARTICLES DES AMBASSADEURS #}
                 <div class="catId" id="{{ category.name }}"></div>
                 <h4 class="catTitle" id="{{ category.id }}">{{ category.name | upper }}</h4>
@@ -103,7 +103,7 @@
                 <div class="row"> {# AFFICHAGE DES ARTICLES DES AMBASSADEURS #}
                     {% for article in category.article %}
                         <div class="card articleCard" id="allArticlesCard">
-                            <img class="card-img allArticlesImg" src="{{ article.photo }}"
+                            <img class="card-img allArticlesImg" src="{{ vich_uploader_asset(article, 'photoFile') }}"
                                  alt="{{ article.title }}">
                             <div class="articleHead">
                                 <h5 class="card-title articleTitle">{{ article.title }}</h5>
@@ -153,7 +153,7 @@
                 {% for article in articles %}
                     {% if article.needs %}
                         <div class="card articleCard" id="allArticlesCard">
-                            <img class="card-img allArticlesImg" src="{{ article.photo }}"
+                            <img class="card-img allArticlesImg" src="{{ vich_uploader_asset(article, 'photoFile') }}"
                                  alt="{{ article.title }}">
                             <div class="articleHead">
                                 <h5 class="card-title articleTitle">{{ article.title }}</h5>
