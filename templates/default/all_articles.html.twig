@@ -2,26 +2,44 @@
 
 {% block body %}
     <div class="ctn">
-        <div class="articlesCategory">
-            <a href="#Kids&Family">Kids & Family</a><a href="#Ambassadeurs">Les Ambassadeurs</a>
+
+        <div class="articlesCategory">  {# BARRE DE NAVIGATION DE LA PAGE #}
+            <a href="#Kids&Family">Kids & Family</a>
+            <a href="#Ambassadeurs">Les Ambassadeurs</a>
             {% if app.user %}
-                <a href="#Help">Venir
-                    en aide</a><a href="{{ path('article_new') }}">Ajouter une publication</a>
+                <a href="#Help">Venir en aide</a>
+                <a href="{{ path('article_new') }}">Ajouter une publication</a>
             {% endif %}
         </div>
-        <div class="allArticles">
+
+        <div class="allArticles"> {# FILTRE SUR LES CATEGORIES DES ARTICLES DE K&F #}
             <div id="Kids&Family"></div>
             <h4 class="allArticlesNav"><span class="allArticlesTitle">Publications de Kids & Family</span>
                 {% for article in articles %}
-                    {% if article.author.username == "Kids & Family" %}
-                        {% for category in article.category %}
-                            <a href="#{{ category.id }}">{{ category.name }}</a>
-                        {% endfor %}
+                    {% if article.author.username == "Kids & Family" %} {# TO DO : REPARER FILTRE #}
+                        <li class="nav-item">
+                            <a class="dropdown-toggle categoryDropDwn" href="#" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Filtrer par catégories
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                {% for category in article.category %}
+                                    <a class="dropdown-item catItemDwn"
+                                       href="#{{ category.id }}">{{ category.name }}</a>
+                                {% endfor %}
+                            </div>
+                        </li>
                     {% endif %}
                 {% endfor %}
+
             </h4>
 
-            <div class="row allArticlesKidsCtn">
+            {% for category in categories %} {# TRI PAR CATEGORIES #}
+                <div class="catId" id="{{ category.id }}"></div>
+                <h4 class="catTitle">{{ category.name | upper }}</h4>
+            {% endfor %}
+
+            <div class="row allArticlesKidsCtn"> {# AFFICHAGE DES ARTICLES DE K&F #}
                 {% for article in articles %}
                     {% if article.author.username == "Kids & Family" %}    {# TO DO : OPTIMISER / SECURISER (role admin ?) #}
                         <div class="card articleCard" id="allArticlesCard">
@@ -66,9 +84,11 @@
                         </div>
                     {% endif %}
                 {% endfor %}
+
             </div>
 
-            <div id="Ambassadeurs"></div>
+
+            <div id="Ambassadeurs"></div> {# FILTRE SUR LES CATEGORIES DES ARTICLES DES AMBASSADEURS #}
             <h4 class="allArticlesNav"><span class="allArticlesTitle">Publications des Ambassadeurs</span>
                 <li class="nav-item">
                     <a class="dropdown-toggle categoryDropDwn" href="#" role="button"
@@ -83,10 +103,11 @@
                 </li>
             </h4>
 
-            {% for category in categories %}
+            {% for category in categories %} {# TRI PAR CATEGORIES #}
                 <div class="catId" id="{{ category.name }}"></div>
                 <h4 class="catTitle" id="{{ category.id }}">{{ category.name | upper }}</h4>
-                <div class="row">
+
+                <div class="row"> {# AFFICHAGE DES ARTICLES DES AMBASSADEURS #}
                     {% for article in category.article %}
                         <div class="card articleCard" id="allArticlesCard">
                             <img class="card-img allArticlesImg" src="{{ article.photo }}"
