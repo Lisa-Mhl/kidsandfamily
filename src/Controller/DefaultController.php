@@ -95,6 +95,28 @@ class DefaultController extends AbstractController
     }
 
     /**
+     * @Route("/{id}/modifier", name="comment_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Comment $comment
+     * @return Response
+     */
+    public function editComment(Request $request, Comment $comment): Response
+    {
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+            return $this->redirectToRoute('home');
+        }
+
+        return $this->render('default/edit_comment.html.twig', [
+            'comment' => $comment,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
      * @Route("/signaler/{id}", name="report")
      * @param Article $article
      * @param Request $request
