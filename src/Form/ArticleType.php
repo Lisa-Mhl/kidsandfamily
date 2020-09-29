@@ -55,8 +55,8 @@ class ArticleType extends AbstractType
             ->add('telephone')
             ->add('email')
             ->add('website')
-            ->add('updatedAt', HiddenType::class)
-            ->add('isPublished', HiddenType::class);
+            ->add('updatedAt')
+            ->add('isPublished');
     }
 
     public function configureOptions(OptionsResolver $resolver)
