@@ -3,13 +3,15 @@
 {% block title %}Modifier mon commentaire{% endblock %}
 
 {% block body %}
-    <div class="ctn editArtCtn">
+    <div class="ctn editComCtn">
         {% if app.user is same as (comment.author) %}
             <h1 class="detailsTitle">Modifier mon commentaire</h1>
             <fieldset class="formFs">
                 {{ form_start(form) }}
+                {{ form_label(form.comment, 'Votre commentaire :') }}
+                {{ form_widget(form.comment) }}
                 <div class="center">
-                    <button class="btn loginBtn" id="publishBtn">{{ button_label|default('Modifier') }}</button>
+                    <button class="btn loginBtn" id="editComBtn">{{ button_label|default('Modifier') }}</button>
                 </div>
                 {{ form_end(form) }}
             </fieldset>

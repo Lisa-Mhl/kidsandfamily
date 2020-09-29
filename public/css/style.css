@@ -1214,6 +1214,16 @@ hr {
     margin-bottom: 2em;
 }
 
+#editComBtn{
+    position: relative;
+    top: 30%;
+    width: 10%;
+}
+
+.editComCtn{
+    margin-bottom: 20em;
+}
+
 .comTitle {
     margin-top: 2em;
 }
