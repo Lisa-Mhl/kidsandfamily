@@ -23,7 +23,7 @@ class ArticleController extends AbstractController
     public function index(ArticleRepository $articleRepository): Response
     {
         return $this->render('article/index.html.twig', [
-            'articles' => $articleRepository->findAll(),
+            'articles' => $articleRepository->findByDate(),
         ]);
     }
 
@@ -42,6 +42,8 @@ class ArticleController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $user = $this->getUser();
             $article->setAuthor($user);
+            $article->getUpdatedAt($article);
+            $article->setIsPublished(false);
             $entityManager->persist($article);
             $entityManager->flush();
 

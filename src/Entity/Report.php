@@ -37,6 +37,11 @@ class Report
      */
     private $article;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Comment::class)
+     */
+    private $comment;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +91,18 @@ class Report
     public function setArticle(?Article $article): self
     {
         $this->article = $article;
+
+        return $this;
+    }
+
+    public function getComment(): ?Comment
+    {
+        return $this->comment;
+    }
+
+    public function setComment(?Comment $comment): self
+    {
+        $this->comment = $comment;
 
         return $this;
     }

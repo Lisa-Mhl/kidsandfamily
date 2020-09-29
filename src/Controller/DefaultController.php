@@ -20,6 +20,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Service\Mailer;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class DefaultController extends AbstractController
 {
@@ -77,6 +78,45 @@ class DefaultController extends AbstractController
     }
 
     /**
+     * @Route("/{id}", name="comment_delete", methods={"DELETE"})
+     * @IsGranted("ROLE_USER")
+     * @param Request $request
+     * @param Comment $comment
+     * @return Response
+     */
+    public function deleteComment(Request $request, Comment $comment): Response
+    {
+        if ($this->isCsrfTokenValid('delete' . $comment->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($comment);
+            $entityManager->flush();
+        }
+        return $this->redirectToRoute('home');
+    }
+
+    /**
+     * @Route("/{id}/modifier", name="comment_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Comment $comment
+     * @return Response
+     */
+    public function editComment(Request $request, Comment $comment): Response
+    {
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+            return $this->redirectToRoute('home');
+        }
+
+        return $this->render('default/edit_comment.html.twig', [
+            'comment' => $comment,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
      * @Route("/signaler/{id}", name="report")
      * @param Article $article
      * @param Request $request
@@ -103,6 +143,38 @@ class DefaultController extends AbstractController
         }
         return $this->render('default/report.html.twig', [
             'article' => $article,
+            'form' => $form->createView(),
+
+        ]);
+    }
+
+    /**
+     * @Route("/signaler_commentaire/{id}", name="report_comment")
+     * @param Comment $comment
+     * @param Request $request
+     * @param Mailer $mailer
+     * @return Response
+     */
+    public function reportComment(Comment $comment, Request $request, Mailer $mailer)
+    {
+        $report = new Report();
+        $form = $this->createForm(ReportType::class, $report);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $user = $this->getUser();
+            $report->setEmail($user);
+            $report->setComment($comment);
+            $report->setCreatedAt(new \DateTime());
+            $entityManager->persist($report);
+            $entityManager->flush();
+
+            $mailer->notifReportCom($report);
+
+            return $this->redirectToRoute('report_thanks');
+        }
+        return $this->render('default/report_comment.html.twig', [
+            'comment' => $comment,
             'form' => $form->createView(),
 
         ]);

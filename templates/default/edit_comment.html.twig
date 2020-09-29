@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier mon commentaire{% endblock %}
+
+{% block body %}
+    <div class="ctn editComCtn">
+        {% if app.user is same as (comment.author) %}
+            <h1 class="detailsTitle">Modifier mon commentaire</h1>
+            <fieldset class="formFs">
+                {{ form_start(form) }}
+                {{ form_label(form.comment, 'Votre commentaire :') }}
+                {{ form_widget(form.comment) }}
+                <div class="center">
+                    <button class="btn loginBtn" id="editComBtn">{{ button_label|default('Modifier') }}</button>
+                </div>
+                {{ form_end(form) }}
+            </fieldset>
+        {% else %}
+            <div class="mustCo">
+                <p class="mustCoBody">Seul l'auteur d'un commentaire peut le modifier</p>
+                <a class="logLink" href="{{ path('app_login') }}">Se connecter</a> <br>
+                <a class="logLink" href="{{ path('app_register') }}">Créer un compte</a>
+            </div>
+
+        {% endif %}
+    </div>
+{% endblock %}

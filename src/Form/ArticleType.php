@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Article;
 use App\Entity\Category;
+use phpDocumentor\Reflection\Type;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -12,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
+use function Sodium\add;
 
 class ArticleType extends AbstractType
 {
@@ -75,7 +77,9 @@ class ArticleType extends AbstractType
             ->add('author')
             ->add('telephone')
             ->add('email')
-            ->add('website');
+            ->add('website')
+            ->add('updatedAt')
+            ->add('isPublished');
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -1,0 +1,41 @@
+{% extends 'base_email.html.twig' %}
+
+{% block body %}
+    <row>
+        <columns>
+            <p>
+                Un commentaire vient d'être signalé par un utilisateur de Kids & Family !
+            </p>
+        </columns>
+    </row>
+    <row class="message">
+        <columns>
+            <spacer size="35"></spacer>
+            <h2>
+                <center>
+                    Détails du signalement :
+                </center>
+            </h2>
+            <spacer size="20"></spacer>
+        </columns>
+    </row>
+    <row>
+        <columns>
+            <p>
+                Commentaire signalé : <span class="bold">"{{ report.comment }}"</span>  <br>
+                Auteur : <span class="bold">{{ report.comment.author }}</span>  <br>
+                Motif : <span class="bold">{{ report.subject }}</span> <br><br>
+                Signalé par : <span class="bold">{{ report.email }}</span>  <br>
+                Le : <span class="bold">{{ report.createdAt |date("d/m/Y") }}</span>
+            </p>
+        </columns>
+    </row>
+    <hr>
+    <row>
+        <columns>
+            <center>
+                <button href="{{ url('home') }}">Accueil</button>
+            </center>
+        </columns>
+    </row>
+{% endblock %}

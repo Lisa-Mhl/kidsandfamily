@@ -12,6 +12,8 @@
                 <div class="hidden">
                     {{ form_label(form.author, 'Auteur') }}
                     {{ form_widget(form.author) }}
+                    {{ form_widget(form.updatedAt) }}
+                    {{ form_widget(form.isPublished) }}
                 </div>
                 {{ form_label(form.title, 'Titre de votre publication') }}
                 {{ form_widget(form.title) }}
@@ -29,9 +31,12 @@
                 {{ form_widget(form.photoFile) }}
                 {{ form_label(form.needs, 'Si vous avez besoin d\'aide de la part des ambassadeurs, de matériel (etc.) merci de détailler vos besoins (facultatif)') }}
                 {{ form_widget(form.needs) }}
-                {{ form_label(form.address, 'Veuillez indiquer l\'addresse de votre projet / événement') }}
+                {{ form_label(form.address, 'Adresse') }}
                 {{ form_widget(form.address) }}
-
+                {{ form_label(form.city, 'Ville') }}
+                {{ form_widget(form.city) }}
+                {{ form_label(form.zipcode, 'Code Postal') }}
+                {{ form_widget(form.zipcode) }}
                 <div class="option">
                     <h4 class="optionTitle">Optionnel</h4>
                     {{ form_label(form.photoBFile, 'Ajoutez une 2e image') }}

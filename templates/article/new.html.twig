@@ -13,6 +13,8 @@
                 <div class="hidden">
                     {{ form_label(form.author, 'Auteur') }}
                     {{ form_widget(form.author) }}
+                    {{ form_widget(form.updatedAt) }}
+                    {{ form_widget(form.isPublished) }}
                 </div>
                 {{ form_label(form.title, 'Titre de votre publication') }}
                 {{ form_widget(form.title) }}

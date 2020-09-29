@@ -1,5 +1,7 @@
 easy_admin:
   site_name: 'KIDS & FAMILY'
+  formats:
+    datetime: 'd/m/Y H:m'
   entities:
         Article:
             class: App\Entity\Article
@@ -30,6 +32,8 @@ easy_admin:
                 actions: [ 'show', 'edit', 'delete' ]
                 batch_actions: [ 'delete' ]
                 fields:
+                  - { property: 'isPublished', type: 'toggle', label: 'Affichage Accueil' }
+                  - {property: 'updatedAt', label : 'Date'}
                   - { property: 'title', label: 'Titre publication' }
                   - { property: 'category', label: 'Catégories :' }
                   - { property: 'target', label: 'Cible :' }

@@ -978,35 +978,35 @@ hr {
 }
 
 .allArticlesNav {
+    display: flex;
+    flex-direction: row;
     position: relative;
     top: 1em;
     left: 0;
     background-color: white;
+    justify-content: center;
     padding: 1em;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     font-size: 1em;
     font-weight: bold;
     width: 100%;
 }
 
-.allArticlesNav a {
-    background-color: lightseagreen;
-    padding: 0.7em;
-    border-radius: 15px;
-    color: lightyellow;
-    width: 100px;
-    text-align: center;
-    transition: 0.5s;
+.categoryDropDwn{
+    padding-top: 0.6em;
+    padding-left: 30px;
+    font-size: 1.1em;
+    color: black;
+    font-weight: initial;
 }
 
-.allArticlesNav a:hover {
+.categoryDropDwn:hover{
     text-decoration: none;
     color: black;
-    background-color: palegreen;
-    transition: 0.5s;
+}
+
+.catItemDwn{
+    width: 225px;
 }
 
 .catId {
@@ -1183,9 +1183,10 @@ hr {
 }
 
 #avatarCom {
-    height: 40px;
-    width: 40px;
+    height: 35px;
+    width: 35px;
     border-radius: 100%;
+    margin-left: 0.5em;
 }
 
 #authorCom {
@@ -1196,6 +1197,9 @@ hr {
 
 .comment {
     padding-top: 0.5em;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    margin-left: 0.5em;
 }
 
 .commentTitle {
@@ -1210,12 +1214,46 @@ hr {
     margin-bottom: 2em;
 }
 
+#editComBtn{
+    position: relative;
+    top: 30%;
+    width: 10%;
+}
+
+.editComCtn{
+    margin-bottom: 20em;
+}
+
 .comTitle {
     margin-top: 2em;
 }
 
 .commentLine {
-    margin-top: 5em;
+    margin-top: 0;
+    margin-bottom: 1em;
+    color: black;
+}
+
+.reportComment {
+    font-size: 0.6em;
+    font-style: italic;
+}
+
+.commentMenu {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    top: -6em;
+}
+
+#comMenu {
+    padding: 0;
+    margin-bottom: 0;
+    margin-top: 1em;
+}
+
+#comMenuIcon{
+    color: gray;
 }
 
 .articleSideBar {
@@ -1674,7 +1712,6 @@ hr {
     }
 
     /* MAP */
-
     /*////////////////////////// MOBILE ///////////////////////*/
     @media only screen and (max-width: 640px) {
 
