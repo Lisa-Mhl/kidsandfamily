@@ -38,7 +38,7 @@ class Report
     private $article;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Comment::class, inversedBy="reports")
+     * @ORM\ManyToOne(targetEntity=Comment::class)
      */
     private $comment;
 

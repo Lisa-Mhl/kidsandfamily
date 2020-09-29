@@ -1,6 +1,5 @@
 {% extends 'base.html.twig' %}
 
-
 {% block body %}
     <div class="ctn detailsCtn">
         <h1 class="detailsTitle">{{ article.title }} <br> <span class="detailsSubtitle grey"> par {{ article.author }} | publié le {{ article.updatedAt|date('d/m/Y') }} {# AJOUTER DATE DANS BDD #}</span>
@@ -45,10 +44,12 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 {% if app.user is same as (comment.author) %}
-                                    <a href="#">Supprimer</a> {# TO DO : AJOUTER SUPPRESSION DE COMMENTAIRE #}
-                                    <a class="dropdown-item" href="#">Modifier</a> {# TO DO : AJOUTER MODIFICATION DE COMMENTAIRE #}
+                                    {% include '/default/_delete_comment.html.twig' %}
+                                    <a class="dropdown-item"
+                                       href="{{ path('comment_edit', {'id': comment.id}) }}">Modifier</a> {# TO DO : AJOUTER MODIFICATION DE COMMENTAIRE #}
                                 {% else %}
-                                    <a class="dropdown-item" href="{{ path('report_comment', {'id': comment.id}) }}">Signaler</a>
+                                    <a class="dropdown-item"
+                                       href="{{ path('report_comment', {'id': comment.id}) }}">Signaler</a>
                                 {% endif %}
                             </div>
                         </li>
