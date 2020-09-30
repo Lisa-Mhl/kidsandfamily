@@ -9,18 +9,20 @@
     <meta name="viewport" content="width=device-width,initial-scale=1, shrink-to-fit=no">
 
     <title>{% block title %}KIDS & FAMILY{% endblock %}</title>
-
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""></script>
+    <style type="text/css">
+        #map { /* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
+            height: 1000px;
+            width: 1500px;
+        }
+    </style>
+    <title>Carte</title>
     {% block stylesheets %}
-        <!-- Nous chargeons les fichiers CDN de Leaflet. Le CSS AVANT le JS -->
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
-              integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
-              crossorigin=""/>
-        <style type="text/css">
-            #map { /* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
-                height: 1000px;
-            }
-        </style>
-        <title>Carte</title>
     {% endblock %}
 </head>
 <body>
@@ -45,22 +47,23 @@
 <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
 
 <script type="text/javascript">
-    // On initialise la latitude et la longitude de Paris (centre de la carte)
-    var lat = 48.852969;
-    var lon = 2.349903;
+    // On initialise la latitude et la longitude de Clermont Ferrand (centre de la carte)
+    var lat = 45.777222;
+    var lon = 3.087025;
     var macarte = null;
     // Nous initialisons une liste de marqueurs
     var villes = {
         "Paris": {"lat": 48.852969, "lon": 2.349903},
         "Brest": {"lat": 48.383, "lon": -4.500},
         "Quimper": {"lat": 48.000, "lon": -4.100},
-        "Bayonne": {"lat": 43.500, "lon": -1.467}
+        "Bayonne": {"lat": 43.500, "lon": -1.467},
+        "Lyon": {"lat": 45.7628, "lon": 4.8706}
     };
 
     // Fonction d'initialisation de la carte
     function initMap() {
         // Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
-        macarte = L.map('map').setView([lat, lon], 11);
+        macarte = L.map('map').setView([lat, lon], 7);
         // Leaflet ne récupère pas les cartes (tiles) sur un serveur par défaut. Nous devons lui préciser où nous souhaitons les récupérer. Ici, openstreetmap.fr
         L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
             // Il est toujours bien de laisser le lien vers la source des données
