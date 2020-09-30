@@ -1,6 +1,22 @@
 {% extends 'base_map.html.twig' %}
+{% block navBar %}
+    <div>BARRE DE RECHERCHE A METTRE ICI</div>
+{% endblock %}
     {% block body %}
         {% if app.user %}
+            <div class="ctn MapCtn">
+
+            <div id="mapSideBar">
+                <span class="bold">Catégories :</span>
+                {% for category in categories %}
+                    <p class="mapCat">{{ category.name }}</p>
+                    {% for article in category.article %}
+                        <a class="mapLink"
+                           href="{{ path('article_details', {'id': article.id}) }}">{{ article.title }}</a><br>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+
             <!-- BARRE DE RECHERCHE -->
             <div id="map">
                 <!-- Ici s'affichera la carte -->
@@ -14,4 +30,5 @@
             </div>
 
         {% endif %}
+        </div>
     {% endblock %}

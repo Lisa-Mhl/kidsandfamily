@@ -28,10 +28,10 @@
                 </li>
             </h4>
 
+
             {% for category in categories %} {# TRI PAR CATEGORIES #}   {# TO DO : N'AFFICHER QUE LES CATEGORIES QUI CONTIENNENT DES ARTICLES DE KF #}
                 <div class="catId" id="{{ category.id }}"></div>
                 <h4 class="catTitle">{{ category.name | upper }}</h4>
-
 
                 <div class="row allArticlesKidsCtn"> {# AFFICHAGE DES ARTICLES DE K&F #}
                     {% for article in category.article %}

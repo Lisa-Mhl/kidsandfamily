@@ -992,7 +992,7 @@ hr {
     width: 100%;
 }
 
-.categoryDropDwn{
+.categoryDropDwn {
     padding-top: 0.6em;
     padding-left: 30px;
     font-size: 1.1em;
@@ -1000,12 +1000,12 @@ hr {
     font-weight: initial;
 }
 
-.categoryDropDwn:hover{
+.categoryDropDwn:hover {
     text-decoration: none;
     color: black;
 }
 
-.catItemDwn{
+.catItemDwn {
     width: 225px;
 }
 
@@ -1126,6 +1126,11 @@ hr {
 
 /* ARTICLE DETAILS */
 
+.detailsCtn {
+    margin-left: 5em;
+
+}
+
 .detailsTitle {
     text-align: center;
     margin-bottom: 1em;
@@ -1162,7 +1167,7 @@ hr {
 }
 
 #helpLink {
-    width: 12%;
+    width: 15%;
     margin-top: 0;
     margin-bottom: 2em;
 }
@@ -1214,13 +1219,13 @@ hr {
     margin-bottom: 2em;
 }
 
-#editComBtn{
+#editComBtn {
     position: relative;
     top: 30%;
     width: 10%;
 }
 
-.editComCtn{
+.editComCtn {
     margin-bottom: 20em;
 }
 
@@ -1252,7 +1257,7 @@ hr {
     margin-top: 1em;
 }
 
-#comMenuIcon{
+#comMenuIcon {
     color: gray;
 }
 
@@ -1260,7 +1265,7 @@ hr {
     position: absolute;
     top: 10%;
     left: 2%;
-    width: 15%;
+    width: 20%;
     background-color: white;
     padding: 1em;
     height: 100%;
@@ -1359,6 +1364,27 @@ hr {
     width: 45%;
     padding: 2em;
     font-size: 1.5em;
+}
+
+/* MAP */
+.MapCtn {
+    display: flex;
+    flex-direction: row;
+}
+
+.mapArticleLink {
+    text-decoration: none;
+}
+
+#mapSideBar {
+    width: 15%;
+    z-index: 3;
+    text-align: center;
+    margin-left: 1em;
+}
+
+.mapCat {
+    background-color: #bdc902;
 }
 
 /*footer*/
@@ -1505,6 +1531,7 @@ hr {
 .social-icons a.dribbble:hover {
     background-color: #ea4c89
 }
+
 
 /*////////////////////////// TABLETTE ///////////////////////*/
 
@@ -1711,7 +1738,7 @@ hr {
         margin-right: 1em;
     }
 
-    /* MAP */
+
     /*////////////////////////// MOBILE ///////////////////////*/
     @media only screen and (max-width: 640px) {
 

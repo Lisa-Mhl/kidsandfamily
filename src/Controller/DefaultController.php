@@ -253,10 +253,12 @@ class DefaultController extends AbstractController
      * @Route("/map", name = "map")
      *
      */
-    public function showMap(ArticleRepository $articleRepository)
+    public function showMap(ArticleRepository $articleRepository, CategoryRepository $categoryRepository)
     {
         return $this->render('default/map.html.twig', [
             'articles' => $articleRepository->findAll(),
+            'categories' => $categoryRepository->findAll(),
+
         ]);
     }
 
