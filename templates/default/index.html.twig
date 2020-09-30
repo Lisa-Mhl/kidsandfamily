@@ -76,7 +76,7 @@
                 {% if article.isPublished is same as(true) %}
                     {% if article.author.username == "Kids & Family" %}    {# TO DO : OPTIMISER / SECURISER (role admin ?) + BLOQUER A 3 MAX #}
                         <div class="card articleCard" id="articleCard">
-                            <img class="card-img articleImg" src="{{ article.photo }}"
+                            <img class="card-img articleImg" src="{{ vich_uploader_asset(article, 'photoFile')}}"
                                  alt="{{ article.title }}">
                             <div class="articleHead">
                                 <h5 class="card-title articleTitle">{{ article.title }}</h5>
@@ -127,7 +127,7 @@
                 {% if article.isPublished is same as(true) %}
                     {% if article.author.username != "Kids & Family" %}
                         <div class="card articleCard" id="articleCard">
-                            <img class="card-img articleImg" src="{{ article.photo }}"
+                            <img class="card-img articleImg" src="{{ vich_uploader_asset(article, 'photoFile')}}"
                                  alt="{{ article.title }}">
                             <div class="articleHead">
                                 <h5 class="card-title articleTitle">{{ article.title }}</h5>
@@ -178,7 +178,7 @@
                     {% if article.needs %}
                         <div class="card articleCard" id="articleCard">
                             <img class="card-img articleImg"
-                                 src="{{ article.photo }}" {# {{ vich_uploader_asset(article, 'photoFile')}} #}
+                                 src="{{ vich_uploader_asset(article, 'photoFile')}}"
                                  alt="{{ article.title }}">
                             <div class="articleHead">
                                 <h5 class="card-title articleTitle">{{ article.title }}</h5>

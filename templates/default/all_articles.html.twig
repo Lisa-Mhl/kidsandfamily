@@ -38,7 +38,7 @@
                         {% if article.author.username == "Kids & Family" %}    {# TO DO : OPTIMISER / SECURISER (role admin ?) #}
                             <div class="card articleCard" id="allArticlesCard">
                                 <img class="card-img allArticlesImg"
-                                     src="{{ article.photo }}" {# {{ vich_uploader_asset(article, 'photoFile')}} #}
+                                     src="{{ vich_uploader_asset(article, 'photoFile')}} "
                                      alt="{{ article.title }}">
                                 <div class="articleHead">
                                     <h5 class="card-title articleTitle">{{ article.title }}</h5>
