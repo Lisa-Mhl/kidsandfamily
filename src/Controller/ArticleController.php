@@ -3,9 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Entity\ArticleLike;
+use App\Entity\User;
 use App\Form\ArticleType;
+use App\Repository\ArticleLikeRepository;
 use App\Repository\ArticleRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,6 +30,35 @@ class ArticleController extends AbstractController
         return $this->render('article/index.html.twig', [
             'articles' => $articleRepository->findByDate(),
         ]);
+    }
+
+    /**
+ * @Route("/home-article-like/{id}", name="home_article_like")
+ * @param Article $article
+ * @param ArticleLikeRepository $articleLikeRepository
+ * @return JsonResponse
+ */
+    public function getInArticle(Article $article, ArticleLikeRepository $articleLikeRepository)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+
+        if($article->isLikedByUser($user)){
+            $like = $articleLikeRepository->findOneBy(['article' => $article, 'user' => $user]);
+            $em->remove($like);
+            $em->flush();
+            return $this->json([
+                'likes' => $articleLikeRepository->count(['article' => $article])
+            ], 200
+            );
+        }
+
+        $like = new ArticleLike();
+        $like->setArticle($article)->setUser($user);
+        $em->persist($like);
+        $em->flush();
+
+        return $this->json(['message' => 'Liked', 'likes' => $articleLikeRepository->count(['article' => $article])], 200);
     }
 
     /**
@@ -85,7 +119,7 @@ class ArticleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('home');/*AJOUTER REDICRECTION SUR LA MEME PAGE AVEC RECHARGEMENT PAGE  */
         }
 
         return $this->render('article/edit.html.twig', [
@@ -99,9 +133,10 @@ class ArticleController extends AbstractController
      * @Route("/{id}", name="article_delete", methods={"DELETE"})
      * @param Request $request
      * @param Article $article
+     * @param User $user
      * @return Response
      */
-    public function delete(Request $request, Article $article): Response
+    public function delete(Request $request, Article $article, User $user): Response
     {
         if ($this->isCsrfTokenValid('delete'.$article->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -109,7 +144,7 @@ class ArticleController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('home');
+        return $this->redirectToRoute('my_articles', ['id' => $user->getId()]);/*AJOUTER REDICRECTION SUR LA MEME PAGE AVEC RECHARGEMENT PAGE  */
     }
 
 }

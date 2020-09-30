@@ -3,9 +3,11 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
-use DateTime;
+
 use DateTimeImmutable;
 use DateTimeInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Serializable;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -145,6 +147,16 @@ class User implements UserInterface, Serializable
      * @var DateTimeInterface|null
      */
     private $updateAt;
+
+    /**
+     * @ORM\OneToMany(targetEntity=ArticleLike::class, mappedBy="user")
+     */
+    private $articleLikes;
+
+    public function __construct()
+    {
+        $this->articleLikes = new ArrayCollection();
+    }
 
 
 
@@ -496,4 +508,37 @@ class User implements UserInterface, Serializable
     {
         $this->updateAt = $updateAt;
     }
+
+    /**
+     * @return Collection|ArticleLike[]
+     */
+    public function getArticleLikes(): Collection
+    {
+        return $this->articleLikes;
+    }
+
+    public function addArticleLike(ArticleLike $articleLike): self
+    {
+        if (!$this->articleLikes->contains($articleLike)) {
+            $this->articleLikes[] = $articleLike;
+            $articleLike->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArticleLike(ArticleLike $articleLike): self
+    {
+        if ($this->articleLikes->contains($articleLike)) {
+            $this->articleLikes->removeElement($articleLike);
+            // set the owning side to null (unless already changed)
+            if ($articleLike->getUser() === $this) {
+                $articleLike->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+
 }

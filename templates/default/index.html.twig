@@ -80,8 +80,20 @@
                                  alt="{{ article.title }}">
                             <div class="articleHead">
                                 <h5 class="card-title articleTitle">{{ article.title }}</h5>
-                                <span class="like">
-                    <i class="fas fa-heart cardLike"></i> J'aime</span>
+                                <a href="{{ path('home_article_like', {'id' : article.id }) }}"
+                                   class="btn btn-link js-like text-mauve text-bolder">
+                                    {% if app.user and article.isLikedByUser(app.user) %}
+                                        <i class="fas fa-thumbs-up"></i>
+                                    {% else %}
+                                        <i class="far fa-thumbs-up"></i>
+                                    {% endif %}
+                                    <span class="js-link-count">{{ article.likes | length }}</span>
+                                    {% if app.user and article.isLikedByUser(app.user) %}
+                                        <span class="js-link-label">JE N'AIME PLUS</span>
+                                    {% else %}
+                                        <span class="js-link-label">J'AIME</span>
+                                    {% endif %}
+                                </a>
                             </div>
                             {# TO DO : AJOUTER SYSTEME DE LIKE #}
                             <div class="row">
@@ -131,8 +143,20 @@
                                  alt="{{ article.title }}">
                             <div class="articleHead">
                                 <h5 class="card-title articleTitle">{{ article.title }}</h5>
-                                <span class="like">
-                    <i class="fas fa-heart cardLike"></i> J'aime</span>
+                                <a href="{{ path('home_article_like', {'id' : article.id }) }}"
+                                   class="btn btn-link js-like text-mauve text-bolder">
+                                    {% if app.user and article.isLikedByUser(app.user) %}
+                                        <i class="fas fa-heart"></i>
+                                    {% else %}
+                                        <i class="far fa-heart"></i>
+                                    {% endif %}
+                                    <span class="js-link-count">{{ article.likes | length }}</span>
+                                    {% if app.user and article.isLikedByUser(app.user) %}
+                                        <span class="js-link-label">JE N'AIME PLUS</span>
+                                    {% else %}
+                                        <span class="js-link-label">J'AIME</span>
+                                    {% endif %}
+                                </a>
                             </div>
                             {# TO DO : AJOUTER SYSTEME DE LIKE #}
                             <div class="row">
@@ -178,12 +202,24 @@
                     {% if article.needs %}
                         <div class="card articleCard" id="articleCard">
                             <img class="card-img articleImg"
-                                 src="{{ article.photo }}" {# {{ vich_uploader_asset(article, 'photoFile')}} #}
+                                 src="{{ vich_uploader_asset(article, 'photoFile') }}"
                                  alt="{{ article.title }}">
                             <div class="articleHead">
                                 <h5 class="card-title articleTitle">{{ article.title }}</h5>
-                                <span class="like">
-                    <i class="fas fa-heart cardLike"></i> J'aime</span>
+                                <a href="{{ path('home_article_like', {'id' : article.id }) }}"
+                                   class="btn btn-link js-like text-mauve text-bolder">
+                                    {% if app.user and article.isLikedByUser(app.user) %}
+                                        <i class="fas fa-thumbs-up"></i>
+                                    {% else %}
+                                        <i class="far fa-thumbs-up"></i>
+                                    {% endif %}
+                                    <span class="js-link-count">{{ article.likes | length }}</span>
+                                    {% if app.user and article.isLikedByUser(app.user) %}
+                                        <span class="js-link-label ">JE N'AIME PLUS</span>
+                                    {% else %}
+                                        <span class="js-link-label">J'AIME</span>
+                                    {% endif %}
+                                </a>
                             </div>
                             {# TO DO :  AJOUTER SYSTEME DE LIKE #}
                             <div class="row">
@@ -240,4 +276,33 @@
         </div>
 
     {% endfor %}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        document.querySelectorAll('a.js-like').forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault()
+                var spanCount = link.querySelector('span.js-link-count')
+                var spanLabel = link.querySelector('span.js-link-label')
+                var icone = link.querySelector('i')
+                axios.get(link.href)
+                    .then(response => {
+                        spanCount.textContent = response.data.likes
+                        if (icone.classList.contains('fas')) {
+                            icone.classList.replace('fas', 'far')
+                            spanLabel.textContent = "J'AIME"
+                        } else {
+                            icone.classList.replace('far', 'fas')
+                            spanLabel.textContent = "JE N'AIME PLUS"
+                        }
+                    }).catch(error => {
+                    if (error.response.status === 403) {
+                        window.alert("Vous ne pouvez pas liker un article si vous n'êtes pas connecté !")
+                    }
+                })
+            })
+        })
+    </script>
 {% endblock %}

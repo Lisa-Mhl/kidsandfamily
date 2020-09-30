@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * @ORM\Entity(repositoryClass=ArticleRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository", repositoryClass=ArticleRepository::class)
  * @Vich\Uploadable
  */
 class Article
@@ -198,6 +198,13 @@ class Article
      */
     private $isPublished;
 
+    /**
+     * @ORM\OneToMany(targetEntity=ArticleLike::class, mappedBy="article")
+     */
+    private $likes;
+
+
+
     public function __toString()
     {
         return $this->getTitle();
@@ -208,6 +215,7 @@ class Article
         $this->category = new ArrayCollection();
         $this->comments = new ArrayCollection();
         $this->reports = new ArrayCollection();
+        $this->likes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -680,4 +688,44 @@ class Article
 
         return $this;
     }
+
+    /**
+     * @return Collection|ArticleLike[]
+     */
+    public function getLikes(): Collection
+    {
+        return $this->likes;
+    }
+
+    public function addLike(ArticleLike $like): self
+    {
+        if (!$this->likes->contains($like)) {
+            $this->likes[] = $like;
+            $like->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLike(ArticleLike $like): self
+    {
+        if ($this->likes->contains($like)) {
+            $this->likes->removeElement($like);
+            // set the owning side to null (unless already changed)
+            if ($like->getArticle() === $this) {
+                $like->setArticle(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function isLikedByUser(User $user)
+    {
+        foreach($this->likes as $like){
+            if($like->getUser() === $user) return true;
+        }
+        return false;
+    }
+
 }

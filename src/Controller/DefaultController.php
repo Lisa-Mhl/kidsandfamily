@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\ArticleLike;
+use App\Entity\User;
 use App\Entity\Article;
 use App\Entity\Comment;
 use App\Entity\Contact;
@@ -10,11 +12,14 @@ use App\Form\CommentType;
 use App\Form\ContactType;
 use App\Form\ReportType;
 use App\Repository\AboutRepository;
+use App\Repository\ArticleLikeRepository;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\CommentRepository;
 use App\Repository\ContributeRepository;
 use App\Repository\HomepageRepository;
+use App\Repository\UserRepository;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -68,7 +73,7 @@ class DefaultController extends AbstractController
             $comment->setAuthor($user);
             $entityManager->persist($comment);
             $entityManager->flush();
-            return $this->redirectToRoute('home'); /* AJOUTER REDICRECTION SUR LA MEME PAGE AVEC RECHARGEMENT PARGE  */
+            return $this->redirectToRoute('article_details', ['id' => $article->getId()]);/* AJOUTER REDICRECTION SUR LA MEME PAGE AVEC RECHARGEMENT PARGE  */
         }
         return $this->render('default/article_details.html.twig', [
             'article' => $article,
@@ -91,23 +96,24 @@ class DefaultController extends AbstractController
             $entityManager->remove($comment);
             $entityManager->flush();
         }
-        return $this->redirectToRoute('home');
+        return $this->redirectToRoute('home');/* AJOUTER REDICRECTION SUR LA MEME PAGE AVEC RECHARGEMENT PAGE  */
     }
 
     /**
      * @Route("/{id}/modifier", name="comment_edit", methods={"GET","POST"})
      * @param Request $request
      * @param Comment $comment
+     * @param $article
      * @return Response
      */
-    public function editComment(Request $request, Comment $comment): Response
+    public function editComment(Request $request, Comment $comment,Article $article): Response
     {
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('home');/* AJOUTER REDICRECTION SUR LA MEME PAGE AVEC RECHARGEMENT PAGE  */
         }
 
         return $this->render('default/edit_comment.html.twig', [
@@ -192,6 +198,35 @@ class DefaultController extends AbstractController
             'articles' => $articleRepository->findAll(),
             'categories' => $categoryRepository->findAll(),
         ]);
+    }
+
+    /**
+     * @Route("/all-article-like/{id}", name="all_article_like")
+     * @param Article $article
+     * @param ArticleLikeRepository $articleLikeRepository
+     * @return JsonResponse
+     */
+    public function getInAllArticle(Article $article, ArticleLikeRepository $articleLikeRepository)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+
+        if($article->isLikedByUser($user)){
+            $like = $articleLikeRepository->findOneBy(['article' => $article, 'user' => $user]);
+            $em->remove($like);
+            $em->flush();
+            return $this->json([
+                'likes' => $articleLikeRepository->count(['article' => $article])
+            ], 200
+            );
+        }
+
+        $like = new ArticleLike();
+        $like->setArticle($article)->setUser($user);
+        $em->persist($like);
+        $em->flush();
+
+        return $this->json(['message' => 'Liked', 'likes' => $articleLikeRepository->count(['article' => $article])], 200);
     }
 
     /**
