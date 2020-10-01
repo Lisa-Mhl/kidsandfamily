@@ -160,21 +160,21 @@
         integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
         crossorigin=""></script>
 <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
-
-
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script type="text/javascript">
-    {% for category in categories %}
-    {% for article in category.article %}
+    let villes = [];
+    axios.get('https://localhost:8000/articles-js')
+    .then(response => { 
+        villes = response.data
+    })
+    .catch(error => console.log(error))
+
     // On initialise la latitude et la longitude de Clermont Ferrand (centre de la carte)
     var lat = 46.76782;
     var lon = 2.43129;
     var macarte = null;
-    // Nous initialisons une liste de marqueurs
-    var villes = {
-        "{{ article.city }}": {"lat": {{ article.lat }}, "lon": {{ article.lng }} },
-    };
 
-    // Fonction d'initialisation de la carte
+    // Nous initialisons une liste de marqueurs
     function initMap() {
         // Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
         macarte = L.map('map').setView([lat, lon], 6);
@@ -185,21 +185,19 @@
             minZoom: 6,
             maxZoom: 20
         }).addTo(macarte);
-        // Nous parcourons la liste des villes
-        for (ville in villes) {
-            var marker = L.marker([villes[ville].lat, villes[ville].lon]).addTo(macarte);
+
+        for(let i = 0; i < villes.length; i++){
+           var marker = L.marker([villes[i].lat, villes[i].lng]).addTo(macarte);
             // Nous ajoutons la popup. A noter que son contenu peut être du HTML ou une variable
-            marker.bindPopup(" <a class='mapArticleLink' href='{{ path('article_details', {'id': article.id }) }}'>{{ article.title|upper }}</a> <br> Auteur : {{ article.author }}  <br> Publié le : {{ article.updatedAt|date('d/m/Y') }} ");
+            marker.bindPopup("test");
         }
     }
-
     window.onload = function () {
         // Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
         initMap();
-    };
-    {% endfor %}
-    {% endfor %}
+    }; 
 </script>
+
 
 </html>
 {% endblock %}

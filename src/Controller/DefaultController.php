@@ -262,4 +262,13 @@ class DefaultController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/articles-js", name = "articles-js")
+     *
+     */
+    public function articlesForJs(ArticleRepository $articleRepository)
+    {
+        return $this->json($articleRepository->findAll(), 200, [], ['groups' => 'article']);
+    }
+
 }
