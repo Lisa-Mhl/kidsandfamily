@@ -8,6 +8,7 @@ use App\Entity\User;
 use App\Form\ArticleType;
 use App\Repository\ArticleLikeRepository;
 use App\Repository\ArticleRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -110,7 +111,7 @@ class ArticleController extends AbstractController
      * @param Article $article
      * @return Response
      */
-    public function editArticle(Request $request, Article $article, User $user): Response
+    public function editArticle(Request $request, Article $article): Response
     {
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
