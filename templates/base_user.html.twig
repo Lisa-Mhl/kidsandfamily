@@ -151,10 +151,10 @@
             <i class="fa fa-cog" aria-hidden="true"></i>
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-            <a href="#"><i class="fa fa-info-circle" id="iconsProfile"></i>
+            <a href="{{ path('profile', {'id': user.id }) }}"><i class="fa fa-info-circle" id="iconsProfile"></i>
                 <li> Information</li>
             </a>
-            <a href="#"><i class="fa fa-fw fa-home" id="iconsProfile"></i>
+            <a href="{{ path('my_address', {'id': user.id }) }}"><i class="fa fa-fw fa-home" id="iconsProfile"></i>
                 <li> Coordonnées</li>
             </a>
             <a href="{{ path('categories', {'id' : user.id}) }}"><i class="fa fa-mobile" id="iconsProfile"></i>

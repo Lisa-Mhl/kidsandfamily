@@ -4,7 +4,7 @@
 
 {% block body %}
     <h1>Mon compte</h1>
-    <div class="profileCtn">
+    <div class="profileCtn" >
         {% if app.user %}
             {% if is_granted('ROLE_USER') %}
 
@@ -17,7 +17,7 @@
                     {{ user.cp }}, {{ user.city }}<br>
                     {{ user.country }}</p>
 
-                <div class="center"><
+                <div class="center">
                     {# TO DO : AJOUTER SECURITE POUR QUE SEUL UTILISATEUR CO SUR SON PROFIL PUISSE MODIFIER #}
                     <button class="btnProfile update"><a class="linkProfile"
                                                          href="{{ path('user_edit', {'id': user.id}) }}">Modifier</a>
