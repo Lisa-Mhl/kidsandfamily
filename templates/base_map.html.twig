@@ -189,7 +189,7 @@
         for (ville in villes) {
             var marker = L.marker([villes[ville].lat, villes[ville].lon]).addTo(macarte);
             // Nous ajoutons la popup. A noter que son contenu peut être du HTML ou une variable
-            marker.bindPopup(" <a class='mapArticleLink' href='{{ path('article_details', {'id': article.id }) }}'>{{ article.title|upper }}</a> <br> Auteur : {{ article.author }}  <br> Publié le : {{ article.updatedAt|date('m/d/Y') }} ");
+            marker.bindPopup(" <a class='mapArticleLink' href='{{ path('article_details', {'id': article.id }) }}'>{{ article.title|upper }}</a> <br> Auteur : {{ article.author }}  <br> Publié le : {{ article.updatedAt|date('d/m/Y') }} ");
         }
     }
 
