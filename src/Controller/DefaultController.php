@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\ArticleLike;
-use App\Entity\User;
 use App\Entity\Article;
 use App\Entity\Comment;
 use App\Entity\Contact;
@@ -18,7 +17,6 @@ use App\Repository\CategoryRepository;
 use App\Repository\CommentRepository;
 use App\Repository\ContributeRepository;
 use App\Repository\HomepageRepository;
-use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
