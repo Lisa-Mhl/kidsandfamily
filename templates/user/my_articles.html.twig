@@ -28,14 +28,16 @@
                         <div class="articleHead">
                             <h5 class="card-title articleTitle">{{ article.title }}</h5>
                             <a href="{{ path('my_article_like', {'id' : article.id }) }}"
-                               class="btn btn-link js-like text-mauve text-bolder">
+                               class="btn btn-link js-like">
                                 {% if app.user and article.isLikedByUser(app.user) %}
-                                    <i class="fas fa-heart"></i>
+                                    <i class="fas fa-thumbs-up"></i>
                                 {% else %}
-                                    <i class="far fa-heart"></i>
+                                    <i class="far fa-thumbs-up"></i>
                                 {% endif %}
                                 <span class="js-link-count">{{ article.likes | length }}</span>
                                 {% if app.user and article.isLikedByUser(app.user) %}
+                                    <span class="js-link-label">J'AIME</span>
+                                {% else %}
                                     <span class="js-link-label">J'AIME</span>
                                 {% endif %}
                             </a>

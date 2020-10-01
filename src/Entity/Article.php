@@ -720,11 +720,14 @@ class Article
         return $this;
     }
 
-    public function isLikedByUser(User $user)
+    public function isLikedByUser(User $user): bool
     {
-        foreach($this->likes as $like){
-            if($like->getUser() === $user) return true;
+        foreach ($this->likes as $like) {
+            if ($like->getUser() === $user) {
+                return true;
+            }
         }
+
         return false;
     }
 

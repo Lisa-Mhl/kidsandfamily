@@ -8,7 +8,6 @@ use App\Entity\User;
 use App\Form\ArticleType;
 use App\Repository\ArticleLikeRepository;
 use App\Repository\ArticleRepository;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -111,7 +110,7 @@ class ArticleController extends AbstractController
      * @param Article $article
      * @return Response
      */
-    public function editArticle(Request $request, Article $article): Response
+    public function editArticle(Request $request, Article $article, User $user): Response
     {
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
@@ -119,7 +118,7 @@ class ArticleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('home');/*AJOUTER REDICRECTION SUR LA MEME PAGE AVEC RECHARGEMENT PAGE  */
+            return $this->redirectToRoute('', ['id' => $article->getId()]);/*AJOUTER REDICRECTION SUR LA MEME PAGE AVEC RECHARGEMENT PAGE  */
         }
 
         return $this->render('article/edit.html.twig', [

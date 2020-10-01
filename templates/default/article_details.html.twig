@@ -7,12 +7,15 @@
 
         <p class="detailsContent">{{ article.content }}</p>
         <div class="detailsPhotoCtn">
-            <img class="detailsPhoto" src="{{ vich_uploader_asset(article, 'photoFile')}}" alt="Illustration Article {{ article.title }}">
+            <img class="detailsPhoto" src="{{ vich_uploader_asset(article, 'photoFile') }}"
+                 alt="Illustration Article {{ article.title }}">
             {% if article.photoB %}
-                <img class="detailsPhoto" src="{{ vich_uploader_asset(article, 'photoBFile')}}" alt="Illustration Article {{ article.title }}">
+                <img class="detailsPhoto" src="{{ vich_uploader_asset(article, 'photoBFile') }}"
+                     alt="Illustration Article {{ article.title }}">
             {% endif %}
             {% if article.photoC %}
-                <img class="detailsPhoto" src="{{ vich_uploader_asset(article, 'photoCFile')}}" alt="Illustration Article {{ article.title }}">
+                <img class="detailsPhoto" src="{{ vich_uploader_asset(article, 'photoCFile') }}"
+                     alt="Illustration Article {{ article.title }}">
             {% endif %}
         </div>
 
@@ -89,10 +92,21 @@
                 <a class="detMapLink" href="{{ path('map') }}">Voir la map</a>
             </div>
             <h4 class="needsTitle">Partager : </h4> {# AJOUTER FONCTION DE PARTAGE VERS RESEAU #}
-            <a class="instagram" href="#"><i class="fa fa-instagram"></i></a>
-            <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
-            <a class="instagram" href="#"><i class="fa fa-pinterest"></i></a>
-            <a class="instagram" href="#"><i class="fa fa-twitter"></i></a>
+
+            <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="small">
+                <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">
+                    Partager</a>
+            </div>
+            <div class="twitter">
+            <a class="twitter-share-button"
+               href="https://twitter.com/intent/tweet">
+                Tweet</a>
+            </div>
+            <div class="pinterest">
+            <a data-pin-do="buttonPin" href="https://www.pinterest.com/pin/create/button/" data-pin-custom="true">
+                <img src="https://addons.opera.com/media/extensions/55/19155/1.1-rev1/icons/icon_64x64.png" width="25" height="25" alt="pinterest">
+            </a>
+            </div>
 
             {% if article.author != "Kids & Family" %} {# TO DO : OPTIMISER AVEC ROLE ADMIN ? #}
             <div class="report">
@@ -117,6 +131,39 @@
             </div>
         {% endif %}
     </div>
+    <script
+            type="text/javascript"
+            async defer
+            src="//assets.pinterest.com/js/pinit.js"
+    ></script>
+{% endblock %}
 
+{% block javascripts %}
+    <script>
+        (function (d) {
+            var f = d.getElementsByTagName('SCRIPT')[0], p = d.createElement('SCRIPT');
+            p.type = 'text/javascript';
+            p.async = true;
+            p.src = '//assets.pinterest.com/js/pinit.js';
+            f.parentNode.insertBefore(p, f);
+        }(document));
 
+    </script>
+    <script>window.twttr = (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0],
+                t = window.twttr || {};
+            if (d.getElementById(id)) return t;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+
+            t._e = [];
+            t.ready = function(f) {
+                t._e.push(f);
+            };
+
+            return t;
+        }(document, "script", "twitter-wjs"));</script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v8.0" nonce="3WT9zbBN"></script>
 {% endblock %}
