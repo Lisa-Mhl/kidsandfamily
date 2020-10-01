@@ -73,7 +73,7 @@ class DefaultController extends AbstractController
             $comment->setAuthor($user);
             $entityManager->persist($comment);
             $entityManager->flush();
-            return $this->redirectToRoute('article_details', ['id' => $article->getId()]);/* AJOUTER REDICRECTION SUR LA MEME PAGE AVEC RECHARGEMENT PARGE  */
+            return $this->redirectToRoute('home');/* AJOUTER REDICRECTION SUR LA MEME PAGE AVEC RECHARGEMENT PARGE  */
         }
         return $this->render('default/article_details.html.twig', [
             'article' => $article,
@@ -288,10 +288,12 @@ class DefaultController extends AbstractController
      * @Route("/map", name = "map")
      *
      */
-    public function showMap(ArticleRepository $articleRepository)
+    public function showMap(ArticleRepository $articleRepository, CategoryRepository $categoryRepository)
     {
         return $this->render('default/map.html.twig', [
             'articles' => $articleRepository->findAll(),
+            'categories' => $categoryRepository->findAll(),
+
         ]);
     }
 
