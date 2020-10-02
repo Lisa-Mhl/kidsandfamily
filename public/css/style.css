@@ -1154,10 +1154,6 @@ hr {
     font-style: italic;
 }
 
-.formPhoto{
-    width: 10%;
-}
-
 /* ARTICLE DETAILS */
 
 .detailsCtn {
@@ -1390,8 +1386,8 @@ hr {
 }
 
 .contributeStepImg {
-    height: 450px;
-    width: 700px;
+    height: 600px;
+    width: 800px;
 }
 
 .contributeStepBody {

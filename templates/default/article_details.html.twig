@@ -144,10 +144,10 @@
                     {% endif %}
                     {% if article.email %}
                         <i class="fa fa-envelope contactIcon" aria-hidden="true"></i>
-                        {{ article.email }} <br>
+                        <a href="mailto:{{ article.email }}"> {{ article.email }}</a> <br>
                     {% endif %}
                     {% if article.website %}
-                    <i class="fas fa-globe contactIcon"></i> {{ article.website }}</p>
+                    <i class="fas fa-globe contactIcon"></i> <a target="_blank" href="https://{{ article.website }}">{{ article.website }}</a></p>
                 {% endif %}
             </div>
         {% endif %}
