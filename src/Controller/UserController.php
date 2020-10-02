@@ -134,21 +134,17 @@ class UserController extends AbstractController
 
     /**
      * @Route("/{id}/mes_publications", name = "my_articles", methods = {"GET"})
-     *
      * @param User $user
      * @param ArticleRepository $articleRepository
      * @param CategoryRepository $categoryRepository
-     * @param Article $article
      * @return Response
      */
-    public function showMyArticles(User $user, ArticleRepository $articleRepository, CategoryRepository $categoryRepository, Article $article): Response
+    public function showMyArticles(User $user, ArticleRepository $articleRepository, CategoryRepository $categoryRepository): Response
     {
         return $this->render('user/my_articles.html.twig', [
             'user' => $user,
             'articles' => $articleRepository->findAll(),
             'categories' => $categoryRepository->findAll(),
-            'article' => $article,
-
         ]);
     }
 

@@ -9,7 +9,7 @@
 /var/
 /vendor/
 migrations
-/uploads/files
+public/uploads/files
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
