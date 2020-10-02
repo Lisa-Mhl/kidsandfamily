@@ -33,12 +33,12 @@ class Report
     private $createdAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="reports")
+     * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="reports", cascade={"remove"})
      */
     private $article;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Comment::class)
+     * @ORM\ManyToOne(targetEntity=Comment::class, cascade={"remove"})
      */
     private $comment;
 

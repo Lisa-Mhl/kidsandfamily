@@ -164,7 +164,7 @@
 <script type="text/javascript">
     let villes = [];
     axios.get('https://localhost:8000/articles-js')
-    .then(response => { 
+    .then(response => {
         villes = response.data
     })
     .catch(error => console.log(error))
@@ -195,7 +195,7 @@
     window.onload = function () {
         // Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
         initMap();
-    }; 
+    };
 </script>
 
 

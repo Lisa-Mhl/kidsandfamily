@@ -9,13 +9,10 @@
                     {{ about.presentationBody }}</p> <br>
                 <div class="center">
                     {# TO DO Solution for upload video #}
-                    <video class="aboutVideo" width="560" height="315">
-
-                    <source src="{{ vich_uploader_asset(about, 'presentationVideoFile') }}"
+                    <iframe class="aboutVideo" width="560" height="315" src="https://www.youtube.com/embed/sqGltsSb-i0"
                             frameborder="0"
-                    type="video/mp4">
-
-                    </video>
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
                 </div>
             </article>
             <article class="aboutArticle">

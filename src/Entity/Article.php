@@ -15,7 +15,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 
 /**
- * @ORM\Entity(repositoryClass=ArticleRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository", repositoryClass=ArticleRepository::class)
  * @Vich\Uploadable
  */
 class Article
@@ -144,7 +144,7 @@ class Article
     private $author;
 
     /**
-     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="article")
+     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="article", cascade={"remove"})
      */
     private $comments;
 
@@ -164,7 +164,7 @@ class Article
     private $website;
 
     /**
-     * @ORM\OneToMany(targetEntity=Report::class, mappedBy="article")
+     * @ORM\OneToMany(targetEntity=Report::class, mappedBy="article", cascade={"remove"})
      */
     private $reports;
 
@@ -203,6 +203,13 @@ class Article
      */
     private $isPublished;
 
+    /**
+     * @ORM\OneToMany(targetEntity=ArticleLike::class, mappedBy="article", cascade={"remove"})
+     */
+    private $likes;
+
+
+
     public function __toString()
     {
         return $this->getTitle();
@@ -213,6 +220,7 @@ class Article
         $this->category = new ArrayCollection();
         $this->comments = new ArrayCollection();
         $this->reports = new ArrayCollection();
+        $this->likes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -685,4 +693,47 @@ class Article
 
         return $this;
     }
+
+    /**
+     * @return Collection|ArticleLike[]
+     */
+    public function getLikes(): Collection
+    {
+        return $this->likes;
+    }
+
+    public function addLike(ArticleLike $like): self
+    {
+        if (!$this->likes->contains($like)) {
+            $this->likes[] = $like;
+            $like->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLike(ArticleLike $like): self
+    {
+        if ($this->likes->contains($like)) {
+            $this->likes->removeElement($like);
+            // set the owning side to null (unless already changed)
+            if ($like->getArticle() === $this) {
+                $like->setArticle(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function isLikedByUser(User $user): bool
+    {
+        foreach ($this->likes as $like) {
+            if ($like->getUser() === $user) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 }
