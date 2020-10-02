@@ -144,7 +144,7 @@ class Article
     private $author;
 
     /**
-     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="article")
+     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="article", cascade={"remove"})
      */
     private $comments;
 
@@ -164,7 +164,7 @@ class Article
     private $website;
 
     /**
-     * @ORM\OneToMany(targetEntity=Report::class, mappedBy="article")
+     * @ORM\OneToMany(targetEntity=Report::class, mappedBy="article", cascade={"remove"})
      */
     private $reports;
 
@@ -204,7 +204,7 @@ class Article
     private $isPublished;
 
     /**
-     * @ORM\OneToMany(targetEntity=ArticleLike::class, mappedBy="article")
+     * @ORM\OneToMany(targetEntity=ArticleLike::class, mappedBy="article", cascade={"remove"})
      */
     private $likes;
 
