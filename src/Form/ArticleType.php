@@ -37,10 +37,12 @@ class ArticleType extends AbstractType
                 'choices' => [
                     'Projet' => 'Projet',
                     'Événement' => 'Evénement',
+                    'Savoir-faire' => 'Savoir-faire',
+                    'Charité' => 'Charité',
                 ]
             ])
             ->add('photoFile', VichImageType::class, [
-                'required' => false,
+                'required' => true,
                 'download_uri' => false,
                 'image_uri' => true,
                 'asset_helper' => true,
@@ -70,6 +72,7 @@ class ArticleType extends AbstractType
             ->add('target')
             ->add('category', EntityType::class, [
                 'class' => Category::class,
+                'required' =>true,
                 'expanded' => true,
                 'multiple' => true,
                 'by_reference' => false

@@ -63,7 +63,7 @@
                                 {% if app.user is same as (comment.author) %}
                                     {% include '/default/_delete_comment.html.twig' %}
                                     <a class="dropdown-item"
-                                       href="{{ path('comment_edit', {'id': comment.id}) }}">Modifier</a> {# TO DO : AJOUTER MODIFICATION DE COMMENTAIRE #}
+                                       href="{{ path('comment_edit', {'id': comment.id}) }}">Modifier</a>
                                 {% else %}
                                     <a class="dropdown-item"
                                        href="{{ path('report_comment', {'id': comment.id}) }}">Signaler</a>
@@ -108,7 +108,7 @@
             <div class="detailsMapLink">
                 <a class="detMapLink" href="{{ path('map') }}">Voir la map</a>
             </div>
-            <h4 class="needsTitle">Partager : </h4> {# AJOUTER FONCTION DE PARTAGE VERS RESEAU #}
+            <h4 class="needsTitle">Partager : </h4>
             <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"
                  data-size="small">
                 <a target="_blank"

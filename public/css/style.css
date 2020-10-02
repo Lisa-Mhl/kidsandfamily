@@ -1109,10 +1109,17 @@ hr {
     width: 10%;
 }
 
+.optionCtn{
+    background-color: powderblue;
+    padding-top: 1px;
+    padding-bottom: 4em;
+    margin-bottom: 1em;
+}
+
 .option {
-    width: 80%;
+    width: 90%;
     margin-right: auto;
-    margin-top: 2em;
+    margin-top: 5em;
     margin-left: auto;
 }
 
@@ -1122,6 +1129,33 @@ hr {
 
 .optionTitle {
     text-align: center;
+    font-size: 2.2em;
+    margin-bottom: 1em;
+}
+
+.formInput{
+    font-size: 1.2em;
+    margin-bottom: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+
+.formContent .form_widget{
+    height: 500px;
+}
+
+.formTitle{
+    width: 34%;
+}
+
+.subtitle{
+    font-size: 0.6em;
+    font-style: italic;
+}
+
+.formPhoto{
+    width: 10%;
 }
 
 /* ARTICLE DETAILS */
