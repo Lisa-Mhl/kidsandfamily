@@ -43,17 +43,12 @@
                                 <div class="articleHead">
                                     <h5 class="card-title articleTitle">{{ article.title }}</h5>
                                     <a href="{{ path('all_article_like', {'id' : article.id }) }}" class="btn btn-link js-like text-mauve text-bolder">
-                                        {% if app.user and article.isLikedByUser(app.user) %}
-                                            <i class="fas fa-thumbs-up"></i>
-                                        {% else %}
-                                            <i class="far fa-thumbs-up"></i>
-                                        {% endif %}
-                                        <span class="js-link-count">{{ article.likes | length }}</span>
-                                        {% if app.user and article.isLikedByUser(app.user) %}
-                                            <span class="js-link-label">J'AIME</span>
-                                        {% else %}
-                                            <span class="js-link-label">J'AIME</span>
-                                        {% endif %}
+                                            <span class="js-likes">{{article.likes | length }}</span>
+                                            {% if app.user and article.isLikedByUser(app.user) %}
+                                                <i class="fas fa-heart"></i>
+                                            {% else %}
+                                                <i class="far fa-heart"></i>
+                                            {% endif %}
                                     </a>
                                 </div>
                                 <div class="row">
@@ -117,16 +112,11 @@
                             <div class="articleHead">
                                 <h5 class="card-title articleTitle">{{ article.title }}</h5>
                                 <a href="{{ path('all_article_like', {'id' : article.id }) }}" class="btn btn-link js-like text-mauve text-bolder">
+                                    <span class="js-likes">{{article.likes | length }}</span>
                                     {% if app.user and article.isLikedByUser(app.user) %}
-                                        <i class="fas fa-thumbs-up"></i>
+                                        <i class="fas fa-heart"></i>
                                     {% else %}
-                                        <i class="far fa-thumbs-up"></i>
-                                    {% endif %}
-                                    <span class="js-link-count">{{ article.likes | length }}</span>
-                                    {% if app.user and article.isLikedByUser(app.user) %}
-                                        <span class="js-link-label">J'AIME</span>
-                                    {% else %}
-                                        <span class="js-link-label">J'AIME</span>
+                                        <i class="far fa-heart"></i>
                                     {% endif %}
                                 </a>
                             </div>
@@ -178,16 +168,11 @@
                             <div class="articleHead">
                                 <h5 class="card-title articleTitle">{{ article.title }}</h5>
                                 <a href="{{ path('all_article_like', {'id' : article.id }) }}" class="btn btn-link js-like text-mauve text-bolder">
-                                    {% if app.user and article.isLikedByUser(app.user) %}
-                                        <i class="fas fa-thumbs-up"></i>
+                                    <span class="js-likes">{{article.likes | length }}</span>
+                                    {% if app.user and article.islikedByUser(app.user) %}
+                                        <i class="fas fa-heart"></i>
                                     {% else %}
-                                        <i class="far fa-thumbs-up"></i>
-                                    {% endif %}
-                                    <span class="js-link-count">{{ article.likes | length }}</span>
-                                    {% if app.user and article.isLikedByUser(app.user) %}
-                                        <span class="js-link-label">J'AIME</span>
-                                    {% else %}
-                                        <span class="js-link-label">J'AIME</span>
+                                        <i class="far fa-heart"></i>
                                     {% endif %}
                                 </a>
                             </div>
@@ -228,29 +213,29 @@
 
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-        document.querySelectorAll(`a.js-like`).forEach(link => {
-            link.addEventListener('click', e => {
-                e.preventDefault()
-                var spanCount = link.querySelector(`span.js-link-count`)
-                var spanLabel = link.querySelector('span.js-link-label')
-                var icone = link.querySelector('i')
-                axios.get(link.href)
-                    .then(response => {
-                        spanCount.textContent = response.data.likes
-                        if (icone.classList.contains('fas')) {
-                            icone.classList.replace('fas', 'far')
-                            spanLabel.textContent = "J'AIME"
-                        }
-                    }).catch(error => {
-                    if (error.response.status === 403) {
-                        window.alert("Vous ne pouvez pas liker un article si vous n'êtes pas connecté !")
-                    }
-                })
-            })
-        })
+        const LIKE_ICON = 'far fa-heart';
+        const UNLIKE_ICON = 'fas fa-heart';
+        Array.from(document.querySelectorAll('a.js-like')).forEach(function (link) {
+            link.addEventListener('click', onClickLink);
+        });
+        async function onClickLink(event) {
+            event.preventDefault();
+            const url = this.href;
+            const icone = this.querySelector('i');
+            const count = this.querySelector('span.js-likes');
+            try {
+                const result = await axios.post(url);
+                const data = result.data;
+                icone.className = icone.className === LIKE_ICON ? UNLIKE_ICON : LIKE_ICON;
+                count.textContent = data.likes;
+            } catch (error) {
+                if (error.response.status === 403) {
+                    window.location = '/login'
+                }
+            }
+        }
     </script>
 {% endblock %}
 
