@@ -1109,10 +1109,18 @@ hr {
     width: 10%;
 }
 
+.optionCtn {
+    background-color: #ffcb9a;
+    padding-top: 1px;
+    padding-bottom: 4em;
+    margin-bottom: 1em;
+    color: grey;
+}
+
 .option {
-    width: 80%;
+    width: 90%;
     margin-right: auto;
-    margin-top: 2em;
+    margin-top: 1em;
     margin-left: auto;
 }
 
@@ -1120,8 +1128,41 @@ hr {
     margin-top: 2em;
 }
 
-.optionTitle {
-    text-align: center;
+.formInput {
+    font-size: 1.2em;
+    margin-bottom: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+
+.formCtn {
+    background-color: #eeeeee;
+    width: 60%;
+    margin: 1em auto;
+    padding: 1em;
+}
+
+.formCtnTitle {
+    margin-bottom: 1em;
+}
+
+.formContent .form_widget {
+    height: 500px;
+}
+
+.subtitle {
+    font-size: 0.6em;
+    font-style: italic;
+}
+
+.formOption {
+    margin: 1em;
+}
+
+.formContact {
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 /* ARTICLE DETAILS */
@@ -1356,8 +1397,8 @@ hr {
 }
 
 .contributeStepImg {
-    height: 450px;
-    width: 700px;
+    height: 600px;
+    width: 800px;
 }
 
 .contributeStepBody {
@@ -1739,9 +1780,8 @@ hr {
     }
 
     /* PROFILE*/
-
-    .profileCtn{
-    width: 60%;
+    .profileCtn {
+        width: 60%;
     }
 
     #cardProfile {
@@ -1749,7 +1789,7 @@ hr {
         margin-left: 15%;
     }
 
-    .update{
+    .update {
         width: 30%;
     }
 
@@ -1766,18 +1806,31 @@ hr {
         width: 165px;
     }
 
-    #publishBtn{
+    #publishBtn {
         width: 65%;
     }
 
-    .myArticlesCtn{
+    .myArticlesCtn {
         margin-left: 20%;
         width: 80%;
     }
 
-    #addArticleLink{
+    #addArticleLink {
         width: 60%;
         margin-bottom: 0;
+    }
+
+    /* NEW ARTICLE */
+    .formFs {
+        width: 90%;
+    }
+
+    .formCtn {
+        width: 100%;
+    }
+
+    #publishBtn{
+        width: 15%;
     }
 
     /*////////////////////////// MOBILE ///////////////////////*/
@@ -1985,7 +2038,7 @@ hr {
         }
 
         /* PROFILE*/
-        .profileCtn{
+        .profileCtn {
             width: 90%;
         }
 
@@ -1999,11 +2052,11 @@ hr {
             width: 43%;
         }
 
-        #catCard{
+        #catCard {
             margin: auto;
         }
 
-        #publishBtn{
+        #publishBtn {
             display: flex;
             justify-content: center;
             width: 50%;
@@ -2013,14 +2066,23 @@ hr {
             padding-left: 1em;
         }
 
-        .hobbiesCtn{
+        .hobbiesCtn {
             width: 90%;
         }
 
-        .myArticlesCtn{
+        .myArticlesCtn {
             margin-left: auto;
             margin-right: auto;
             width: 90%;
+        }
+
+        /* NEW ARTICLE */
+        .formInput{
+            width: 90%;
+        }
+
+        #publishBtn{
+            width: 20%;
         }
 
     }

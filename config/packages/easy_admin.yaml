@@ -176,7 +176,6 @@ easy_admin:
                    fields:
                      - { property: 'contributeTitle', label: 'contribuer Titre' }
                      - { property: 'step1Title', label: 'Etape 1 Titre :' }
-                     - { property: 'step1Img', label: 'Etape 1 image lien' }
                      - { property: 'step1Body', label: 'Etape 1 description' }
                      - { property: 'step1ImgFile', type: 'vich_image', label: 'Etape 1 image (.mp3, .png, .jpeg, .pdf) :' }
                      - { property: 'step2Title', label: 'Etape 2 Titre' }
