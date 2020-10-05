@@ -1110,27 +1110,22 @@ hr {
 }
 
 .optionCtn{
-    background-color: powderblue;
+    background-color: #ffcb9a;
     padding-top: 1px;
     padding-bottom: 4em;
     margin-bottom: 1em;
+    color: grey;
 }
 
 .option {
     width: 90%;
     margin-right: auto;
-    margin-top: 5em;
+    margin-top: 1em;
     margin-left: auto;
 }
 
 .newArticleContact {
     margin-top: 2em;
-}
-
-.optionTitle {
-    text-align: center;
-    font-size: 2.2em;
-    margin-bottom: 1em;
 }
 
 .formInput{
@@ -1141,17 +1136,33 @@ hr {
     width: 60%;
 }
 
-.formContent .form_widget{
-    height: 500px;
+.formCtn{
+    background-color: #eeeeee;
+    width: 60%;
+    margin: 1em auto;
+    padding: 1em;
 }
 
-.formTitle{
-    width: 34%;
+.formCtnTitle{
+    margin-bottom: 1em;
+}
+
+.formContent .form_widget{
+    height: 500px;
 }
 
 .subtitle{
     font-size: 0.6em;
     font-style: italic;
+}
+
+.formOption{
+    margin: 1em;
+}
+
+.formContact{
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 /* ARTICLE DETAILS */

@@ -15,95 +15,120 @@
                     {{ form_widget(form.updatedAt) }}
                     {{ form_widget(form.isPublished) }}
                 </div>
-                <div class="formInput text-center formTitle">
-                    <span class="bold grey">
-                    {{ form_label(form.title, 'Titre de votre publication (20 caractères max) :') }}
-                        </span>
-                    {{ form_widget(form.title) }}
-                </div>
-                <div class="formInput">
-                          <span class="bold grey">
-                    {{ form_label(form.category, 'Choisissez entre 1 et 3 catégories :') }}
-                                  </span>
-                    {{ form_widget(form.category) }}
-                </div>
-                <div class="formInput">
-                          <span class="bold grey">
-                    {{ form_label(form.classification, 'Choisissez une classification :') }}
-                                  </span>
-                    {{ form_widget(form.classification) }}
-                </div>
-                <div class="formInput">
-                          <span class="bold grey">
-                    {{ form_label(form.target, 'A qui s\'addresse votre publication ?') }}
-                                  </span>
-                    {{ form_widget(form.target) }}
-                </div>
-                <div class="formInput">
+                <div class="formCtn">
+                    <div class="formInput">
                           <span class="bold grey">
                     {{ form_label(form.heading, 'Sélectionnez le type de publication :') }}
                                   </span>
-                    {{ form_widget(form.heading) }}
-                </div>
-                <div class="formInput formContent">
+                        {{ form_widget(form.heading) }}
+                    </div>
+                    <div class="formInput">
                           <span class="bold grey">
-                    {{ form_label(form.content, 'Contenu de votre article :') }}
+                    {{ form_label(form.classification, 'Choisissez une classification :') }}
                                   </span>
-                    {{ form_widget(form.content, {'attr' : {'style': 'height: 350px'}}) }}
+                        {{ form_widget(form.classification) }}
+                    </div>
+                    <div class="formInput">
+                          <span class="bold grey">
+                    {{ form_label(form.category, 'Choisissez entre 1 et 3 catégories :') }}
+                                  </span>
+                        {{ form_widget(form.category) }}
+                    </div>
+                    <div class="formInput">
+                          <span class="bold grey">
+                    {{ form_label(form.target, 'A qui s\'addresse votre publication ?') }}
+                                  </span>
+                        {{ form_widget(form.target) }}
+                    </div>
                 </div>
-                <div class="formInput">
+
+                <div class="formCtn">
+                    <h3 class="text-center formCtnTitle">Informations</h3>
+                    <div class="formInput">
+                    <span class="bold grey">
+                    {{ form_label(form.title, 'Titre de votre publication :') }}
+                        </span>
+                        {{ form_widget(form.title) }}
+                    </div>
+
+                    <div class="formInput formContent">
+                          <span class="bold grey">
+                    {{ form_label(form.content, 'Description détaillée :') }}
+                                  </span>
+                        {{ form_widget(form.content, {'attr' : {'style': 'height: 350px'}}) }}
+                    </div>
+                    <div class="formInput">
                           <span class="bold grey">
                     {{ form_label(form.photoFile, 'Veuillez sélectionnez une image pour illustrer votre article :') }}
                                   </span>
-                    <span class="formPhoto">
-                    {{ form_widget(form.photoFile) }}
-                        </span>
+                        {{ form_widget(form.photoFile) }}
+                    </div>
                 </div>
-                <div class="formInput">
+                <div class="formCtn">
+                    <h3 class="text-center formCtnTitle">Géolocalisation</h3>
+                    <div class="formInput">
                     <span class="bold grey">
                     {{ form_label(form.address, 'Adresse (Sélectionnez une adresse proposée afin de géolocaliser votre article sur la map) :') }}
-                           </span>
-                    {{ form_widget(form.address) }}
-                </div>
-                <div class="formInput">
+                                       </span>
+                        <i class="fa fa-info-circle orange " aria-hidden="true"></i>
+                        {{ form_widget(form.address) }}
+                    </div>
+                    <div class="formInput">
                     <span class="bold grey">
                     {{ form_label(form.city, 'Ville :') }}
                            </span>
-                    {{ form_widget(form.city) }}
-                </div>
-                <div class="formInput">
+                        {{ form_widget(form.city) }}
+                    </div>
+                    <div class="formInput">
                     <span class="bold grey">
                     {{ form_label(form.zipcode, 'Code Postal :') }}
                            </span>
-                    {{ form_widget(form.zipcode) }}
+                        {{ form_widget(form.zipcode) }}
+                    </div>
                 </div>
                 <div class="optionCtn">
                     <div class="option">
-                        <h4 class="optionTitle">Optionnel</h4>
-                        <div>
+                        <h3 class="text-center formCtnTitle">Optionnel</h3>
+                        <div class="formOption">
+                            <h5 class="newArticleContact">- Mes besoins</h5>
                             {{ form_label(form.needs, 'Si vous avez besoin d\'aide de la part des ambassadeurs, de matériel (etc.) merci de détailler vos besoins ci-dessous :') }}
                             {{ form_widget(form.needs, {'attr' : {'style': 'height: 150px'}}) }}
                         </div>
-                        {{ form_label(form.photoBFile, 'Ajoutez une 2e image') }}
-                        {{ form_widget(form.photoBFile) }}
-                        {{ form_label(form.photoCFile, 'Ajoutez une 3e image') }}
-                        {{ form_widget(form.photoCFile) }}
-                        {{ form_label(form.video, 'Ajoutez un lien vers une vidéo') }}
-                        {{ form_widget(form.video) }}
-                        {{ form_label(form.pdf, 'Ajoutez un document PDF') }}
-                        {{ form_widget(form.pdf) }}
+                        <div class="formOption">
+                            <h5 class="newArticleContact">- Documentation</h5>
+                            {{ form_label(form.photoBFile, 'Ajoutez une 2e image d\'illustration :') }}
+                            {{ form_widget(form.photoBFile) }}
+                        </div>
+                        <div class="formOption">
+                            {{ form_label(form.photoCFile, 'Ajoutez une 3e image d\'illustration :') }}
+                            {{ form_widget(form.photoCFile) }}
+                        </div>
+                        <div class="formOption">
+                            {{ form_label(form.video, 'Ajoutez un lien vers une vidéo') }}
+                            <i class="fa fa-info-circle grey" aria-hidden="true"></i>
+                            {{ form_widget(form.video) }}
+                        </div>
+                        <div class="formOption">
+                            {{ form_label(form.pdf, 'Ajoutez un document PDF') }}
+                            {{ form_widget(form.pdf) }}
+                        </div>
                         <h5 class="newArticleContact">Contact <br><span class="subtitle">Ces informations apparaîtront pour les autres utilisateurs, ne remplissez que les champs que vous souhaitez communiquer</span>
                         </h5>
-                        <i class="fa fa-phone-square" aria-hidden="true"></i>
-                        {{ form_label(form.telephone, 'Téléphone') }}
-                        {{ form_widget(form.telephone) }}
-                        {{ form_help(form.telephone) }}
-                        <i class="fa fa-envelope" aria-hidden="true"></i>
-                        {{ form_label(form.email, 'Email') }}
-                        {{ form_widget(form.email) }}
-                        <i class="fas fa-globe"></i>
-                        {{ form_label(form.website, 'Site Web') }}
-                        {{ form_widget(form.website) }}
+                        <div class="formContact">
+                            <i class="fa fa-phone-square" aria-hidden="true"></i>
+                            {{ form_label(form.telephone, 'Téléphone') }}
+                            {{ form_widget(form.telephone) }}
+                        </div>
+                        <div class="formContact">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            {{ form_label(form.email, 'Email') }}
+                            {{ form_widget(form.email) }}
+                        </div>
+                        <div class="formContact">
+                            <i class="fas fa-globe"></i>
+                            {{ form_label(form.website, 'Site Web') }}
+                            {{ form_widget(form.website) }}
+                        </div>
                     </div>
                 </div>
 
@@ -112,7 +137,7 @@
                 </div>
             </fieldset>
             {{ form_end(form) }}
-            </fieldset>
+
             <div class="center">
                 <a class="logLink" href="{{ path('my_articles', {'id': app.user.id}) }}">Retour à mes publications</a>
             </div>

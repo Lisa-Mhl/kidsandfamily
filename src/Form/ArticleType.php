@@ -37,8 +37,8 @@ class ArticleType extends AbstractType
                 'choices' => [
                     'Projet' => 'Projet',
                     'Événement' => 'Evénement',
-                    'Savoir-faire' => 'Savoir-faire',
-                    'Charité' => 'Charité',
+                    'Services / Ressources' => 'Services / Ressources',
+                    'Activités / Sorties' =>'Activités / Sorties',
                 ]
             ])
             ->add('photoFile', VichImageType::class, [
