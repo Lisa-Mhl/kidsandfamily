@@ -56,12 +56,25 @@ class DefaultController extends AbstractController
 
     /**
      * @Route("/a-propos", name="about")
+     * @param AboutRepository $aboutRepository
+     * @param Request $request
      * @return Response
      */
-    public function about(AboutRepository $aboutRepository)
+    public function about(AboutRepository $aboutRepository, Request $request)
     {
+        $newsletter = new Newsletter();
+        $formNewsLetter = $this->createForm(NewsLetterType::class, $newsletter);
+        $formNewsLetter->handleRequest($request);
+
+        if ($formNewsLetter->isSubmitted() && $formNewsLetter->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($newsletter);
+            $entityManager->flush();
+            return $this->redirectToRoute('home');
+        }
         return $this->render('default/about.html.twig', [
             'abouts' => $aboutRepository->findAll(),
+            'formNewsLetter' => $formNewsLetter->createView(),
         ]);
     }
 
@@ -86,10 +99,21 @@ class DefaultController extends AbstractController
             $entityManager->flush();
             return $this->redirectToRoute('home'); /* AJOUTER REDICRECTION SUR LA MEME PAGE AVEC RECHARGEMENT PARGE  */
         }
+        $newsletter = new Newsletter();
+        $formNewsLetter = $this->createForm(NewsLetterType::class, $newsletter);
+        $formNewsLetter->handleRequest($request);
+
+        if ($formNewsLetter->isSubmitted() && $formNewsLetter->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($newsletter);
+            $entityManager->flush();
+            return $this->redirectToRoute('home');
+        }
         return $this->render('default/article_details.html.twig', [
             'article' => $article,
             'form' => $form->createView(),
             'comments' => $commentRepository->findAll(),
+            'formNewsLetter' => $formNewsLetter->createView(),
         ]);
     }
 
@@ -200,25 +224,50 @@ class DefaultController extends AbstractController
      * @Route("/articles", name="all_articles")
      * @param ArticleRepository $articleRepository
      * @param CategoryRepository $categoryRepository
+     * @param Request $request
      * @return Response
      */
-    public function allArticles(ArticleRepository $articleRepository, CategoryRepository $categoryRepository)
+    public function allArticles(ArticleRepository $articleRepository, CategoryRepository $categoryRepository, Request $request)
     {
+        $newsletter = new Newsletter();
+        $formNewsLetter = $this->createForm(NewsLetterType::class, $newsletter);
+        $formNewsLetter->handleRequest($request);
+
+        if ($formNewsLetter->isSubmitted() && $formNewsLetter->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($newsletter);
+            $entityManager->flush();
+            return $this->redirectToRoute('home');
+        }
+
         return $this->render('default/all_articles.html.twig', [
             'articles' => $articleRepository->findAll(),
             'categories' => $categoryRepository->findAll(),
+            'formNewsLetter' => $formNewsLetter->createView(),
         ]);
     }
 
     /**
      * @Route("/contribuer", name="contribute")
      * @param ContributeRepository $contributeRepository
+     * @param Request $request
      * @return Response
      */
-    public function contribute(ContributeRepository $contributeRepository)
+    public function contribute(ContributeRepository $contributeRepository, Request $request)
     {
+        $newsletter = new Newsletter();
+        $formNewsLetter = $this->createForm(NewsLetterType::class, $newsletter);
+        $formNewsLetter->handleRequest($request);
+
+        if ($formNewsLetter->isSubmitted() && $formNewsLetter->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($newsletter);
+            $entityManager->flush();
+            return $this->redirectToRoute('home');
+        }
         return $this->render('default/contribute.html.twig', [
             'contributes' => $contributeRepository->findAll(),
+            'formNewsLetter' => $formNewsLetter->createView(),
         ]);
     }
 
@@ -243,9 +292,19 @@ class DefaultController extends AbstractController
 
             return $this->redirectToRoute('merci');
         }
+        $newsletter = new Newsletter();
+        $formNewsLetter = $this->createForm(NewsLetterType::class, $newsletter);
+        $formNewsLetter->handleRequest($request);
 
+        if ($formNewsLetter->isSubmitted() && $formNewsLetter->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($newsletter);
+            $entityManager->flush();
+            return $this->redirectToRoute('home');
+        }
         return $this->render('default/contact.html.twig', [
             'form' => $form->createView(),
+            'formNewsLetter' => $formNewsLetter->createView(),
         ]);
     }
 

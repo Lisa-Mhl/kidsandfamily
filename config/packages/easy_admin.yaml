@@ -10,7 +10,7 @@ easy_admin:
        - { entity: 'Target', icon: 'users', label: 'Cibles' }
        - { type: 'section', label: 'Gérer les contacts' }
        - { entity: 'Contact', icon: 'envelope', label: 'Messages' }
-       - { entity: 'Newsletter', icon: 'envelope', label: 'Newsletter' }
+       - { entity: 'Newsletter', icon: 'file-text', label: 'Newsletter' }
        - { type: 'section', label: 'Gérer les utilisateurs' }
        - { entity: 'User', icon: 'user-secret' }
        - { entity: 'Report', icon: 'bullhorn', label: 'Signalements' }
@@ -294,58 +294,36 @@ easy_admin:
                 - { property: 'name', label: 'Nom' }
         User:
             class: App\Entity\User
+            disabled_actions: ['edit','new']
             label: "Utilisateurs"
-            form:
-                fields:
-                  - { property: 'email', label: 'email :' }
-                  - { property: 'firstname', label: 'Prenom :' }
-                  - { property: 'lastname', label: 'Nom :' }
-                  - { property: 'gender', label: 'Sexe :' }
-                  - { property: 'birthday', label: 'Date de naissance :' }
-                  - { property: 'profession', label: 'profession' }
-                  - { property: 'marital', label: 'situation :' }
-                  - { property: 'namevoie', label: 'Nom de la voie' }
-                  - { property: 'channelnum', label: 'Numéro de voie' }
-                  - { property: 'complement', label: 'Complement adresse' }
-                  - { property: 'cp', label: 'Code postal' }
-                  - { property: 'city', label: 'Ville' }
-                  - { property: 'country', label: 'Pays' }
-                  - { property: 'phone', label: 'Numéro Tel' }
-                  - { property: 'mobile', label: ' Tel.mobile' }
-                  - { property: 'hobbies', label: 'Centre d\interets' }
-                  - { property: 'username', label: 'Pseudo' }
-                  - { property: 'avatarFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
             list:
-                fields:
-                  - { property: 'email', label: 'email :' }
-                  - { property: 'firstname', label: 'Prenom :' }
-                  - { property: 'lastname', label: 'Nom :' }
-                  - { property: 'birthday', label: 'Date de naissance :' }
-                  - { property: 'profession', label: 'profession' }
-                  - { property: 'city', label: 'Ville' }
-                  - { property: 'country', label: 'Pays' }
-                  - { property: 'phone', label: 'Numéro Tel' }
-                  - { property: 'mobile', label: ' Tel.mobile' }
-                  - { property: 'hobbies', label: 'Centre d\interets' }
-                  - { property: 'username', label: 'Pseudo' }
+              actions:
+                - { name: 'show', icon: 'eye', label: false, css_class: 'btn btn-primary' }
+                - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
+              fields:
+                - { property: 'email', label: 'Email' }
+                - { property: 'firstname', label: 'Prénom' }
+                - { property: 'lastname', label: 'Nom' }
+                - { property: 'city', label: 'Ville' }
+                - { property: 'username', label: 'Pseudo' }
             show:
                 fields:
-                  - { property: 'email', label: 'email :' }
-                  - { property: 'firstname', label: 'Prenom :' }
-                  - { property: 'lastname', label: 'Nom :' }
-                  - { property: 'gender', label: 'Sexe :' }
-                  - { property: 'birthday', label: 'Date de naissance :' }
-                  - { property: 'profession', label: 'profession' }
-                  - { property: 'marital', label: 'situation :' }
+                  - { property: 'email', label: 'Email' }
+                  - { property: 'firstname', label: 'Prénom' }
+                  - { property: 'lastname', label: 'Nom' }
+                  - { property: 'gender', label: 'Genre' }
+                  - { property: 'birthday', label: 'Date de naissance' }
+                  - { property: 'profession', label: 'Profession' }
+                  - { property: 'marital', label: 'Situation familiale' }
                   - { property: 'namevoie', label: 'Nom de la voie' }
                   - { property: 'channelnum', label: 'Numéro de voie' }
-                  - { property: 'complement', label: 'Complement adresse' }
+                  - { property: 'complement', label: 'Complément adresse' }
                   - { property: 'cp', label: 'Code postal' }
                   - { property: 'city', label: 'Ville' }
                   - { property: 'country', label: 'Pays' }
                   - { property: 'phone', label: 'Numéro Tel' }
                   - { property: 'mobile', label: ' Tel.mobile' }
-                  - { property: 'hobbies', label: 'Centre d\interets' }
+                  - { property: 'hobbies', label: "Centre d'intérêts" }
                   - { property: 'username', label: 'Pseudo' }
                   - { property: 'avatar', type: 'image', base_path: '%uploads_path%' }
         Report:
