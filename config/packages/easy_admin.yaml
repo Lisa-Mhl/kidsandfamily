@@ -298,7 +298,7 @@ easy_admin:
             label: "Utilisateurs"
             list:
               actions:
-                - { name: 'show', icon: 'eye', label: false, css_class: 'btn btn-primary' }
+                - { name: 'show', icon: 'eye', label: false, css_class: 'btn btn-dark' }
                 - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
               fields:
                 - { property: 'email', label: 'Email' }
@@ -332,7 +332,7 @@ easy_admin:
           label: "Signalements des articles et commentaires"
           list:
             actions:
-              - { name: 'show', icon: 'eye', label: false, css_class: 'btn btn-primary' }
+              - { name: 'show', icon: 'eye', label: false, css_class: 'btn btn-dark' }
               - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
             fields:
               - { property: 'subject', label: 'Motif du signalement' }
@@ -354,15 +354,38 @@ easy_admin:
             actions:
               - { name: 'email_contact', icon: "envelope", type: 'route', label: 'Répondre', css_class: 'btn btn-info', target: '_blank' }
               - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
+            fields:
+              - { property: 'email', label: 'Email' }
+              - { property: 'name', label: 'Expéditeur' }
+              - { property: 'subject', label: 'Sujet' }
+              - { property: 'createdAt', label: 'Date de récéption' }
         Comment:
           class: App\Entity\Comment
+          disabled_actions: [ 'new' ]
+          label: "Commentaires"
+          list:
+            actions:
+              - { name: 'show', icon: 'eye', label: false, css_class: 'btn btn-dark' }
+              - { name: 'edit', icon: 'pencil', label: false, css_class: 'btn btn-primary' }
+              - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
+            fields:
+              - { property: 'comment', label: 'Commentaire' }
+              - { property: 'author', label: 'Auteur du commentaire' }
+              - { property: 'article', label: 'Article commenté' }
+          show:
+            fields:
+              - { property: 'comment', label: 'Commentaire' }
+              - { property: 'author', label: 'Auteur du commentaire' }
+              - { property: 'article', label: 'Article commenté' }
+          edit:
+            fields:
+              - { property: 'comment', label: 'Commentaire' }
         Newsletter:
             class: App\Entity\Newsletter
-            disabled_actions: ['new','edit']
+            disabled_actions: ['new','edit','show']
             help: "<i style='color: #4b6df5' class='fas fa-info-circle'></i> Vous pouvez accéder à la liste de tous les emails grâce au bouton Tous les emails"
             list:
               actions:
-                - { name: 'show', icon: 'eye', label: false, css_class: 'btn btn-primary' }
                 - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
                 - { name: 'newsletter_email', icon: 'eye', type: 'route', label: 'Tous les emails', css_class: 'btn btn-dark' }
               fields:
