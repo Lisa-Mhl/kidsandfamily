@@ -42,6 +42,11 @@ class Report
      */
     private $comment;
 
+    public function __toString()
+    {
+        return $this->getSubject();
+    }
+
     public function getId(): ?int
     {
         return $this->id;

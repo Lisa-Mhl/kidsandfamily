@@ -87,4 +87,18 @@ class Mailer
         $this->mailer->send($email);
     }
 
+    public function adminContactEmail($entity)
+    {
+        $email = (new TemplatedEmail())
+            ->from(new Address ($this->param->get('mailer_from'), "Kids & Family"))
+            ->to($entity->getEmail())
+            ->subject("Réponse suite à votre demande")
+            ->htmlTemplate('emails/contact_email.html.twig')
+            ->context([
+                'contact' => $entity,
+            ]);
+
+        $this->mailer->send($email);
+    }
+
 }

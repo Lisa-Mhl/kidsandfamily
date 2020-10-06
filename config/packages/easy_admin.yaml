@@ -1,88 +1,90 @@
 easy_admin:
-  site_name: 'KIDS & FAMILY'
+  site_name: 'KIDS & FAMILY | Back Office'
   formats:
     datetime: 'd/m/Y H:m'
+  design:
+    menu:
+       - { type: 'section', label: 'Gérer les publications' }
+       - { entity: 'Article', icon: 'edit', label: 'Publications'  }
+       - { entity: 'Category', icon: 'list' }
+       - { entity: 'Target', icon: 'users', label: 'Cibles' }
+       - { type: 'section', label: 'Gérer les contacts' }
+       - { entity: 'Contact', icon: 'envelope', label: 'Messages' }
+       - { entity: 'Newsletter', icon: 'file-text', label: 'Newsletter' }
+       - { type: 'section', label: 'Gérer les utilisateurs' }
+       - { entity: 'User', icon: 'user-secret' }
+       - { entity: 'Report', icon: 'bullhorn', label: 'Signalements' }
+       - { entity: 'Comment', icon: 'comment', label: 'Commentaires' }
+       - { type: 'section', label: 'Gérer les pages' }
+       - { entity: 'Homepage', icon: 'home', label: 'Accueil' }
+       - { entity: 'About', icon: 'info', label: 'A propos' }
+       - { entity: 'Contribute', icon: 'handshake', label: 'Contribuer' }
   entities:
         Article:
             class: App\Entity\Article
-            label: "Article"
-            form:
-                fields:
-                  - { property: 'title', label: 'Titre publication' }
-                  - { property: 'category', label: 'Catégories :' }
-                  - { property: 'classification', label: 'Classification :' }
-                  - { property: 'target', label: 'Cible :' }
-                  - { property: 'heading', label: 'Type publication :' }
-                  - { property: 'content', label: "contenu :" }
-                  - { property: 'needs', label: 'needs:' }
-                  - { property: 'address', label: 'addresse :' }
-                  - { property: 'city', label: 'ville :' }
-                  - { property: 'zipcode', label: 'Code postal :' }
-                  - { property: 'photoFile', type: 'vich_image', label: 'Ajoutez une image d\illustration (.mp3, mp4, .png, .jpeg, .pdf) :' }
-                  - { property: 'photoBFile', type: 'vich_image', label: 'Ajoutez une 2e image :' }
-                  - { property: 'photoCFile', type: 'vich_image', label: 'Ajoutez une 3e image :' }
-                  - { property: 'videoFile', type: 'vich_image', label: 'Ajoutez un lien vers une vidéo :' }
-                  - { property: 'pdfFile', type: 'vich_image', label: 'Ajoutez un document PDF :' }
-                  - { property: 'author', label: 'Auteur :' }
-                  - { property: 'telephone', label: 'telephone :' }
-                  - { property: 'email', label: 'email :' }
-                  - { property: 'website', label: 'website :' }
+            disabled_actions: ['new', 'show']
+            label: "Publications"
             list:
-                collapse_actions: true
-                actions: [ 'show', 'edit', 'delete' ]
-                batch_actions: [ 'delete' ]
-                fields:
-                  - { property: 'isPublished', type: 'toggle', label: 'Affichage Accueil' }
-                  - {property: 'updatedAt', label : 'Date'}
-                  - { property: 'title', label: 'Titre publication' }
-                  - { property: 'category', label: 'Catégories :' }
-                  - { property: 'target', label: 'Cible :' }
-                  - { property: 'heading', label: 'Type publication :' }
-                  - { property: 'content', label: "contenu :" }
-                  - { property: 'needs', label: 'needs:' }
-                  - { property: 'city', label: 'ville :' }
-                  - { property: 'author', label: 'Auteur :' }
-            show:
-                fields:
-                  - { property: 'title', label: 'Titre publication' }
-                  - { property: 'category', label: 'Catégories :' }
-                  - { property: 'classification', label: 'Classification :' }
-                  - { property: 'target', label: 'Cible :' }
-                  - { property: 'heading', label: 'Type publication :' }
-                  - { property: 'content', label: "contenu :" }
-                  - { property: 'needs', label: 'needs:' }
-                  - { property: 'address', label: 'addresse :' }
-                  - { property: 'city', label: 'ville :' }
-                  - { property: 'zipcode', label: 'Code postal :' }
-                  - { property: 'photoFile', type: 'image', base_path: 'uploads_path%' }
-                  - { property: 'videoFile', type: 'image', base_path: 'uploads_path%' }
-                  - { property: 'pdfFile', type: 'file', base_path: 'uploads_path%' }
-                  - { property: 'photoBFile', type: 'image', base_path: 'uploads_path%' }
-                  - { property: 'photoCFile', type: 'image', base_path: 'uploads_path%' }
-                  - { property: 'author', label: 'Auteur :' }
-                  - { property: 'telephone', label: 'telephone :' }
-                  - { property: 'email', label: 'email :' }
-                  - { property: 'website', label: 'website :' }
-
+              help: "<i style='color: #4b6df5' class='fas fa-info-circle'></i> Cochez entre 1 et 4 publications par section (Kids & Family | Les ambassadeurs | Ils ont besoin d'aide) pour les faire apparaître sur la page d'accueil"
+              actions:
+                - { name: 'edit', icon: 'pencil', label: false, css_class: 'btn btn-primary' }
+                - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
+              fields:
+                - { property: 'isPublished', type: 'toggle', label: 'Affichage Accueil' }
+                - { property: 'title', label: 'Titre' }
+                - { property: 'photo', type: 'image', base_path: "%uploads_path%", label: 'Image' }
+                - { property: 'updatedAt', label: 'Date' }
+                - { property: 'category', label: 'Catégorie(s)' }
+                - { property: 'target', label: 'Cible' }
+                - { property: 'heading', label: 'Type' }
+                - { property: 'needs', label: 'Besoins' }
+                - { property: 'city', label: 'Ville' }
+                - { property: 'author', label: 'Auteur' }
+            form:
+              help: "<i style='color: #4b6df5' class='fas fa-info-circle'></i> Attention ! Si vous modifiez l'adresse de la publication, vous risquez de perdre la géolocalisation ! Merci de modifier l'adresse directement depuis Mon Compte -> Mes Publications sur le site"
+              fields:
+                - { type: 'section', label: 'Classification' }
+                - { property: 'heading', label: 'Type' }
+                - { property: 'classification',type: 'choice', type_options: { choices: [ Je_demande: 'Je demande', Je_propose: 'Je propose' ] }, label: 'Classification' }
+                - { property: 'category', label: 'Catégori(e)s' }
+                - { property: 'target', label: 'Cible' }
+                - { type: 'section', label: 'Informations' }
+                - { property: 'title', label: 'Titre' }
+                - { property: 'content', label: "Description" }
+                - { property: 'needs', label: 'Besoins' }
+                - { property: 'photoFile', type: 'vich_image', base_path: 'uploads_path%', label: 'Image Principale' }
+                - { type: 'section', label: 'Localisation' }
+                - { property: 'address', label: 'Adresse' }
+                - { property: 'city', label: 'Ville' }
+                - { property: 'zipcode', label: 'Code postal' }
+                - { type: 'section', label: 'Documents Complémentaires' }
+                - { property: 'photoBFile', type: 'vich_image', base_path: 'uploads_path%', label: 'Image 2' }
+                - { property: 'photoCFile', type: 'vich_image', base_path: 'uploads_path%', label: 'Image 3' }
+                - { property: 'videoFile', type: 'vich_image', base_path: 'uploads_path%', label: 'Vidéo' }
+                - { property: 'pdfFile', type: 'file', base_path: 'uploads_path%', label: 'Doc PDF' }
+                - { type: 'section', label: 'Contact' }
+                - { property: 'telephone', label: 'Téléphone' }
+                - { property: 'email', label: 'Email' }
+                - { property: 'website', label: 'Site Web' }
         Category:
              class: App\Entity\Category
              label: "Categories"
+             list:
+                 actions:
+                     - { name: 'edit', icon: 'pencil', label: false, css_class: 'btn btn-primary' }
+                     - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
+                     - { name: 'new', icon: 'plus', label: 'Ajouter une catégorie', css_class: 'btn btn-success' }
+                 fields:
+                     - { property: 'name', label: 'Nom de la catégorie' }
+                     - { property: 'poster', type: 'image', base_path: "%uploads_path%", label: 'Image' }
+             edit:
+                 fields:
+                     - { property: 'name', label: 'Nom de la catégorie' }
+                     - { property: 'posterFile', type: 'vich_image', label: 'Image (.png, .jpeg)' }
              form:
                  fields:
-                   - { property: 'name', label: 'Nom de la catégorie' }
-                   - { property: 'posterFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
-             list:
-                 collapse_actions: true
-                 actions: [ 'show', 'edit', 'delete' ]
-                 batch_actions: [ 'delete' ]
-                 fields:
-                   - { property: 'name', label: 'Nom de la catégorie' }
-                   - { property: 'posterFile', type: 'image', base_path: 'uploads_path%' }
-             show:
-                 fields:
-                   - { property: 'title', label: 'Nom de la catégorie' }
-                   - { property: 'posterFile', type: 'image', base_path: 'uploads_path%' }
-
+                     - { property: 'name', label: 'Nom de la catégorie' }
+                     - { property: 'posterFile', type: 'vich_image', label: 'Image (.png, .jpeg)' }
         About:
              class: App\Entity\About
              label: "A propos"
@@ -168,7 +170,6 @@ easy_admin:
                    - { property: 'giveImgFile', type: 'image', base_path: 'uploads_path%' }
                    - { property: 'communityTitle', label: 'Communauté Titre' }
                    - { property: 'communityBody', label: 'Communauté description' }
-
         Contribute:
                class: App\Entity\Contribute
                label: "Contribuer"
@@ -281,72 +282,117 @@ easy_admin:
         Target:
             class: App\Entity\Target
             label: "Cible"
-            form:
-                fields:
-                  - { property: 'name', label: 'Cible' }
             list:
-                collapse_actions: true
-                actions: [ 'show', 'edit', 'delete' ]
-                batch_actions: [ 'delete' ]
+                actions:
+                  - { name: 'edit', icon: 'pencil', label: false, css_class: 'btn btn-primary' }
+                  - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
+                  - { name: 'new', icon: 'plus', label: 'Ajouter une cible', css_class: 'btn btn-success' }
                 fields:
-                  - { property: 'name', label: 'Cible' }
-            show:
-                fields:
-                  - { property: 'name', label: 'Cible' }
-
+                  - { property: 'name', label: 'Nom de la Cible' }
+            form:
+              fields:
+                - { property: 'name', label: 'Nom' }
         User:
             class: App\Entity\User
+            disabled_actions: ['edit','new']
             label: "Utilisateurs"
-            form:
-                fields:
-                  - { property: 'email', label: 'email :' }
-                  - { property: 'firstname', label: 'Prenom :' }
-                  - { property: 'lastname', label: 'Nom :' }
-                  - { property: 'gender', label: 'Sexe :' }
-                  - { property: 'birthday', label: 'Date de naissance :' }
-                  - { property: 'profession', label: 'profession' }
-                  - { property: 'marital', label: 'situation :' }
-                  - { property: 'namevoie', label: 'Nom de la voie' }
-                  - { property: 'channelnum', label: 'Numéro de voie' }
-                  - { property: 'complement', label: 'Complement adresse' }
-                  - { property: 'cp', label: 'Code postal' }
-                  - { property: 'city', label: 'Ville' }
-                  - { property: 'country', label: 'Pays' }
-                  - { property: 'phone', label: 'Numéro Tel' }
-                  - { property: 'mobile', label: ' Tel.mobile' }
-                  - { property: 'hobbies', label: 'Centre d\interets' }
-                  - { property: 'username', label: 'Pseudo' }
-                  - { property: 'avatarFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
             list:
-                fields:
-                  - { property: 'email', label: 'email :' }
-                  - { property: 'firstname', label: 'Prenom :' }
-                  - { property: 'lastname', label: 'Nom :' }
-                  - { property: 'birthday', label: 'Date de naissance :' }
-                  - { property: 'profession', label: 'profession' }
-                  - { property: 'city', label: 'Ville' }
-                  - { property: 'country', label: 'Pays' }
-                  - { property: 'phone', label: 'Numéro Tel' }
-                  - { property: 'mobile', label: ' Tel.mobile' }
-                  - { property: 'hobbies', label: 'Centre d\interets' }
-                  - { property: 'username', label: 'Pseudo' }
+              actions:
+                - { name: 'show', icon: 'eye', label: false, css_class: 'btn btn-dark' }
+                - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
+              fields:
+                - { property: 'email', label: 'Email' }
+                - { property: 'firstname', label: 'Prénom' }
+                - { property: 'lastname', label: 'Nom' }
+                - { property: 'city', label: 'Ville' }
+                - { property: 'username', label: 'Pseudo' }
             show:
                 fields:
-                  - { property: 'email', label: 'email :' }
-                  - { property: 'firstname', label: 'Prenom :' }
-                  - { property: 'lastname', label: 'Nom :' }
-                  - { property: 'gender', label: 'Sexe :' }
-                  - { property: 'birthday', label: 'Date de naissance :' }
-                  - { property: 'profession', label: 'profession' }
-                  - { property: 'marital', label: 'situation :' }
+                  - { property: 'email', label: 'Email' }
+                  - { property: 'firstname', label: 'Prénom' }
+                  - { property: 'lastname', label: 'Nom' }
+                  - { property: 'gender', label: 'Genre' }
+                  - { property: 'birthday', label: 'Date de naissance' }
+                  - { property: 'profession', label: 'Profession' }
+                  - { property: 'marital', label: 'Situation familiale' }
                   - { property: 'namevoie', label: 'Nom de la voie' }
                   - { property: 'channelnum', label: 'Numéro de voie' }
-                  - { property: 'complement', label: 'Complement adresse' }
+                  - { property: 'complement', label: 'Complément adresse' }
                   - { property: 'cp', label: 'Code postal' }
                   - { property: 'city', label: 'Ville' }
                   - { property: 'country', label: 'Pays' }
                   - { property: 'phone', label: 'Numéro Tel' }
                   - { property: 'mobile', label: ' Tel.mobile' }
-                  - { property: 'hobbies', label: 'Centre d\interets' }
+                  - { property: 'hobbies', label: "Centre d'intérêts" }
                   - { property: 'username', label: 'Pseudo' }
                   - { property: 'avatar', type: 'image', base_path: '%uploads_path%' }
+        Report:
+          class: App\Entity\Report
+          disabled_actions: [ 'new', 'edit' ]
+          label: "Signalements des articles et commentaires"
+          list:
+            actions:
+              - { name: 'show', icon: 'eye', label: false, css_class: 'btn btn-dark' }
+              - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
+            fields:
+              - { property: 'subject', label: 'Motif du signalement' }
+              - { property: 'comment', label: 'Commentaire signalé' }
+              - { property: 'article', label: 'Article signalé'}
+              - { property: 'createdAt', label: 'Date du signalement' }
+              - { property: 'email', label: 'Rapporteur'}
+          show:
+            fields:
+              - { property: 'subject', label: 'Motif du signalement' }
+              - { property: 'comment', label: 'Commentaire signalé' }
+              - { property: 'article', label: 'Article signalé' }
+              - { property: 'createdAt', label: 'Date du signalement' }
+              - { property: 'email', label: 'Rapporteur' }
+        Contact:
+          class: App\Entity\Contact
+          disabled_actions: ['edit','new']
+          list:
+            actions:
+              - { name: 'email_contact', icon: "envelope", type: 'route', label: 'Répondre', css_class: 'btn btn-info', target: '_blank' }
+              - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
+            fields:
+              - { property: 'email', label: 'Email' }
+              - { property: 'name', label: 'Expéditeur' }
+              - { property: 'subject', label: 'Sujet' }
+              - { property: 'createdAt', label: 'Date de récéption' }
+        Comment:
+          class: App\Entity\Comment
+          disabled_actions: [ 'new' ]
+          label: "Commentaires"
+          list:
+            actions:
+              - { name: 'show', icon: 'eye', label: false, css_class: 'btn btn-dark' }
+              - { name: 'edit', icon: 'pencil', label: false, css_class: 'btn btn-primary' }
+              - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
+            fields:
+              - { property: 'comment', label: 'Commentaire' }
+              - { property: 'author', label: 'Auteur du commentaire' }
+              - { property: 'article', label: 'Article commenté' }
+          show:
+            fields:
+              - { property: 'comment', label: 'Commentaire' }
+              - { property: 'author', label: 'Auteur du commentaire' }
+              - { property: 'article', label: 'Article commenté' }
+          edit:
+            fields:
+              - { property: 'comment', label: 'Commentaire' }
+        Newsletter:
+            class: App\Entity\Newsletter
+            disabled_actions: ['new','edit','show']
+            help: "<i style='color: #4b6df5' class='fas fa-info-circle'></i> Vous pouvez accéder à la liste de tous les emails grâce au bouton Tous les emails"
+            list:
+              actions:
+                - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
+                - { name: 'newsletter_email', icon: 'eye', type: 'route', label: 'Tous les emails', css_class: 'btn btn-dark' }
+              fields:
+                - { property: 'email', type: 'email' }
+            edit:
+              fields:
+                - { property: 'email', type: 'email' }
+            form:
+              fields:
+                - { property: 'email', type: 'email' }
