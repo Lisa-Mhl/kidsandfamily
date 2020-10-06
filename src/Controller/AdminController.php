@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Contact;
 use App\Form\ContactAdminType;
+use App\Repository\NewsletterRepository;
 use App\Service\Mailer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -35,6 +36,19 @@ class AdminController extends AbstractController
         return $this->render('admin/contact_mail.html.twig', [
             'contact' => $contact,
             'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/admin/newsletter_email", name="newsletter_email")
+     * @param NewsletterRepository $newsletterRepository
+     * @return Response
+     */
+    public function getNewsLetterEmails(NewsletterRepository $newsletterRepository)
+    {
+        # GET ALL THE EMAIL ON A BLANK PAGE FOR NEWSLETTER IN EASY-ADMIN #
+        return $this->render('admin/newsletter_email.html.twig', [
+            'newsletters' => $newsletterRepository->findAll(),
         ]);
     }
 }

@@ -145,12 +145,17 @@
 
                 <!-- Content -->
                 <div class="footer-body">
-                    <h5 class="text-uppercase font-weight-bold">Footer text 1</h5>
-                    <p class="footerText">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita sapiente
-                        sint, nulla, nihil
-                        repudiandae commodi voluptatibus corrupti animi sequi aliquid magnam debitis, maxime quam
-                        recusandae
-                        harum esse fugiat. Itaque, culpa?</p>
+                    <h5 class="title_message">S'abonner à la Newsletter</h5>
+                    <div class="newsletterCtn">
+                        {{ form_start(formNewsLetter, {'attr': {'novalidate': 'novalidate'}}) }}
+                        <div class="form-ctn">
+                            <div class="form-newsletter">
+                                {{ form_widget(formNewsLetter.email) }}
+                                <button class="btn loginBtn" id="search">{{ button_label|default("S'inscrire") }}</button>
+                            </div>
+                        </div>
+                        {{ form_end(formNewsLetter) }}
+                    </div>
                 </div>
 
             </div>
@@ -179,7 +184,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-sm-6 col-xs-12">
-                <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by
+                <p class="copyright-text">Copyright &copy; 2020 Tous droits réservés par
                     <a href="#">COM LM Kids and Family</a>
                 </p>
             </div>

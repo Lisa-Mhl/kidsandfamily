@@ -6,9 +6,11 @@ use App\Entity\Article;
 use App\Entity\ArticleLike;
 use App\Entity\Comment;
 use App\Entity\Contact;
+use App\Entity\Newsletter;
 use App\Entity\Report;
 use App\Form\CommentType;
 use App\Form\ContactType;
+use App\Form\NewsLetterType;
 use App\Form\ReportType;
 use App\Repository\AboutRepository;
 use App\Repository\ArticleLikeRepository;
@@ -32,11 +34,22 @@ class DefaultController extends AbstractController
      * @param ArticleRepository $articleRepository
      * @return Response
      */
-    public function index(ArticleRepository $articleRepository, HomepageRepository $homepageRepository)
+    public function index(ArticleRepository $articleRepository, HomepageRepository $homepageRepository, Request $request)
     {
+        $newsletter = new Newsletter();
+        $formNewsLetter = $this->createForm(NewsLetterType::class, $newsletter);
+        $formNewsLetter->handleRequest($request);
+
+        if ($formNewsLetter->isSubmitted() && $formNewsLetter->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($newsletter);
+            $entityManager->flush();
+            return $this->redirectToRoute('home');
+        }
         return $this->render('default/index.html.twig', [
             'articles' => $articleRepository->findAll(),
             'homepages' => $homepageRepository->findAll(),
+            'formNewsLetter' => $formNewsLetter->createView(),
 
         ]);
     }

@@ -10,6 +10,7 @@ easy_admin:
        - { entity: 'Target', icon: 'users', label: 'Cibles' }
        - { type: 'section', label: 'Gérer les contacts' }
        - { entity: 'Contact', icon: 'envelope', label: 'Messages' }
+       - { entity: 'Newsletter', icon: 'envelope', label: 'Newsletter' }
        - { type: 'section', label: 'Gérer les utilisateurs' }
        - { entity: 'User', icon: 'user-secret' }
        - { entity: 'Report', icon: 'bullhorn', label: 'Signalements' }
@@ -358,3 +359,20 @@ easy_admin:
               - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
         Comment:
           class: App\Entity\Comment
+        Newsletter:
+            class: App\Entity\Newsletter
+            disabled_actions: ['new','edit']
+            help: "<i style='color: #4b6df5' class='fas fa-info-circle'></i> Vous pouvez accéder à la liste de tous les emails grâce au bouton Tous les emails"
+            list:
+              actions:
+                - { name: 'show', icon: 'eye', label: false, css_class: 'btn btn-primary' }
+                - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
+                - { name: 'newsletter_email', icon: 'eye', type: 'route', label: 'Tous les emails', css_class: 'btn btn-dark' }
+              fields:
+                - { property: 'email', type: 'email' }
+            edit:
+              fields:
+                - { property: 'email', type: 'email' }
+            form:
+              fields:
+                - { property: 'email', type: 'email' }
