@@ -328,6 +328,25 @@ easy_admin:
                   - { property: 'avatar', type: 'image', base_path: '%uploads_path%' }
         Report:
           class: App\Entity\Report
+          disabled_actions: [ 'new', 'edit' ]
+          label: "Signalements des articles et commentaires"
+          list:
+            actions:
+              - { name: 'show', icon: 'eye', label: false, css_class: 'btn btn-primary' }
+              - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
+            fields:
+              - { property: 'subject', label: 'Motif du signalement' }
+              - { property: 'comment', label: 'Commentaire signalé' }
+              - { property: 'article', label: 'Article signalé'}
+              - { property: 'createdAt', label: 'Date du signalement' }
+              - { property: 'email', label: 'Rapporteur'}
+          show:
+            fields:
+              - { property: 'subject', label: 'Motif du signalement' }
+              - { property: 'comment', label: 'Commentaire signalé' }
+              - { property: 'article', label: 'Article signalé' }
+              - { property: 'createdAt', label: 'Date du signalement' }
+              - { property: 'email', label: 'Rapporteur' }
         Contact:
           class: App\Entity\Contact
           disabled_actions: ['edit','new']
