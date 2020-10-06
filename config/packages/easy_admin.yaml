@@ -8,15 +8,16 @@ easy_admin:
        - { entity: 'Article', icon: 'edit', label: 'Publications'  }
        - { entity: 'Category', icon: 'list' }
        - { entity: 'Target', icon: 'users', label: 'Cibles' }
+       - { type: 'section', label: 'Gérer les contacts' }
+       - { entity: 'Contact', icon: 'envelope', label: 'Messages' }
        - { type: 'section', label: 'Gérer les utilisateurs' }
        - { entity: 'User', icon: 'user-secret' }
-       - { entity: 'Contact', icon: 'envelope', label: 'Messages' }
        - { entity: 'Report', icon: 'bullhorn', label: 'Signalements' }
        - { entity: 'Comment', icon: 'comment', label: 'Commentaires' }
        - { type: 'section', label: 'Gérer les pages' }
-       - { entity: 'Homepage', icon: 'home' }
-       - { entity: 'About', icon: 'info', label: 'Page - A propos' }
-       - { entity: 'Contribute', icon: 'handshake', label: 'Page - Contribuer' }
+       - { entity: 'Homepage', icon: 'home', label: 'Accueil' }
+       - { entity: 'About', icon: 'info', label: 'A propos' }
+       - { entity: 'Contribute', icon: 'handshake', label: 'Contribuer' }
   entities:
         Article:
             class: App\Entity\Article
@@ -39,6 +40,7 @@ easy_admin:
                 - { property: 'city', label: 'Ville' }
                 - { property: 'author', label: 'Auteur' }
             form:
+              help: "<i style='color: #4b6df5' class='fas fa-info-circle'></i> Attention ! Si vous modifiez l'adresse de la publication, vous risquez de perdre la géolocalisation ! Merci de modifier l'adresse directement depuis Mon Compte -> Mes Publications sur le site"
               fields:
                 - { type: 'section', label: 'Classification' }
                 - { property: 'heading', label: 'Type' }
@@ -279,19 +281,16 @@ easy_admin:
         Target:
             class: App\Entity\Target
             label: "Cible"
-            form:
-                fields:
-                  - { property: 'name', label: 'Cible' }
             list:
-                collapse_actions: true
-                actions: [ 'show', 'edit', 'delete' ]
-                batch_actions: [ 'delete' ]
+                actions:
+                  - { name: 'edit', icon: 'pencil', label: false, css_class: 'btn btn-primary' }
+                  - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
+                  - { name: 'new', icon: 'plus', label: 'Ajouter une cible', css_class: 'btn btn-success' }
                 fields:
-                  - { property: 'name', label: 'Cible' }
-            show:
-                fields:
-                  - { property: 'name', label: 'Cible' }
-
+                  - { property: 'name', label: 'Nom de la Cible' }
+            form:
+              fields:
+                - { property: 'name', label: 'Nom' }
         User:
             class: App\Entity\User
             label: "Utilisateurs"
@@ -353,5 +352,8 @@ easy_admin:
         Contact:
           class: App\Entity\Contact
           disabled_actions: ['edit','new']
+          list:
+            actions:
+              - { name: 'email_contact', icon: "envelope", type: 'route', label: 'Répondre', css_class: 'btn btn-info', target: '_blank' }
         Comment:
           class: App\Entity\Comment
