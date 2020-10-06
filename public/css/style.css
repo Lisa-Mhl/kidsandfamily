@@ -1110,11 +1110,11 @@ hr {
 }
 
 .optionCtn {
-    background-color: #ffcb9a;
+    background-color: lightgray;
     padding-top: 1px;
     padding-bottom: 4em;
     margin-bottom: 1em;
-    color: grey;
+    color: black;
 }
 
 .option {
