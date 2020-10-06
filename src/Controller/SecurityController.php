@@ -20,13 +20,18 @@ class SecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils, Request $request): Response
     {
-        // if ($this->getUser()) {
-        //     return $this->redirectToRoute('target_path');
-        // }
-
-        // get the login error if there is one
+        if (!empty($this->getUser())) {
+            $roles = $this->getUser()->getRoles();
+            foreach($roles as $role){
+                if($role === 'ROLE_USER'){
+                    return $this->redirectToRoute('home');
+                }
+                if($role === 'ROLE_ADMIN'){
+                    return $this->redirectToRoute('easyadmin');
+                }
+            }
+        }
         $error = $authenticationUtils->getLastAuthenticationError();
-        // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
         $newsletter = new Newsletter();
         $formNewsLetter = $this->createForm(NewsLetterType::class, $newsletter);
