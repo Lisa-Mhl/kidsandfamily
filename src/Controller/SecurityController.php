@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Newsletter;
+use App\Form\NewsLetterType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,9 +15,10 @@ class SecurityController extends AbstractController
     /**
      * @Route("/login", name="app_login")
      * @param AuthenticationUtils $authenticationUtils
+     * @param Request $request
      * @return Response
      */
-    public function login(AuthenticationUtils $authenticationUtils): Response
+    public function login(AuthenticationUtils $authenticationUtils, Request $request): Response
     {
         if (!empty($this->getUser())) {
             $roles = $this->getUser()->getRoles();
@@ -29,8 +33,21 @@ class SecurityController extends AbstractController
         }
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
+        $newsletter = new Newsletter();
+        $formNewsLetter = $this->createForm(NewsLetterType::class, $newsletter);
+        $formNewsLetter->handleRequest($request);
 
-        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+        if ($formNewsLetter->isSubmitted() && $formNewsLetter->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($newsletter);
+            $entityManager->flush();
+            return $this->redirectToRoute('home');
+        }
+        return $this->render('security/login.html.twig', [
+            'last_username' => $lastUsername,
+            'error' => $error,
+            'formNewsLetter' => $formNewsLetter->createView(),
+        ]);
     }
 
     /**

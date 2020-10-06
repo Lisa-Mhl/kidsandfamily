@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Newsletter;
 use App\Entity\User;
 use App\Form\ChangePasswordFormType;
+use App\Form\NewsLetterType;
 use App\Form\ResetPasswordRequestFormType;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -49,8 +51,20 @@ class ResetPasswordController extends AbstractController
             );
         }
 
+        $newsletter = new Newsletter();
+        $formNewsLetter = $this->createForm(NewsLetterType::class, $newsletter);
+        $formNewsLetter->handleRequest($request);
+
+        if ($formNewsLetter->isSubmitted() && $formNewsLetter->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($newsletter);
+            $entityManager->flush();
+            return $this->redirectToRoute('home');
+        }
+
         return $this->render('reset_password/request.html.twig', [
             'requestForm' => $form->createView(),
+            'formNewsLetter' => $formNewsLetter->createView(),
         ]);
     }
 
@@ -58,16 +72,30 @@ class ResetPasswordController extends AbstractController
      * Confirmation page after a user has requested a password reset.
      *
      * @Route("/check-email", name="app_check_email")
+     * @param Request $request
+     * @return Response
      */
-    public function checkEmail(): Response
+    public function checkEmail(Request $request): Response
     {
         // We prevent users from directly accessing this page
         if (!$this->canCheckEmail()) {
             return $this->redirectToRoute('app_forgot_password_request');
         }
 
+        $newsletter = new Newsletter();
+        $formNewsLetter = $this->createForm(NewsLetterType::class, $newsletter);
+        $formNewsLetter->handleRequest($request);
+
+        if ($formNewsLetter->isSubmitted() && $formNewsLetter->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($newsletter);
+            $entityManager->flush();
+            return $this->redirectToRoute('home');
+        }
+
         return $this->render('reset_password/check_email.html.twig', [
             'tokenLifetime' => $this->resetPasswordHelper->getTokenLifetime(),
+            'formNewsLetter' => $formNewsLetter->createView(),
         ]);
     }
 
@@ -124,9 +152,19 @@ class ResetPasswordController extends AbstractController
 
             return $this->redirectToRoute('home');
         }
+        $newsletter = new Newsletter();
+        $formNewsLetter = $this->createForm(NewsLetterType::class, $newsletter);
+        $formNewsLetter->handleRequest($request);
 
+        if ($formNewsLetter->isSubmitted() && $formNewsLetter->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($newsletter);
+            $entityManager->flush();
+            return $this->redirectToRoute('home');
+        }
         return $this->render('reset_password/reset.html.twig', [
             'resetForm' => $form->createView(),
+            'formNewsLetter' => $formNewsLetter->createView(),
         ]);
     }
 

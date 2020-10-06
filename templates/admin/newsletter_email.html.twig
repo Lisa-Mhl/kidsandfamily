@@ -1,0 +1,13 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Emails Newsletter{% endblock %}
+
+{% block body %}
+    <div class="row justify-content-center">
+        <div class="jumbotron">
+            {% for newsletter in newsletters %}
+                {{ newsletter.email }},
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

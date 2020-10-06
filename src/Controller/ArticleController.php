@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Entity\ArticleLike;
+use App\Entity\Newsletter;
 use App\Form\ArticleType;
+use App\Form\NewsLetterType;
 use App\Repository\ArticleLikeRepository;
 use App\Repository\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -55,10 +57,20 @@ class ArticleController extends AbstractController
                 ]
             );
         }
+        $newsletter = new Newsletter();
+        $formNewsLetter = $this->createForm(NewsLetterType::class, $newsletter);
+        $formNewsLetter->handleRequest($request);
 
+        if ($formNewsLetter->isSubmitted() && $formNewsLetter->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($newsletter);
+            $entityManager->flush();
+            return $this->redirectToRoute('home');
+        }
         return $this->render('article/new.html.twig', [
             'article' => $article,
             'form' => $form->createView(),
+            'formNewsLetter' => $formNewsLetter->createView(),
         ]);
     }
 
@@ -91,9 +103,20 @@ class ArticleController extends AbstractController
             return $this->redirectToRoute('home');
         }
 
+        $newsletter = new Newsletter();
+        $formNewsLetter = $this->createForm(NewsLetterType::class, $newsletter);
+        $formNewsLetter->handleRequest($request);
+
+        if ($formNewsLetter->isSubmitted() && $formNewsLetter->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($newsletter);
+            $entityManager->flush();
+            return $this->redirectToRoute('home');
+        }
         return $this->render('article/edit.html.twig', [
             'article' => $article,
             'form' => $form->createView(),
+            'formNewsLetter' => $formNewsLetter->createView(),
         ]);
     }
 

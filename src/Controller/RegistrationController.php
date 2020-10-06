@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Newsletter;
 use App\Entity\User;
+use App\Form\NewsLetterType;
 use App\Form\RegistrationFormType;
 use App\Security\EmailVerifier;
 use App\Security\LoginFormAuthenticator;
@@ -69,9 +71,19 @@ class RegistrationController extends AbstractController
                 'main' // firewall name in security.yaml
             );
         }
+        $newsletter = new Newsletter();
+        $formNewsLetter = $this->createForm(NewsLetterType::class, $newsletter);
+        $formNewsLetter->handleRequest($request);
 
+        if ($formNewsLetter->isSubmitted() && $formNewsLetter->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($newsletter);
+            $entityManager->flush();
+            return $this->redirectToRoute('home');
+        }
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
+            'formNewsLetter' => $formNewsLetter->createView(),
         ]);
     }
 
