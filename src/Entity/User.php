@@ -153,6 +153,11 @@ class User implements UserInterface, Serializable
      */
     private $articleLikes;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isVerified = false;
+
     public function __construct()
     {
         $this->articleLikes = new ArrayCollection();
@@ -536,6 +541,18 @@ class User implements UserInterface, Serializable
                 $articleLike->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getIsVerified(): ?bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
 
         return $this;
     }
