@@ -1,19 +1,12 @@
 {% extends 'base_email.html.twig' %}
 
 {% block body %}
-    <row>
-        <columns>
-            <p>
-                Nous avons étudié votre messsage et vous avons répondu ci-dessous :
-            </p>
-        </columns>
-    </row>
     <row class="message">
         <columns>
             <spacer size="35"></spacer>
             <h2>
                 <center>
-                    Notre Réponse
+                    Réponse à votre message
                 </center>
             </h2>
             <spacer size="20"></spacer>
@@ -22,7 +15,7 @@
     <row>
         <columns>
             <p>
-                {{ contact.message }}
+                {{ contact.message }} <br><br>  Bien à vous, <br> {{ contact.name }}
             </p>
         </columns>
     </row>

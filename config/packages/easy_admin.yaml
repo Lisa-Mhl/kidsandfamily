@@ -355,5 +355,6 @@ easy_admin:
           list:
             actions:
               - { name: 'email_contact', icon: "envelope", type: 'route', label: 'Répondre', css_class: 'btn btn-info', target: '_blank' }
+              - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
         Comment:
           class: App\Entity\Comment
