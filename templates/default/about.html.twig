@@ -32,31 +32,31 @@
                 <h1 id="aboutTitle" class="aboutServicesTitle bold pink">{{ about.servicesTitle }}</h1>
                 <ul class="aboutList">
                     <li class="serviceList">
-                        <img class="serviceImg" src="{{ vich_uploader_asset(about, 'localImgFile') }}" alt="Vie de quartier">
+                        <img class="serviceImg" src="{{ vich_uploader_asset(about, 'localImgFile') }}" alt="{{ about.localTitle }}">
                         <p class="serviceListTitle">{{ about.localTitle }}</p>
                     </li>
                     <li class="serviceList">
-                        <img class="serviceImg" src="{{ vich_uploader_asset(about, 'messageImgFile') }}" alt="Discussions">
+                        <img class="serviceImg" src="{{ vich_uploader_asset(about, 'messageImgFile') }}" alt="{{ about.messageTitle }}">
                         <p class="serviceListTitle">{{ about.messageTitle }}</p>
                     </li>
                     <li class="serviceList">
-                        <img class="serviceImg" src="{{ vich_uploader_asset(about, 'dealsImgFile') }}" alt="Bons plans locaux">
+                        <img class="serviceImg" src="{{ vich_uploader_asset(about, 'dealsImgFile') }}" alt="{{ about.dealsTitle }}">
                         <p class="serviceListTitle">{{ about.dealsTitle }}</p>
                     </li>
                     <li class="serviceList">
                         <img class="serviceImg"
                              src="{{ vich_uploader_asset(about, 'eventImgFile') }}"
-                             alt="Evenements">
+                             alt="{{ about.eventTitle }}">
                         <p class="serviceListTitle">{{ about.eventTitle }}</p>
                     </li>
                     <li class="serviceList">
                         <img class="serviceImg"
-                             src="{{ vich_uploader_asset(about, 'helpImgFile') }}">
+                             src="{{ vich_uploader_asset(about, 'helpImgFile') }}" alt="{{ about.helpTitle }}">
                         <p class="serviceListTitle">{{ about.helpTitle }}</p>
                     </li>
                     <li class="serviceList">
                         <img class="serviceImg"
-                             src="{{ vich_uploader_asset(about, 'giveImgFile') }}">
+                             src="{{ vich_uploader_asset(about, 'giveImgFile') }}" alt="{{ about.giveTitle }}">
                         <p class="serviceListTitle">{{ about.giveTitle }}</p>
                     </li>
                 </ul>
