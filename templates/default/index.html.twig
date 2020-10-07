@@ -19,6 +19,11 @@
     </div>
 
     {% for homepage in homepages %}
+
+        {# <div class="TEST BANIERE">
+            <img src="{{ vich_uploader_asset(homepage, 'bannerFile') }}" alt="Bannière">
+        </div> #}
+
         <div id="a-propos"></div>
         <div class="aboutCtn">
             <div id="about">
@@ -51,7 +56,7 @@
                         <h4 class="card-title targetTitle">{{ homepage.targetTitle2 }}</h4></div>
                     <img class="card-img targetImg"
                          src="{{ vich_uploader_asset(homepage, 'targetImgPlaceFile') }}"
-                         alt="Photo Famille">
+                         alt="Photo Lieux">
                     <div class="enfant">
                         {{ homepage.targetBody2 }}
                     </div>
@@ -76,7 +81,7 @@
                 {% if article.isPublished is same as(true) %}
                     {% if article.author.username == "Kids & Family" %}    {# TO DO : OPTIMISER / SECURISER (role admin ?) + BLOQUER A 3 MAX #}
                         <div class="card articleCard" id="articleCard">
-                            <img class="card-img articleImg" src="{{ vich_uploader_asset(article, 'photoFile')}}"
+                            <img class="card-img articleImg" src="{{ vich_uploader_asset(article, 'photoFile') }}"
                                  alt="{{ article.title }}">
                             <div class="articleHead">
                                 <h5 class="card-title articleTitle">{{ article.title }}</h5>
@@ -126,7 +131,7 @@
                 {% if article.isPublished is same as(true) %}
                     {% if article.author.username != "Kids & Family" %}
                         <div class="card articleCard" id="articleCard">
-                            <img class="card-img articleImg" src="{{ vich_uploader_asset(article, 'photoFile')}}"
+                            <img class="card-img articleImg" src="{{ vich_uploader_asset(article, 'photoFile') }}"
                                  alt="{{ article.title }}">
                             <div class="articleHead">
                                 <h5 class="card-title articleTitle">{{ article.title }}</h5>
@@ -176,7 +181,7 @@
                     {% if article.needs %}
                         <div class="card articleCard" id="articleCard">
                             <img class="card-img articleImg"
-                                 src="{{ vich_uploader_asset(article, 'photoFile')}}"
+                                 src="{{ vich_uploader_asset(article, 'photoFile') }}"
                                  alt="{{ article.title }}">
                             <div class="articleHead">
                                 <h5 class="card-title articleTitle">{{ article.title }}</h5>
@@ -226,14 +231,12 @@
         <div class="eshopCtn">
             <div class="eshop">
                 <h2 class="eshopTitle bold">{{ homepage.sectionTitle }}</h2>
-                <iframe src="https://giphy.com/embed/1i3ypX170NWbWMGOXV" width="480" height="270" frameBorder="0"
-                        class="eshopGif" allowFullScreen>
-                </iframe>
+                <img src="{{ vich_uploader_asset(homepage, 'sectionImgFile') }}">
                 <h4 class="servicesBody">{{ homepage.sectionBody }} </h4>
-                <div class="eshopLinkCtn"></div>
-                <a class="eshopLink" href="#" target="_blank">Visiter la boutique en ligne</a>
+                <div class="eshopLinkCtn">
+                    <a class="eshopLink" href="#" target="_blank">Visiter la boutique en ligne</a>
+                </div>
             </div>
-        </div>
         </div>
 
     {% endfor %}
