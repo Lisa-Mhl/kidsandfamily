@@ -105,7 +105,6 @@ easy_admin:
                    - { type: 'section', label: 'Section 2' }
                    - { property: 'visionTitle', label: 'Titre' }
                    - { property: 'visionBody', label: 'Contenu' }
-                   - { property: 'visionImg', label: 'Lien Image' }
                    - { property: 'visionImgFile', type: 'vich_image', label: 'Image (.png, .jpeg)'}
                    - { type: 'section', label: 'Section 3' }
                    - { property: 'valuesTitle', label: 'Titre' }
@@ -113,22 +112,16 @@ easy_admin:
                    - { type: 'section', label: 'Section 4' }
                    - { property: 'servicesTitle', label: 'Titre' }
                    - { property: 'localTitle', label: 'Titre Img 1' }
-                   - { property: 'localImg', label: 'Lien Img 1' }
                    - { property: 'localImgFile', type: 'vich_image', label: 'Image 1 (.png, .jpeg)'}
                    - { property: 'messageTitle', label: 'Titre Img 2' }
-                   - { property: 'messageImg', label: 'Lien Img 2' }
                    - { property: 'messageImgFile', type: 'vich_image', label: 'Image 2 (png, .jpeg)'}
                    - { property: 'dealsTitle', label: 'Titre Img 3' }
-                   - { property: 'dealsImg', label: 'Lien Img 3' }
                    - { property: 'dealsImgFile', type: 'vich_image', label: 'Image 3 (.png, .jpeg)'}
                    - { property: 'eventTitle', label: 'Titre 4' }
-                   - { property: 'eventImg', label: 'Lien Img 4' }
                    - { property: 'eventImgFile', type: 'vich_image', label: 'Image 4 (.png, .jpeg)'}
                    - { property: 'helpTitle', label: 'Titre 5' }
-                   - { property: 'helpImg', label: 'Lien Img 5' }
                    - { property: 'helpImgFile', type: 'vich_image', label: 'Image 5 (.png, .jpeg)'}
                    - { property: 'giveTitle', label: 'Titre 6' }
-                   - { property: 'giveImg', label: 'Lien Img 6' }
                    - { property: 'giveImgFile', type: 'vich_image', label: 'Image 6 (.png, .jpeg)'}
                    - { type: 'section', label: 'Section 5' }
                    - { property: 'communityTitle', label: 'Titre' }
@@ -178,9 +171,9 @@ easy_admin:
                  - { property: 'targetTitle', label: 'Section 2' }
                  - { property: 'approachTitle', label: 'Section 3' }
                  - { property: 'sectionTitle', label: 'Section 4' }
-             edit:
+             form:
                  fields:
-                   - { property: 'bannerFile', type: 'vich_image', base_path: 'uploads_path%', label: 'Bannière' }
+                   - { property: 'bannerFile', type: 'vich_image', label: 'Bannière' }
                    - { type: 'section', label: 'Section 1' }
                    - { property: 'goalTitle', label: 'Titre' }
                    - { property: 'goalBody', label: 'Contenu' }
