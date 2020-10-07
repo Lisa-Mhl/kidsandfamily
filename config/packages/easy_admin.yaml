@@ -4,6 +4,7 @@ easy_admin:
     datetime: 'd/m/Y H:m'
   design:
     menu:
+       - { label: 'Voir le site', route: 'home', icon: 'laptop', target: '_blank'  }
        - { type: 'section', label: 'Gérer les publications' }
        - { entity: 'Article', icon: 'edit', label: 'Publications'  }
        - { entity: 'Category', icon: 'list' }
@@ -87,56 +88,56 @@ easy_admin:
                      - { property: 'posterFile', type: 'vich_image', label: 'Image (.png, .jpeg)' }
         About:
              class: App\Entity\About
+             disabled_actions: ['new', 'delete', 'show']
              label: "A propos"
+             list:
+               actions:
+                 - { name: 'edit', icon: 'pencil', label: false, css_class: 'btn btn-primary' }
+               fields:
+                 - { property: 'presentationTitle', label: 'Titre 1' }
+                 - { property: 'visionTitle', label: 'Titre 2' }
+                 - { property: 'valuesTitle', label: 'Titre 3' }
+                 - { property: 'servicesTitle', label: 'Titre 4' }
+                 - { property: 'communityTitle', label: 'Titre 5' }
              form:
                  fields:
-                   - { property: 'presentationTitle', label: 'Presentation Titre :' }
-                   - { property: 'presentationBody', label: 'Presentation Description :' }
-                   - { property: 'presentationVideo', label: 'Presentation Video :' }
-                   - { property: 'presentationVideoFile', type: 'vich_image', label: 'Video (mp4) :' }
-                   - { property: 'visionTitle', label: 'Notre vision titre :' }
-                   - { property: 'visionBody', label: 'Vision Description :' }
-                   - { property: 'visionImg', label: 'Vision Image' }
-                   - { property: 'visionImgFile', type: 'vich_image', label: 'Fichier (.mp3, .png, .jpeg, .pdf) :' }
-                   - { property: 'valuesTitle', label: 'Nos valeur titre :' }
-                   - { property: 'valuesBody', label: 'Nos valeur description' }
-                   - { property: 'servicesTitle', label: 'Nos services titre' }
-                   - { property: 'localTitle', label: 'Local Titre' }
-                   - { property: 'localImg', label: 'Local image lien' }
-                   - { property: 'localImgFile', type: 'vich_image', label: 'Local image (.mp3, .png, .jpeg, .pdf) :' }
-                   - { property: 'messageTitle', label: 'Message titre : ' }
-                   - { property: 'messageImg', label: 'Message image lien :' }
-                   - { property: 'messageImgFile', type: 'vich_image', label: 'Message image (.mp3,.png, .jpeg, .pdf) :' }
-                   - { property: 'dealsTitle', label: 'Bons plans titre' }
-                   - { property: 'dealsImg', label: 'Bons plans image lien' }
-                   - { property: 'dealsImgFile', type: 'vich_image', label: 'Bons plans image (.mp3,.png, .jpeg, .pdf) :' }
-                   - { property: 'eventTitle', label: 'Event Titre' }
-                   - { property: 'eventImg', label: 'Event image lien' }
-                   - { property: 'eventImgFile', type: 'vich_image', label: 'Event image (.mp3, .png, .jpeg, .pdf) :' }
-                   - { property: 'helpTitle', label: 'Aide titre' }
-                   - { property: 'helpImg', label: 'Aide image lien' }
-                   - { property: 'helpImgFile', type: 'vich_image', label: 'Aide image (.mp3, .png, .jpeg, .pdf) :' }
-                   - { property: 'giveTitle', label: 'Dons Titre' }
-                   - { property: 'giveImg', label: 'Dons image lien' }
-                   - { property: 'giveImgFile', type: 'vich_image', label: 'Dons image (.mp3, .png, .jpeg, .pdf) :' }
-                   - { property: 'communityTitle', label: 'Communauté Titre' }
-                   - { property: 'communityBody', label: 'Communauté description' }
-             list:
-                 collapse_actions: true
-                 actions: [ 'show', 'edit', 'delete' ]
-                 batch_actions: [ 'delete' ]
-                 fields:
-                   - { property: 'presentationTitle', label: 'Presentation Titre :' }
-                   - { property: 'visionTitle', label: 'Notre vision titre :' }
-                   - { property: 'valuesTitle', label: 'Nos valeur titre :' }
-                   - { property: 'servicesTitle', label: 'Nos services titre' }
-                   - { property: 'localTitle', label: 'Local Titre' }
-                   - { property: 'messageTitle', label: 'Message titre : ' }
-                   - { property: 'dealsTitle', label: 'Bons plans titre' }
-                   - { property: 'eventTitle', label: 'Event Titre' }
-                   - { property: 'helpTitle', label: 'Aide titre' }
-                   - { property: 'giveTitle', label: 'Dons Titre' }
-                   - { property: 'communityTitle', label: 'Communauté Titre' }
+                   - { type: 'section', label: 'Section 1' }
+                   - { property: 'presentationTitle', label: 'Titre' }
+                   - { property: 'presentationBody', label: 'Contenu' }
+                   - { property: 'presentationVideo', label: 'Lien vidéo' }
+                   - { property: 'presentationVideoFile', type: 'vich_image', label: 'Video (.mp4)', base_path: 'uploads_path%' }
+                   - { type: 'section', label: 'Section 2' }
+                   - { property: 'visionTitle', label: 'Titre' }
+                   - { property: 'visionBody', label: 'Contenu' }
+                   - { property: 'visionImg', label: 'Lien Image' }
+                   - { property: 'visionImgFile', type: 'vich_image', label: 'Image (.png, .jpeg)', base_path: 'uploads_path%' }
+                   - { type: 'section', label: 'Section 3' }
+                   - { property: 'valuesTitle', label: 'Titre' }
+                   - { property: 'valuesBody', label: 'Contenu' }
+                   - { type: 'section', label: 'Section 4' }
+                   - { property: 'servicesTitle', label: 'Titre' }
+                   - { property: 'localTitle', label: 'Titre Img 1' }
+                   - { property: 'localImg', label: 'Lien Img 1' }
+                   - { property: 'localImgFile', type: 'vich_image', label: 'Image 1 (.png, .jpeg)', base_path: 'uploads_path%' }
+                   - { property: 'messageTitle', label: 'Titre Img 2' }
+                   - { property: 'messageImg', label: 'Lien Img 2' }
+                   - { property: 'messageImgFile', type: 'vich_image', label: 'Image 2 (png, .jpeg)', base_path: 'uploads_path%' }
+                   - { property: 'dealsTitle', label: 'Titre Img 3' }
+                   - { property: 'dealsImg', label: 'Lien Img 3' }
+                   - { property: 'dealsImgFile', type: 'vich_image', label: 'Image 3 (.png, .jpeg)', base_path: 'uploads_path%' }
+                   - { property: 'eventTitle', label: 'Titre 4' }
+                   - { property: 'eventImg', label: 'Lien Img 4' }
+                   - { property: 'eventImgFile', type: 'vich_image', label: 'Image 4 (.png, .jpeg)', base_path: 'uploads_path%' }
+                   - { property: 'helpTitle', label: 'Titre 5' }
+                   - { property: 'helpImg', label: 'Lien Img 5' }
+                   - { property: 'helpImgFile', type: 'vich_image', label: 'Image 5 (.png, .jpeg)', base_path: 'uploads_path%' }
+                   - { property: 'giveTitle', label: 'Titre 6' }
+                   - { property: 'giveImg', label: 'Lien Img 6' }
+                   - { property: 'giveImgFile', type: 'vich_image', label: 'Image 6 (.png, .jpeg)', base_path: 'uploads_path%' }
+                   - { type: 'section', label: 'Section 5' }
+                   - { property: 'communityTitle', label: 'Titre' }
+                   - { property: 'communityBody', label: 'Contenu' }
+
              show:
                  fields:
                    - { property: 'presentationTitle', label: 'Presentation Titre :' }
@@ -222,7 +223,7 @@ easy_admin:
                      - { property: 'step4ImgFile', type: 'image', base_path: 'uploads_path%' }
         Homepage:
              class: App\Entity\Homepage
-             disabled_actions: ['new', 'delete', 'show']
+             disabled_actions: ['new', 'delete']
              label: "Page d'acceuil"
              list:
                actions:
