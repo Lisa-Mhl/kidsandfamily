@@ -220,65 +220,45 @@ easy_admin:
                      - { property: 'step4Img', label: 'Etape 4 image' }
                      - { property: 'step4Body', label: 'Etape 4 description' }
                      - { property: 'step4ImgFile', type: 'image', base_path: 'uploads_path%' }
-
         Homepage:
              class: App\Entity\Homepage
+             disabled_actions: ['new', 'delete', 'show']
              label: "Page d'acceuil"
-             form:
-                 fields:
-                   - { property: 'banner', label: 'bannière' }
-                   - { property: 'bannerFile', type: 'vich_image', label: 'Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
-                   - { property: 'goalTitle', label: 'Titre' }
-                   - { property: 'goalBody', label: 'Description' }
-                   - { property: 'targetTitle', label: 'Cible titre' }
-                   - { property: 'targetTitle1', label: 'Cible titre 1' }
-                   - { property: 'targetTitle2', label: 'Cible titre 2' }
-                   - { property: 'targetBody', label: 'Cible Description' }
-                   - { property: 'targetImgFam', label: 'Cible image lien' }
-                   - { property: 'targetImgFamFile', type: 'vich_image', label: ' Cible Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
-                   - { property: 'targetImgPlace', label: 'Cible image place lien' }
-                   - { property: 'targetImgPlaceFile', type: 'vich_image', label: ' Cible image place fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
-                   - { property: 'approachTitle', label: 'Demarche Titre' }
-                   - { property: 'approachSubTitle', label: 'Demarche sous titre' }
-                   - { property: 'approachBody', label: 'Demarche description' }
-                   - { property: 'sectionTitle', label: 'Section Titre' }
-                   - { property: 'sectionBody', label: 'section description' }
-                   - { property: 'sectionImg', label: 'Section image lien : ' }
-                   - { property: 'sectionImgFile', type: 'vich_image', label: 'Section Fichier (.mp3, mp4, .png, .jpeg, .pdf) :' }
              list:
-                 collapse_actions: true
-                 actions: [ 'show', 'edit', 'delete' ]
-                 batch_actions: [ 'delete' ]
+               actions:
+                 - { name: 'edit', icon: 'pencil', label: false, css_class: 'btn btn-primary' }
+               fields:
+                 - { property: 'banner', type: 'image', label: 'Bannière', base_path: "%uploads_path%" }
+                 - { property: 'goalTitle', label: 'Titre 1' }
+                 - { property: 'targetTitle', label: 'Titre 2' }
+                 - { property: 'targetTitle1', label: 'Sous-titre 1' }
+                 - { property: 'targetTitle2', label: 'Sous-titre 2' }
+                 - { property: 'approachTitle', label: 'Titre 3' }
+                 - { property: 'approachSubTitle', label: 'Sous-titre 3' }
+                 - { property: 'sectionTitle', label: 'Titre 4' }
+                 - { property: 'sectionImg', type: 'image', label: 'Image dernière section', base_path: 'uploads_path%' }
+             edit:
                  fields:
-                   - { property: 'banner', label: 'bannière' }
+                   - { property: 'bannerFile', type: 'vich_image', base_path: 'uploads_path%', label: 'Bannière' }
+                   - { type: 'section', label: 'Section 1' }
                    - { property: 'goalTitle', label: 'Titre' }
-                   - { property: 'targetTitle', label: 'Cible titre' }
-                   - { property: 'targetTitle1', label: 'Cible titre 1' }
-                   - { property: 'targetTitle2', label: 'Cible titre 2' }
-                   - { property: 'approachTitle', label: 'Demarche Titre' }
-                   - { property: 'approachSubTitle', label: 'Demarche sous titre' }
-                   - { property: 'sectionTitle', label: 'Section Titre' }
-             show:
-                 fields:
-                   - { property: 'banner', label: 'bannière' }
-                   - { property: 'bannerFile', type: 'image', base_path: 'uploads_path%' }
-                   - { property: 'goalTitle', label: 'Titre' }
-                   - { property: 'goalBody', label: 'Description' }
-                   - { property: 'targetTitle', label: 'Cible titre' }
-                   - { property: 'targetTitle1', label: 'Cible titre 1' }
-                   - { property: 'targetTitle2', label: 'Cible titre 2' }
-                   - { property: 'targetBody', label: 'Cible Description' }
-                   - { property: 'targetImgFam', label: 'Cible image lien' }
-                   - { property: 'targetImgFamFile', type: 'image', base_path: 'uploads_path%' }
-                   - { property: 'targetImgPlace', label: 'Cible image place lien' }
-                   - { property: 'targetImgPlaceFile', type: 'image', base_path: 'uploads_path%' }
-                   - { property: 'approachTitle', label: 'Demarche Titre' }
-                   - { property: 'approachSubTitle', label: 'Demarche sous titre' }
-                   - { property: 'approachBody', label: 'Demarche description' }
-                   - { property: 'sectionTitle', label: 'Section Titre' }
-                   - { property: 'sectionImg', label: 'Section image lien : ' }
-                   - { property: 'sectionBody', label: 'section description' }
-                   - { property: 'sectionImgFile', type: 'image', base_path: 'uploads_path%' }
+                   - { property: 'goalBody', label: 'Contenu' }
+                   - { type: 'section', label: 'Section 2' }
+                   - { property: 'targetTitle', label: 'Titre' }
+                   - { property: 'targetTitle1', label: 'Sous-titre Gauche' }
+                   - { property: 'targetTitle2', label: 'Sous-titre Droit' }
+                   - { property: 'targetBody', label: 'Texte Image Gauche' }
+                   - { property: 'targetBody2', label: 'Texte Image Droite' }
+                   - { property: 'targetImgFamFile', type: 'vich_image', label: 'Image Gauche (.png, .jpeg)', base_path: 'uploads_path%' }
+                   - { property: 'targetImgPlaceFile', type: 'vich_image', label: ' Image Droite(.png, .jpeg)', base_path: 'uploads_path%' }
+                   - { type: 'section', label: 'Section 3' }
+                   - { property: 'approachTitle', label: 'Titre ' }
+                   - { property: 'approachSubTitle', label: 'Sous-titre' }
+                   - { property: 'approachBody', label: 'Contenu' }
+                   - { type: 'section', label: 'Dernière Section' }
+                   - { property: 'sectionTitle', label: 'Titre' }
+                   - { property: 'sectionImgFile', type: 'vich_image', label: 'Image (.gif, .png, .jpeg,)' }
+                   - { property: 'sectionBody', label: 'Contenu' }
         Target:
             class: App\Entity\Target
             label: "Cible"
