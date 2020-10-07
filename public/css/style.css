@@ -340,12 +340,25 @@ html {
     margin-left: 20%;
 }
 
+.navIconMap{
+    color: #FFA94A;
+}
+
+
 #nav-link {
     color: whitesmoke;
 }
 
 #nav-link:hover {
+    color: #c5d30e;
+}
+
+#nav-map{
     color: #FFA94A;
+}
+
+#nav-map:hover{
+    color: #c5d30e;
 }
 
 #navMap {
@@ -386,7 +399,7 @@ html {
     margin-left: auto;
     margin-right: auto;
     margin-top: 1em;
-    background-color: #FFA94A;
+    background-color: #c5d30e;
     width: 30%;
     text-align: center;
     border-radius: 10px;
@@ -394,7 +407,7 @@ html {
 }
 
 .loginBtn:hover {
-    background-color: cornflowerblue;
+    background-color: #FFA94A;
     transition: 0.5s;
 }
 
@@ -462,16 +475,15 @@ html {
 }
 
 .coverBtn:hover {
-    background-color: #FFA94A;
+    background-color: #c5d30e;
     transition: 0.5s;
 }
 
 .aboutCtn {
-    background: linear-gradient(135deg, darkseagreen, #00bbd3);
-    background-blend-mode: lighten;
-    color: whitesmoke;
+    background-color: #ffffff;
     padding-top: 5em;
     padding-bottom: 5em;
+    color: #183455;
 }
 
 #about {
@@ -487,11 +499,15 @@ html {
     justify-content: center;
     margin-bottom: 5em;
     margin-top: 2em;
+    background-color: #ffffff;
+    color: #183455;
 }
 
 #target {
     text-align: center;
-    margin-top: 5em;
+    margin-top: 0;
+    background-color: #ffffff;
+    color: #183455;
 }
 
 .targetCard {
@@ -585,6 +601,7 @@ div.targetCard:hover .enfant {
 .servicesBody {
     width: 70%;
     margin: auto;
+    padding-top: 1em;
 }
 
 #news {
@@ -608,25 +625,26 @@ div.targetCard:hover .enfant {
 .newsLinkCtn {
     display: flex;
     justify-content: center;
-    margin-bottom: 5em;
-    margin-top: 2em;
+    width: 45%;
+    margin: 2em auto 5em;
+    padding: 1em;
 }
 
 .newsLink {
     margin-left: auto;
     margin-right: auto;
     padding: 1em;
-    background-color: #bdc902;
+    background-color: #c5d30e;
     text-align: center;
     border-radius: 10px;
     transition: 0.5s;
-    color: black;
+    color: #183455;
 }
 
 .newsLink:hover {
     text-decoration: none;
-    color: black;
-    background-color: cornflowerblue;
+    color: #183455;
+    background-color: #FFA94A;
     transition: 0.5s;
 }
 
@@ -772,7 +790,7 @@ hr {
 }
 
 .eshopCtn {
-    background-color: darkcyan;
+    background-color: #014c4d;
     padding: 1em;
     color: whitesmoke;
     text-align: center;
@@ -794,19 +812,19 @@ hr {
 .eshopLink {
     margin-left: auto;
     margin-right: auto;
-    padding: 1em;
-    background-color: #FFA94A;
+    padding: 0.5em 1em;
+    background-color: #ffffff;
     width: 30%;
     text-align: center;
     border-radius: 10px;
     transition: 0.5s;
-    color: black;
+    color: #183455;
 }
 
 .eshopLink:hover {
     text-decoration: none;
-    color: black;
-    background-color: cornflowerblue;
+    color: #183455;
+    background-color: #c5d30e;
     transition: 0.5s;
 }
 
@@ -1504,7 +1522,7 @@ hr {
 }
 
 .page-footer a:hover {
-    color: #FFA94A;
+    color: #c5d30e;
     text-decoration: none;
 }
 
@@ -1523,7 +1541,7 @@ hr {
 }
 
 .footer-links a:active, .footer-links a:hover {
-    color: #FFA94A;
+    color: #c5d30e;
     text-decoration: none;
 }
 
