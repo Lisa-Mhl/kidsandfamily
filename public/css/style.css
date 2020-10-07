@@ -295,12 +295,16 @@ html {
     z-index: 2;
 }
 
+.logoKF {
+    width: 150px;
+}
+
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #354254;
+    background-color: #4D4D4D;
     color: whitesmoke;
     margin-bottom: 0;
     z-index: 2;
@@ -322,7 +326,7 @@ html {
 }
 
 .logLink {
-    color: #bdc902;
+    color: #FFA94A;
     transition: 0.5s;
 }
 
@@ -341,7 +345,7 @@ html {
 }
 
 #nav-link:hover {
-    color: #bdc902;
+    color: #FFA94A;
 }
 
 #navMap {
@@ -355,6 +359,12 @@ html {
     transition: 0.5s;
 }
 
+#searchBarIpt {
+    color: #51D6A1;
+    border-color: #51D6A1;
+}
+
+
 /* LOGIN */
 .logCtn {
     width: 40%;
@@ -362,7 +372,7 @@ html {
     border-style: solid;
     border-width: thin;
     padding: 2em;
-    background-color: #354254;
+    background-color: #4D4D4D;
     color: whitesmoke;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
 }
@@ -376,7 +386,7 @@ html {
     margin-left: auto;
     margin-right: auto;
     margin-top: 1em;
-    background-color: #bdc902;
+    background-color: #FFA94A;
     width: 30%;
     text-align: center;
     border-radius: 10px;
@@ -396,6 +406,17 @@ html {
 .registerLink {
     text-align: center;
     margin-top: 1em;
+}
+
+.regLink {
+    transition: 0.5s;
+    color: dodgerblue;
+}
+
+.regLink:hover {
+    color: #FFA94A;
+    transition: 0.5s;
+    text-decoration: none;
 }
 
 /*HOME*/
@@ -426,6 +447,23 @@ html {
 
 #coverBtn {
     width: 20%;
+}
+
+.coverBtn {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+    background-color: #ffffff;
+    width: 30%;
+    text-align: center;
+    border-radius: 10px;
+    transition: 0.5s;
+    color: #183455;
+}
+
+.coverBtn:hover {
+    background-color: #FFA94A;
+    transition: 0.5s;
 }
 
 .aboutCtn {
@@ -757,7 +795,7 @@ hr {
     margin-left: auto;
     margin-right: auto;
     padding: 1em;
-    background-color: #bdc902;
+    background-color: #FFA94A;
     width: 30%;
     text-align: center;
     border-radius: 10px;
@@ -1435,10 +1473,10 @@ hr {
 }
 
 .page-footer {
-    background-color: #354254;
+    background-color: #4D4D4D;
     font-size: 15px;
     line-height: 24px;
-    color: #737373;
+    color: whitesmoke;
     display: block;
     z-index: 2;
     bottom: 0;
@@ -1462,11 +1500,11 @@ hr {
 }
 
 .page-footer a {
-    color: #737373;
+    color: whitesmoke;
 }
 
 .page-footer a:hover {
-    color: #bdc902;
+    color: #FFA94A;
     text-decoration: none;
 }
 
@@ -1480,11 +1518,12 @@ hr {
 }
 
 .footer-links a {
-    color: #737373
+    color: whitesmoke;
+    opacity: 70%;
 }
 
 .footer-links a:active, .footer-links a:hover {
-    color: #bdc902;
+    color: #FFA94A;
     text-decoration: none;
 }
 
@@ -1573,10 +1612,25 @@ hr {
     background-color: #ea4c89
 }
 
-.newsletterCtn{
+.newsletterCtn {
     width: 40%;
 }
 
+#search {
+    border-radius: 0;
+    border-color: whitesmoke;
+    background-color: transparent;
+    color: whitesmoke;
+    opacity: 60%;
+    width: 40%;
+}
+
+#search:hover {
+    border-radius: 0;
+    opacity: 100%;
+    border-color: #FFA94A;
+    color: #FFA94A;
+}
 
 /*////////////////////////// TABLETTE ///////////////////////*/
 
@@ -1833,7 +1887,7 @@ hr {
         width: 100%;
     }
 
-    #publishBtn{
+    #publishBtn {
         width: 15%;
     }
 
@@ -2081,11 +2135,11 @@ hr {
         }
 
         /* NEW ARTICLE */
-        .formInput{
+        .formInput {
             width: 90%;
         }
 
-        #publishBtn{
+        #publishBtn {
             width: 20%;
         }
 
