@@ -149,7 +149,7 @@ easy_admin:
                      - { type: 'section', label: 'Section 2' }
                      - { property: 'step2Title', label: 'Titre' }
                      - { property: 'step2Body', label: 'Contenu' }
-                     - { property: 'step2ImgFile', type: 'vich_image', label: 'Image (.png, .jpeg)' }
+                     - { property: 'step2ImgFile', type: 'vich_image', label: 'Image (.png, .jpeg)', base_path: 'uploads_path%'}
                      - { type: 'section', label: 'Section 3' }
                      - { property: 'step3Title', label: 'Titre' }
                      - { property: 'step3Body', label: 'Contenu' }
