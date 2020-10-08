@@ -29,7 +29,7 @@ class Article
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string")
      * @Assert\NotBlank(payload={"severity"="error"})
      * @Assert\Length(max="20", maxMessage="Le titre de votre publication doit faire 25 caractères maximum")
      */
