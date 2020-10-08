@@ -317,6 +317,14 @@ class DefaultController extends AbstractController
     }
 
     /**
+     * @Route("/validation", name="validation")
+     */
+    public function validation()
+    {
+        return $this->render('default/emailvalidate.html.twig');
+    }
+
+    /**
      * @Route("/signalement", name="report_thanks")
      */
     public function reportThanks()

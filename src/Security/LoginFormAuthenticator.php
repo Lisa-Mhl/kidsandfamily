@@ -6,6 +6,7 @@ use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -98,17 +99,22 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
         }
 
         $roles = $token->getUser()->getRoles();
-        if ($roles){
-            foreach ($roles as $role){
-                if ($role === "ROLE_ADMIN"){
+        if ($roles) {
+            foreach ($roles as $role) {
+                if ($role === "ROLE_ADMIN") {
                     return new RedirectResponse($this->urlGenerator->generate('easyadmin'));
                 }
-                if ($role === "ROLE_USER") {
+                $verified = $this->entityManager->getRepository(User::class)->findOneBy(['isVerified' => 1]);
+                $email = $this->getCredentials($request);
+                if ($verified) {
                     return new RedirectResponse($this->urlGenerator->generate('home'));
+                } else {
+                    return new RedirectResponse($this->urlGenerator->generate('validation'));
                 }
             }
 
         }
+
     }
 
     protected function getLoginUrl()

@@ -13,7 +13,6 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
-use function Sodium\add;
 
 class ArticleType extends AbstractType
 {
