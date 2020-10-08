@@ -3,8 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\HomepageRepository;
-use DateTime;
 use DateTimeImmutable;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -138,8 +138,11 @@ class Homepage
      * @var File|null
      */
     private $bannerFile;
+
     /**
-     * @var Datetime
+     * @ORM\Column(type="datetime", nullable=true)
+     *
+     * @var DateTimeInterface|null
      */
     private $updatedAt;
 
