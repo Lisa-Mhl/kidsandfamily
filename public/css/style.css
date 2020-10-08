@@ -1,7 +1,8 @@
 body {
-    background-color: whitesmoke;
+    background-color: #ffffff;
     padding: 0;
     margin: 0;
+    color: #183455;
 }
 
 .white {
@@ -19,6 +20,11 @@ body {
 
 .red {
     color: darkred;
+}
+
+.redLike {
+    color: deeppink;
+    margin-left: 0.3em;
 }
 
 /* profile*/
@@ -432,9 +438,6 @@ html {
     width: 100%;
     height: 1000px;
     z-index: 0;
-    background-size: cover;
-    background-image: initial;
-    background-repeat: no-repeat;
 }
 
 .coverCtn {
@@ -480,14 +483,14 @@ html {
 
 .coverBtn:hover {
     background-color: #c5d30e;
-    transition: 0.5s;
+    transition: 0.3s;
+    color: #ffffff;
 }
 
 .aboutCtn {
     background-color: #ffffff;
-    padding-top: 5em;
+    padding-top: 6em;
     padding-bottom: 5em;
-    color: #183455;
 }
 
 #about {
@@ -504,14 +507,13 @@ html {
     margin-bottom: 5em;
     margin-top: 2em;
     background-color: #ffffff;
-    color: #183455;
+    width: 100%;
 }
 
 #target {
     text-align: center;
     margin-top: 0;
     background-color: #ffffff;
-    color: #183455;
 }
 
 .targetCard {
@@ -608,9 +610,14 @@ div.targetCard:hover .enfant {
     padding-top: 1em;
 }
 
+.newsCtn {
+    background-color: #FFFBFB;
+}
+
 #news {
     z-index: 2;
     text-align: center;
+    padding-top: 1em;
 }
 
 .news {
@@ -618,12 +625,14 @@ div.targetCard:hover .enfant {
     margin-bottom: 5em;
     display: flex;
     flex-direction: row;
+    background-color: #FFFBFB;
 }
 
 .newsTitle {
     margin-top: 2em;
     margin-bottom: 2em;
     text-align: center;
+    background-color: #FFFBFB;
 }
 
 .newsLinkCtn {
@@ -660,7 +669,7 @@ div.targetCard:hover .enfant {
 }
 
 #articleCard {
-    height: 460px;
+    height: 480px;
     width: 350px;
     border-radius: 5% 5% 0 0;
     border-style: none;
@@ -735,7 +744,7 @@ div.targetCard:hover .enfant {
 
 .articleLink {
     transition: 0.5s;
-    color: black;
+    color: #183455;
 }
 
 .articleLink:hover {
@@ -771,13 +780,19 @@ div.targetCard:hover .enfant {
 .detailsLink {
     text-align: center;
     text-decoration: none;
-    color: #718C00;
+    color: #183455;
     transition: 0.5s;
+    background-color: #c5d30e;
+    width: 30%;
+    margin: auto;
+    border-radius: 15px;
+    padding: 0.5em;
 }
 
 .detailsLink:hover {
     text-decoration: none;
-    color: dodgerblue;
+    background-color: #FFA94A;
+    color: #183455;
     transition: 0.5s;
 }
 
@@ -1691,7 +1706,6 @@ hr {
     /* HOMEPAGE*/
     .coverCtn {
         height: 130px;
-        width: 80%;
         display: flex;
         flex-direction: column;
     }
