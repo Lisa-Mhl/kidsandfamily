@@ -1,29 +1,23 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
-    <div class="cover">
-        <div class="coverLinks">
+    {% for homepage in homepages %}
+        <div class="cover">
+            <img class="coverImg" src="{{ vich_uploader_asset(homepage, 'bannerFile') }}" alt="Bannière">
             <span class="coverCtn">
             KIDS AND FAMILY <br>
             CREATEUR D'EXPERIENCES EN FAMILLE <br>
+                <section class="coverBtnCtn">
                 {% if app.user %}
                     <a id="coverBtn" class="btn coverBtn" href="#news">Nouveautés</a>
                     <a id="coverBtn" class="btn coverBtn " href="{{ path('contribute') }}">Contribuer</a>
                 {% else %}
-                    <a id="coverBtn" class="btn coverBtn " href="#a-propos">Découvrir</a>
-                    <a id="coverBtn" class="btn coverBtn" href="{{ path('app_register') }}">S'inscrire</a>
+                    <a id="coverBtn" class="btn coverBtn " href="#a-propos">Je découvre</a>
+                    <a id="coverBtn" class="btn coverBtn" href="{{ path('app_register') }}">Je m'inscris</a>
                 {% endif %}
+                    </section>
                 </span>
         </div>
-    </div>
-
-    {% for homepage in homepages %}
-
-        {# <div class="TEST BANIERE">
-            <img src="{{ vich_uploader_asset(homepage, 'bannerFile') }}" alt="Bannière">
-        </div> #}
-
         <div id="a-propos"></div>
         <div class="aboutCtn">
             <div id="about">
