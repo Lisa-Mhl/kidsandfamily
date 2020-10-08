@@ -20,9 +20,9 @@
 
     {% for homepage in homepages %}
 
-        {# <div class="TEST BANIERE">
+        <div class="TEST BANIERE">
             <img src="{{ vich_uploader_asset(homepage, 'bannerFile') }}" alt="Bannière">
-        </div> #}
+        </div>
 
         <div id="a-propos"></div>
         <div class="aboutCtn">
@@ -231,7 +231,7 @@
         <div class="eshopCtn">
             <div class="eshop">
                 <h2 class="eshopTitle bold">{{ homepage.sectionTitle }}</h2>
-                <img src="{{ vich_uploader_asset(homepage, 'sectionImgFile') }}">
+                <img src="{{ vich_uploader_asset(homepage, 'sectionImgFile') }}"/>
                 <h4 class="servicesBody">{{ homepage.sectionBody }} </h4>
                 <div class="eshopLinkCtn">
                     <a class="eshopLink" href="#" target="_blank">Visiter la boutique en ligne</a>
