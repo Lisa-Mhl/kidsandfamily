@@ -193,6 +193,7 @@ easy_admin:
                    - { property: 'sectionTitle', label: 'Titre' }
                    - { property: 'sectionImgFile', type: 'vich_image', label: 'Image (.gif, .png, .jpeg,)' }
                    - { property: 'sectionBody', label: 'Contenu' }
+                   - { property: 'link', label: 'Lien vers site web'}
         Target:
             class: App\Entity\Target
             label: "Cible"
