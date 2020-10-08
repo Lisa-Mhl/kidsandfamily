@@ -27,6 +27,11 @@ body {
     margin-left: 0.3em;
 }
 
+#likeStyle{
+    text-decoration: none;
+    color: deeppink;
+}
+
 /* profile*/
 
 .profileCtn {
@@ -769,10 +774,6 @@ div.targetCard:hover .enfant {
     height: 350px;
 }
 
-.cardLike {
-    color: red;
-}
-
 #articleIdLink {
     color: white;
 }
@@ -783,8 +784,9 @@ div.targetCard:hover .enfant {
     color: #183455;
     transition: 0.5s;
     background-color: #c5d30e;
-    width: 30%;
-    margin: auto;
+    width: 45%;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 15px;
     padding: 0.5em;
 }
@@ -1006,7 +1008,7 @@ hr {
     background-color: cornflowerblue;
     padding: 1em;
     position: fixed;
-    top: 6.6%;
+    top: 8.3%;
     left: 0;
     width: 100%;
     z-index: 2;
@@ -1085,7 +1087,7 @@ hr {
 }
 
 .catId {
-    padding-top: 8em;
+    padding-top: 9em;
 }
 
 .catTitle {
@@ -1105,12 +1107,12 @@ hr {
 }
 
 #Help {
-    padding-top: 7.5em;
+    padding-top: 8.5em;
 }
 
 #allArticlesCard {
-    margin-top: 2em;
-    height: 450px;
+    margin-top: 1em;
+    height: 520px;
     width: 330px;
     border-radius: 5% 5% 0 0;
     border-style: none;

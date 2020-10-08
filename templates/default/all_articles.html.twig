@@ -42,13 +42,14 @@
                                      alt="{{ article.title }}">
                                 <div class="articleHead">
                                     <h5 class="card-title articleTitle">{{ article.title }}</h5>
-                                    <a href="{{ path('all_article_like', {'id' : article.id }) }}" class="btn btn-link js-like text-mauve text-bolder">
-                                            <span class="js-likes">{{article.likes | length }}</span>
-                                            {% if app.user and article.isLikedByUser(app.user) %}
-                                                <i class="fas fa-heart"></i>
-                                            {% else %}
-                                                <i class="far fa-heart"></i>
-                                            {% endif %}
+                                    <a href="{{ path('all_article_like', {'id' : article.id }) }}"
+                                       class="btn btn-link js-like text-mauve text-bolder" id="likeStyle">
+                                        <span class="js-likes">{{ article.likes | length }}</span>
+                                        {% if app.user and article.isLikedByUser(app.user) %}
+                                            <i class="fas fa-heart"></i>
+                                        {% else %}
+                                            <i class="far fa-heart"></i>
+                                        {% endif %}
                                     </a>
                                 </div>
                                 <div class="row">
@@ -79,7 +80,7 @@
                                     </div> {# TO DO : AJOUTER SYSTEM DE MESSAGE DIRECT #}
                                     {# <a  class="stretched-link"  id="articleIdLink" href="#">Voir</a> #}
                                 </div>
-                                <a class="detailsLink" id="allDetLink"
+                                <a class="detailsLink"
                                    href="{{ path('article_details', {'id': article.id}) }}">Voir la publication</a>
                             </div>
                         {% endif %}
@@ -111,8 +112,9 @@
                                  alt="{{ article.title }}">
                             <div class="articleHead">
                                 <h5 class="card-title articleTitle">{{ article.title }}</h5>
-                                <a href="{{ path('all_article_like', {'id' : article.id }) }}" class="btn btn-link js-like text-mauve text-bolder">
-                                    <span class="js-likes">{{article.likes | length }}</span>
+                                <a href="{{ path('all_article_like', {'id' : article.id }) }}"
+                                   class="btn btn-link js-like text-mauve text-bolder" id="likeStyle">
+                                    <span class="js-likes">{{ article.likes | length }}</span>
                                     {% if app.user and article.isLikedByUser(app.user) %}
                                         <i class="fas fa-heart"></i>
                                     {% else %}
@@ -149,8 +151,9 @@
                                 </div> {# TO DO : AJOUTER SYSTEM DE MESSAGE DIRECT #}
                                 {# <a  class="stretched-link"  id="articleIdLink" href="#">Voir</a> #}
                             </div>
-                            <a class="detailsLink" id="allDetLink"
-                               href="{{ path('article_details', {'id': article.id}) }}">Voir la publication</a>
+                            <a class="detailsLink"
+                               href="{{ path('article_details', {'id': article.id}) }}">Voir la publication
+                            </a>
                         </div>
                     {% endfor %}
                 </div>
@@ -167,8 +170,9 @@
                                  alt="{{ article.title }}">
                             <div class="articleHead">
                                 <h5 class="card-title articleTitle">{{ article.title }}</h5>
-                                <a href="{{ path('all_article_like', {'id' : article.id }) }}" class="btn btn-link js-like text-mauve text-bolder">
-                                    <span class="js-likes">{{article.likes | length }}</span>
+                                <a href="{{ path('all_article_like', {'id' : article.id }) }}"
+                                   class="btn btn-link js-like text-mauve text-bolder" id="likeStyle">
+                                    <span class="js-likes">{{ article.likes | length }}</span>
                                     {% if app.user and article.islikedByUser(app.user) %}
                                         <i class="fas fa-heart"></i>
                                     {% else %}
@@ -204,7 +208,7 @@
                                 </div> {# TO DO : AJOUTER SYSTEM DE MESSAGE DIRECT #}
                                 {# <a  class="stretched-link"  id="articleIdLink" href="#">Voir</a> #}
                             </div>
-                            <a class="detailsLink" id="allDetLink"
+                            <a class="detailsLink"
                                href="{{ path('article_details', {'id': article.id}) }}">Voir la publication</a>
                         </div>
                     {% endif %}
@@ -220,6 +224,7 @@
         Array.from(document.querySelectorAll('a.js-like')).forEach(function (link) {
             link.addEventListener('click', onClickLink);
         });
+
         async function onClickLink(event) {
             event.preventDefault();
             const url = this.href;
