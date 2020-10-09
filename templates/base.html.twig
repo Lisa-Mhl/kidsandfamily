@@ -17,7 +17,9 @@
 {% endblock %}
 <body>
 <nav class="navbar navbar-expand-lg navbar-light" id="nav-desktop">
-    <a class="navbar-brand" id="nav-link" href="{{ path('home') }}"><img class="logoKF" src="{{ asset('uploads/files/Logo k&f 1.png') }}" alt="Logo Kids & Family"></a>
+    <a class="navbar-brand" id="nav-link" href="{{ path('home') }}"><img class="logoKF"
+                                                                         src="{{ asset('uploads/files/Logo k&f 1.png') }}"
+                                                                         alt="Logo Kids & Family"></a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
@@ -62,7 +64,7 @@
         <div class="searchBar">
             <form class="form-inline my-2 my-lg-0 ">
                 <input class="form-control mr-sm-2" type="search" placeholder="Rechercher..." aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit"  id="searchBarIpt">Rechercher</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="searchBarIpt">Rechercher</button>
             </form>
         </div>
         <div id="nav" class="col-md-4 col-sm-6 col-xs-12">
@@ -125,10 +127,9 @@
         </ul>
     </div>
 </nav>
-
 {% block body %}
 {% endblock %}
-
+</body>
 <!-- Site footer -->
 
 <footer class="page-footer font-small teal pt-4">
@@ -151,7 +152,8 @@
                         <div class="form-ctn">
                             <div class="form-newsletter">
                                 {{ form_widget(formNewsLetter.email) }}
-                                <button class="btn loginBtn" id="search">{{ button_label|default("Je m'inscris") }}</button>
+                                <button class="btn loginBtn"
+                                        id="search">{{ button_label|default("Je m'inscris") }}</button>
                             </div>
                         </div>
                         {{ form_end(formNewsLetter) }}
@@ -163,7 +165,7 @@
             <div class="col-md-3 mx-auto" id="footerLinks">
 
                 <!-- Links -->
-                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">LIENS</h5>
+                <h5 class="font-weight-bold text-uppercase mt-3 mb-4 footTitle">LIENS</h5>
                 <ul class="footer-links">
                     {% if app.user %}
                         <li class="fl"><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
@@ -220,4 +222,6 @@
             document.querySelector('#article_lng').value = e.suggestion.latlng.lng
         })
     </script>
+
 {% endblock %}
+</html>

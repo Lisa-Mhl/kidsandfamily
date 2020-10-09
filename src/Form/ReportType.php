@@ -19,7 +19,7 @@ class ReportType extends AbstractType
                 'choices' => [
                     'Contenu inapproprié' => 'Contenu inapproprié',
                     'Propos injurieux' => 'Propos injurieux',
-                    'Propos discriminatoires' => 'Propos discriminatoires'
+                    'Propos discriminatoires' => 'Propos discriminatoires',
                 ]
             ]);
     }
