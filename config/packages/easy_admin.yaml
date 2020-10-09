@@ -94,11 +94,11 @@ easy_admin:
                  - { property: 'visionTitle', label: 'Section 2' }
                  - { property: 'valuesTitle', label: 'Section 3' }
                  - { property: 'servicesTitle', label: 'Section 4' }
-                 - { property: 'communityTitle', label: 'Section 5' }
+                 - { property: 'communityTitle', label: 'Section 5'}
              form:
                  fields:
                    - { type: 'section', label: 'Section 1' }
-                   - { property: 'presentationTitle', label: 'Titre' }
+                   - { property: 'presentationTitle', label: 'Titre'}
                    - { property: 'presentationBody', label: 'Contenu' }
                    - { property: 'presentationVideo', label: 'Lien vidéo' }
                    - { property: 'presentationVideoFile', type: 'vich_image', label: 'Video (.mp4)' }

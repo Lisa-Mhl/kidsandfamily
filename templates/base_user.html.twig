@@ -19,7 +19,9 @@
 
 <body>
 <nav class="navbar navbar-expand-lg navbar-light" id="nav-desktop">
-    <a class="navbar-brand" id="nav-link" href="{{ path('home') }}"><img class="logoKF" src="{{ asset('uploads/files/Logo k&f 1.png') }}" alt="Logo Kids & Family"></a>
+    <a class="navbar-brand" id="nav-link" href="{{ path('home') }}"><img class="logoKF"
+                                                                         src="{{ asset('uploads/files/Logo k&f 1.png') }}"
+                                                                         alt="Logo Kids & Family"></a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
@@ -210,7 +212,7 @@
             <div class="col-md-3 mx-auto" id="footerLinks">
 
                 <!-- Links -->
-                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+                <h5 class="font-weight-bold text-uppercase mt-3 mb-4 footTitle">LIENS</h5>
                 <ul class="footer-links">
                     {% if app.user %}
                         <li class="fl"><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
@@ -238,7 +240,7 @@
         </div>
     </div>
 </footer>
-
+</body>
 {% block javascripts %}
     <script src="https://kit.fontawesome.com/249275cf92.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -251,5 +253,4 @@
             integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
             crossorigin="anonymous"></script>
 {% endblock %}
-
-
+</html>

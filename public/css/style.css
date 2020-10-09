@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
+
 body {
     background-color: #ffffff;
     padding: 0;
@@ -27,7 +29,7 @@ body {
     margin-left: 0.3em;
 }
 
-#likeStyle{
+#likeStyle {
     text-decoration: none;
     color: deeppink;
 }
@@ -114,7 +116,7 @@ body {
 }
 
 #myArticlesCard {
-    height: 450px;
+    height: 480px;
     margin-bottom: 2em;
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
@@ -331,12 +333,12 @@ html {
 }
 
 .logLink {
-    color: #FFA94A;
+    color: #c5d30e;
     transition: 0.5s;
 }
 
 .logLink:hover {
-    color: dodgerblue;
+    color: #FFA94A;
     text-decoration: none;
     transition: 0.5s;
 }
@@ -798,8 +800,9 @@ div.targetCard:hover .enfant {
     transition: 0.5s;
 }
 
-hr {
-    margin-bottom: 0;
+.sideBarHr {
+    margin: 1em auto;
+    width: 300px;
 }
 
 .eshopTitle {
@@ -1008,7 +1011,7 @@ hr {
     background-color: cornflowerblue;
     padding: 1em;
     position: fixed;
-    top: 8.3%;
+    top: 8%;
     left: 0;
     width: 100%;
     z-index: 2;
@@ -1112,15 +1115,17 @@ hr {
 
 #allArticlesCard {
     margin-top: 1em;
-    height: 520px;
-    width: 330px;
+    height: 530px;
+    width: 350px;
     border-radius: 5% 5% 0 0;
     border-style: none;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+
 }
 
 .allArticlesImg {
-    height: 280px;
+    width: 350px;
+    height: 270px;
     border-radius: 5% 5% 0 0;
 }
 
@@ -1245,9 +1250,28 @@ hr {
 /* ARTICLE DETAILS */
 
 .detailsCtn {
-    margin-left: 5em;
-
+    margin-top: 7em;
 }
+
+.articleSideBar {
+    position: absolute;
+    top: 8%;
+    left: 2%;
+    width: 18%;
+    background-color: white;
+    padding-right: 4em;
+    height: 100%;
+}
+
+.barTitle{
+    margin-top: 2em;
+}
+
+.twitter{
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
 
 .detailsTitle {
     text-align: center;
@@ -1296,13 +1320,13 @@ hr {
 }
 
 .detailsComCtn {
-    background-color: white;
     padding: 1em;
 }
 
 .profileCom {
     display: flex;
     flex-direction: row;
+    padding: 1em;
 }
 
 #avatarCom {
@@ -1316,13 +1340,17 @@ hr {
     padding-top: 0.3em;
     padding-left: 0.3em;
     font-size: 1.3em;
+    font-weight: bold;
+    color: #c5d30e;
 }
 
 .comment {
-    padding-top: 0.5em;
-    padding-bottom: 0;
-    margin-bottom: 0;
+    padding: 1em;
+    margin-bottom: 1.5em;
     margin-left: 0.5em;
+    font-family: 'Pangolin', cursive;
+    background-color: whitesmoke;
+    letter-spacing: 1.5px;
 }
 
 .commentTitle {
@@ -1354,7 +1382,6 @@ hr {
 .commentLine {
     margin-top: 0;
     margin-bottom: 1em;
-    color: black;
 }
 
 .reportComment {
@@ -1362,43 +1389,27 @@ hr {
     font-style: italic;
 }
 
-.commentMenu {
+.profileCom,
+.comName, .commentMenu {
     display: flex;
-    justify-content: flex-end;
-    position: relative;
-    top: -6em;
+    justify-content: space-between;
 }
 
 #comMenu {
-    padding: 0;
-    margin-bottom: 0;
-    margin-top: 1em;
+    padding-top: 1em;
+    margin: 0;
 }
 
 #comMenuIcon {
     color: gray;
 }
 
-.articleSideBar {
-    position: absolute;
-    top: 10%;
-    left: 2%;
-    width: 20%;
-    background-color: white;
-    padding: 1em;
-    height: 100%;
-}
-
 .detailsCatName {
     font-weight: bold;
     font-size: 1.2em;
     padding: 0.2em;
-    color: hotpink;
-    background-color: lightblue;
-}
-
-.map {
-    width: 95%;
+    color: #183455;
+    background-color: #FFA94A;
 }
 
 .detailsMapLink {
@@ -1425,23 +1436,23 @@ hr {
     margin-top: 2em
 }
 
-.reportTitle {
-
-}
-
 .articleContact {
     position: absolute;
     top: 10%;
     left: 83%;
     width: 15%;
-    background-color: #bdc902;
+    background-color: #c5d30e;
     border-radius: 100%;
     text-align: center;
     height: 250px;
 }
+.contactTitle{
+    margin-top: 2em;
+    margin-bottom: 0;
+}
 
 .articleContactBody {
-    padding-top: 3.5em;
+    padding-top: 1em;
     margin: auto;
     font-size: 1.2em;
     width: 95%;
@@ -1450,6 +1461,17 @@ hr {
 .contactIcon {
     margin-right: 0.5em;
     margin-bottom: 1em;
+}
+
+.docCtn{
+    position: fixed;
+    top: 40%;
+    left: 83%;
+    width: 15%;
+    text-align: center;
+    background-color: #FFA94A;
+    padding: 1em;
+    border-radius: 5px;
 }
 
 /* CONTRIBUTE  */
@@ -1495,7 +1517,7 @@ hr {
 }
 
 #mapSideBar {
-    width: 15%;
+    width: 5%;
     z-index: 3;
     text-align: center;
     margin-left: 1em;

@@ -8,8 +8,8 @@
               crossorigin=""></script>
       <style type="text/css">
           #map { /* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
-              height: 350px;
-              width: 330px;
+              height: 330px;
+              width: 280px;
               z-index: 1;
           }
       </style>
@@ -40,43 +40,46 @@
                 <a class="btn loginBtn" id="helpLink" href="#">Je peux aider !</a>
             </div>
         {% endif %}
-
-        <h3 id="comment" class="commentTitle">Commentaires</h3>
         <div class="articleCommentCtn">
+            {% if article.comments is not empty %}
+                <h3 id="comment" class="comTitle">Commentaires</h3>
+            {% endif %}
             <div class="detailsComCtn">
                 {% for comment in article.comments %}
                     <div class="profileCom">
-                        {% if comment.author.avatar %}
-                            {% set user = comment.author %}
-                            <img id="avatarCom" src="{{ vich_uploader_asset(user, 'avatarFile') }}">
-                        {% endif %}
-                        <span id="authorCom" class="green"> {{ comment.author }}</span>
+                        <div class="comName">
+                            {% if comment.author.avatar %}
+                                {% set user = comment.author %}
+                                <img id="avatarCom" src="{{ vich_uploader_asset(user, 'avatarFile') }}">
+                            {% endif %}
+                            <span id="authorCom"> {{ comment.author }}</span>
+                        </div>
+
+                        <div class="commentMenu">
+                            <li class="nav-item dropdown" id="comMenu">
+                                <a href="#" id="navbarDropdown" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-cog" id="comMenuIcon" aria-hidden="true"></i>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    {% if app.user is same as (comment.author) %}
+                                        {% include '/default/_delete_comment.html.twig' %}
+                                        <a class="dropdown-item"
+                                           href="{{ path('comment_edit', {'id': comment.id}) }}">Modifier</a>
+                                    {% else %}
+                                        <a class="dropdown-item"
+                                           href="{{ path('report_comment', {'id': comment.id}) }}">Signaler</a>
+                                    {% endif %}
+                                </div>
+                            </li>
+                        </div>
                     </div>
                     <p class="grey comment">{{ comment.comment }}</p>
-                    <div class="commentMenu">
-                        <li class="nav-item dropdown" id="comMenu">
-                            <a href="#" id="navbarDropdown" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-cog" id="comMenuIcon" aria-hidden="true"></i>
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                {% if app.user is same as (comment.author) %}
-                                    {% include '/default/_delete_comment.html.twig' %}
-                                    <a class="dropdown-item"
-                                       href="{{ path('comment_edit', {'id': comment.id}) }}">Modifier</a>
-                                {% else %}
-                                    <a class="dropdown-item"
-                                       href="{{ path('report_comment', {'id': comment.id}) }}">Signaler</a>
-                                {% endif %}
-                            </div>
-                        </li>
-                    </div>
-                    <hr class="commentLine">
                 {% endfor %}
             </div>
 
             {% if app.user %}
-                <h3 class="needsTitle comTitle">Laisser un commentaire</h3>
+                <h3 class="comTitle">Laisser un commentaire</h3>
                 {{ form_start(form) }}
                 {{ form_label(form.comment, 'Votre message') }}
                 {{ form_widget(form.comment) }}
@@ -93,13 +96,15 @@
 
         <div class="articleSideBar">
             <div class="detailsCatCtn">
-                <p class="detailsCat"><i class="fa fa-folder-open" aria-hidden="true"></i>
-                    Catégorie(s) : <br>
-                    {% for category in article.category %}
-                    <span class="detailsCatName">{{ category.name | upper }}</span></p>
-                {% endfor %}
+                <h4 class="barTitle">
+                    <i class="fa fa-folder-open" aria-hidden="true"></i>
+                    Catégorie(s) :</h4><br>
+                {% for category in article.category %}
+                <span class="detailsCatName">{{ category.name | upper }}</span>
+                {% endfor %}<br>
+                <hr>
             </div>
-            <h4 class="needsTitle">Lieu : </h4>
+            <h4 class="barTitle">Lieu : </h4>
             <p>{{ article.address }}</p>
             <div class="map">
                 <div id="map" data-lat="{{ article.lat }}" data-lng="{{ article.lng }}">
@@ -108,26 +113,30 @@
             <div class="detailsMapLink">
                 <a class="detMapLink" href="{{ path('map') }}">Voir la map</a>
             </div>
-            <h4 class="needsTitle">Partager : </h4>
-            <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"
-                 data-size="small">
-                <a target="_blank"
-                   href="https://www.facebook.com/sharer.php?u={url}"
-                   class="fb-xfbml-parse-ignore">
-                    Partager</a>
-            </div>
-            <div class="twitter">
-                <a class="twitter-share-button"
-                   href="https://twitter.com/intent/tweet">
-                    Tweet</a>
-            </div>
+            <h4 class="barTitle">Partager : </h4>
+            <section class="shareCtn">
+                <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/"
+                     data-layout="button"
+                     data-size="large">
+                    <a target="_blank"
+                       href="https://www.facebook.com/sharer.php?u={url}"
+                       class="fb-xfbml-parse-ignore">
+                    </a>
+                </div>
 
-            <div class="pinterest">
-                <a data-pin-do="buttonPin" href="https://www.pinterest.com/pin/create/button/" data-pin-custom="true">
-                    <img src="https://addons.opera.com/media/extensions/55/19155/1.1-rev1/icons/icon_64x64.png"
-                         width="25" height="25" alt="pinterest">
-                </a>
-            </div>
+                <div class="twitter">
+                    <a class="twitter-share-button"
+                       href="https://twitter.com/intent/tweet" data-size="large"></a>
+                </div>
+
+                <div class="pinterest">
+                    <a data-pin-do="buttonPin" href="https://www.pinterest.com/pin/create/button/"
+                       data-pin-custom="true">
+                        <img src="https://addons.opera.com/media/extensions/55/19155/1.1-rev1/icons/icon_64x64.png"
+                             width="25" height="25" alt="pinterest">
+                    </a>
+                </div>
+            </section>
 
             {% if article.author != "Kids & Family" %} {# TO DO : OPTIMISER AVEC ROLE ADMIN ? #}
             <div class="report">
@@ -137,8 +146,9 @@
         </div>
         {% endif %}
 
-        {% if article.telephone or article.email or article.website %}
+        {% if article.telephone or article.email %}
             <div class="articleContact">
+                <h5 class="contactTitle bold">CONTACT</h5>
                 {% if article.telephone %}
                 <p class="articleContactBody"><i class="fas fa-phone-alt contactIcon"></i> 0{{ article.telephone }} <br>
                     {% endif %}
@@ -146,12 +156,24 @@
                         <i class="fa fa-envelope contactIcon" aria-hidden="true"></i>
                         <a href="mailto:{{ article.email }}"> {{ article.email }}</a> <br>
                     {% endif %}
-                    {% if article.website %}
-                    <i class="fas fa-globe contactIcon"></i> <a target="_blank" href="https://{{ article.website }}">{{ article.website }}</a></p>
-                {% endif %}
             </div>
         {% endif %}
     </div>
+        {% if article.website or article.pdf %}
+            <div class="docCtn">
+                <h5 class="bold">Sources complémentaires</h5>
+                {% if article.website %}
+                    <i class="fas fa-globe contactIcon"></i> <a target="_blank"
+                                                                href="https://{{ article.website }}">{{ article.website }}</a>
+                    </p>
+                {% endif %}
+                {% if article.pdf %}
+                    <a target="_blank" href="{{ vich_uploader_asset(article, 'pdfFile') }}">Document PDF</a><br>
+                {% endif %}
+            </div>
+        {% endif %}
+
+
     {# Réseaux soc #}
     <script>
         (function (d) {
