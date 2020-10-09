@@ -100,7 +100,7 @@ class ArticleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('article_details', ['id' => $article->getId()]);
         }
 
         $newsletter = new Newsletter();
@@ -135,7 +135,7 @@ class ArticleController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('home');
+        return $this->redirectToRoute('all_articles', ['id' => $article->getId()]);
     }
 
     /**
