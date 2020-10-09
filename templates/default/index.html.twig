@@ -78,7 +78,8 @@
                                      alt="{{ article.title }}">
                                 <div class="articleHead">
                                     <h5 class="card-title articleTitle">{{ article.title }}</h5>
-                                    <span class="like" id="likeStyle">{{ article.likes | length }}<i class="fas fa-heart redLike"></i></span>
+                                    <span class="like" id="likeStyle">{{ article.likes | length }}<i
+                                                class="fas fa-heart redLike"></i></span>
                                 </div>
                                 <div class="row">
                                     {% for category in article.category %}
@@ -127,7 +128,8 @@
                                      alt="{{ article.title }}">
                                 <div class="articleHead">
                                     <h5 class="card-title articleTitle">{{ article.title }}</h5>
-                                    <span class="like" id="likeStyle">{{ article.likes | length }}<i class="fas fa-heart redLike"></i></span>
+                                    <span class="like" id="likeStyle">{{ article.likes | length }}<i
+                                                class="fas fa-heart redLike"></i></span>
                                 </div>
                                 <div class="row">
                                     {% for category in article.category %}
@@ -157,7 +159,8 @@
                                     </div> {# TO DO : AJOUTER SYSTEM DE MESSAGE DIRECT #}
                                     {# <a  class="stretched-link"  id="articleIdLink" href="#">Voir</a> #}
                                 </div>
-                                <a class="detailsLink" href="{{ path('article_details', {'id': article.id}) }}">Voir la publication</a>
+                                <a class="detailsLink" href="{{ path('article_details', {'id': article.id}) }}">Voir la
+                                    publication</a>
                             </div>
                         {% endif %}
                     {% endif %}
@@ -175,7 +178,8 @@
                                      alt="{{ article.title }}">
                                 <div class="articleHead">
                                     <h5 class="card-title articleTitle">{{ article.title }}</h5>
-                                    <span class="like" id="likeStyle">{{ article.likes | length }}<i class="fas fa-heart redLike"></i></span>
+                                    <span class="like" id="likeStyle">{{ article.likes | length }}<i
+                                                class="fas fa-heart redLike"></i></span>
                                 </div>
                                 <div class="row">
                                     {% for category in article.category %}
@@ -205,7 +209,8 @@
                                     </div> {# TO DO : AJOUTER SYSTEM DE MESSAGE DIRECT #}
                                     {# <a  class="stretched-link"  id="articleIdLink" href="#">Voir</a> #}
                                 </div>
-                                <a class="detailsLink" href="{{ path('article_details', {'id': article.id}) }}">Voir la publication</a>
+                                <a class="detailsLink" href="{{ path('article_details', {'id': article.id}) }}">Voir la
+                                    publication</a>
                             </div>
                         {% endif %}
                     {% endif %}
@@ -220,7 +225,7 @@
         <div class="eshopCtn">
             <div class="eshop">
                 <h2 class="eshopTitle bold">{{ homepage.sectionTitle }}</h2>
-                <img src="{{ vich_uploader_asset(homepage, 'sectionImgFile') }}">
+                <img src="{{ vich_uploader_asset(homepage, 'sectionImgFile') }}"/>
                 <h4 class="servicesBody">{{ homepage.sectionBody }} </h4>
                 <div class="eshopLinkCtn">
                     <a class="eshopLink" href="https://{{ homepage.link }}" target="_blank">Je découvre</a>

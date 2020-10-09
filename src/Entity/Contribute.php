@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ContributeRepository;
 use DateTimeImmutable;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -124,7 +125,9 @@ class Contribute
     private $contributeTitle;
 
     /**
-     * @var DateTimeImmutable
+     * @ORM\Column(type="datetime", nullable=true)
+     *
+     * @var DateTimeInterface|null
      */
     private $updatedAt;
 

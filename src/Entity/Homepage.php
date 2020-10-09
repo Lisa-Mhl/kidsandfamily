@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\HomepageRepository;
 use DateTimeImmutable;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -137,8 +138,11 @@ class Homepage
      * @var File|null
      */
     private $bannerFile;
+
     /**
-     * @var DateTimeImmutable
+     * @ORM\Column(type="datetime", nullable=true)
+     *
+     * @var DateTimeInterface|null
      */
     private $updatedAt;
 
@@ -378,7 +382,7 @@ class Homepage
      */
     public function setSectionImgFile(?File $sectionImgFile = null): void
     {
-        $this->targetImgPlaceFile = $sectionImgFile;
+        $this->sectionImgFile = $sectionImgFile;
 
         if (null !== $sectionImgFile) {
             // It is required that at least one field changes if you are using doctrine
