@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
+
 body {
-    background-color: whitesmoke;
+    background-color: #ffffff;
     padding: 0;
     margin: 0;
+    color: #183455;
 }
 
 .white {
@@ -21,6 +24,16 @@ body {
     color: darkred;
 }
 
+.redLike {
+    color: deeppink;
+    margin-left: 0.3em;
+}
+
+#likeStyle {
+    text-decoration: none;
+    color: deeppink;
+}
+
 /* profile*/
 
 .profileCtn {
@@ -35,12 +48,6 @@ body {
     text-align: center;
     z-index: 1;
 }
-
-/*.bg-profile {
-    background-image: url("https://cdn.pixabay.com/photo/2017/10/13/12/29/hands-2847508_960_720.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-}*/
 
 .imgProfile {
     border-radius: 100%;
@@ -109,7 +116,7 @@ body {
 }
 
 #myArticlesCard {
-    height: 450px;
+    height: 480px;
     margin-bottom: 2em;
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
@@ -296,7 +303,7 @@ html {
 }
 
 .logoKF {
-    width: 150px;
+    width: 130px;
 }
 
 .navbar {
@@ -326,12 +333,12 @@ html {
 }
 
 .logLink {
-    color: #FFA94A;
+    color: #c5d30e;
     transition: 0.5s;
 }
 
 .logLink:hover {
-    color: dodgerblue;
+    color: #FFA94A;
     text-decoration: none;
     transition: 0.5s;
 }
@@ -340,7 +347,7 @@ html {
     margin-left: 20%;
 }
 
-.navIconMap{
+.navIconMap {
     color: #FFA94A;
 }
 
@@ -353,11 +360,11 @@ html {
     color: #c5d30e;
 }
 
-#nav-map{
+#nav-map {
     color: #FFA94A;
 }
 
-#nav-map:hover{
+#nav-map:hover {
     color: #c5d30e;
 }
 
@@ -433,21 +440,21 @@ html {
 }
 
 /*HOME*/
-.cover {
-    background-image: url("https://cdn.pixabay.com/photo/2017/10/13/12/29/hands-2847508_960_720.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+
+.coverImg {
+    width: 100%;
+    height: 1000px;
+    z-index: 0;
 }
 
 .coverCtn {
     width: 50%;
     margin-left: auto;
     margin-right: auto;
-    opacity: 60%;
-}
-
-.coverLinks {
-    color: white;
+    position: absolute;
+    top: 5%;
+    left: 25%;
+    color: #ffffff;
     font-weight: bold;
     font-size: 2em;
     display: flex;
@@ -458,8 +465,15 @@ html {
     text-align: center;
 }
 
+.coverBtnCtn {
+    display: flex;
+    flex-direction: row;
+    width: 35%;
+    margin: auto;
+}
+
 #coverBtn {
-    width: 20%;
+    width: 40%;
 }
 
 .coverBtn {
@@ -476,14 +490,14 @@ html {
 
 .coverBtn:hover {
     background-color: #c5d30e;
-    transition: 0.5s;
+    transition: 0.3s;
+    color: #ffffff;
 }
 
 .aboutCtn {
     background-color: #ffffff;
-    padding-top: 5em;
+    padding-top: 6em;
     padding-bottom: 5em;
-    color: #183455;
 }
 
 #about {
@@ -500,14 +514,13 @@ html {
     margin-bottom: 5em;
     margin-top: 2em;
     background-color: #ffffff;
-    color: #183455;
+    width: 100%;
 }
 
 #target {
     text-align: center;
     margin-top: 0;
     background-color: #ffffff;
-    color: #183455;
 }
 
 .targetCard {
@@ -604,9 +617,14 @@ div.targetCard:hover .enfant {
     padding-top: 1em;
 }
 
+.newsCtn {
+    background-color: #FFFBFB;
+}
+
 #news {
     z-index: 2;
     text-align: center;
+    padding-top: 1em;
 }
 
 .news {
@@ -614,12 +632,14 @@ div.targetCard:hover .enfant {
     margin-bottom: 5em;
     display: flex;
     flex-direction: row;
+    background-color: #FFFBFB;
 }
 
 .newsTitle {
     margin-top: 2em;
     margin-bottom: 2em;
     text-align: center;
+    background-color: #FFFBFB;
 }
 
 .newsLinkCtn {
@@ -656,7 +676,7 @@ div.targetCard:hover .enfant {
 }
 
 #articleCard {
-    height: 460px;
+    height: 480px;
     width: 350px;
     border-radius: 5% 5% 0 0;
     border-style: none;
@@ -731,7 +751,7 @@ div.targetCard:hover .enfant {
 
 .articleLink {
     transition: 0.5s;
-    color: black;
+    color: #183455;
 }
 
 .articleLink:hover {
@@ -756,10 +776,6 @@ div.targetCard:hover .enfant {
     height: 350px;
 }
 
-.cardLike {
-    color: red;
-}
-
 #articleIdLink {
     color: white;
 }
@@ -767,18 +783,26 @@ div.targetCard:hover .enfant {
 .detailsLink {
     text-align: center;
     text-decoration: none;
-    color: #718C00;
+    color: #183455;
     transition: 0.5s;
+    background-color: #c5d30e;
+    width: 45%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+    padding: 0.5em;
 }
 
 .detailsLink:hover {
     text-decoration: none;
-    color: dodgerblue;
+    background-color: #FFA94A;
+    color: #183455;
     transition: 0.5s;
 }
 
-hr {
-    margin-bottom: 0;
+.sideBarHr {
+    margin: 1em auto;
+    width: 300px;
 }
 
 .eshopTitle {
@@ -987,7 +1011,7 @@ hr {
     background-color: cornflowerblue;
     padding: 1em;
     position: fixed;
-    top: 6.6%;
+    top: 8%;
     left: 0;
     width: 100%;
     z-index: 2;
@@ -1066,7 +1090,7 @@ hr {
 }
 
 .catId {
-    padding-top: 8em;
+    padding-top: 9em;
 }
 
 .catTitle {
@@ -1086,20 +1110,22 @@ hr {
 }
 
 #Help {
-    padding-top: 7.5em;
+    padding-top: 8.5em;
 }
 
 #allArticlesCard {
-    margin-top: 2em;
-    height: 450px;
-    width: 330px;
+    margin-top: 1em;
+    height: 530px;
+    width: 350px;
     border-radius: 5% 5% 0 0;
     border-style: none;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+
 }
 
 .allArticlesImg {
-    height: 280px;
+    width: 350px;
+    height: 270px;
     border-radius: 5% 5% 0 0;
 }
 
@@ -1224,9 +1250,28 @@ hr {
 /* ARTICLE DETAILS */
 
 .detailsCtn {
-    margin-left: 5em;
-
+    margin-top: 7em;
 }
+
+.articleSideBar {
+    position: absolute;
+    top: 8%;
+    left: 2%;
+    width: 18%;
+    background-color: white;
+    padding-right: 4em;
+    height: 100%;
+}
+
+.barTitle{
+    margin-top: 2em;
+}
+
+.twitter{
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
 
 .detailsTitle {
     text-align: center;
@@ -1275,13 +1320,13 @@ hr {
 }
 
 .detailsComCtn {
-    background-color: white;
     padding: 1em;
 }
 
 .profileCom {
     display: flex;
     flex-direction: row;
+    padding: 1em;
 }
 
 #avatarCom {
@@ -1295,13 +1340,17 @@ hr {
     padding-top: 0.3em;
     padding-left: 0.3em;
     font-size: 1.3em;
+    font-weight: bold;
+    color: #c5d30e;
 }
 
 .comment {
-    padding-top: 0.5em;
-    padding-bottom: 0;
-    margin-bottom: 0;
+    padding: 1em;
+    margin-bottom: 1.5em;
     margin-left: 0.5em;
+    font-family: 'Pangolin', cursive;
+    background-color: whitesmoke;
+    letter-spacing: 1.5px;
 }
 
 .commentTitle {
@@ -1333,7 +1382,6 @@ hr {
 .commentLine {
     margin-top: 0;
     margin-bottom: 1em;
-    color: black;
 }
 
 .reportComment {
@@ -1341,43 +1389,27 @@ hr {
     font-style: italic;
 }
 
-.commentMenu {
+.profileCom,
+.comName, .commentMenu {
     display: flex;
-    justify-content: flex-end;
-    position: relative;
-    top: -6em;
+    justify-content: space-between;
 }
 
 #comMenu {
-    padding: 0;
-    margin-bottom: 0;
-    margin-top: 1em;
+    padding-top: 1em;
+    margin: 0;
 }
 
 #comMenuIcon {
     color: gray;
 }
 
-.articleSideBar {
-    position: absolute;
-    top: 10%;
-    left: 2%;
-    width: 20%;
-    background-color: white;
-    padding: 1em;
-    height: 100%;
-}
-
 .detailsCatName {
     font-weight: bold;
     font-size: 1.2em;
     padding: 0.2em;
-    color: hotpink;
-    background-color: lightblue;
-}
-
-.map {
-    width: 95%;
+    color: #183455;
+    background-color: #FFA94A;
 }
 
 .detailsMapLink {
@@ -1404,23 +1436,23 @@ hr {
     margin-top: 2em
 }
 
-.reportTitle {
-
-}
-
 .articleContact {
     position: absolute;
     top: 10%;
     left: 83%;
     width: 15%;
-    background-color: #bdc902;
+    background-color: #c5d30e;
     border-radius: 100%;
     text-align: center;
     height: 250px;
 }
+.contactTitle{
+    margin-top: 2em;
+    margin-bottom: 0;
+}
 
 .articleContactBody {
-    padding-top: 3.5em;
+    padding-top: 1em;
     margin: auto;
     font-size: 1.2em;
     width: 95%;
@@ -1429,6 +1461,17 @@ hr {
 .contactIcon {
     margin-right: 0.5em;
     margin-bottom: 1em;
+}
+
+.docCtn{
+    position: absolute;
+    top: 40%;
+    left: 83%;
+    width: 15%;
+    text-align: center;
+    background-color: #FFA94A;
+    padding: 1em;
+    border-radius: 5px;
 }
 
 /* CONTRIBUTE  */
@@ -1474,7 +1517,7 @@ hr {
 }
 
 #mapSideBar {
-    width: 15%;
+    width: 5%;
     z-index: 3;
     text-align: center;
     margin-left: 1em;
@@ -1485,6 +1528,7 @@ hr {
 }
 
 /*footer*/
+
 .footer-body {
     padding-top: 6%;
     padding-left: 10%;
@@ -1528,7 +1572,9 @@ hr {
 
 .footer-links {
     padding-left: 0;
-    list-style: none
+    list-style: none;
+    margin-left: 70%;
+    width: 100%;
 }
 
 .footer-links li {
@@ -1564,7 +1610,12 @@ hr {
 }
 
 .copyright-text {
-    margin: 0
+    margin-left: 45%;
+    width: 100%;
+}
+
+.footTitle {
+    margin-left: 70%;
 }
 
 .social-icons {
@@ -1679,7 +1730,6 @@ hr {
     /* HOMEPAGE*/
     .coverCtn {
         height: 130px;
-        width: 80%;
         display: flex;
         flex-direction: column;
     }
