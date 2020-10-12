@@ -13,13 +13,13 @@
               z-index: 1;
           }
       </style>
+
   {% endblock %}
 {% block body %}
     <div class="ctn detailsCtn">
-        <h1 class="detailsTitle">{{ article.title }} <br> <span class="detailsSubtitle grey"> par {{ article.author }} | publié le {{ article.updatedAt|date('d/m/Y') }} {# AJOUTER DATE DANS BDD #}</span>
+        <h1 class="detailsTitle">{{ article.title|raw }} <br> <span class="detailsSubtitle grey"> par {{ article.author }} | publié le {{ article.updatedAt|date('d/m/Y') }} {# AJOUTER DATE DANS BDD #}</span>
         </h1>
-
-        <p class="detailsContent">{{ article.content }}</p>
+        <p class="detailsContent">{{ article.content|raw }}</p>
         <div class="detailsPhotoCtn">
             <img class="detailsPhoto" src="{{ vich_uploader_asset(article, 'photoFile') }}"
                  alt="Illustration Article {{ article.title }}">
@@ -36,7 +36,7 @@
         {% if article.needs %}
             <div class="needsCtn">
                 <h3 class="needsTitle">Nos besoins</h3>
-                <p class="needsBody">{{ article.needs }}</p>
+                <p class="needsBody">{{ article.needs|raw }}</p>
                 <a class="btn loginBtn" id="helpLink" href="#">Je peux aider !</a>
             </div>
         {% endif %}

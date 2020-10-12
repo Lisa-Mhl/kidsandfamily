@@ -3,6 +3,9 @@ easy_admin:
   formats:
     datetime: 'd/m/Y H:m'
   design:
+    form_theme:
+        - '@EasyAdmin/form/bootstrap_4.html.twig'
+        - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
     menu:
        - { label: 'Voir le site', route: 'home', icon: 'laptop', target: '_blank'  }
        - { type: 'section', label: 'Gérer les publications' }
@@ -32,7 +35,7 @@ easy_admin:
                 - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
               fields:
                 - { property: 'isPublished', type: 'toggle', label: 'Affichage Accueil' }
-                - { property: 'title', label: 'Titre' }
+                - { property: 'title', type: 'fos_ckeditor', label: 'Titre' }
                 - { property: 'photo', type: 'image', base_path: "%uploads_path%", label: 'Image' }
                 - { property: 'updatedAt', label: 'Date' }
                 - { property: 'category', label: 'Catégorie(s)' }
@@ -50,9 +53,9 @@ easy_admin:
                 - { property: 'category', label: 'Catégori(e)s' }
                 - { property: 'target', label: 'Cible' }
                 - { type: 'section', label: 'Informations' }
-                - { property: 'title', label: 'Titre' }
-                - { property: 'content', label: "Description" }
-                - { property: 'needs', label: 'Besoins' }
+                - { property: 'title',type: 'fos_ckeditor', label: 'Titre' }
+                - { property: 'content',type: 'fos_ckeditor', label: "Description" }
+                - { property: 'needs',type: 'fos_ckeditor', label: 'Besoins' }
                 - { property: 'photoFile', type: 'vich_image', base_path: 'uploads_path%', label: 'Image Principale' }
                 - { type: 'section', label: 'Localisation' }
                 - { property: 'address', label: 'Adresse' }
@@ -98,34 +101,34 @@ easy_admin:
              form:
                  fields:
                    - { type: 'section', label: 'Section 1' }
-                   - { property: 'presentationTitle', label: 'Titre'}
-                   - { property: 'presentationBody', label: 'Contenu' }
+                   - { property: 'presentationTitle',type: 'fos_ckeditor', label: 'Titre'}
+                   - { property: 'presentationBody', type: 'fos_ckeditor', label: 'Contenu' }
                    - { property: 'presentationVideo', label: 'Lien vidéo' }
                    - { property: 'presentationVideoFile', type: 'vich_image', label: 'Video (.mp4)' }
                    - { type: 'section', label: 'Section 2' }
-                   - { property: 'visionTitle', label: 'Titre' }
-                   - { property: 'visionBody', label: 'Contenu' }
+                   - { property: 'visionTitle',type: 'fos_ckeditor', label: 'Titre' }
+                   - { property: 'visionBody', type: 'fos_ckeditor', label: 'Contenu' }
                    - { property: 'visionImgFile', type: 'vich_image', label: 'Image (.png, .jpeg)'}
                    - { type: 'section', label: 'Section 3' }
-                   - { property: 'valuesTitle', label: 'Titre' }
-                   - { property: 'valuesBody', label: 'Contenu' }
+                   - { property: 'valuesTitle',type: 'fos_ckeditor', label: 'Titre' }
+                   - { property: 'valuesBody', type: 'fos_ckeditor', label: 'Contenu' }
                    - { type: 'section', label: 'Section 4' }
-                   - { property: 'servicesTitle', label: 'Titre' }
-                   - { property: 'localTitle', label: 'Titre Img 1' }
+                   - { property: 'servicesTitle',type: 'fos_ckeditor', label: 'Titre' }
+                   - { property: 'localTitle',type: 'fos_ckeditor', label: 'Titre Img 1' }
                    - { property: 'localImgFile', type: 'vich_image', label: 'Image 1 (.png, .jpeg)'}
-                   - { property: 'messageTitle', label: 'Titre Img 2' }
+                   - { property: 'messageTitle',type: 'fos_ckeditor', label: 'Titre Img 2' }
                    - { property: 'messageImgFile', type: 'vich_image', label: 'Image 2 (png, .jpeg)'}
-                   - { property: 'dealsTitle', label: 'Titre Img 3' }
+                   - { property: 'dealsTitle',type: 'fos_ckeditor', label: 'Titre Img 3' }
                    - { property: 'dealsImgFile', type: 'vich_image', label: 'Image 3 (.png, .jpeg)'}
-                   - { property: 'eventTitle', label: 'Titre 4' }
+                   - { property: 'eventTitle',type: 'fos_ckeditor', label: 'Titre 4' }
                    - { property: 'eventImgFile', type: 'vich_image', label: 'Image 4 (.png, .jpeg)'}
-                   - { property: 'helpTitle', label: 'Titre 5' }
+                   - { property: 'helpTitle',type: 'fos_ckeditor', label: 'Titre 5' }
                    - { property: 'helpImgFile', type: 'vich_image', label: 'Image 5 (.png, .jpeg)'}
-                   - { property: 'giveTitle', label: 'Titre 6' }
+                   - { property: 'giveTitle',type: 'fos_ckeditor', label: 'Titre 6' }
                    - { property: 'giveImgFile', type: 'vich_image', label: 'Image 6 (.png, .jpeg)'}
                    - { type: 'section', label: 'Section 5' }
-                   - { property: 'communityTitle', label: 'Titre' }
-                   - { property: 'communityBody', label: 'Contenu' }
+                   - { property: 'communityTitle',type: 'fos_ckeditor', label: 'Titre' }
+                   - { property: 'communityBody',type: 'fos_ckeditor', label: 'Contenu' }
         Contribute:
                class: App\Entity\Contribute
                disabled_actions: ['new', 'delete', 'show']
@@ -141,22 +144,22 @@ easy_admin:
                    - { property: 'step4Title', label: 'Section 4' }
                form:
                    fields:
-                     - { property: 'contributeTitle', label: 'Titre' }
+                     - { property: 'contributeTitle',type: 'fos_ckeditor', label: 'Titre' }
                      - { type: 'section', label: 'Section 1' }
-                     - { property: 'step1Title', label: 'Titre' }
-                     - { property: 'step1Body', label: 'Contenu' }
+                     - { property: 'step1Title',type: 'fos_ckeditor', label: 'Titre' }
+                     - { property: 'step1Body',type: 'fos_ckeditor', label: 'Contenu' }
                      - { property: 'step1ImgFile', type: 'vich_image', label: 'Image (.png, .jpeg)' }
                      - { type: 'section', label: 'Section 2' }
-                     - { property: 'step2Title', label: 'Titre' }
-                     - { property: 'step2Body', label: 'Contenu' }
+                     - { property: 'step2Title',type: 'fos_ckeditor', label: 'Titre' }
+                     - { property: 'step2Body', type: 'fos_ckeditor', label: 'Contenu' }
                      - { property: 'step2ImgFile', type: 'vich_image', label: 'Image (.png, .jpeg)', base_path: 'uploads_path%'}
                      - { type: 'section', label: 'Section 3' }
-                     - { property: 'step3Title', label: 'Titre' }
-                     - { property: 'step3Body', label: 'Contenu' }
+                     - { property: 'step3Title',type: 'fos_ckeditor', label: 'Titre' }
+                     - { property: 'step3Body',type: 'fos_ckeditor', label: 'Contenu' }
                      - { property: 'step3ImgFile', type: 'vich_image', label: 'Image (.png, .jpeg)' }
                      - { type: 'section', label: 'Section 4' }
-                     - { property: 'step4Title', label: 'Titre' }
-                     - { property: 'step4Body', label: 'Contenu' }
+                     - { property: 'step4Title',type: 'fos_ckeditor', label: 'Titre' }
+                     - { property: 'step4Body',type: 'fos_ckeditor', label: 'Contenu' }
                      - { property: 'step4ImgFile', type: 'vich_image', label: 'Image (.png, .jpeg)' }
         Homepage:
              class: App\Entity\Homepage
@@ -175,24 +178,24 @@ easy_admin:
                  fields:
                    - { property: 'bannerFile', type: 'vich_image', label: 'Bannière' }
                    - { type: 'section', label: 'Section 1' }
-                   - { property: 'goalTitle', label: 'Titre' }
-                   - { property: 'goalBody', label: 'Contenu' }
+                   - { property: 'goalTitle', type: 'fos_ckeditor', label: 'Titre' }
+                   - { property: 'goalBody', type: 'fos_ckeditor', label: 'Contenu' }
                    - { type: 'section', label: 'Section 2' }
-                   - { property: 'targetTitle', label: 'Titre' }
-                   - { property: 'targetTitle1', label: 'Sous-titre Gauche' }
-                   - { property: 'targetTitle2', label: 'Sous-titre Droit' }
-                   - { property: 'targetBody', label: 'Texte Image Gauche' }
-                   - { property: 'targetBody2', label: 'Texte Image Droite' }
+                   - { property: 'targetTitle',type: 'fos_ckeditor', label: 'Titre' }
+                   - { property: 'targetTitle1',type: 'fos_ckeditor', label: 'Sous-titre Gauche' }
+                   - { property: 'targetTitle2',type: 'fos_ckeditor', label: 'Sous-titre Droit' }
+                   - { property: 'targetBody', type: 'fos_ckeditor', label: 'Texte Image Gauche' }
+                   - { property: 'targetBody2', type: 'fos_ckeditor', label: 'Texte Image Droite' }
                    - { property: 'targetImgFamFile', type: 'vich_image', label: 'Image Gauche (.png, .jpeg)' }
                    - { property: 'targetImgPlaceFile', type: 'vich_image', label: ' Image Droite(.png, .jpeg)' }
                    - { type: 'section', label: 'Section 3' }
-                   - { property: 'approachTitle', label: 'Titre ' }
-                   - { property: 'approachSubTitle', label: 'Sous-titre' }
-                   - { property: 'approachBody', label: 'Contenu' }
+                   - { property: 'approachTitle',type: 'fos_ckeditor', label: 'Titre ' }
+                   - { property: 'approachSubTitle',type: 'fos_ckeditor', label: 'Sous-titre' }
+                   - { property: 'approachBody', type: 'fos_ckeditor', label: 'Contenu' }
                    - { type: 'section', label: 'Section 4' }
-                   - { property: 'sectionTitle', label: 'Titre' }
+                   - { property: 'sectionTitle',type: 'fos_ckeditor', label: 'Titre' }
                    - { property: 'sectionImgFile', type: 'vich_image', label: 'Image (.gif, .png, .jpeg,)' }
-                   - { property: 'sectionBody', label: 'Contenu' }
+                   - { property: 'sectionBody', type: 'fos_ckeditor', label: 'Contenu' }
                    - { property: 'link', label: 'Lien vers site web'}
         Target:
             class: App\Entity\Target

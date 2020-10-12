@@ -1251,6 +1251,10 @@ div.targetCard:hover .enfant {
 
 .detailsCtn {
     margin-top: 7em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    text-align: justify;
 }
 
 .articleSideBar {

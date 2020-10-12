@@ -19,48 +19,48 @@
         <div id="a-propos"></div>
         <div class="aboutCtn">
             <div id="about">
-                <h2 class="bold">{{ homepage.goalTitle }}</h2> <br>
+                <h2 class="bold">{{ homepage.goalTitle|raw }}</h2> <br>
                 <h4 class="aboutBody">
-                    {{ homepage.goalBody }}
+                    {{ homepage.goalBody|raw }}
                 </h4>
             </div>
         </div>
 
         <div id="target">
-            <h2 class="bold">{{ homepage.targetTitle }}</h2>
+            <h2 class="bold">{{ homepage.targetTitle|raw }}</h2>
             <div class="row targetCtn">
                 <div class="card targetCard">
                     <div class="row" id="targetTitle">
                         <i class="fas fa-users"></i>
-                        <h4 class="card-title">{{ homepage.targetTitle1 }}</h4>
+                        <h4 class="card-title">{{ homepage.targetTitle1|raw }}</h4>
                     </div>
                     <img class="card-img targetImg"
                          src="{{ vich_uploader_asset(homepage, 'targetImgFamFile') }}"
                          alt="Photo Famille">
                     <div class="enfant">
-                        {{ homepage.targetBody }}
+                        {{ homepage.targetBody|raw }}
                     </div>
 
                 </div>
                 <div class="card targetCard">
                     <div class="row" id="targetTitle">
                         <i class="fas fa-house-user"></i>
-                        <h4 class="card-title targetTitle">{{ homepage.targetTitle2 }}</h4></div>
+                        <h4 class="card-title targetTitle">{{ homepage.targetTitle2|raw }}</h4></div>
                     <img class="card-img targetImg"
                          src="{{ vich_uploader_asset(homepage, 'targetImgPlaceFile') }}"
                          alt="Photo Lieux">
                     <div class="enfant">
-                        {{ homepage.targetBody2 }}
+                        {{ homepage.targetBody2|raw }}
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="services">
-            <h2 class="bold">{{ homepage.approachTitle }}</h2>
+            <h2 class="bold">{{ homepage.approachTitle|raw }}</h2>
             <h4 class="servicesTitle"><span class="grey">AIDER</span> | <span class="green">RECENSER</span> | <span
                         class="orange">PROPOSER</span></h4> <br>
-            <h4 class="servicesBody">{{ homepage.approachBody }}</h4>
+            <h4 class="servicesBody">{{ homepage.approachBody|raw }}</h4>
             <div class="aboutLink">
                 <a class="newsLink" href="{{ path('about') }}">En savoir plus</a>
             </div>
@@ -224,9 +224,9 @@
 
         <div class="eshopCtn">
             <div class="eshop">
-                <h2 class="eshopTitle bold">{{ homepage.sectionTitle }}</h2>
+                <h2 class="eshopTitle bold">{{ homepage.sectionTitle|raw }}</h2>
                 <img src="{{ vich_uploader_asset(homepage, 'sectionImgFile') }}"/>
-                <h4 class="servicesBody">{{ homepage.sectionBody }} </h4>
+                <h4 class="servicesBody">{{ homepage.sectionBody|raw }} </h4>
                 <div class="eshopLinkCtn">
                     <a class="eshopLink" href="https://{{ homepage.link }}" target="_blank">Je découvre</a>
                 </div>
