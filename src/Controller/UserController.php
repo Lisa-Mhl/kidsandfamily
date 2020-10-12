@@ -125,7 +125,6 @@ class UserController extends AbstractController
 
             return $this->redirectToRoute('profile', ['id' => $user->getId()]);
         }
-
         return $this->render('user/hobbies.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
