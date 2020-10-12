@@ -95,15 +95,17 @@
                         Filtrer par catégories
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        {% for category in categories %}
+                        {% for category in article.categories %}
                             <a class="dropdown-item catItemDwn" href="#{{ category.name }}">{{ category.name }}</a>
                         {% endfor %}
                     </div>
                 </li>
             </h4>
+
             {% for category in categories %} {# TRI PAR CATEGORIES #}  {# TO DO : N'AFFICHER QUE LES CATEGORIES QUI CONTIENNENT DES ARTICLES DES AMBASSADEURS #}
                 <div class="catId" id="{{ category.name }}"></div>
-                <h4 class="catTitle" id="{{ category.id }}">{{ category.name | upper }}</h4>
+
+                    <h4 class="catTitle" id="{{ category.id }}">{{ category.name | upper }}</h4>
 
                 <div class="row"> {# AFFICHAGE DES ARTICLES DES AMBASSADEURS #}
                     {% for article in category.article %}

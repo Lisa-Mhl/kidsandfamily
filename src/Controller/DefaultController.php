@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Entity\ArticleLike;
+use App\Entity\Category;
 use App\Entity\Comment;
 use App\Entity\Contact;
 use App\Entity\Newsletter;
@@ -233,13 +234,16 @@ class DefaultController extends AbstractController
 
     /**
      * @Route("/articles", name="all_articles")
-     * @param ArticleRepository $articleRepository
-     * @param CategoryRepository $categoryRepository
      * @param Request $request
+     * @param string $category
      * @return Response
      */
-    public function allArticles(ArticleRepository $articleRepository, CategoryRepository $categoryRepository, Request $request)
+    public function allArticles(Request $request,string $category)
     {
+        $category = $this->getDoctrine()->getRepository(Category::class)->findOneBy(['name' => mb_strtolower($category)]);
+        $articles = $this->getDoctrine()->getRepository(Article::class)->findBy(['category' => $category], ['id' => "DESC"], 3);
+
+
         $newsletter = new Newsletter();
         $formNewsLetter = $this->createForm(NewsLetterType::class, $newsletter);
         $formNewsLetter->handleRequest($request);
@@ -252,8 +256,8 @@ class DefaultController extends AbstractController
         }
 
         return $this->render('default/all_articles.html.twig', [
-            'articles' => $articleRepository->findAll(),
-            'categories' => $categoryRepository->findAll(),
+            'category' => $category,
+            'articles' => $articles,
             'formNewsLetter' => $formNewsLetter->createView(),
         ]);
     }

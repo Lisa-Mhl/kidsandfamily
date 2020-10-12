@@ -212,8 +212,6 @@ class Article
      */
     private $likes;
 
-
-
     public function __toString()
     {
         return $this->getTitle();
