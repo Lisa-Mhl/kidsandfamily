@@ -95,18 +95,20 @@
                         Filtrer par catégories
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        {% for category in article.categories %}
-                            <a class="dropdown-item catItemDwn" href="#{{ category.name }}">{{ category.name }}</a>
+                        {% for category in categories %}
+                            {% if category.article is not empty %}
+                                <a class="dropdown-item catItemDwn" href="#{{ category.name }}">{{ category.name }}</a>
+                            {% endif %}
                         {% endfor %}
                     </div>
                 </li>
             </h4>
 
-            {% for category in categories %} {# TRI PAR CATEGORIES #}  {# TO DO : N'AFFICHER QUE LES CATEGORIES QUI CONTIENNENT DES ARTICLES DES AMBASSADEURS #}
-                <div class="catId" id="{{ category.name }}"></div>
-
+            {% for category in categories %} {# TRI PAR CATEGORIES #}
+                {% if category.article is not empty %}
+                    <div class="catId" id="{{ category.name }}"></div>
                     <h4 class="catTitle" id="{{ category.id }}">{{ category.name | upper }}</h4>
-
+                {% endif %}
                 <div class="row"> {# AFFICHAGE DES ARTICLES DES AMBASSADEURS #}
                     {% for article in category.article %}
                         <div class="card articleCard" id="allArticlesCard">

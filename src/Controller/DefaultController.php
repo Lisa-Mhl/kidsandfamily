@@ -235,15 +235,10 @@ class DefaultController extends AbstractController
     /**
      * @Route("/articles", name="all_articles")
      * @param Request $request
-     * @param string $category
      * @return Response
      */
-    public function allArticles(Request $request,string $category)
+    public function allArticles(Request $request, CategoryRepository $categoryRepository, ArticleRepository $articleRepository):Response
     {
-        $category = $this->getDoctrine()->getRepository(Category::class)->findOneBy(['name' => mb_strtolower($category)]);
-        $articles = $this->getDoctrine()->getRepository(Article::class)->findBy(['category' => $category], ['id' => "DESC"], 3);
-
-
         $newsletter = new Newsletter();
         $formNewsLetter = $this->createForm(NewsLetterType::class, $newsletter);
         $formNewsLetter->handleRequest($request);
@@ -256,8 +251,8 @@ class DefaultController extends AbstractController
         }
 
         return $this->render('default/all_articles.html.twig', [
-            'category' => $category,
-            'articles' => $articles,
+            'categories' => $categoryRepository->findAll(),
+            'articles' => $articleRepository->findAll(),
             'formNewsLetter' => $formNewsLetter->createView(),
         ]);
     }
