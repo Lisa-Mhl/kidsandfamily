@@ -23,6 +23,8 @@ easy_admin:
        - { entity: 'Homepage', icon: 'home', label: 'Accueil' }
        - { entity: 'About', icon: 'info', label: 'A propos' }
        - { entity: 'Contribute', icon: 'handshake', label: 'Contribuer' }
+       - { entity: 'More', icon: 'plus', label: 'Options' }
+       - { entity: 'Link', icon: 'plus', label: 'Gestion des liens' }
   entities:
         Article:
             class: App\Entity\Article
@@ -196,6 +198,7 @@ easy_admin:
                    - { property: 'sectionTitle',type: 'fos_ckeditor', label: 'Titre' }
                    - { property: 'sectionImgFile', type: 'vich_image', label: 'Image (.gif, .png, .jpeg,)' }
                    - { property: 'sectionBody', type: 'fos_ckeditor', label: 'Contenu' }
+                   - { property: 'btneshop', label: 'Nom bouton vers site web ' }
                    - { property: 'link', label: 'Lien vers site web'}
         Target:
             class: App\Entity\Target
@@ -314,3 +317,34 @@ easy_admin:
             form:
               fields:
                 - { property: 'email', type: 'email' }
+        More:
+          class: App\Entity\More
+          disabled_actions: ['show']
+          list:
+            actions:
+              - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
+              - { name: 'edit', icon: 'pencil', label: false, css_class: 'btn btn-primary' }
+            fields:
+              - { property: 'logo',type: 'image', label: 'Logo', base_path: "%uploads_path%" }
+              - { property: 'linkcgu', label: 'Lien CGU' }
+              - { property: 'cgu', label: 'CGU' }
+          form:
+            fields:
+              - { property: 'logoFile',type: 'vich_image', label: 'Logo' }
+              - { property: 'linkcgu', label: 'Lien CGU' }
+              - { property: 'cgu',type: 'fos_ckeditor', label: 'CGU' }
+        Link:
+          class: App\Entity\Link
+          label: "Liens"
+          list:
+            actions:
+              - { name: 'edit', icon: 'pencil', label: false, css_class: 'btn btn-primary' }
+              - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
+              - { name: 'new', icon: 'plus', label: 'Ajouter un lien réseau', css_class: 'btn btn-success' }
+            fields:
+              - { property: 'name', label: 'Nom du réseau' }
+              - { property: 'href', label: 'Lieu du réseau' }
+          form:
+            fields:
+              - { property: 'name', label: 'Nom du réseau' }
+              - { property: 'href', label: 'Lieu du réseau' }

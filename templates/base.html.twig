@@ -17,9 +17,10 @@
 {% endblock %}
 <body>
 <nav class="navbar navbar-expand-lg navbar-light" id="nav-desktop">
-    <a class="navbar-brand" id="nav-link" href="{{ path('home') }}"><img class="logoKF"
-                                                                         src="{{ asset('uploads/files/Logo k&f 1.png') }}"
-                                                                         alt="Logo Kids & Family"></a>
+    <a class="navbar-brand" id="nav-link" href="{{ path('home') }}">
+        {% for more in mores %}
+        <img class="logoKF" src="{{ asset('uploads/files/' ~ more.logo) }}" alt="{{more.logo}}"></a>
+    {% endfor %}
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
@@ -75,11 +76,11 @@
                     <a class="logLink" href="{{ path('app_login') }}">Se Connecter</a>
                 {% endif %}
             </div>
-            <ul class="social-icons">
-                <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
-                <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a class="youtube" href="#"><i class="fa fa-youtube"></i></a></li>
+            {% for link in links %}
+            <ul class="">
+                <li><a class="" href="{{ link.href }}">{{ link.name }}</a></li>
             </ul>
+            {% endfor %}
         </div>
     </div>
 </nav>

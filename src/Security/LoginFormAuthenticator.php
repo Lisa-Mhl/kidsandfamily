@@ -106,7 +106,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
                 }
                 $verified = $this->entityManager->getRepository(User::class)->findOneBy(['isVerified' => 1]);
                 $email = $this->getCredentials($request);
-                if ($verified) {
+                if ($verified === "ROLE_USER") {
                     return new RedirectResponse($this->urlGenerator->generate('home'));
                 } else {
                     return new RedirectResponse($this->urlGenerator->generate('validation'));
