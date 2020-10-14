@@ -93,29 +93,27 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $providerKey)
     {
-
         if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
             return new RedirectResponse($targetPath);
         }
-
         $roles = $token->getUser()->getRoles();
         if ($roles) {
             foreach ($roles as $role) {
                 if ($role === "ROLE_ADMIN") {
                     return new RedirectResponse($this->urlGenerator->generate('easyadmin'));
                 }
+
                 $verified = $this->entityManager->getRepository(User::class)->findOneBy(['isVerified' => 1]);
-                $email = $this->getCredentials($request);
-                if ($verified === "ROLE_USER") {
+                $this->getCredentials($request);
+                if ($verified) {
                     return new RedirectResponse($this->urlGenerator->generate('home'));
                 } else {
                     return new RedirectResponse($this->urlGenerator->generate('validation'));
                 }
             }
-
         }
-
     }
+
 
     protected function getLoginUrl()
     {
