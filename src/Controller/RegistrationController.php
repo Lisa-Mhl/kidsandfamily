@@ -6,6 +6,8 @@ use App\Entity\Newsletter;
 use App\Entity\User;
 use App\Form\NewsLetterType;
 use App\Form\RegistrationFormType;
+use App\Repository\LinkRepository;
+use App\Repository\MoreRepository;
 use App\Security\EmailVerifier;
 use App\Security\LoginFormAuthenticator;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -36,7 +38,7 @@ class RegistrationController extends AbstractController
      * @param LoginFormAuthenticator $authenticator
      * @return Response
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginFormAuthenticator $authenticator): Response
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder,LinkRepository $linkRepository,MoreRepository $moreRepository, GuardAuthenticatorHandler $guardHandler, LoginFormAuthenticator $authenticator): Response
     {
 
         $user = new User();
@@ -51,6 +53,10 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
+
+            if (true === $form['agreeTerms']->getData()) {
+                $user->agreeTerms();
+            }
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
@@ -83,6 +89,8 @@ class RegistrationController extends AbstractController
         }
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
+            'mores'=> $moreRepository->findAll(),
+            'links'=>$linkRepository->findAll(),
             'formNewsLetter' => $formNewsLetter->createView(),
         ]);
     }
@@ -94,7 +102,9 @@ class RegistrationController extends AbstractController
      */
     public function verifyUserEmail(Request $request): Response
     {
+
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
 
         // validate email confirmation link, sets User::isVerified=true and persists
         try {
@@ -104,7 +114,6 @@ class RegistrationController extends AbstractController
 
             return $this->redirectToRoute('app_register');
         }
-
         return $this->redirectToRoute('home');
     }
 }

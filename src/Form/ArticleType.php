@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 class ArticleType extends AbstractType
 {
@@ -48,8 +49,16 @@ class ArticleType extends AbstractType
 
             ->add('video')
             ->add('pdf')
-            ->add('needs')
-            ->add('content')
+            ->add('needs', CKEditorType::class,[
+                'config'=>[
+                    'toolbar'=>'full'
+                ]
+            ])
+            ->add('content', CKEditorType::class,[
+                'config'=>[
+                    'toolbar'=>'full'
+                ]
+            ])
             ->add('photoBFile', VichImageType::class, [
                 'required' => false,
                 'download_uri' => false,
@@ -90,3 +99,4 @@ class ArticleType extends AbstractType
         ]);
     }
 }
+

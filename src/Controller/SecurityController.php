@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Newsletter;
 use App\Form\NewsLetterType;
+use App\Repository\LinkRepository;
+use App\Repository\MoreRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,7 +20,7 @@ class SecurityController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function login(AuthenticationUtils $authenticationUtils, Request $request): Response
+    public function login(AuthenticationUtils $authenticationUtils, MoreRepository $moreRepository,LinkRepository $linkRepository,Request $request): Response
     {
         if (!empty($this->getUser())) {
             $roles = $this->getUser()->getRoles();
@@ -44,6 +46,8 @@ class SecurityController extends AbstractController
             return $this->redirectToRoute('home');
         }
         return $this->render('security/login.html.twig', [
+            'links'=>$linkRepository->findAll(),
+            'mores'=> $moreRepository->findAll(),
             'last_username' => $lastUsername,
             'error' => $error,
             'formNewsLetter' => $formNewsLetter->createView(),
@@ -56,5 +60,13 @@ class SecurityController extends AbstractController
     public function logout()
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+    }
+
+    /**
+     * @Route("/validation", name="validation")
+     */
+    public function validation()
+    {
+        return $this->render('security/emailvalidate.html.twig');
     }
 }

@@ -4,9 +4,9 @@
     {% for about in abouts %}
         <div class="ctn" id="aboutCtn">
             <article class="aboutArticle">
-                <h1 id="aboutTitle" class="bold yellow">{{ about.presentationTitle }}</h1>
+                <h1 id="aboutTitle" class="bold yellow">{{ about.presentationTitle|raw }}</h1>
                 <p id="aboutBody">
-                    {{ about.presentationBody }}</p> <br>
+                    {{ about.presentationBody|raw }}</p> <br>
                 <div class="center">
                     {# TO DO Solution for upload video #}
                     <iframe class="aboutVideo" width="560" height="315" src="https://www.youtube.com/embed/sqGltsSb-i0"
@@ -16,55 +16,55 @@
                 </div>
             </article>
             <article class="aboutArticle">
-                <h1 id="aboutTitle" class="rightTitle bold pink">{{ about.visionTitle }}</h1>
+                <h1 id="aboutTitle" class="rightTitle bold pink">{{ about.visionTitle|raw }}</h1>
                 <section id="vision">
                     <img src="{{ vich_uploader_asset(about, 'visionImgFile') }}" class="aboutImg">
                     <p id="aboutBody" class="visionBody">
-                        {{ about.visionBody }}</p>
+                        {{ about.visionBody|raw }}</p>
                 </section>
             </article>
             <article class="aboutArticle">
-                <h1 id="aboutTitle" class="bold yellow">{{ about.valuesTitle }}</h1>
+                <h1 id="aboutTitle" class="bold yellow">{{ about.valuesTitle|raw }}</h1>
                 <p id="aboutBody">
-                    {{ about.valuesBody }}</p>
+                    {{ about.valuesBody|raw }}</p>
             </article>
             <article class="aboutArticle">
-                <h1 id="aboutTitle" class="aboutServicesTitle bold pink">{{ about.servicesTitle }}</h1>
+                <h1 id="aboutTitle" class="aboutServicesTitle bold pink">{{ about.servicesTitle|raw }}</h1>
                 <ul class="aboutList">
                     <li class="serviceList">
                         <img class="serviceImg" src="{{ vich_uploader_asset(about, 'localImgFile') }}" alt="{{ about.localTitle }}">
-                        <p class="serviceListTitle">{{ about.localTitle }}</p>
+                        <p class="serviceListTitle">{{ about.localTitle|raw }}</p>
                     </li>
                     <li class="serviceList">
                         <img class="serviceImg" src="{{ vich_uploader_asset(about, 'messageImgFile') }}" alt="{{ about.messageTitle }}">
-                        <p class="serviceListTitle">{{ about.messageTitle }}</p>
+                        <p class="serviceListTitle">{{ about.messageTitle|raw }}</p>
                     </li>
                     <li class="serviceList">
                         <img class="serviceImg" src="{{ vich_uploader_asset(about, 'dealsImgFile') }}" alt="{{ about.dealsTitle }}">
-                        <p class="serviceListTitle">{{ about.dealsTitle }}</p>
+                        <p class="serviceListTitle">{{ about.dealsTitle|raw }}</p>
                     </li>
                     <li class="serviceList">
                         <img class="serviceImg"
                              src="{{ vich_uploader_asset(about, 'eventImgFile') }}"
                              alt="{{ about.eventTitle }}">
-                        <p class="serviceListTitle">{{ about.eventTitle }}</p>
+                        <p class="serviceListTitle">{{ about.eventTitle|raw }}</p>
                     </li>
                     <li class="serviceList">
                         <img class="serviceImg"
                              src="{{ vich_uploader_asset(about, 'helpImgFile') }}" alt="{{ about.helpTitle }}">
-                        <p class="serviceListTitle">{{ about.helpTitle }}</p>
+                        <p class="serviceListTitle">{{ about.helpTitle|raw }}</p>
                     </li>
                     <li class="serviceList">
                         <img class="serviceImg"
                              src="{{ vich_uploader_asset(about, 'giveImgFile') }}" alt="{{ about.giveTitle }}">
-                        <p class="serviceListTitle">{{ about.giveTitle }}</p>
+                        <p class="serviceListTitle">{{ about.giveTitle|raw }}</p>
                     </li>
                 </ul>
             </article>
             <article class="join">
-                <h1 class="bold yellow" id="aboutTitleJoin">{{ about.communityTitle }}</h1>
+                <h1 class="bold yellow" id="aboutTitleJoin">{{ about.communityTitle|raw }}</h1>
                 <p id="aboutBody">
-                    {{ about.communityBody }}<br>
+                    {{ about.communityBody|raw }}<br>
                     <a class="btn loginBtn" href="{{ path('app_register') }}">Je souhaite m'inscrire !</a> <br>
                 <div class="aboutLinksCtn">
                     <i class="fa fa-arrow-right" aria-hidden="true"></i>

@@ -151,6 +151,11 @@ class Homepage
      */
     private $link;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $btneshop;
+
 
     public function getId(): ?int
     {
@@ -464,4 +469,17 @@ class Homepage
 
         return $this;
     }
+
+    public function getBtneshop(): ?string
+    {
+        return $this->btneshop;
+    }
+
+    public function setBtneshop(?string $btneshop): self
+    {
+        $this->btneshop = $btneshop;
+
+        return $this;
+    }
+
 }

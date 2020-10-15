@@ -7,6 +7,8 @@ use App\Entity\User;
 use App\Form\ChangePasswordFormType;
 use App\Form\NewsLetterType;
 use App\Form\ResetPasswordRequestFormType;
+use App\Repository\LinkRepository;
+use App\Repository\MoreRepository;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -39,7 +41,7 @@ class ResetPasswordController extends AbstractController
      *
      * @Route("", name="app_forgot_password_request")
      */
-    public function request(Request $request, MailerInterface $mailer): Response
+    public function request(Request $request, MailerInterface $mailer, MoreRepository $moreRepository): Response
     {
         $form = $this->createForm(ResetPasswordRequestFormType::class);
         $form->handleRequest($request);
@@ -64,6 +66,7 @@ class ResetPasswordController extends AbstractController
 
         return $this->render('reset_password/request.html.twig', [
             'requestForm' => $form->createView(),
+            'mores'=> $moreRepository->findAll(),
             'formNewsLetter' => $formNewsLetter->createView(),
         ]);
     }
@@ -75,7 +78,7 @@ class ResetPasswordController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function checkEmail(Request $request): Response
+    public function checkEmail(Request $request, MoreRepository $moreRepository): Response
     {
         // We prevent users from directly accessing this page
         if (!$this->canCheckEmail()) {
@@ -95,6 +98,7 @@ class ResetPasswordController extends AbstractController
 
         return $this->render('reset_password/check_email.html.twig', [
             'tokenLifetime' => $this->resetPasswordHelper->getTokenLifetime(),
+            'mores'=> $moreRepository->findAll(),
             'formNewsLetter' => $formNewsLetter->createView(),
         ]);
     }
@@ -104,7 +108,7 @@ class ResetPasswordController extends AbstractController
      *
      * @Route("/reset/{token}", name="app_reset_password")
      */
-    public function reset(Request $request, UserPasswordEncoderInterface $passwordEncoder, string $token = null): Response
+    public function reset(Request $request, UserPasswordEncoderInterface $passwordEncoder,LinkRepository $linkRepository,MoreRepository $moreRepository, string $token = null): Response
     {
         if ($token) {
             // We store the token in session and remove it from the URL, to avoid the URL being
@@ -164,6 +168,8 @@ class ResetPasswordController extends AbstractController
         }
         return $this->render('reset_password/reset.html.twig', [
             'resetForm' => $form->createView(),
+            'mores'=> $moreRepository->findAll(),
+            'links'=>$linkRepository->findAll(),
             'formNewsLetter' => $formNewsLetter->createView(),
         ]);
     }

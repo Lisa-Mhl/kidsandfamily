@@ -9,6 +9,8 @@ use App\Form\ArticleType;
 use App\Form\NewsLetterType;
 use App\Repository\ArticleLikeRepository;
 use App\Repository\ArticleRepository;
+use App\Repository\LinkRepository;
+use App\Repository\MoreRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,10 +27,13 @@ class ArticleController extends AbstractController
      * @param ArticleRepository $articleRepository
      * @return Response
      */
-    public function index(ArticleRepository $articleRepository): Response
+    public function index(ArticleRepository $articleRepository, MoreRepository $moreRepository, LinkRepository $linkRepository): Response
     {
         return $this->render('article/index.html.twig', [
+            'mores'=> $moreRepository->findAll(),
+            'links'=>$linkRepository->findAll(),
             'articles' => $articleRepository->findAll(),
+
         ]);
     }
 
@@ -37,7 +42,7 @@ class ArticleController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function new(Request $request): Response
+    public function new(Request $request, MoreRepository $moreRepository, LinkRepository $linkRepository): Response
     {
         $article = new Article();
         $form = $this->createForm(ArticleType::class, $article);
@@ -71,6 +76,8 @@ class ArticleController extends AbstractController
         return $this->render('article/new.html.twig', [
             'article' => $article,
             'form' => $form->createView(),
+            'links'=>$linkRepository->findAll(),
+            'mores'=> $moreRepository->findAll(),
             'formNewsLetter' => $formNewsLetter->createView(),
         ]);
     }
@@ -80,10 +87,12 @@ class ArticleController extends AbstractController
      * @param Article $article
      * @return Response
      */
-    public function show(Article $article): Response
+    public function show(Article $article, MoreRepository $moreRepository, LinkRepository $linkRepository): Response
     {
         return $this->render('article/show.html.twig', [
             'article' => $article,
+            'links'=>$linkRepository->findAll(),
+            'mores'=> $moreRepository->findAll(),
         ]);
     }
 
@@ -93,7 +102,7 @@ class ArticleController extends AbstractController
      * @param Article $article
      * @return Response
      */
-    public function editArticle(Request $request, Article $article): Response
+    public function editArticle(Request $request, Article $article, MoreRepository $moreRepository, LinkRepository $linkRepository): Response
     {
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
@@ -101,7 +110,7 @@ class ArticleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('article_details', ['id' => $article->getId()]);
         }
 
         $newsletter = new Newsletter();
@@ -117,6 +126,8 @@ class ArticleController extends AbstractController
         return $this->render('article/edit.html.twig', [
             'article' => $article,
             'form' => $form->createView(),
+            'links'=>$linkRepository->findAll(),
+            'mores'=> $moreRepository->findAll(),
             'formNewsLetter' => $formNewsLetter->createView(),
         ]);
     }
@@ -136,7 +147,7 @@ class ArticleController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('home');
+        return $this->redirectToRoute('all_articles', ['id' => $article->getId()]);
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 
+use DateTime;
 use DateTimeImmutable;
 use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -171,9 +172,16 @@ class User implements UserInterface, Serializable
      */
     private $isVerified = false;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $agreeTermsAt;
+
+
     public function __construct()
     {
         $this->articleLikes = new ArrayCollection();
+        $this->agreeTermsAt = new DateTime();
     }
 
 
@@ -570,5 +578,14 @@ class User implements UserInterface, Serializable
         return $this;
     }
 
+    public function getAgreeTermsAt(): ?\DateTimeInterface
+    {
+        return $this->agreeTermsAt;
+    }
+
+    public function agreeTerms()
+    {
+        $this->agreedTermsAt = new \DateTime('now');
+    }
 
 }

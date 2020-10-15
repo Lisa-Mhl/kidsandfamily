@@ -11,6 +11,8 @@ use App\Form\UserType;
 use App\Repository\ArticleLikeRepository;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
+use App\Repository\LinkRepository;
+use App\Repository\MoreRepository;
 use App\Repository\UserRepository;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -31,19 +33,22 @@ class UserController extends AbstractController
      * @param User $user
      * @return Response
      */
-    public function profile(User $user): Response
+    public function profile(User $user, MoreRepository $moreRepository,LinkRepository $linkRepository): Response
     {
         return $this->render('user/profile.html.twig', [
             'user' => $user,
+            'mores'=> $moreRepository->findAll(),
+            'links'=>$linkRepository->findAll(),
         ]);
     }
 
     /**
      * @Route("/new", name="user_new", methods={"GET","POST"})
      * @param Request $request
+     * @param $moreRepository
      * @return Response
      */
-    public function new(Request $request): Response
+    public function new(Request $request, MoreRepository $moreRepository, LinkRepository $linkRepository): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -59,6 +64,8 @@ class UserController extends AbstractController
 
         return $this->render('user/new.html.twig', [
             'user' => $user,
+            'mores'=> $moreRepository->findAll(),
+            'links'=>$linkRepository->findAll(),
             'form' => $form->createView(),
         ]);
     }
@@ -68,9 +75,10 @@ class UserController extends AbstractController
      * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
      * @param Request $request
      * @param User $user
+     * @param $moreRepository
      * @return Response
      */
-    public function edit(Request $request, User $user): Response
+    public function edit(Request $request, User $user, MoreRepository $moreRepository, LinkRepository $linkRepository): Response
     {
         $newsletter = new Newsletter();
         $formNewsLetter = $this->createForm(NewsLetterType::class, $newsletter);
@@ -94,6 +102,8 @@ class UserController extends AbstractController
 
         return $this->render('user/edit.html.twig', [
             'user' => $user,
+            'mores'=> $moreRepository->findAll(),
+            'links'=>$linkRepository->findAll(),
             'form' => $form->createView(),
             'formNewsLetter' => $formNewsLetter->createView(),
         ]);
@@ -127,7 +137,7 @@ class UserController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function hobbies(User $user, Request $request): Response
+    public function hobbies(User $user, MoreRepository $moreRepository,LinkRepository $linkRepository,Request $request): Response
     {
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
@@ -139,9 +149,10 @@ class UserController extends AbstractController
 
             return $this->redirectToRoute('profile', ['id' => $user->getId()]);
         }
-
         return $this->render('user/hobbies.html.twig', [
             'user' => $user,
+            'mores'=> $moreRepository->findAll(),
+            'links'=>$linkRepository->findAll(),
             'form' => $form->createView(),
         ]);
     }
@@ -153,10 +164,12 @@ class UserController extends AbstractController
      * @param CategoryRepository $categoryRepository
      * @return Response
      */
-    public function showMyArticles(User $user, ArticleRepository $articleRepository, CategoryRepository $categoryRepository): Response
+    public function showMyArticles(User $user, ArticleRepository $articleRepository,LinkRepository $linkRepository,CategoryRepository $categoryRepository, MoreRepository $moreRepository): Response
     {
         return $this->render('user/my_articles.html.twig', [
             'user' => $user,
+            'links'=>$linkRepository->findAll(),
+            'mores'=> $moreRepository->findAll(),
             'articles' => $articleRepository->findBy(['author'=>$user]),
             'categories' => $categoryRepository->findAll(),
         ]);
@@ -168,10 +181,12 @@ class UserController extends AbstractController
      * @param User $user
      * * @return Response
      */
-    public function showMyAddress(User $user): Response
+    public function showMyAddress(User $user, MoreRepository $moreRepository, LinkRepository $linkRepository): Response
     {
         return $this->render('user/address.html.twig', [
             'user' => $user,
+            'links'=>$linkRepository->findAll(),
+            'mores'=> $moreRepository->findAll(),
         ]);
     }
 
@@ -182,10 +197,12 @@ class UserController extends AbstractController
      * @param CategoryRepository $categoryRepository
      * @return Response
      */
-    public function showCategories(User $user, CategoryRepository $categoryRepository): Response
+    public function showCategories(User $user, CategoryRepository $categoryRepository,LinkRepository $linkRepository,MoreRepository $moreRepository): Response
     {
         return $this->render('user/categories.html.twig', [
             'user' => $user,
+            'mores'=> $moreRepository->findAll(),
+            'links'=>$linkRepository->findAll(),
             'categories' => $categoryRepository->findAll(),
         ]);
     }

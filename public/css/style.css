@@ -6,7 +6,9 @@ body {
     margin: 0;
     color: #183455;
 }
-
+.modal-dialog {
+    pointer-events: all;
+}
 .white {
     color: whitesmoke;
 }
@@ -358,7 +360,8 @@ html {
 }
 
 #nav .social-icons {
-    margin-left: 20%;
+    margin-left: 5%;
+
 }
 
 .navIconMap {
@@ -1276,6 +1279,10 @@ div.targetCard:hover .enfant {
 
 .detailsCtn {
     margin-top: 7em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    text-align: justify;
 }
 
 .articleSideBar {
@@ -1314,9 +1321,9 @@ div.targetCard:hover .enfant {
 }
 
 .detailsPhoto {
-    width: 350px;
-    height: 330px;
-    margin: 2em auto;
+    width: 290px;
+    height: 290px;
+    margin: 2em 1em;
 }
 
 
@@ -1330,8 +1337,9 @@ div.targetCard:hover .enfant {
 
 .needsCtn {
     margin: auto;
-    width: 60%;
+    width: 100%;
 }
+
 
 #helpLink {
     width: 15%;
@@ -1340,7 +1348,7 @@ div.targetCard:hover .enfant {
 }
 
 .articleCommentCtn {
-    width: 60%;
+    width: 100%;
     margin: auto;
 }
 
@@ -1379,14 +1387,14 @@ div.targetCard:hover .enfant {
 }
 
 .commentTitle {
-    width: 60%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 1em;
 }
 
 .sendComment {
-    width: 10%;
+    width: 15%;
     margin-bottom: 2em;
 }
 
@@ -1680,7 +1688,7 @@ div.targetCard:hover .enfant {
 
 .social-icons a:active, .social-icons a:focus, .social-icons a:hover {
     color: #fff;
-    background-color: #29aafe
+    background-color: #c5d30e
 }
 
 .social-icons.size-sm a {
@@ -1688,22 +1696,6 @@ div.targetCard:hover .enfant {
     height: 34px;
     width: 34px;
     font-size: 14px
-}
-
-.social-icons a.facebook:hover {
-    background-color: #3b5998
-}
-
-.social-icons a.twitter:hover {
-    background-color: #00aced
-}
-
-.social-icons a.linkedin:hover {
-    background-color: #007bb6
-}
-
-.social-icons a.dribbble:hover {
-    background-color: #ea4c89
 }
 
 .newsletterCtn {
