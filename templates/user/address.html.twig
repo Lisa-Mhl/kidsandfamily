@@ -6,8 +6,7 @@
     <h1>Mon compte</h1>
     <div class="profileCtn" >
         {% if app.user %}
-            {% if is_granted('ROLE_USER') %}
-
+            {% if app.user.id is same as(user.id) %}
                 <h1 class="detailsTitle">Mes Coordonnées</h1>
                 <p class="addressBody">{{ user.channelnum }}
                     {% if user.complement %}
@@ -25,9 +24,9 @@
                 </div>
 
             {% else %}
-                <p class="text-center">Seuls les utilisateurs peuvent accéder à cette page <br>
-                    <a href="{{ path('app_login') }}">Connexion</a>
-                </p>
+                <div class="mustCo">
+                    <p>Vous ne pouvez pas accédez aux coordonnées d'un autre utilisateur</p>
+                </div>
             {% endif %}
 
         {% endif %}

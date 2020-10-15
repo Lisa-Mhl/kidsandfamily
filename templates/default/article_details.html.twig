@@ -17,9 +17,15 @@
   {% endblock %}
 {% block body %}
     <div class="ctn detailsCtn">
+
         <h1 class="detailsTitle">{{ article.title|raw }} <br> <span class="detailsSubtitle grey"> par {{ article.author }} | publié le {{ article.updatedAt|date('d/m/Y') }} {# AJOUTER DATE DANS BDD #}</span>
         </h1>
         <p class="detailsContent">{{ article.content|raw }}</p>
+            <span class="detailsSubtitle grey">
+                par <a class="profileLink"
+                       href="{{ path('profile', {'id': article.author.id}) }}">{{ article.author.username }}</a>
+                | publié le {{ article.updatedAt|date('d/m/Y') }} {# AJOUTER DATE DANS BDD #}</span>
+
         <div class="detailsPhotoCtn">
             <img class="detailsPhoto" src="{{ vich_uploader_asset(article, 'photoFile') }}"
                  alt="Illustration Article {{ article.title }}">
@@ -42,7 +48,7 @@
         {% endif %}
         <div class="articleCommentCtn">
             {% if article.comments is not empty %}
-                <h3 id="comment" class="comTitle">Commentaires</h3>
+                <h3 class="comTitle">Commentaires</h3>
             {% endif %}
             <div class="detailsComCtn">
                 {% for comment in article.comments %}
@@ -52,7 +58,10 @@
                                 {% set user = comment.author %}
                                 <img id="avatarCom" src="{{ vich_uploader_asset(user, 'avatarFile') }}">
                             {% endif %}
-                            <span id="authorCom"> {{ comment.author }}</span>
+                            <span id="authorCom">
+                                  <a class="profileLink"
+                                     href="{{ path('profile', {'id': comment.author.id}) }}">{{ comment.author }}</a>
+                                </span>
                         </div>
 
                         <div class="commentMenu">
@@ -79,7 +88,7 @@
             </div>
 
             {% if app.user %}
-                <h3 class="comTitle">Laisser un commentaire</h3>
+                <h3 id="comment" class="comTitle">Laisser un commentaire</h3>
                 {{ form_start(form) }}
                 {{ form_label(form.comment, 'Votre message') }}
                 {{ form_widget(form.comment) }}
@@ -98,13 +107,13 @@
             <div class="detailsCatCtn">
                 <h4 class="barTitle">
                     <i class="fa fa-folder-open" aria-hidden="true"></i>
-                    Catégorie(s) :</h4><br>
+                    Catégorie(s) </h4><br>
                 {% for category in article.category %}
                 <span class="detailsCatName">{{ category.name | upper }}</span>
                 {% endfor %}<br>
                 <hr>
             </div>
-            <h4 class="barTitle">Lieu : </h4>
+            <h4 class="barTitle"><i class="fa fa-map-marker" aria-hidden="true"></i> Lieu </h4>
             <p>{{ article.address }}</p>
             <div class="map">
                 <div id="map" data-lat="{{ article.lat }}" data-lng="{{ article.lng }}">
@@ -113,7 +122,8 @@
             <div class="detailsMapLink">
                 <a class="detMapLink" href="{{ path('map') }}">Voir la map</a>
             </div>
-            <h4 class="barTitle">Partager : </h4>
+            <hr>
+            <h4 class="barTitle"><i class="fa fa-share-square" aria-hidden="true"></i> Partager </h4>
             <section class="shareCtn">
                 <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/"
                      data-layout="button"
@@ -159,19 +169,19 @@
             </div>
         {% endif %}
     </div>
-        {% if article.website or article.pdf %}
-            <div class="docCtn">
-                <h5 class="bold">Sources complémentaires</h5>
-                {% if article.website %}
-                    <i class="fas fa-globe contactIcon"></i> <a target="_blank"
-                                                                href="https://{{ article.website }}">{{ article.website }}</a>
-                    </p>
-                {% endif %}
-                {% if article.pdf %}
-                    <a target="_blank" href="{{ vich_uploader_asset(article, 'pdfFile') }}">Document PDF</a><br>
-                {% endif %}
-            </div>
-        {% endif %}
+    {% if article.website or article.pdf %}
+        <div class="docCtn">
+            <h5 class="bold">Sources complémentaires</h5>
+            {% if article.website %}
+                <i class="fas fa-globe contactIcon"></i> <a target="_blank"
+                                                            href="https://{{ article.website }}">{{ article.website }}</a>
+                </p>
+            {% endif %}
+            {% if article.pdf %}
+                <a target="_blank" href="{{ vich_uploader_asset(article, 'pdfFile') }}">Document PDF</a><br>
+            {% endif %}
+        </div>
+    {% endif %}
 
 
     {# Réseaux soc #}

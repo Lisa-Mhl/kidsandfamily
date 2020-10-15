@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\User;
 use DateTime;
+use phpDocumentor\Reflection\Types\Integer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
@@ -27,7 +28,11 @@ class UserType extends AbstractType
                 'asset_helper' => true,
             ])
             ->add('username')
+            ->add('email')
             ->add('firstname')
+            ->add('birthday', DateType::class,[
+                'years' => range(1900,2002)
+            ])
             ->add('lastname')
             ->add('channelnum')
             ->add('complement')
@@ -37,9 +42,20 @@ class UserType extends AbstractType
             ->add('country')
             ->add('phone')
             ->add('mobile')
-            ->add('gender')
+            ->add('gender', ChoiceType::class,[
+                'choices'=> [
+                    'Une femme' => 'Une femme',
+                    'Un homme' => 'Un homme'
+                ]
+            ])
             ->add('profession')
-            ->add('marital')
+            ->add('marital', ChoiceType::class,[
+                'choices'=>[
+                    'Marié(e)'=>'Marié(e)',
+                    'Célibataire' => 'Célibataire',
+                    'Autre'=>'Autre'
+                ]
+            ])
             ->add('hobbies', ChoiceType::class, [
                 'expanded' => true,
                 'multiple' => true,

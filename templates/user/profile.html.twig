@@ -3,12 +3,9 @@
 {% block title %}Mon compte{% endblock %}
 
 {% block body %}
-    <h1>Mon compte</h1>
 
     {% if app.user %}
-        {% if is_granted('ROLE_USER') %}
-            <div class="profileCtn">
-
+        <div class="profileCtn">
             <div class="card cardProfile" id="cardProfile">
                 <div class="card-body">
                     {% if user.avatar %}
@@ -16,39 +13,38 @@
                              alt="profile picture">
                     {% endif %}
                     <h1>{{ user.username }}</h1>
+                    {# TO DO : AJOUTER UN ISPUBLISHED EN BDD POUR PERMETTRE AUX UTILISATEURS DE DIVULGUER OU NON LEURS INFOS #}
                     <p>{{ user.firstname }}  {{ user.lastname }} <br>
                     <p class="title"><span class="bold"> E-mail :</span> {{ user.email }}<br>
                         {% if user.phone %}
-                            {{ user.phone }}<br>
+                            <span class="bold"> Téléphone :</span>  0{{ user.phone }}<br>
                         {% endif %}
                         {% if user.mobile %}
-                            {{ user.mobile }}<br>
+                            <span class="bold"> Mobile :</span> 0{{ user.mobile }}<br>
                         {% endif %}
                         {% if user.profession %}
                             <span class="bold">Profession :</span> {{ user.profession }}<br>
                         {% endif %}
                         <span class="bold">Anniversaire :</span> {{ user.birthday | date("d/m") }}</p>
 
-                    {# TO DO : AJOUTER SECURITE POUR QUE SEUL LE USER PUISSE MODIFIER SON PROFIL #}
-                    <p>
-                        <button class="btnProfile"><a class="linkProfile"
-                                                      href="{{ path('user_edit', {'id': user.id}) }}">Modifier mes
-                                Informations</a>
-                        </button>
-                    </p>
-                    <p>
-                        <button class="btnProfile"><a class="linkProfile"
-                                                      href="{{ path('app_forgot_password_request') }}">Modifier mon Mot
-                                de Passe</a></button>
-                    </p>
+                    {% if app.user.id is same as (user.id) %}
+                        <a class="logLink bold" href="{{ path('user_edit', {'id': user.id}) }}">
+                            Modifier mon Profil
+                        </a> <br>
+                        <a class="logLink bold" href="{{ path('app_forgot_password_request') }}">
+                            Modifier mon Mot de Passe
+                        </a>
+                    {% endif %}
                 </div>
             </div>
+        </div>
 
-        {% else %}
-            <tr>
-                <td colspan="13">Aucun résultat trouvé</td>
-            </tr>
-        {% endif %}
+    {% else %}
+        <div class="mustCo">
+            <p class="mustCoBody">Merci de vous connecter pour accéder au profil d'un utilisateur</p>
+            <a class="logLink" href="{{ path('app_login') }}">Se connecter</a> <br>
+            <a class="logLink" href="{{ path('app_register') }}">Créer un compte</a>
         </div>
     {% endif %}
+
 {% endblock %}

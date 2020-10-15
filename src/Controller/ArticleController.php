@@ -18,26 +18,27 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/article")
+ * @Route("/publication")
  */
 class ArticleController extends AbstractController
 {
     /**
-     * @Route("/", name="article_index", methods={"GET"})
+     * @Route("/publications-Index", name="article_index", methods={"GET"})
      * @param ArticleRepository $articleRepository
      * @return Response
      */
     public function index(ArticleRepository $articleRepository, MoreRepository $moreRepository, LinkRepository $linkRepository): Response
     {
         return $this->render('article/index.html.twig', [
-            'articles' => $articleRepository->findByDate(),
             'mores'=> $moreRepository->findAll(),
             'links'=>$linkRepository->findAll(),
+            'articles' => $articleRepository->findAll(),
+
         ]);
     }
 
     /**
-     * @Route("/new", name="article_new", methods={"GET","POST"})
+     * @Route("/ajouter", name="article_new", methods={"GET","POST"})
      * @param Request $request
      * @return Response
      */
@@ -61,6 +62,7 @@ class ArticleController extends AbstractController
                 ]
             );
         }
+
         $newsletter = new Newsletter();
         $formNewsLetter = $this->createForm(NewsLetterType::class, $newsletter);
         $formNewsLetter->handleRequest($request);

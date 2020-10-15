@@ -65,7 +65,10 @@
                                             <img class="avatarCard" src="{{ vich_uploader_asset(user, 'avatarFile') }}"
                                                  alt="Photo du Profil">
                                         {% endif %}
-                                        <span id="authorCard">{{ article.author.username }}</span>
+                                        <span id="authorCard">
+                                     <a class="profileLink"
+                                        href="{{ path('profile', {'id': article.author.id}) }}">{{ article.author.username }}</a>
+                                        </span>
                                     </div>
                                     <div class="commentCtn" id="allCommentCtn">
                                         <section class="iconCard">
@@ -96,15 +99,19 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         {% for category in categories %}
-                            <a class="dropdown-item catItemDwn" href="#{{ category.name }}">{{ category.name }}</a>
+                            {% if category.article is not empty %}
+                                <a class="dropdown-item catItemDwn" href="#{{ category.name }}">{{ category.name }}</a>
+                            {% endif %}
                         {% endfor %}
                     </div>
                 </li>
             </h4>
-            {% for category in categories %} {# TRI PAR CATEGORIES #}  {# TO DO : N'AFFICHER QUE LES CATEGORIES QUI CONTIENNENT DES ARTICLES DES AMBASSADEURS #}
-                <div class="catId" id="{{ category.name }}"></div>
-                <h4 class="catTitle" id="{{ category.id }}">{{ category.name | upper }}</h4>
 
+            {% for category in categories %} {# TRI PAR CATEGORIES #}
+                {% if category.article is not empty %}
+                    <div class="catId" id="{{ category.name }}"></div>
+                    <h4 class="catTitle" id="{{ category.id }}">{{ category.name | upper }}</h4>
+                {% endif %}
                 <div class="row"> {# AFFICHAGE DES ARTICLES DES AMBASSADEURS #}
                     {% for article in category.article %}
                         <div class="card articleCard" id="allArticlesCard">
@@ -136,7 +143,10 @@
                                         <img class="avatarCard" src="{{ vich_uploader_asset(user, 'avatarFile') }}"
                                              alt="Photo du Profil">
                                     {% endif %}
-                                    <span id="authorCard">{{ article.author.username }}</span>
+                                    <span id="authorCard">
+                                               <a class="profileLink"
+                                                  href="{{ path('profile', {'id': article.author.id}) }}">{{ article.author.username }}</a>
+                                    </span>
                                 </div>
                                 <div class="commentCtn" id="allCommentCtn">
                                     <section class="iconCard">
@@ -193,7 +203,10 @@
                                         <img class="avatarCard" src="{{ vich_uploader_asset(user, 'avatarFile') }}"
                                              alt="Photo du Profil">
                                     {% endif %}
-                                    <span id="authorCard">{{ article.author.username }}</span>
+                                    <span id="authorCard">
+                                               <a class="profileLink"
+                                                  href="{{ path('profile', {'id': article.author.id}) }}">{{ article.author.username }}</a>
+                                    </span>
                                 </div>
                                 <div class="commentCtn" id="allCommentCtn">
                                     <section class="iconCard">

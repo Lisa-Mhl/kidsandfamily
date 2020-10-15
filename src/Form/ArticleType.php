@@ -4,11 +4,9 @@ namespace App\Form;
 
 use App\Entity\Article;
 use App\Entity\Category;
-use phpDocumentor\Reflection\Type;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -83,8 +81,9 @@ class ArticleType extends AbstractType
                 'required' =>true,
                 'expanded' => true,
                 'multiple' => true,
-                'by_reference' => false
+                'by_reference' => false,
             ])
+
             ->add('author')
             ->add('telephone')
             ->add('email')
