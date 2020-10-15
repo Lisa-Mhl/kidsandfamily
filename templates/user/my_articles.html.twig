@@ -1,7 +1,5 @@
 {% extends 'base_user.html.twig' %}
 
-{% block title %}Mon compte{% endblock %}
-
 {% block body %}
     <div class="ctn myArticlesCtn">
         {% if app.user %}
@@ -19,30 +17,49 @@
 
             <div class="row">
                 {% for article in articles %}
-                        <div class="card articleCard" id="myArticlesCard">
-                            <img class="card-img allArticlesImg" src="{{ vich_uploader_asset(article, 'photoFile') }}"
-                                 alt="{{ article.title }}">
-                            <div class="articleHead">
-                                <h5 class="card-title articleTitle">{{ article.title }}</h5>
-                                <span class="like" id="likeStyle">{{ article.likes | length }}<i
-                                            class="fas fa-heart redLike"></i></span>
+                    <div class="card articleCard" id="myArticlesCard">
+                        <img class="card-img allArticlesImg" src="{{ vich_uploader_asset(article, 'photoFile') }}"
+                             alt="{{ article.title }}">
+                        <div class="articleHead">
+                            <h5 class="card-title articleTitle">{{ article.title }}</h5>
+                            <span class="like" id="likeStyle">{{ article.likes | length }}<i
+                                        class="fas fa-heart redLike"></i></span>
+                        </div>
+                        <div class="row">
+                            {% for category in article.category %}
+                                <div class="card-title articleCategory">{{ category.name }}</div>
+                            {% endfor %}
+                        </div>
+                        {% if app.user is same as (article.author) %}
+                            <div class="articleCrudLink">
+                                <a class="cardUpdateLink bold"
+                                   href="{{ path('article_edit', {'id': article.id}) }}">Modifier</a>
+                                {{ include('article/_delete_form.html.twig') }}
                             </div>
-                            {# TO DO : AJOUTER SYSTEME DE LIKE #}
-                            <div class="row">
-                                {% for category in article.category %}
-                                    <div class="card-title articleCategory">{{ category.name }}</div>
-                                {% endfor %}
-                            </div>
-                            {% if app.user is same as (article.author) %}
-                                <div class="articleCrudLink">
-                                    <a class="cardUpdateLink bold"
-                                       href="{{ path('article_edit', {'id': article.id}) }}">Modifier</a>
-                                    {{ include('article/_delete_form.html.twig') }}
-                                </div>
-                            {% endif %}
                             <a class="detailsLink" id="detLink"
                                href="{{ path('article_details', {'id': article.id}) }}">Voir la publication</a>
-                        </div>
+                        {% else %}
+                            <div class="bottomCard">
+                                <div class="commentCtn2">
+                                    <section class="iconCard">
+                                        <i class="fa fa-commenting-o"></i>
+                                        <a class="articleLink"
+                                           href="{{ path('article_details', {'id': article.id}) }}#comment">Commenter</a>
+                                    </section>
+                                    <section class="iconCard">
+                                        <i class="fa fa-envelope-o"></i>
+                                        <a class="articleLink" href="#">Message Privé</a>
+                                    </section>
+                                </div> {# TO DO : AJOUTER SYSTEM DE MESSAGE DIRECT #}
+                                {# <a  class="stretched-link"  id="articleIdLink" href="#">Voir</a> #}
+                                <div class="center">
+                                    <a class="detailsLink" href="{{ path('article_details', {'id': article.id}) }}">Voir
+                                        la
+                                        publication</a>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
                 {% endfor %}
             </div>
         {% endif %}

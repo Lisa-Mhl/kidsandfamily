@@ -44,7 +44,7 @@
         {% endif %}
         <div class="articleCommentCtn">
             {% if article.comments is not empty %}
-                <h3 id="comment" class="comTitle">Commentaires</h3>
+                <h3 class="comTitle">Commentaires</h3>
             {% endif %}
             <div class="detailsComCtn">
                 {% for comment in article.comments %}
@@ -81,7 +81,7 @@
             </div>
 
             {% if app.user %}
-                <h3 class="comTitle">Laisser un commentaire</h3>
+                <h3  id="comment" class="comTitle">Laisser un commentaire</h3>
                 {{ form_start(form) }}
                 {{ form_label(form.comment, 'Votre message') }}
                 {{ form_widget(form.comment) }}

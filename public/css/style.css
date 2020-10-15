@@ -172,6 +172,13 @@ body {
     margin-bottom: 5em;
 }
 
+.commentCtn2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 1em;
+}
+
 /* My_Address */
 .update {
     width: 15%;
