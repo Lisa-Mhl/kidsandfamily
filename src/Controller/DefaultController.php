@@ -344,6 +344,28 @@ class DefaultController extends AbstractController
     }
 
     /**
+     * @Route("/politics", name="politics")
+     */
+    public function politics(MoreRepository $moreRepository,LinkRepository $linkRepository, Request $request)
+    {
+        $newsletter = new Newsletter();
+        $formNewsLetter = $this->createForm(NewsLetterType::class, $newsletter);
+        $formNewsLetter->handleRequest($request);
+
+        if ($formNewsLetter->isSubmitted() && $formNewsLetter->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($newsletter);
+            $entityManager->flush();
+            return $this->redirectToRoute('home');
+        }
+        return $this->render('default/politics.html.twig', [
+            'links'=>$linkRepository->findAll(),
+            'mores'=> $moreRepository->findAll(),
+            'formNewsLetter' => $formNewsLetter->createView(),
+        ]);
+    }
+
+    /**
      * @Route("/merci", name="merci")
      */
     public function thanks()

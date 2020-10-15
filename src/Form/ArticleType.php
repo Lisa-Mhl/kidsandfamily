@@ -51,7 +51,11 @@ class ArticleType extends AbstractType
 
             ->add('video')
             ->add('pdf')
-            ->add('needs')
+            ->add('needs', CKEditorType::class,[
+                'config'=>[
+                    'toolbar'=>'full'
+                ]
+            ])
             ->add('content', CKEditorType::class,[
                 'config'=>[
                     'toolbar'=>'full'

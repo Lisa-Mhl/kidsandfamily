@@ -85,6 +85,8 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
 
     /**
      * Used to upgrade (rehash) the user's password automatically over time.
+     * @param $credentials
+     * @return string|null
      */
     public function getPassword($credentials): ?string
     {
@@ -102,10 +104,9 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
                 if ($role === "ROLE_ADMIN") {
                     return new RedirectResponse($this->urlGenerator->generate('easyadmin'));
                 }
-
                 $verified = $this->entityManager->getRepository(User::class)->findOneBy(['isVerified' => 1]);
                 $this->getCredentials($request);
-                if ($verified) {
+                if ($verified === "ROLE_USER") {
                     return new RedirectResponse($this->urlGenerator->generate('home'));
                 } else {
                     return new RedirectResponse($this->urlGenerator->generate('validation'));

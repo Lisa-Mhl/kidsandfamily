@@ -481,4 +481,5 @@ class Homepage
 
         return $this;
     }
+
 }

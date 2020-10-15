@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=LinkRepository::class)
- */
+  */
 class Link
 {
     /**
@@ -26,6 +26,13 @@ class Link
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $href;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     *
+     * @var DateTimeInterface|null
+     */
+    private $updatedAt;
 
 
     public function getId(): ?int
@@ -56,4 +63,5 @@ class Link
 
         return $this;
     }
+
 }

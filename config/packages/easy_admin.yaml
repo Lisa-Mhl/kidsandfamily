@@ -326,13 +326,18 @@ easy_admin:
               - { name: 'edit', icon: 'pencil', label: false, css_class: 'btn btn-primary' }
             fields:
               - { property: 'logo',type: 'image', label: 'Logo', base_path: "%uploads_path%" }
-              - { property: 'linkcgu', label: 'Lien CGU' }
+              - { property: 'titlecgu', label: 'titre CGU' }
               - { property: 'cgu', label: 'CGU' }
+              - { property: 'politicstitle', label: 'Titre politique de confidentialité' }
+              - { property: 'politics', label: 'Politique de confidentialité' }
           form:
             fields:
               - { property: 'logoFile',type: 'vich_image', label: 'Logo' }
+              - { property: 'titlecgu',type: 'fos_ckeditor', label: 'titre CGU' }
               - { property: 'linkcgu', label: 'Lien CGU' }
               - { property: 'cgu',type: 'fos_ckeditor', label: 'CGU' }
+              - { property: 'politicstitle',type: 'fos_ckeditor', label: 'Titre politique de confidentialité' }
+              - { property: 'politics',type: 'fos_ckeditor', label: 'Politique de confidentialité' }
         Link:
           class: App\Entity\Link
           label: "Liens"

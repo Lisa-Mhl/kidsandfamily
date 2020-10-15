@@ -55,6 +55,21 @@ class More
      */
     private $updatedAt;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $titlecgu;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $politicstitle;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $politics;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -134,5 +149,41 @@ class More
     public function getLogoFile(): ?File
     {
         return $this->logoFile;
+    }
+
+    public function getTitlecgu(): ?string
+    {
+        return $this->titlecgu;
+    }
+
+    public function setTitlecgu(?string $titlecgu): self
+    {
+        $this->titlecgu = $titlecgu;
+
+        return $this;
+    }
+
+    public function getPoliticstitle(): ?string
+    {
+        return $this->politicstitle;
+    }
+
+    public function setPoliticstitle(?string $politicstitle): self
+    {
+        $this->politicstitle = $politicstitle;
+
+        return $this;
+    }
+
+    public function getPolitics(): ?string
+    {
+        return $this->politics;
+    }
+
+    public function setPolitics(?string $politics): self
+    {
+        $this->politics = $politics;
+
+        return $this;
     }
 }

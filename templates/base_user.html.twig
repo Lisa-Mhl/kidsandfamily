@@ -79,8 +79,8 @@
                 {% endif %}
             </div>
             {% for link in links %}
-                <ul class="">
-                    <li><a class="instagram" href="{{ link.href }}">{{ link.name }}<i class=""></i></a></li>
+                <ul class="social-icons">
+                    <li><a class="" href="{{ link.href }}"><i class="fa fa-{{ link.name }}"></i></a></li>
                 </ul>
             {% endfor %}
         </div>
