@@ -18,7 +18,8 @@
     <div class="ctn detailsCtn">
         <h1 class="detailsTitle">{{ article.title }} <br>
             <span class="detailsSubtitle grey">
-                par <a class="profileLink" href="{{ path('profile', {'id': article.author.id}) }}">{{ article.author.username }}</a>
+                par <a class="profileLink"
+                       href="{{ path('profile', {'id': article.author.id}) }}">{{ article.author.username }}</a>
                 | publié le {{ article.updatedAt|date('d/m/Y') }} {# AJOUTER DATE DANS BDD #}</span>
         </h1>
         <p class="detailsContent">{{ article.content }}</p>
@@ -54,7 +55,10 @@
                                 {% set user = comment.author %}
                                 <img id="avatarCom" src="{{ vich_uploader_asset(user, 'avatarFile') }}">
                             {% endif %}
-                            <span id="authorCom"> {{ comment.author }}</span>
+                            <span id="authorCom">
+                                  <a class="profileLink"
+                                     href="{{ path('profile', {'id': comment.author.id}) }}">{{ comment.author }}</a>
+                                </span>
                         </div>
 
                         <div class="commentMenu">
@@ -81,7 +85,7 @@
             </div>
 
             {% if app.user %}
-                <h3  id="comment" class="comTitle">Laisser un commentaire</h3>
+                <h3 id="comment" class="comTitle">Laisser un commentaire</h3>
                 {{ form_start(form) }}
                 {{ form_label(form.comment, 'Votre message') }}
                 {{ form_widget(form.comment) }}
