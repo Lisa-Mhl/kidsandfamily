@@ -14,7 +14,6 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository", repositoryClass=ArticleRepository::class)
  * @Vich\Uploadable
@@ -30,28 +29,31 @@ class Article
 
     /**
      * @ORM\Column(type="string")
-     * @Assert\NotBlank(payload={"severity"="error"})
-     * @Assert\Length(max="20", maxMessage="Le titre de votre publication doit faire 25 caractères maximum")
+     * @Assert\NotBlank(message="Veuillez ajouter un titre à votre publication")
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotNull(message="Veuillez sélectionner une classification")
      */
     private $classification;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotNull(message="Merci de sélectionner une adresse afin de pouvoir géolocaliser votre publication")
      */
     private $address;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotNull(message="Merci de sélectionner un type de projet")
      */
     private $heading;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotNull(message="Veuillez sélectionner une image pour illustrer votre publication")
      */
     private $photo;
 
@@ -100,16 +102,20 @@ class Article
     /**
      * @ORM\ManyToOne(targetEntity=Target::class, inversedBy="articles")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank(message="Veuillez sélectionner le public visé par votre publication")
      */
     private $target;
 
     /**
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="articles")
+     * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotNull(message="Veuillez sélectionner le public visé par votre publication")
      */
     private $category;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotNull(message="Votre publication doit comprendre une description")
      */
     private $content;
 
@@ -152,7 +158,8 @@ class Article
     private $comments;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
+     *
      */
     private $telephone;
 

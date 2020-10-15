@@ -98,13 +98,13 @@
             <div class="detailsCatCtn">
                 <h4 class="barTitle">
                     <i class="fa fa-folder-open" aria-hidden="true"></i>
-                    Catégorie(s) :</h4><br>
+                    Catégorie(s) </h4><br>
                 {% for category in article.category %}
                 <span class="detailsCatName">{{ category.name | upper }}</span>
                 {% endfor %}<br>
                 <hr>
             </div>
-            <h4 class="barTitle">Lieu : </h4>
+            <h4 class="barTitle"><i class="fa fa-map-marker" aria-hidden="true"></i> Lieu </h4>
             <p>{{ article.address }}</p>
             <div class="map">
                 <div id="map" data-lat="{{ article.lat }}" data-lng="{{ article.lng }}">
@@ -113,7 +113,8 @@
             <div class="detailsMapLink">
                 <a class="detMapLink" href="{{ path('map') }}">Voir la map</a>
             </div>
-            <h4 class="barTitle">Partager : </h4>
+            <hr>
+            <h4 class="barTitle"><i class="fa fa-share-square" aria-hidden="true"></i> Partager </h4>
             <section class="shareCtn">
                 <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/"
                      data-layout="button"

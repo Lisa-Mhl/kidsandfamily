@@ -233,11 +233,11 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/articles", name="all_articles")
+     * @Route("/publications", name="all_articles")
      * @param Request $request
      * @return Response
      */
-    public function allArticles(Request $request, CategoryRepository $categoryRepository, ArticleRepository $articleRepository):Response
+    public function allArticles(Request $request, CategoryRepository $categoryRepository, ArticleRepository $articleRepository): Response
     {
         $newsletter = new Newsletter();
         $formNewsLetter = $this->createForm(NewsLetterType::class, $newsletter);
@@ -366,7 +366,7 @@ class DefaultController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
 
-        if($article->isLikedByUser($user)){
+        if ($article->isLikedByUser($user)) {
             $like = $articleLikeRepository->findOneBy(['article' => $article, 'user' => $user]);
             $em->remove($like);
             $em->flush();
@@ -391,6 +391,29 @@ class DefaultController extends AbstractController
     public function articlesForJs(ArticleRepository $articleRepository)
     {
         return $this->json($articleRepository->findAll(), 200, [], ['groups' => 'article']);
+    }
+
+
+    /**
+     * @Route("/aide", name="help")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     */
+    public function help(Request $request)
+    {
+        $newsletter = new Newsletter();
+        $formNewsLetter = $this->createForm(NewsLetterType::class, $newsletter);
+        $formNewsLetter->handleRequest($request);
+
+        if ($formNewsLetter->isSubmitted() && $formNewsLetter->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($newsletter);
+            $entityManager->flush();
+            return $this->redirectToRoute('home');
+        }
+        return $this->render('article/help.html.twig',
+            ['formNewsLetter' => $formNewsLetter->createView(),
+            ]);
     }
 
 }

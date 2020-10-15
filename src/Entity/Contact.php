@@ -21,6 +21,7 @@ class Contact
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Merci de renseigner votre email")
+     * @Assert\Email(message="Merci de renseiger un email valide")
      */
     private $email;
 
@@ -33,6 +34,8 @@ class Contact
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank(message="Oops ! Vous n'avez pas écrit votre message")
+     * @Assert\Length(max="500", maxMessage="Votre message est trop long")
+
      */
     private $message;
 
