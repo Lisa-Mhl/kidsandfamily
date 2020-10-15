@@ -3,12 +3,9 @@
 {% block title %}Mon compte{% endblock %}
 
 {% block body %}
-    <h1>Mon compte</h1>
 
     {% if app.user %}
-        {% if is_granted('ROLE_USER') %}
-            <div class="profileCtn">
-
+        <div class="profileCtn">
             <div class="card cardProfile" id="cardProfile">
                 <div class="card-body">
                     {% if user.avatar %}
@@ -31,28 +28,28 @@
 
 
                     {% if app.user.id is same as (user.id) %}
-                            <button class="btnProfile">
-                                <a class="linkProfile" href="{{ path('user_edit', {'id': user.id}) }}">
-                                    Modifier mes Informations
-                                </a>
-                            </button>
+                        <button class="btnProfile">
+                            <a class="linkProfile" href="{{ path('user_edit', {'id': user.id}) }}">
+                                Modifier mes Informations
+                            </a>
+                        </button>
 
-                            <button class="btnProfile">
-                                <a class="linkProfile" href="{{ path('app_forgot_password_request') }}">
-                                    Modifier mon Mot de Passe
-                                </a>
-                            </button>
-
+                        <button class="btnProfile">
+                            <a class="linkProfile" href="{{ path('app_forgot_password_request') }}">
+                                Modifier mon Mot de Passe
+                            </a>
+                        </button>
                     {% endif %}
                 </div>
             </div>
+        </div>
 
-
-        {% else %}
-            <tr>
-                <td colspan="13">Aucun résultat trouvé</td>
-            </tr>
-        {% endif %}
+    {% else %}
+        <div class="mustCo">
+            <p class="mustCoBody">Merci de vous connecter pour accéder au profil d'un utilisateur</p>
+            <a class="logLink" href="{{ path('app_login') }}">Se connecter</a> <br>
+            <a class="logLink" href="{{ path('app_register') }}">Créer un compte</a>
         </div>
     {% endif %}
+
 {% endblock %}

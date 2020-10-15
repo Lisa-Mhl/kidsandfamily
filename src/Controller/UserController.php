@@ -143,7 +143,7 @@ class UserController extends AbstractController
     {
         return $this->render('user/my_articles.html.twig', [
             'user' => $user,
-            'articles' => $articleRepository->findAll(),
+            'articles' => $articleRepository->findBy(['author'=>$user]),
             'categories' => $categoryRepository->findAll(),
         ]);
     }
