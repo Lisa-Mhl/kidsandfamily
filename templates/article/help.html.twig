@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="ctn">
+        <h1 class="detailsTitle">Comment ajouter une publication</h1>
+        {% if app.user %}
+            <div class="">
+            </div>
+        {% else %}
+            <div class="mustCo">
+                <p class="mustCoBody">Merci de vous connecter pour nous contacter</p>
+                <a class="logLink" href="{{ path('app_login') }}">Se connecter</a> <br>
+                <a class="logLink" href="{{ path('app_register') }}">Créer un compte</a>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

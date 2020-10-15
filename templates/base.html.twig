@@ -175,7 +175,9 @@
                     {% endif %}
                     <li class="fl"><a href="{{ path('about') }}">A propos</a></li>
                     <li class="fl"><a href="{{ path('contribute') }}">Contribuer</a></li>
-                    <li class="fl"><a href="{{ path('contact') }}">Contact</a></li>
+                    {% if app.user %}
+                        <li class="fl"><a href="{{ path('contact') }}">Contact</a></li>
+                    {% endif %}
                     <li class="fl"><a href="{{ path('all_articles') }}#Kids&Family">Publications</a></li>
                     <li class="fl"><a href="#">Politique de confidentialité</a></li>
                 </ul>

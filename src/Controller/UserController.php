@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Entity\ArticleLike;
+use App\Entity\Newsletter;
 use App\Entity\User;
+use App\Form\NewsLetterType;
 use App\Form\UserType;
 use App\Repository\ArticleLikeRepository;
 use App\Repository\ArticleRepository;
@@ -70,6 +72,17 @@ class UserController extends AbstractController
      */
     public function edit(Request $request, User $user): Response
     {
+        $newsletter = new Newsletter();
+        $formNewsLetter = $this->createForm(NewsLetterType::class, $newsletter);
+        $formNewsLetter->handleRequest($request);
+
+        if ($formNewsLetter->isSubmitted() && $formNewsLetter->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($newsletter);
+            $entityManager->flush();
+            return $this->redirectToRoute('home');
+        }
+
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
@@ -82,6 +95,7 @@ class UserController extends AbstractController
         return $this->render('user/edit.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
+            'formNewsLetter' => $formNewsLetter->createView(),
         ]);
     }
 
@@ -143,7 +157,7 @@ class UserController extends AbstractController
     {
         return $this->render('user/my_articles.html.twig', [
             'user' => $user,
-            'articles' => $articleRepository->findAll(),
+            'articles' => $articleRepository->findBy(['author'=>$user]),
             'categories' => $categoryRepository->findAll(),
         ]);
     }

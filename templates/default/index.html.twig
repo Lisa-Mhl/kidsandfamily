@@ -94,7 +94,9 @@
                                             <img class="avatarCard" src="{{ vich_uploader_asset(user, 'avatarFile') }}"
                                                  alt="Photo du Profil">
                                         {% endif %}
-                                        <span id="authorCard">{{ article.author.username }}</span>
+                                        <span id="authorCard">
+                                               <a class="profileLink" href="{{ path('profile', {'id': article.author.id}) }}">{{ article.author.username }}</a>
+                                        </span>
                                     </div>
                                     <div class="commentCtn">
                                         <section class="iconCard">
@@ -144,7 +146,9 @@
                                             <img class="avatarCard" src="{{ vich_uploader_asset(user, 'avatarFile') }}"
                                                  alt="Photo du Profil">
                                         {% endif %}
-                                        <span id="authorCard">{{ article.author.username }}</span>
+                                        <span id="authorCard">
+                                               <a class="profileLink" href="{{ path('profile', {'id': article.author.id}) }}">{{ article.author.username }}</a>
+                                        </span>
                                     </div>
                                     <div class="commentCtn">
                                         <section class="iconCard">
@@ -194,7 +198,9 @@
                                             <img class="avatarCard" src="{{ vich_uploader_asset(user, 'avatarFile') }}"
                                                  alt="Photo du Profil">
                                         {% endif %}
-                                        <span id="authorCard">{{ article.author.username }}</span>
+                                        <span id="authorCard">
+                                            <a class="profileLink" href="{{ path('profile', {'id': article.author.id}) }}">{{ article.author.username }}</a>
+                                        </span>
                                     </div>
                                     <div class="commentCtn">
                                         <section class="iconCard">

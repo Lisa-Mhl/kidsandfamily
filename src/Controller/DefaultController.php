@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Entity\ArticleLike;
+use App\Entity\Category;
 use App\Entity\Comment;
 use App\Entity\Contact;
 use App\Entity\Newsletter;
@@ -232,13 +233,11 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/articles", name="all_articles")
-     * @param ArticleRepository $articleRepository
-     * @param CategoryRepository $categoryRepository
+     * @Route("/publications", name="all_articles")
      * @param Request $request
      * @return Response
      */
-    public function allArticles(ArticleRepository $articleRepository, CategoryRepository $categoryRepository, Request $request)
+    public function allArticles(Request $request, CategoryRepository $categoryRepository, ArticleRepository $articleRepository): Response
     {
         $newsletter = new Newsletter();
         $formNewsLetter = $this->createForm(NewsLetterType::class, $newsletter);
@@ -252,8 +251,8 @@ class DefaultController extends AbstractController
         }
 
         return $this->render('default/all_articles.html.twig', [
-            'articles' => $articleRepository->findAll(),
             'categories' => $categoryRepository->findAll(),
+            'articles' => $articleRepository->findAll(),
             'formNewsLetter' => $formNewsLetter->createView(),
         ]);
     }
@@ -367,7 +366,7 @@ class DefaultController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
 
-        if($article->isLikedByUser($user)){
+        if ($article->isLikedByUser($user)) {
             $like = $articleLikeRepository->findOneBy(['article' => $article, 'user' => $user]);
             $em->remove($like);
             $em->flush();
@@ -392,6 +391,29 @@ class DefaultController extends AbstractController
     public function articlesForJs(ArticleRepository $articleRepository)
     {
         return $this->json($articleRepository->findAll(), 200, [], ['groups' => 'article']);
+    }
+
+
+    /**
+     * @Route("/aide", name="help")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     */
+    public function help(Request $request)
+    {
+        $newsletter = new Newsletter();
+        $formNewsLetter = $this->createForm(NewsLetterType::class, $newsletter);
+        $formNewsLetter->handleRequest($request);
+
+        if ($formNewsLetter->isSubmitted() && $formNewsLetter->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($newsletter);
+            $entityManager->flush();
+            return $this->redirectToRoute('home');
+        }
+        return $this->render('article/help.html.twig',
+            ['formNewsLetter' => $formNewsLetter->createView(),
+            ]);
     }
 
 }

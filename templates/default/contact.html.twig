@@ -4,24 +4,32 @@
 
     <div class="ctn">
         <h1 class="detailsTitle">Contactez-Nous</h1>
-        <div class="contactCtn">
-            {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
-            <div>
-                {{ form_row(form.subject, {'label': 'Sujet'}) }}
+        {% if app.user %}
+            <div class="contactCtn">
+                {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+                <div>
+                    {{ form_row(form.subject, {'label': 'Sujet'}) }}
+                </div>
+                <div>
+                    {{ form_row(form.name, {'label': 'Nom'}) }}
+                </div>
+                <div>
+                    {{ form_row(form.email, {'label': 'Email'}) }}
+                </div>
+                <div class="contactMessage">
+                    {{ form_row(form.message, {'attr' : {'style': 'height: 200px', 'label': 'Message'}}) }}
+                </div>
+                <div class="row justify-content-center">
+                    <button class="btn loginBtn" id="sendMessage">{{ button_label|default('Envoyer') }}</button>
+                    {{ form_end(form) }}
+                </div>
             </div>
-            <div>
-                {{ form_row(form.name, {'label': 'Nom'}) }}
+        {% else %}
+            <div class="mustCo">
+                <p class="mustCoBody">Merci de vous connecter pour nous contacter</p>
+                <a class="logLink" href="{{ path('app_login') }}">Se connecter</a> <br>
+                <a class="logLink" href="{{ path('app_register') }}">Créer un compte</a>
             </div>
-            <div>
-                {{ form_row(form.email, {'label': 'Email'}) }}
-            </div>
-            <div class="contactMessage">
-                {{ form_row(form.message, {'attr' : {'style': 'height: 200px', 'label': 'Message'}}) }}
-            </div>
-            <div class="row justify-content-center">
-                <button class="btn loginBtn" id="sendMessage">{{ button_label|default('Envoyer') }}</button>
-                {{ form_end(form) }}
-            </div>
-        </div>
+        {% endif %}
     </div>
 {% endblock %}

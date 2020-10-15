@@ -38,7 +38,7 @@ body {
 
 .profileCtn {
     width: 45%;
-    margin: 3em auto 8em;
+    margin: 8em auto 18%;
 }
 
 #cardProfile {
@@ -82,11 +82,18 @@ body {
     opacity: 0.7;
 }
 
+.phoneLabel form.phone{
+    display: flex;
+    flex-direction: row;
+}
+
 /* My_Articles */
 
 .myArticlesCtn {
     width: 50%;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30%;
 }
 
 .addArticleLink {
@@ -163,6 +170,13 @@ body {
 
 .editArtCtn {
     margin-bottom: 5em;
+}
+
+.commentCtn2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 1em;
 }
 
 /* My_Address */
@@ -712,6 +726,17 @@ div.targetCard:hover .enfant {
     padding-left: 0.2em;
 }
 
+.profileLink{
+    color: #183455;
+    transition: 0.5s;
+}
+
+.profileLink:hover{
+    color: #c5d30e;
+    transition: 0.5s;
+    text-decoration: none;
+}
+
 .articleTitle {
     margin-left: 0.9em;
     font-weight: bold;
@@ -1154,7 +1179,7 @@ div.targetCard:hover .enfant {
     border-style: solid;
     border-width: thin;
     padding: 2em;
-    background-color: #354254;
+    background-color: #4D4D4D;
     color: whitesmoke;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
 }
