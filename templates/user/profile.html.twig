@@ -29,20 +29,24 @@
                         {% endif %}
                         <span class="bold">Anniversaire :</span> {{ user.birthday | date("d/m") }}</p>
 
-                    {# TO DO : AJOUTER SECURITE POUR QUE SEUL LE USER PUISSE MODIFIER SON PROFIL #}
-                    <p>
-                        <button class="btnProfile"><a class="linkProfile"
-                                                      href="{{ path('user_edit', {'id': user.id}) }}">Modifier mes
-                                Informations</a>
-                        </button>
-                    </p>
-                    <p>
-                        <button class="btnProfile"><a class="linkProfile"
-                                                      href="{{ path('app_forgot_password_request') }}">Modifier mon Mot
-                                de Passe</a></button>
-                    </p>
+
+                    {% if app.user.id is same as (user.id) %}
+                            <button class="btnProfile">
+                                <a class="linkProfile" href="{{ path('user_edit', {'id': user.id}) }}">
+                                    Modifier mes Informations
+                                </a>
+                            </button>
+
+                            <button class="btnProfile">
+                                <a class="linkProfile" href="{{ path('app_forgot_password_request') }}">
+                                    Modifier mon Mot de Passe
+                                </a>
+                            </button>
+
+                    {% endif %}
                 </div>
             </div>
+
 
         {% else %}
             <tr>
