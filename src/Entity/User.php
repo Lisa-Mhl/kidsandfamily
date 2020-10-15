@@ -14,6 +14,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 
@@ -64,12 +65,12 @@ class User implements UserInterface, Serializable
     private $gender;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="date", nullable=true,)
      */
     private $birthday;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=30, nullable=true)
      */
     private $profession;
 
@@ -109,12 +110,24 @@ class User implements UserInterface, Serializable
     private $country;
 
     /**
-     * @ORM\Column(type="string", length=15, nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
+     * @Assert\Length(
+     *      min = 9,
+     *      minMessage = "Votre numéro de téléphone doit contenir 10 chiffres",
+     *      max = 9,
+     *      maxMessage = "Votre numéro de téléphone doit contenir 10 chiffres",
+     * )
      */
     private $phone;
 
     /**
-     * @ORM\Column(type="string", length=15, nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
+     * @Assert\Length(
+     *      min = 9,
+     *      minMessage = "Votre numéro de téléphone doit contenir 10 chiffres",
+     *      max = 9,
+     *      maxMessage = "Votre numéro de téléphone doit contenir 10 chiffres",
+     * )
      */
     private $mobile;
 

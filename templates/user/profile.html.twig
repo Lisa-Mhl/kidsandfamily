@@ -13,32 +13,27 @@
                              alt="profile picture">
                     {% endif %}
                     <h1>{{ user.username }}</h1>
+                    {# TO DO : AJOUTER UN ISPUBLISHED EN BDD POUR PERMETTRE AUX UTILISATEURS DE DIVULGUER OU NON LEURS INFOS #}
                     <p>{{ user.firstname }}  {{ user.lastname }} <br>
                     <p class="title"><span class="bold"> E-mail :</span> {{ user.email }}<br>
                         {% if user.phone %}
-                            {{ user.phone }}<br>
+                            <span class="bold"> Téléphone :</span>  0{{ user.phone }}<br>
                         {% endif %}
                         {% if user.mobile %}
-                            {{ user.mobile }}<br>
+                            <span class="bold"> Mobile :</span> 0{{ user.mobile }}<br>
                         {% endif %}
                         {% if user.profession %}
                             <span class="bold">Profession :</span> {{ user.profession }}<br>
                         {% endif %}
                         <span class="bold">Anniversaire :</span> {{ user.birthday | date("d/m") }}</p>
 
-
                     {% if app.user.id is same as (user.id) %}
-                        <button class="btnProfile">
-                            <a class="linkProfile" href="{{ path('user_edit', {'id': user.id}) }}">
-                                Modifier mes Informations
-                            </a>
-                        </button>
-
-                        <button class="btnProfile">
-                            <a class="linkProfile" href="{{ path('app_forgot_password_request') }}">
-                                Modifier mon Mot de Passe
-                            </a>
-                        </button>
+                        <a class="logLink bold" href="{{ path('user_edit', {'id': user.id}) }}">
+                            Modifier mon Profil
+                        </a> <br>
+                        <a class="logLink bold" href="{{ path('app_forgot_password_request') }}">
+                            Modifier mon Mot de Passe
+                        </a>
                     {% endif %}
                 </div>
             </div>

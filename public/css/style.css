@@ -38,7 +38,7 @@ body {
 
 .profileCtn {
     width: 45%;
-    margin: 3em auto 8em;
+    margin: 8em auto 18%;
 }
 
 #cardProfile {
@@ -82,11 +82,18 @@ body {
     opacity: 0.7;
 }
 
+.phoneLabel form.phone{
+    display: flex;
+    flex-direction: row;
+}
+
 /* My_Articles */
 
 .myArticlesCtn {
     width: 50%;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30%;
 }
 
 .addArticleLink {

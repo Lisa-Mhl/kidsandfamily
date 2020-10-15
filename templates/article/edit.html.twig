@@ -7,7 +7,7 @@
         {% if app.user is same as (article.author) %}
 
             <h1 class="detailsTitle">Modifier ma Publication</h1>
-            {{ form_start(form) }}
+            {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
             <fieldset class="formFs">
                 <div class="hidden">
                     {{ form_label(form.author, 'Auteur') }}

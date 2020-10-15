@@ -16,9 +16,11 @@
   {% endblock %}
 {% block body %}
     <div class="ctn detailsCtn">
-        <h1 class="detailsTitle">{{ article.title }} <br> <span class="detailsSubtitle grey"> par {{ article.author }} | publié le {{ article.updatedAt|date('d/m/Y') }} {# AJOUTER DATE DANS BDD #}</span>
+        <h1 class="detailsTitle">{{ article.title }} <br>
+            <span class="detailsSubtitle grey">
+                par <a class="profileLink" href="{{ path('profile', {'id': article.author.id}) }}">{{ article.author.username }}</a>
+                | publié le {{ article.updatedAt|date('d/m/Y') }} {# AJOUTER DATE DANS BDD #}</span>
         </h1>
-
         <p class="detailsContent">{{ article.content }}</p>
         <div class="detailsPhotoCtn">
             <img class="detailsPhoto" src="{{ vich_uploader_asset(article, 'photoFile') }}"
@@ -160,19 +162,19 @@
             </div>
         {% endif %}
     </div>
-        {% if article.website or article.pdf %}
-            <div class="docCtn">
-                <h5 class="bold">Sources complémentaires</h5>
-                {% if article.website %}
-                    <i class="fas fa-globe contactIcon"></i> <a target="_blank"
-                                                                href="https://{{ article.website }}">{{ article.website }}</a>
-                    </p>
-                {% endif %}
-                {% if article.pdf %}
-                    <a target="_blank" href="{{ vich_uploader_asset(article, 'pdfFile') }}">Document PDF</a><br>
-                {% endif %}
-            </div>
-        {% endif %}
+    {% if article.website or article.pdf %}
+        <div class="docCtn">
+            <h5 class="bold">Sources complémentaires</h5>
+            {% if article.website %}
+                <i class="fas fa-globe contactIcon"></i> <a target="_blank"
+                                                            href="https://{{ article.website }}">{{ article.website }}</a>
+                </p>
+            {% endif %}
+            {% if article.pdf %}
+                <a target="_blank" href="{{ vich_uploader_asset(article, 'pdfFile') }}">Document PDF</a><br>
+            {% endif %}
+        </div>
+    {% endif %}
 
 
     {# Réseaux soc #}
