@@ -18,14 +18,13 @@
 {% block body %}
     <div class="ctn detailsCtn">
 
-        <h1 class="detailsTitle">{{ article.title|raw }} <br> <span class="detailsSubtitle grey"> par {{ article.author }} | publié le {{ article.updatedAt|date('d/m/Y') }} {# AJOUTER DATE DANS BDD #}</span>
-        </h1>
-        <p class="detailsContent">{{ article.content|raw }}</p>
+        <h1 class="detailsTitle">{{ article.title|raw }} <br> <span class="detailsSubtitle grey">publié le {{ article.updatedAt|date('d/m/Y') }} {# AJOUTER DATE DANS BDD #}</span>
             <span class="detailsSubtitle grey">
                 par <a class="profileLink"
                        href="{{ path('profile', {'id': article.author.id}) }}">{{ article.author.username }}</a>
                 | publié le {{ article.updatedAt|date('d/m/Y') }} {# AJOUTER DATE DANS BDD #}</span>
-
+        </h1>
+        <p class="detailsContent">{{ article.content|raw }}</p>
         <div class="detailsPhotoCtn">
             <img class="detailsPhoto" src="{{ vich_uploader_asset(article, 'photoFile') }}"
                  alt="Illustration Article {{ article.title }}">
