@@ -104,20 +104,15 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
                 if ($role === "ROLE_ADMIN") {
                     return new RedirectResponse($this->urlGenerator->generate('easyadmin'));
                 }
-                $verified = $this->entityManager->getRepository(User::class)->findOneBy(['isVerified' => 1]);
-                $this->getCredentials($request);
-                if ($verified === "ROLE_USER") {
+                if ($role === "ROLE_USER") {
                     return new RedirectResponse($this->urlGenerator->generate('home'));
-                } else {
-                    return new RedirectResponse($this->urlGenerator->generate('validation'));
                 }
             }
         }
     }
 
-
     protected function getLoginUrl()
-    {
-        return $this->urlGenerator->generate(self::LOGIN_ROUTE);
+        {
+            return $this->urlGenerator->generate(self::LOGIN_ROUTE);
+        }
     }
-}
