@@ -71,7 +71,7 @@ class User implements UserInterface, Serializable
     private $birthday;
 
     /**
-     * @ORM\Column(type="string", length=30, nullable=true)
+     * @ORM\Column(type="string", length=45, nullable=true)
      */
     private $profession;
 
