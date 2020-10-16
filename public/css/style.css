@@ -523,6 +523,10 @@ html {
     width: 75%;
     margin: auto;
 }
+.homeHr{
+    width: 200px;
+    height: 1em;
+}
 
 .targetCtn {
     display: flex;
@@ -593,7 +597,7 @@ div.targetCard:hover .enfant {
 
 .services {
     text-align: center;
-    background: linear-gradient(#f8d7c6, navajowhite);
+    background-color: #f4f4f4;
     padding: 5em;
 }
 
@@ -611,21 +615,9 @@ div.targetCard:hover .enfant {
     font-weight: bold;
 }
 
-.cyan {
-    color: cyan;
-}
-
 .grey {
     color: #929292;
     font-weight: bold;
-}
-
-.yellow {
-    color: #ffe506;
-}
-
-.pink {
-    color: #fe52b6;
 }
 
 .servicesBody {
@@ -635,13 +627,12 @@ div.targetCard:hover .enfant {
 }
 
 .newsCtn {
-    background-color: #FFFBFB;
+    background-color: #f4f4f4;
 }
 
 #news {
     z-index: 2;
     text-align: center;
-    padding-top: 1em;
 }
 
 .news {
@@ -649,22 +640,22 @@ div.targetCard:hover .enfant {
     margin-bottom: 5em;
     display: flex;
     flex-direction: row;
-    background-color: #FFFBFB;
+    background-color: #f4f4f4;
 }
 
 .newsTitle {
-    margin-top: 2em;
-    margin-bottom: 2em;
+    padding-top: 1em;
+    margin-bottom: 1em;
     text-align: center;
-    background-color: #FFFBFB;
+    background-color: #f4f4f4;
 }
 
 .newsLinkCtn {
     display: flex;
     justify-content: center;
     width: 45%;
-    margin: 2em auto 5em;
-    padding: 1em;
+    margin: 1em auto 0;
+    padding: 2.5em;
 }
 
 .newsLink {
@@ -842,7 +833,7 @@ div.targetCard:hover .enfant {
 }
 
 .eshopCtn {
-    background-color: #014c4d;
+    background-color: #2B4251;
     padding: 1em;
     color: whitesmoke;
     text-align: center;
