@@ -63,14 +63,14 @@ class ArticleType extends AbstractType
                 'download_uri' => false,
                 'image_uri' => true,
                 'asset_helper' => true,
-                'allow_delete' => false
+                'allow_delete' => true
             ])
             ->add('photoCFile', VichImageType::class, [
                 'required' => false,
                 'download_uri' => false,
                 'image_uri' => true,
                 'asset_helper' => true,
-                'allow_delete' => false
+                'allow_delete' => true
             ])
             ->add('target')
             ->add('category', EntityType::class, [
