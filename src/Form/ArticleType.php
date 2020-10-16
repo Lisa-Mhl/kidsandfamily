@@ -24,7 +24,6 @@ class ArticleType extends AbstractType
                     'Je demande' => 'Je demande',
                     'Je propose' => 'Je propose',
                 ],
-                'expanded' => true,
             ])
             ->add('address')
             ->add('city')
@@ -66,7 +65,6 @@ class ArticleType extends AbstractType
                 'asset_helper' => true,
                 'allow_delete' => false
             ])
-
             ->add('photoCFile', VichImageType::class, [
                 'required' => false,
                 'download_uri' => false,
@@ -74,7 +72,6 @@ class ArticleType extends AbstractType
                 'asset_helper' => true,
                 'allow_delete' => false
             ])
-
             ->add('target')
             ->add('category', EntityType::class, [
                 'class' => Category::class,
@@ -83,7 +80,6 @@ class ArticleType extends AbstractType
                 'multiple' => true,
                 'by_reference' => false,
             ])
-
             ->add('author')
             ->add('telephone')
             ->add('email')
