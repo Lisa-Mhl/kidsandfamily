@@ -34,26 +34,24 @@ class Article
     private $title;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotNull(message="Veuillez sélectionner une classification")
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $classification;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotNull(message="Merci de sélectionner une adresse afin de pouvoir géolocaliser votre publication")
+     * @Assert\NotBlank(message="Merci de sélectionner une adresse afin de pouvoir géolocaliser votre publication")
      */
     private $address;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotNull(message="Merci de sélectionner un type de projet")
+     * @Assert\NotBlank(message="Merci de sélectionner un type de projet")
      */
     private $heading;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotNull(message="Veuillez sélectionner une image pour illustrer votre publication")
      */
     private $photo;
 
@@ -108,8 +106,6 @@ class Article
 
     /**
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="articles")
-     * @ORM\JoinColumn(nullable=false)
-     * @Assert\NotNull(message="Veuillez sélectionner le public visé par votre publication")
      */
     private $category;
 
