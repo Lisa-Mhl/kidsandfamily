@@ -145,10 +145,10 @@ class ArticleController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($article);
             $entityManager->flush();
-        }
 
-        return $this->redirectToRoute('all_articles', ['id' => $article->getId()]);
     }
+        return $this->redirectToRoute('all_articles', ['id' => $article->getId()]);
+}
 
     /**
      * @Route("/home-article-like/{id}", name="home_article_like")

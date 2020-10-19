@@ -4,10 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Entity\ArticleLike;
-use App\Entity\Category;
 use App\Entity\Comment;
 use App\Entity\Contact;
-use App\Entity\Link;
 use App\Entity\Newsletter;
 use App\Entity\Report;
 use App\Form\CommentType;
@@ -23,6 +21,7 @@ use App\Repository\ContributeRepository;
 use App\Repository\HomepageRepository;
 use App\Repository\LinkRepository;
 use App\Repository\MoreRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -93,6 +92,8 @@ class DefaultController extends AbstractController
      * @Route("/details/{id}", name="article_details")
      * @param Article $article
      * @param CommentRepository $commentRepository
+     * @param LinkRepository $linkRepository
+     * @param MoreRepository $moreRepository
      * @param Request $request
      * @return Response
      */
@@ -108,7 +109,6 @@ class DefaultController extends AbstractController
             $comment->setAuthor($user);
             $entityManager->persist($comment);
             $entityManager->flush();
-            return $this->redirectToRoute('home'); /* AJOUTER REDICRECTION SUR LA MEME PAGE AVEC RECHARGEMENT PARGE  */
         }
         $newsletter = new Newsletter();
         $formNewsLetter = $this->createForm(NewsLetterType::class, $newsletter);
@@ -148,19 +148,24 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/modifier", name="comment_edit", methods={"GET","POST"})
+     * @Route("/{id_comment}/modifier", name="edit_comment")
+     * @Entity("comment", expr="repository.find(id_comment)")
      * @param Request $request
      * @param Comment $comment
+     * @param LinkRepository $linkRepository
+     * @param MoreRepository $moreRepository
      * @return Response
      */
     public function editComment(Request $request, Comment $comment,LinkRepository $linkRepository,MoreRepository $moreRepository): Response
     {
+        $article = $comment->getArticle();
+
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('article_details',['id' => $article->getId()]);
         }
         $newsletter = new Newsletter();
         $formNewsLetter = $this->createForm(NewsLetterType::class, $newsletter);
