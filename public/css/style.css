@@ -655,7 +655,7 @@ div.targetCard:hover .enfant {
     justify-content: center;
     width: 45%;
     margin: 1em auto 0;
-    padding: 2.5em;
+    padding-bottom: 2.5em;
 }
 
 .newsLink {
