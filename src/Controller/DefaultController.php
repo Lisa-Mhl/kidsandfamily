@@ -23,6 +23,7 @@ use App\Repository\LinkRepository;
 use App\Repository\MoreRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -38,7 +39,7 @@ class DefaultController extends AbstractController
      * @param ArticleRepository $articleRepository
      * @return Response
      */
-    public function index(ArticleRepository $articleRepository, HomepageRepository $homepageRepository,LinkRepository $linkRepository,MoreRepository $moreRepository, Request $request)
+    public function index(ArticleRepository $articleRepository, HomepageRepository $homepageRepository, LinkRepository $linkRepository, MoreRepository $moreRepository, Request $request)
     {
 
         $newsletter = new Newsletter();
@@ -52,8 +53,8 @@ class DefaultController extends AbstractController
             return $this->redirectToRoute('home');
         }
         return $this->render('default/index.html.twig', [
-            'links'=>$linkRepository->findAll(),
-            'mores'=>$moreRepository->findAll(),
+            'links' => $linkRepository->findAll(),
+            'mores' => $moreRepository->findAll(),
             'articles' => $articleRepository->findAll(),
             'homepages' => $homepageRepository->findAll(),
             'formNewsLetter' => $formNewsLetter->createView(),
@@ -67,7 +68,7 @@ class DefaultController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function about(AboutRepository $aboutRepository,MoreRepository $moreRepository,LinkRepository $linkRepository, Request $request)
+    public function about(AboutRepository $aboutRepository, MoreRepository $moreRepository, LinkRepository $linkRepository, Request $request)
     {
 
         $newsletter = new Newsletter();
@@ -81,9 +82,9 @@ class DefaultController extends AbstractController
             return $this->redirectToRoute('home');
         }
         return $this->render('default/about.html.twig', [
-            'links'=>$linkRepository->findAll(),
+            'links' => $linkRepository->findAll(),
             'abouts' => $aboutRepository->findAll(),
-            'mores'=> $moreRepository->findAll(),
+            'mores' => $moreRepository->findAll(),
             'formNewsLetter' => $formNewsLetter->createView(),
         ]);
     }
@@ -97,7 +98,7 @@ class DefaultController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function articleDetails(Article $article, CommentRepository $commentRepository,LinkRepository $linkRepository,MoreRepository $moreRepository, Request $request): Response
+    public function articleDetails(Article $article, CommentRepository $commentRepository, LinkRepository $linkRepository, MoreRepository $moreRepository, Request $request): Response
     {
         $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);
@@ -123,8 +124,8 @@ class DefaultController extends AbstractController
         return $this->render('default/article_details.html.twig', [
             'article' => $article,
             'form' => $form->createView(),
-            'mores'=> $moreRepository->findAll(),
-            'links'=>$linkRepository->findAll(),
+            'mores' => $moreRepository->findAll(),
+            'links' => $linkRepository->findAll(),
             'comments' => $commentRepository->findAll(),
             'formNewsLetter' => $formNewsLetter->createView(),
         ]);
@@ -145,7 +146,7 @@ class DefaultController extends AbstractController
             $entityManager->remove($comment);
             $entityManager->flush();
         }
-        return $this->redirectToRoute('article_details',['id' => $article->getId()]);
+        return $this->redirectToRoute('article_details', ['id' => $article->getId()]);
     }
 
     /**
@@ -156,7 +157,7 @@ class DefaultController extends AbstractController
      * @param MoreRepository $moreRepository
      * @return Response
      */
-    public function editComment(Request $request, Comment $comment,LinkRepository $linkRepository,MoreRepository $moreRepository): Response
+    public function editComment(Request $request, Comment $comment, LinkRepository $linkRepository, MoreRepository $moreRepository): Response
     {
         $article = $comment->getArticle();
 
@@ -165,7 +166,7 @@ class DefaultController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-            return $this->redirectToRoute('article_details',['id' => $article->getId()]);
+            return $this->redirectToRoute('article_details', ['id' => $article->getId()]);
         }
         $newsletter = new Newsletter();
         $formNewsLetter = $this->createForm(NewsLetterType::class, $newsletter);
@@ -180,9 +181,9 @@ class DefaultController extends AbstractController
 
         return $this->render('default/edit_comment.html.twig', [
             'comment' => $comment,
-            'links'=>$linkRepository->findAll(),
+            'links' => $linkRepository->findAll(),
             'form' => $form->createView(),
-            'mores'=> $moreRepository->findAll(),
+            'mores' => $moreRepository->findAll(),
             'formNewsLetter' => $formNewsLetter->createView(),
         ]);
     }
@@ -194,7 +195,7 @@ class DefaultController extends AbstractController
      * @param Mailer $mailer
      * @return Response
      */
-    public function report(Article $article, Request $request, Mailer $mailer, MoreRepository $moreRepository,LinkRepository $linkRepository)
+    public function report(Article $article, Request $request, Mailer $mailer, MoreRepository $moreRepository, LinkRepository $linkRepository)
     {
         $report = new Report();
         $form = $this->createForm(ReportType::class, $report);
@@ -214,8 +215,8 @@ class DefaultController extends AbstractController
         }
         return $this->render('default/report.html.twig', [
             'article' => $article,
-            'links'=>$linkRepository->findAll(),
-            'mores'=> $moreRepository->findAll(),
+            'links' => $linkRepository->findAll(),
+            'mores' => $moreRepository->findAll(),
             'form' => $form->createView(),
 
         ]);
@@ -228,8 +229,19 @@ class DefaultController extends AbstractController
      * @param Mailer $mailer
      * @return Response
      */
-    public function reportComment(Comment $comment, Request $request, Mailer $mailer, MoreRepository $moreRepository,LinkRepository $linkRepository)
+    public function reportComment(Comment $comment, Request $request, Mailer $mailer, MoreRepository $moreRepository, LinkRepository $linkRepository)
     {
+        $newsletter = new Newsletter();
+        $formNewsLetter = $this->createForm(NewsLetterType::class, $newsletter);
+        $formNewsLetter->handleRequest($request);
+
+        if ($formNewsLetter->isSubmitted() && $formNewsLetter->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($newsletter);
+            $entityManager->flush();
+            return $this->redirectToRoute('home');
+        }
+
         $report = new Report();
         $form = $this->createForm(ReportType::class, $report);
         $form->handleRequest($request);
@@ -248,9 +260,10 @@ class DefaultController extends AbstractController
         }
         return $this->render('default/report_comment.html.twig', [
             'comment' => $comment,
-            'links'=>$linkRepository->findAll(),
-            'mores'=> $moreRepository->findAll(),
+            'links' => $linkRepository->findAll(),
+            'mores' => $moreRepository->findAll(),
             'form' => $form->createView(),
+            'formNewsLetter' => $formNewsLetter->createView(),
 
         ]);
     }
@@ -261,7 +274,7 @@ class DefaultController extends AbstractController
      * @return Response
      */
 
-    public function allArticles(ArticleRepository $articleRepository,LinkRepository $linkRepository,MoreRepository $moreRepository, CategoryRepository $categoryRepository, Request $request)
+    public function allArticles(ArticleRepository $articleRepository, LinkRepository $linkRepository, MoreRepository $moreRepository, CategoryRepository $categoryRepository, Request $request)
 
     {
         $newsletter = new Newsletter();
@@ -277,8 +290,8 @@ class DefaultController extends AbstractController
 
         return $this->render('default/all_articles.html.twig', [
             'categories' => $categoryRepository->findAll(),
-            'mores'=> $moreRepository->findAll(),
-            'links'=>$linkRepository->findAll(),
+            'mores' => $moreRepository->findAll(),
+            'links' => $linkRepository->findAll(),
             'articles' => $articleRepository->findAll(),
             'formNewsLetter' => $formNewsLetter->createView(),
         ]);
@@ -290,7 +303,7 @@ class DefaultController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function contribute(ContributeRepository $contributeRepository,LinkRepository $linkRepository,MoreRepository $moreRepository, Request $request)
+    public function contribute(ContributeRepository $contributeRepository, LinkRepository $linkRepository, MoreRepository $moreRepository, Request $request)
     {
         $newsletter = new Newsletter();
         $formNewsLetter = $this->createForm(NewsLetterType::class, $newsletter);
@@ -304,8 +317,8 @@ class DefaultController extends AbstractController
         }
         return $this->render('default/contribute.html.twig', [
             'contributes' => $contributeRepository->findAll(),
-            'links'=>$linkRepository->findAll(),
-            'mores'=> $moreRepository->findAll(),
+            'links' => $linkRepository->findAll(),
+            'mores' => $moreRepository->findAll(),
             'formNewsLetter' => $formNewsLetter->createView(),
         ]);
     }
@@ -313,7 +326,7 @@ class DefaultController extends AbstractController
     /**
      * @Route("/contact", name="contact")
      */
-    public function contact(Request $request, Mailer $mailer, MoreRepository $moreRepository,LinkRepository $linkRepository): Response
+    public function contact(Request $request, Mailer $mailer, MoreRepository $moreRepository, LinkRepository $linkRepository): Response
     {
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
@@ -343,8 +356,8 @@ class DefaultController extends AbstractController
         }
         return $this->render('default/contact.html.twig', [
             'form' => $form->createView(),
-            'links'=>$linkRepository->findAll(),
-            'mores'=> $moreRepository->findAll(),
+            'links' => $linkRepository->findAll(),
+            'mores' => $moreRepository->findAll(),
             'formNewsLetter' => $formNewsLetter->createView(),
         ]);
     }
@@ -352,7 +365,7 @@ class DefaultController extends AbstractController
     /**
      * @Route("/politics", name="politics")
      */
-    public function politics(MoreRepository $moreRepository,LinkRepository $linkRepository, Request $request)
+    public function politics(MoreRepository $moreRepository, LinkRepository $linkRepository, Request $request)
     {
         $newsletter = new Newsletter();
         $formNewsLetter = $this->createForm(NewsLetterType::class, $newsletter);
@@ -365,8 +378,8 @@ class DefaultController extends AbstractController
             return $this->redirectToRoute('home');
         }
         return $this->render('default/politics.html.twig', [
-            'links'=>$linkRepository->findAll(),
-            'mores'=> $moreRepository->findAll(),
+            'links' => $linkRepository->findAll(),
+            'mores' => $moreRepository->findAll(),
             'formNewsLetter' => $formNewsLetter->createView(),
         ]);
     }
@@ -381,10 +394,29 @@ class DefaultController extends AbstractController
 
     /**
      * @Route("/signalement", name="report_thanks")
+     * @param MoreRepository $moreRepository
+     * @param LinkRepository $linkRepository
+     * @param $request
+     * @return RedirectResponse|Response
      */
-    public function reportThanks()
+    public function reportThanks(MoreRepository $moreRepository, LinkRepository $linkRepository, Request $request)
     {
-        return $this->render('default/report_thanks.html.twig');
+        $newsletter = new Newsletter();
+        $formNewsLetter = $this->createForm(NewsLetterType::class, $newsletter);
+        $formNewsLetter->handleRequest($request);
+
+        if ($formNewsLetter->isSubmitted() && $formNewsLetter->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($newsletter);
+            $entityManager->flush();
+            return $this->redirectToRoute('home');
+        }
+
+            return $this->render('default/report_thanks.html.twig', [
+            'mores' => $moreRepository->findAll(),
+            'links' => $linkRepository->findAll(),
+            'formNewsLetter' => $formNewsLetter->createView(),
+        ]);
     }
 
     /**
@@ -442,7 +474,7 @@ class DefaultController extends AbstractController
     /**
      * @Route("/aide", name="help")
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     * @return RedirectResponse|Response
      */
     public function help(Request $request)
     {
