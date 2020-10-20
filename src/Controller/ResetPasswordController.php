@@ -41,7 +41,7 @@ class ResetPasswordController extends AbstractController
      *
      * @Route("", name="app_forgot_password_request")
      */
-    public function request(Request $request, MailerInterface $mailer, MoreRepository $moreRepository): Response
+    public function request(Request $request, MailerInterface $mailer, MoreRepository $moreRepository, LinkRepository $linkRepository): Response
     {
         $form = $this->createForm(ResetPasswordRequestFormType::class);
         $form->handleRequest($request);
@@ -67,6 +67,7 @@ class ResetPasswordController extends AbstractController
         return $this->render('reset_password/request.html.twig', [
             'requestForm' => $form->createView(),
             'mores'=> $moreRepository->findAll(),
+            'links'=>$linkRepository->findAll(),
             'formNewsLetter' => $formNewsLetter->createView(),
         ]);
     }
@@ -78,7 +79,7 @@ class ResetPasswordController extends AbstractController
      * @param Request $request
      * @return Response
      */
-    public function checkEmail(Request $request, MoreRepository $moreRepository): Response
+    public function checkEmail(Request $request, MoreRepository $moreRepository, LinkRepository $linkRepository): Response
     {
         // We prevent users from directly accessing this page
         if (!$this->canCheckEmail()) {
@@ -99,6 +100,7 @@ class ResetPasswordController extends AbstractController
         return $this->render('reset_password/check_email.html.twig', [
             'tokenLifetime' => $this->resetPasswordHelper->getTokenLifetime(),
             'mores'=> $moreRepository->findAll(),
+            'links'=>$linkRepository->findAll(),
             'formNewsLetter' => $formNewsLetter->createView(),
         ]);
     }

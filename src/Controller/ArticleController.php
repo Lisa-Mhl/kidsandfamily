@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Entity\ArticleLike;
 use App\Entity\Newsletter;
+use App\Entity\Report;
 use App\Entity\User;
 use App\Form\ArticleType;
 use App\Form\NewsLetterType;
@@ -12,11 +13,13 @@ use App\Repository\ArticleLikeRepository;
 use App\Repository\ArticleRepository;
 use App\Repository\LinkRepository;
 use App\Repository\MoreRepository;
+use App\Repository\ReportRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
 
 /**
  * @Route("/publication")
@@ -142,10 +145,15 @@ class ArticleController extends AbstractController
      */
     public function delete(Request $request, Article $article): Response
     {
+        $reports =$this->getDoctrine()->getRepository(Report::class)->findAll();
        $user = $article ->getAuthor();
         if ($this->isCsrfTokenValid('delete'.$article->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($article);
+            foreach ($reports as $report) {
+                $entityManager->remove($report);
+            }
+            $entityManager->flush();
             $entityManager->flush();
 
     }
