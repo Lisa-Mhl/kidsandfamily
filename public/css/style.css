@@ -53,7 +53,8 @@ body {
 
 .imgProfile {
     border-radius: 100%;
-    width: 25%;
+    width: 30%;
+    height: 50%;
 }
 
 .title {
@@ -1072,10 +1073,6 @@ div.targetCard:hover .enfant {
     margin: auto
 }
 
-.allArticlesKidsCtn {
-    margin-top: 5em;
-}
-
 .allArticlesNav {
     display: flex;
     flex-direction: row;
@@ -1133,13 +1130,16 @@ div.targetCard:hover .enfant {
 }
 
 #allArticlesCard {
-    margin-top: 1em;
+    margin-top: 3em;
     height: 530px;
     width: 350px;
     border-radius: 5% 5% 0 0;
     border-style: none;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
 
+#rowCtn{
+    justify-content: center;
 }
 
 .allArticlesImg {
