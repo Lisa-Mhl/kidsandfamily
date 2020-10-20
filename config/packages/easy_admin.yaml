@@ -23,8 +23,8 @@ easy_admin:
        - { entity: 'Homepage', icon: 'home', label: 'Accueil' }
        - { entity: 'About', icon: 'info', label: 'A propos' }
        - { entity: 'Contribute', icon: 'handshake', label: 'Contribuer' }
-       - { entity: 'More', icon: 'plus', label: 'Options' }
-       - { entity: 'Link', icon: 'plus', label: 'Gestion des liens' }
+       - { entity: 'More', icon: 'book', label: 'Mentions Légales' }
+       - { entity: 'Link', icon: 'share', label: 'Réseaux Sociaux' }
   entities:
         Article:
             class: App\Entity\Article
@@ -319,25 +319,26 @@ easy_admin:
                 - { property: 'email', type: 'email' }
         More:
           class: App\Entity\More
-          disabled_actions: ['show']
+          disabled_actions: ['show', 'new', 'delete']
+          label: "Mentions Légales et Logo"
           list:
             actions:
               - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
               - { name: 'edit', icon: 'pencil', label: false, css_class: 'btn btn-primary' }
             fields:
               - { property: 'logo',type: 'image', label: 'Logo', base_path: "%uploads_path%" }
-              - { property: 'titlecgu', label: 'titre CGU' }
-              - { property: 'cgu', label: 'CGU' }
-              - { property: 'politicstitle', label: 'Titre politique de confidentialité' }
-              - { property: 'politics', label: 'Politique de confidentialité' }
+              - { property: 'titlecgu', label: 'CGU' }
+              - { property: 'politicstitle', label: 'Politique de confidentialité' }
           form:
             fields:
-              - { property: 'logoFile',type: 'vich_image', label: 'Logo' }
-              - { property: 'titlecgu',type: 'fos_ckeditor', label: 'titre CGU' }
+              - { property: 'logoFile',type: 'vich_image', label: 'Logo site' }
+              - { type: 'section', label: "Conditions Générales d'Utilisation" }
+              - { property: 'titlecgu',type: 'fos_ckeditor', label: 'Titre CGU' }
               - { property: 'linkcgu', label: 'Lien CGU' }
-              - { property: 'cgu',type: 'fos_ckeditor', label: 'CGU' }
-              - { property: 'politicstitle',type: 'fos_ckeditor', label: 'Titre politique de confidentialité' }
-              - { property: 'politics',type: 'fos_ckeditor', label: 'Politique de confidentialité' }
+              - { property: 'cgu',type: 'fos_ckeditor', label: 'Contenu CGU' }
+              - { type: 'section', label: "Politique de Confidentialité" }
+              - { property: 'politicstitle',type: 'fos_ckeditor', label: 'Titre Politique de Confidentialité' }
+              - { property: 'politics',type: 'fos_ckeditor', label: 'Contenu Politique de confidentialité' }
         Link:
           class: App\Entity\Link
           label: "Liens"
@@ -347,9 +348,9 @@ easy_admin:
               - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
               - { name: 'new', icon: 'plus', label: 'Ajouter un lien réseau', css_class: 'btn btn-success' }
             fields:
-              - { property: 'name', label: 'Nom du réseau' }
-              - { property: 'href', label: 'Lieu du réseau' }
+              - { property: 'name', label: 'Icone' }
+              - { property: 'href', label: 'Lien' }
           form:
             fields:
-              - { property: 'name', label: 'Nom du réseau' }
-              - { property: 'href', label: 'Lieu du réseau' }
+              - { property: 'name', label: "Nom de l'icone (font awesome)" }
+              - { property: 'href', label: 'Lien' }

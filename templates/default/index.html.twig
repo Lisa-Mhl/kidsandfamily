@@ -4,8 +4,7 @@
     {% for homepage in homepages %}
         <img class="coverImg" src="{{ vich_uploader_asset(homepage, 'bannerFile') }}" alt="Bannière">
         <span class="coverCtn">
-            KIDS AND FAMILY <br>
-            CREATEUR D'EXPERIENCES EN FAMILLE <br>
+            CREATEUR D'EXPERIENCE ET DE LIEN <br>
                 <section class="coverBtnCtn">
                 {% if app.user %}
                     <a id="coverBtn" class="btn coverBtn" href="#news">Nouveautés</a>
@@ -19,7 +18,8 @@
         <div id="a-propos"></div>
         <div class="aboutCtn">
             <div id="about">
-                <h2 class="bold">{{ homepage.goalTitle|raw }}</h2> <br>
+                <h2 class="bold">{{ homepage.goalTitle|raw }}</h2>
+                <hr class="homeHr">
                 <h4 class="aboutBody">
                     {{ homepage.goalBody|raw }}
                 </h4>
@@ -28,6 +28,7 @@
 
         <div id="target">
             <h2 class="bold">{{ homepage.targetTitle|raw }}</h2>
+            <hr class="homeHr">
             <div class="row targetCtn">
                 <div class="card targetCard">
                     <div class="row" id="targetTitle">
@@ -58,8 +59,8 @@
 
         <div class="services">
             <h2 class="bold">{{ homepage.approachTitle|raw }}</h2>
-            <h4 class="servicesTitle"><span class="grey">AIDER</span> | <span class="green">RECENSER</span> | <span
-                        class="orange">PROPOSER</span></h4> <br>
+            <hr class="homeHr">
+            <h4 class="servicesTitle">{{ homepage.approachSubTitle }}</h4> <br>
             <h4 class="servicesBody">{{ homepage.approachBody|raw }}</h4>
             <div class="aboutLink">
                 <a class="newsLink" href="{{ path('about') }}">En savoir plus</a>
@@ -69,6 +70,7 @@
         <div id="news"></div>
         <section class="newsCtn">
             <h2 class="newsTitle bold">Nos dernières publications</h2>
+            <hr class="homeHr">
             <div class="news">
                 {% for article in articles|sort((a,b) => a.updatedAt < b.updatedAt ) %}
                     {% if article.isPublished is same as(true) %}
@@ -121,6 +123,7 @@
 
             <h2 class="newsTitle bold">Les dernières publications de nos
                 ambassadeurs</h2> {# TO DO : OPTIMISER / SECURISER (role user ?) + BLOQUER A 3 MAX #}
+            <hr class="homeHr">
             <div class="news">
                 {% for article in articles|sort((a,b) => a.updatedAt < b.updatedAt ) %}
                     {% if article.isPublished is same as(true) %}
@@ -172,6 +175,7 @@
             </div>
 
             <h2 class="newsTitle bold">Ils ont besoin d'aide !</h2> {# TO DO : BLOQUER A 3 MAX #}
+            <hr class="homeHr">
             <div class="news">
                 {% for article in articles|sort((a,b) => a.updatedAt < b.updatedAt ) %}
                     {% if article.isPublished is same as(true) %}
@@ -222,7 +226,6 @@
                     {% endif %}
                 {% endfor %}
             </div>
-
             <div class="newsLinkCtn">
                 <a class="btn loginBtn" href="{{ path('all_articles') }}#Kids&Family">Voir toutes les publications</a>
             </div>
