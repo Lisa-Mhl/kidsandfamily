@@ -78,7 +78,7 @@
                                     {% if app.user is same as (comment.author) %}
                                         {% include '/default/_delete_comment.html.twig' %}
                                         <a class="dropdown-item"
-                                           href="{{ path('edit_comment', {'id_comment': comment.id}) }}">Modifier</a>
+                                           href="{{ path('comment_edit', {'id': comment.id}) }}">Modifier</a>
                                     {% else %}
                                         <a class="dropdown-item"
                                            href="{{ path('report_comment', {'id': comment.id}) }}">Signaler</a>
