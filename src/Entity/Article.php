@@ -740,5 +740,4 @@ class Article
 
         return false;
     }
-
 }

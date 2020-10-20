@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Entity\ArticleLike;
 use App\Entity\Newsletter;
+use App\Entity\User;
 use App\Form\ArticleType;
 use App\Form\NewsLetterType;
 use App\Repository\ArticleLikeRepository;
@@ -134,21 +135,22 @@ class ArticleController extends AbstractController
 
 
     /**
-     * @Route("/{id}", name="article_delete", methods={"DELETE"})
+     * @Route("/{id<\d+>}", name="article_delete", methods={"DELETE"})
      * @param Request $request
-     * @param Article $article
+     * @param $article
      * @return Response
      */
     public function delete(Request $request, Article $article): Response
     {
+       $user = $article ->getAuthor();
         if ($this->isCsrfTokenValid('delete'.$article->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($article);
             $entityManager->flush();
-        }
 
-        return $this->redirectToRoute('all_articles', ['id' => $article->getId()]);
     }
+        return $this->redirectToRoute('my_articles', ['id' => $user->getId()]);
+}
 
     /**
      * @Route("/home-article-like/{id}", name="home_article_like")
