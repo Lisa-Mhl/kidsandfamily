@@ -1,0 +1,266 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="ctn">
+
+        <div class="articlesCategory">  {# BARRE DE NAVIGATION DE LA PAGE #}
+            <a href="#Kids&Family">Kids & Family</a>
+            <a href="#Ambassadeurs">Les Ambassadeurs</a>
+            {% if app.user %}
+                <a href="#Help">Venir en aide</a>
+                <a href="{{ path('article_new') }}">Ajouter une publication</a>
+            {% endif %}
+        </div>
+
+        <div class="allArticles"> {# FILTRE SUR LES CATEGORIES DES ARTICLES DE K&F #}
+            <div id="Kids&Family"></div>
+            <h4 class="allArticlesNav"><span class="allArticlesTitle">Publications de Kids & Family</span>
+                <li class="nav-item">
+                    <a class="dropdown-toggle categoryDropDwn" href="#" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Filtrer par catégories
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        {% for category in categories %}
+                            <a class="dropdown-item catItemDwn" href="#{{ category.id }}">{{ category.name }}</a>
+                        {% endfor %}
+                    </div>
+                </li>
+            </h4>
+            {% for category in categories %} {# TRI PAR CATEGORIES #}   {# TO DO : N'AFFICHER QUE LES CATEGORIES QUI CONTIENNENT DES ARTICLES DE KF #}
+                <div class="catId" id="{{ category.id }}"></div>
+                <h4 class="catTitle">{{ category.name | upper }}</h4>
+
+                <div class="row" id="rowCtn"> {# AFFICHAGE DES ARTICLES DE K&F #}
+                    {% for article in category.article %}
+                        <div class="col-lg-3 col-md-6 col-sm-7">
+                            {% if article.author.username == "Kids & Family" %}    {# TO DO : OPTIMISER / SECURISER (role admin ?) #}
+                                <div class="card articleCard" id="allArticlesCard">
+                                    <img class="card-img allArticlesImg"
+                                         src="{{ vich_uploader_asset(article, 'photoFile') }}"
+                                         alt="{{ article.title }}">
+                                    <div class="articleHead">
+                                        <h5 class="card-title articleTitle">{{ article.title }}</h5>
+                                        <a href="{{ path('all_article_like', {'id' : article.id }) }}"
+                                           class="btn btn-link js-like text-mauve text-bolder" id="likeStyle">
+                                            <span class="js-likes">{{ article.likes | length }}</span>
+                                            {% if app.user and article.isLikedByUser(app.user) %}
+                                                <i class="fas fa-heart"></i>
+                                            {% else %}
+                                                <i class="far fa-heart"></i>
+                                            {% endif %}
+                                        </a>
+                                    </div>
+                                    <div class="row">
+                                        {% for category in article.category %}
+                                            <div class="card-title articleCategory">{{ category.name }}</div>
+                                        {% endfor %}
+                                    </div>
+                                    <hr>
+                                    <div class="bottomCard">
+                                        <div class="profileCard">
+                                            {% if article.author.avatar %}
+                                                {% set user = article.author %}
+                                                <img class="avatarCard"
+                                                     src="{{ vich_uploader_asset(user, 'avatarFile') }}"
+                                                     alt="Photo du Profil">
+                                            {% endif %}
+                                            <span id="authorCard">
+                                     <a class="profileLink"
+                                        href="{{ path('profile', {'id': article.author.id}) }}">{{ article.author.username }}</a>
+                                        </span>
+                                        </div>
+                                        <div class="commentCtn" id="allCommentCtn">
+                                            <section class="iconCard">
+                                                <i class="fa fa-commenting-o"></i>
+                                                <a class="articleLink"
+                                                   href="{{ path('article_details', {'id': article.id}) }}#comment">Commenter</a>
+                                            </section>
+                                            <section class="iconCard">
+                                                <i class="fa fa-envelope-o"></i>
+                                                <a class="articleLink" href="#">Message Privé</a>
+                                            </section>
+                                        </div> {# TO DO : AJOUTER SYSTEM DE MESSAGE DIRECT #}
+                                        {# <a  class="stretched-link"  id="articleIdLink" href="#">Voir</a> #}
+                                    </div>
+                                    <a class="detailsLink"
+                                       href="{{ path('article_details', {'id': article.id}) }}">Voir la publication</a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+
+            <div id="Ambassadeurs"></div> {# FILTRE SUR LES CATEGORIES DES ARTICLES DES AMBASSADEURS #}
+            <h4 class="allArticlesNav"><span class="allArticlesTitle">Publications des Ambassadeurs</span>
+                <li class="nav-item">
+                    <a class="dropdown-toggle categoryDropDwn" href="#" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Filtrer par catégories
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        {% for category in categories %}
+                            {% if category.article is not empty %}
+                                <a class="dropdown-item catItemDwn" href="#{{ category.name }}">{{ category.name }}</a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </li>
+            </h4>
+            {% for category in categories %} {# TRI PAR CATEGORIES #}
+                {% if category.article is not empty %}
+                    <div class="catId" id="{{ category.name }}"></div>
+                    <h4 class="catTitle" id="{{ category.id }}">{{ category.name | upper }}</h4>
+                {% endif %}
+                <div class="row" id="rowCtn"> {# AFFICHAGE DES ARTICLES DES AMBASSADEURS #}
+                    {% for article in category.article %}
+                        <div class="col-lg-3 col-md-6 col-sm-7">
+                            <div class="card articleCard" id="allArticlesCard">
+                                <img class="card-img allArticlesImg"
+                                     src="{{ vich_uploader_asset(article, 'photoFile') }}"
+                                     alt="{{ article.title }}">
+                                <div class="articleHead">
+                                    <h5 class="card-title articleTitle">{{ article.title }}</h5>
+                                    <a href="{{ path('all_article_like', {'id' : article.id }) }}"
+                                       class="btn btn-link js-like text-mauve text-bolder" id="likeStyle">
+                                        <span class="js-likes">{{ article.likes | length }}</span>
+                                        {% if app.user and article.isLikedByUser(app.user) %}
+                                            <i class="fas fa-heart"></i>
+                                        {% else %}
+                                            <i class="far fa-heart"></i>
+                                        {% endif %}
+                                    </a>
+                                </div>
+                                {# TO DO : AJOUTER SYSTEME DE LIKE #}
+                                <div class="row">
+                                    {% for category in article.category %}
+                                        <div class="card-title articleCategory">{{ category.name }}</div>
+                                    {% endfor %}
+                                </div>
+                                <hr>
+                                <div class="bottomCard">
+                                    <div class="profileCard">
+                                        {% if article.author.avatar %}
+                                            {% set user = article.author %}
+                                            <img class="avatarCard" src="{{ vich_uploader_asset(user, 'avatarFile') }}"
+                                                 alt="Photo du Profil">
+                                        {% endif %}
+                                        <span id="authorCard">
+                                               <a class="profileLink"
+                                                  href="{{ path('profile', {'id': article.author.id}) }}">{{ article.author.username }}</a>
+                                    </span>
+                                    </div>
+                                    <div class="commentCtn" id="allCommentCtn">
+                                        <section class="iconCard">
+                                            <i class="fa fa-commenting-o"></i>
+                                            <a class="articleLink"
+                                               href="{{ path('article_details', {'id': article.id}) }}#comment">Commenter</a>
+                                        </section>
+                                        <section class="iconCard">
+                                            <i class="fa fa-envelope-o"></i>
+                                            <a class="articleLink" href="#">Message Privé</a>
+                                        </section>
+                                    </div> {# TO DO : AJOUTER SYSTEM DE MESSAGE DIRECT #}
+                                    {# <a  class="stretched-link"  id="articleIdLink" href="#">Voir</a> #}
+                                </div>
+                                <a class="detailsLink"
+                                   href="{{ path('article_details', {'id': article.id}) }}">Voir la publication
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+
+
+            <div id="Help"></div>
+            <h4 class="allArticlesNav"><span class="helpTitle">Ils ont besoin d'aide !</span></h4>
+            <div class="row">
+                {% for article in articles %}
+                    {% if article.needs %}
+                        <div class="card articleCard" id="allArticlesCard">
+                            <img class="card-img allArticlesImg" src="{{ vich_uploader_asset(article, 'photoFile') }}"
+                                 alt="{{ article.title }}">
+                            <div class="articleHead">
+                                <h5 class="card-title articleTitle">{{ article.title }}</h5>
+                                <a href="{{ path('all_article_like', {'id' : article.id }) }}"
+                                   class="btn btn-link js-like text-mauve text-bolder" id="likeStyle">
+                                    <span class="js-likes">{{ article.likes | length }}</span>
+                                    {% if app.user and article.islikedByUser(app.user) %}
+                                        <i class="fas fa-heart"></i>
+                                    {% else %}
+                                        <i class="far fa-heart"></i>
+                                    {% endif %}
+                                </a>
+                            </div>
+                            <div class="row">
+                                {% for category in article.category %}
+                                    <div class="card-title articleCategory">{{ category.name }}</div>
+                                {% endfor %}
+                            </div>
+                            <hr>
+                            <div class="bottomCard">
+                                <div class="profileCard">
+                                    {% if article.author.avatar %}
+                                        {% set user = article.author %}
+                                        <img class="avatarCard" src="{{ vich_uploader_asset(user, 'avatarFile') }}"
+                                             alt="Photo du Profil">
+                                    {% endif %}
+                                    <span id="authorCard">
+                                               <a class="profileLink"
+                                                  href="{{ path('profile', {'id': article.author.id}) }}">{{ article.author.username }}</a>
+                                    </span>
+                                </div>
+                                <div class="commentCtn" id="allCommentCtn">
+                                    <section class="iconCard">
+                                        <i class="fa fa-commenting-o"></i>
+                                        <a class="articleLink"
+                                           href="{{ path('article_details', {'id': article.id}) }}#comment">Commenter</a>
+                                    </section>
+                                    <section class="iconCard">
+                                        <i class="fa fa-envelope-o"></i>
+                                        <a class="articleLink" href="#">Message Privé</a>
+                                    </section>
+                                </div> {# TO DO : AJOUTER SYSTEM DE MESSAGE DIRECT #}
+                                {# <a  class="stretched-link"  id="articleIdLink" href="#">Voir</a> #}
+                            </div>
+                            <a class="detailsLink"
+                               href="{{ path('article_details', {'id': article.id}) }}">Voir la publication</a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const LIKE_ICON = 'far fa-heart';
+        const UNLIKE_ICON = 'fas fa-heart';
+        Array.from(document.querySelectorAll('a.js-like')).forEach(function (link) {
+            link.addEventListener('click', onClickLink);
+        });
+
+        async function onClickLink(event) {
+            event.preventDefault();
+            const url = this.href;
+            const icone = this.querySelector('i');
+            const count = this.querySelector('span.js-likes');
+            try {
+                const result = await axios.post(url);
+                const data = result.data;
+                icone.className = icone.className === LIKE_ICON ? UNLIKE_ICON : LIKE_ICON;
+                count.textContent = data.likes;
+            } catch (error) {
+                if (error.response.status === 403) {
+                    window.location = '/login'
+                }
+            }
+        }
+    </script>
+{% endblock %}
+
+
+
+

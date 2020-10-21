@@ -8,6 +8,9 @@
 /src/preload.php
 /var/
 /vendor/
+/public/uploads/files
+migrations
+public/uploads/files
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###

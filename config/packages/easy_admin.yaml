@@ -1,0 +1,356 @@
+easy_admin:
+  site_name: 'KIDS & FAMILY | Back Office'
+  formats:
+    datetime: 'd/m/Y H:m'
+  design:
+    form_theme:
+        - '@EasyAdmin/form/bootstrap_4.html.twig'
+        - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
+    menu:
+       - { label: 'Voir le site', route: 'home', icon: 'laptop', target: '_blank'  }
+       - { type: 'section', label: 'Gérer les publications' }
+       - { entity: 'Article', icon: 'edit', label: 'Publications'  }
+       - { entity: 'Category', icon: 'list' }
+       - { entity: 'Target', icon: 'users', label: 'Cibles' }
+       - { type: 'section', label: 'Gérer les contacts' }
+       - { entity: 'Contact', icon: 'envelope', label: 'Messages' }
+       - { entity: 'Newsletter', icon: 'file-text', label: 'Newsletter' }
+       - { type: 'section', label: 'Gérer les utilisateurs' }
+       - { entity: 'User', icon: 'user-secret' }
+       - { entity: 'Report', icon: 'bullhorn', label: 'Signalements' }
+       - { entity: 'Comment', icon: 'comment', label: 'Commentaires' }
+       - { type: 'section', label: 'Gérer les pages' }
+       - { entity: 'Homepage', icon: 'home', label: 'Accueil' }
+       - { entity: 'About', icon: 'info', label: 'A propos' }
+       - { entity: 'Contribute', icon: 'handshake', label: 'Contribuer' }
+       - { entity: 'More', icon: 'book', label: 'Mentions Légales' }
+       - { entity: 'Link', icon: 'share', label: 'Réseaux Sociaux' }
+  entities:
+        Article:
+            class: App\Entity\Article
+            disabled_actions: ['new', 'show']
+            label: "Publications"
+            list:
+              help: "<i style='color: #4b6df5' class='fas fa-info-circle'></i> Cochez entre 1 et 4 publications par section (Kids & Family | Les ambassadeurs | Ils ont besoin d'aide) pour les faire apparaître sur la page d'accueil"
+              actions:
+                - { name: 'edit', icon: 'pencil', label: false, css_class: 'btn btn-primary' }
+                - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
+              fields:
+                - { property: 'isPublished', type: 'toggle', label: 'Affichage Accueil' }
+                - { property: 'title', type: 'fos_ckeditor', label: 'Titre' }
+                - { property: 'photo', type: 'image', base_path: "%uploads_path%", label: 'Image' }
+                - { property: 'updatedAt', label: 'Date' }
+                - { property: 'category', label: 'Catégorie(s)' }
+                - { property: 'target', label: 'Cible' }
+                - { property: 'heading', label: 'Type' }
+                - { property: 'needs', label: 'Besoins' }
+                - { property: 'city', label: 'Ville' }
+                - { property: 'author', label: 'Auteur' }
+            form:
+              help: "<i style='color: #4b6df5' class='fas fa-info-circle'></i> Attention ! Si vous modifiez l'adresse de la publication, vous risquez de perdre la géolocalisation ! Merci de modifier l'adresse directement depuis Mon Compte -> Mes Publications sur le site"
+              fields:
+                - { type: 'section', label: 'Classification' }
+                - { property: 'heading', label: 'Type' }
+                - { property: 'classification',type: 'choice', type_options: { choices: [ Je_demande: 'Je demande', Je_propose: 'Je propose' ] }, label: 'Classification' }
+                - { property: 'category', label: 'Catégori(e)s' }
+                - { property: 'target', label: 'Cible' }
+                - { type: 'section', label: 'Informations' }
+                - { property: 'title',type: 'fos_ckeditor', label: 'Titre' }
+                - { property: 'content',type: 'fos_ckeditor', label: "Description" }
+                - { property: 'needs',type: 'fos_ckeditor', label: 'Besoins' }
+                - { property: 'photoFile', type: 'vich_image', base_path: 'uploads_path%', label: 'Image Principale' }
+                - { type: 'section', label: 'Localisation' }
+                - { property: 'address', label: 'Adresse' }
+                - { property: 'city', label: 'Ville' }
+                - { property: 'zipcode', label: 'Code postal' }
+                - { type: 'section', label: 'Documents Complémentaires' }
+                - { property: 'photoBFile', type: 'vich_image', base_path: 'uploads_path%', label: 'Image 2' }
+                - { property: 'photoCFile', type: 'vich_image', base_path: 'uploads_path%', label: 'Image 3' }
+                - { property: 'videoFile', type: 'vich_image', base_path: 'uploads_path%', label: 'Vidéo' }
+                - { property: 'pdfFile', type: 'file', base_path: 'uploads_path%', label: 'Doc PDF' }
+                - { type: 'section', label: 'Contact' }
+                - { property: 'telephone', label: 'Téléphone' }
+                - { property: 'email', label: 'Email' }
+                - { property: 'website', label: 'Site Web' }
+        Category:
+             class: App\Entity\Category
+             label: "Categories"
+             list:
+                 actions:
+                     - { name: 'edit', icon: 'pencil', label: false, css_class: 'btn btn-primary' }
+                     - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
+                     - { name: 'new', icon: 'plus', label: 'Ajouter une catégorie', css_class: 'btn btn-success' }
+                 fields:
+                     - { property: 'name', label: 'Nom de la catégorie' }
+                     - { property: 'poster', type: 'image', base_path: "%uploads_path%", label: 'Image' }
+             form:
+                 fields:
+                     - { property: 'name', label: 'Nom de la catégorie' }
+                     - { property: 'posterFile', type: 'vich_image', label: 'Image (.png, .jpeg)', base_path: 'uploads_path%' }
+        About:
+             class: App\Entity\About
+             disabled_actions: ['new', 'delete', 'show']
+             label: "A propos"
+             list:
+               actions:
+                 - { name: 'edit', icon: 'pencil', label: false, css_class: 'btn btn-primary' }
+               fields:
+                 - { property: 'presentationTitle', label: 'Section 1' }
+                 - { property: 'visionTitle', label: 'Section 2' }
+                 - { property: 'valuesTitle', label: 'Section 3' }
+                 - { property: 'servicesTitle', label: 'Section 4' }
+                 - { property: 'communityTitle', label: 'Section 5'}
+             form:
+                 fields:
+                   - { type: 'section', label: 'Section 1' }
+                   - { property: 'presentationTitle',type: 'fos_ckeditor', label: 'Titre'}
+                   - { property: 'presentationBody', type: 'fos_ckeditor', label: 'Contenu' }
+                   - { property: 'presentationVideo', label: 'Lien vidéo' }
+                   - { property: 'presentationVideoFile', type: 'vich_image', label: 'Video (.mp4)' }
+                   - { type: 'section', label: 'Section 2' }
+                   - { property: 'visionTitle',type: 'fos_ckeditor', label: 'Titre' }
+                   - { property: 'visionBody', type: 'fos_ckeditor', label: 'Contenu' }
+                   - { property: 'visionImgFile', type: 'vich_image', label: 'Image (.png, .jpeg)'}
+                   - { type: 'section', label: 'Section 3' }
+                   - { property: 'valuesTitle',type: 'fos_ckeditor', label: 'Titre' }
+                   - { property: 'valuesBody', type: 'fos_ckeditor', label: 'Contenu' }
+                   - { type: 'section', label: 'Section 4' }
+                   - { property: 'servicesTitle',type: 'fos_ckeditor', label: 'Titre' }
+                   - { property: 'localTitle',type: 'fos_ckeditor', label: 'Titre Img 1' }
+                   - { property: 'localImgFile', type: 'vich_image', label: 'Image 1 (.png, .jpeg)'}
+                   - { property: 'messageTitle',type: 'fos_ckeditor', label: 'Titre Img 2' }
+                   - { property: 'messageImgFile', type: 'vich_image', label: 'Image 2 (png, .jpeg)'}
+                   - { property: 'dealsTitle',type: 'fos_ckeditor', label: 'Titre Img 3' }
+                   - { property: 'dealsImgFile', type: 'vich_image', label: 'Image 3 (.png, .jpeg)'}
+                   - { property: 'eventTitle',type: 'fos_ckeditor', label: 'Titre 4' }
+                   - { property: 'eventImgFile', type: 'vich_image', label: 'Image 4 (.png, .jpeg)'}
+                   - { property: 'helpTitle',type: 'fos_ckeditor', label: 'Titre 5' }
+                   - { property: 'helpImgFile', type: 'vich_image', label: 'Image 5 (.png, .jpeg)'}
+                   - { property: 'giveTitle',type: 'fos_ckeditor', label: 'Titre 6' }
+                   - { property: 'giveImgFile', type: 'vich_image', label: 'Image 6 (.png, .jpeg)'}
+                   - { type: 'section', label: 'Section 5' }
+                   - { property: 'communityTitle',type: 'fos_ckeditor', label: 'Titre' }
+                   - { property: 'communityBody',type: 'fos_ckeditor', label: 'Contenu' }
+        Contribute:
+               class: App\Entity\Contribute
+               disabled_actions: ['new', 'delete', 'show']
+               label: "Contribuer"
+               list:
+                 actions:
+                   - { name: 'edit', icon: 'pencil', label: false, css_class: 'btn btn-primary' }
+                 fields:
+                   - { property: 'contributeTitle', label: 'Titre' }
+                   - { property: 'step1Title', label: 'Section 1' }
+                   - { property: 'step2Title', label: 'Section 2' }
+                   - { property: 'step3Title', label: 'Section 3' }
+                   - { property: 'step4Title', label: 'Section 4' }
+               form:
+                   fields:
+                     - { property: 'contributeTitle',type: 'fos_ckeditor', label: 'Titre' }
+                     - { type: 'section', label: 'Section 1' }
+                     - { property: 'step1Title',type: 'fos_ckeditor', label: 'Titre' }
+                     - { property: 'step1Body',type: 'fos_ckeditor', label: 'Contenu' }
+                     - { property: 'step1ImgFile', type: 'vich_image', label: 'Image (.png, .jpeg)' }
+                     - { type: 'section', label: 'Section 2' }
+                     - { property: 'step2Title',type: 'fos_ckeditor', label: 'Titre' }
+                     - { property: 'step2Body', type: 'fos_ckeditor', label: 'Contenu' }
+                     - { property: 'step2ImgFile', type: 'vich_image', label: 'Image (.png, .jpeg)', base_path: 'uploads_path%'}
+                     - { type: 'section', label: 'Section 3' }
+                     - { property: 'step3Title',type: 'fos_ckeditor', label: 'Titre' }
+                     - { property: 'step3Body',type: 'fos_ckeditor', label: 'Contenu' }
+                     - { property: 'step3ImgFile', type: 'vich_image', label: 'Image (.png, .jpeg)' }
+                     - { type: 'section', label: 'Section 4' }
+                     - { property: 'step4Title',type: 'fos_ckeditor', label: 'Titre' }
+                     - { property: 'step4Body',type: 'fos_ckeditor', label: 'Contenu' }
+                     - { property: 'step4ImgFile', type: 'vich_image', label: 'Image (.png, .jpeg)' }
+        Homepage:
+             class: App\Entity\Homepage
+             disabled_actions: ['new', 'delete']
+             label: "Page d'acceuil"
+             list:
+               actions:
+                 - { name: 'edit', icon: 'pencil', label: false, css_class: 'btn btn-primary' }
+               fields:
+                 - { property: 'banner', type: 'image', label: 'Bannière', base_path: "%uploads_path%" }
+                 - { property: 'goalTitle', label: 'Section 1' }
+                 - { property: 'targetTitle', label: 'Section 2' }
+                 - { property: 'approachTitle', label: 'Section 3' }
+                 - { property: 'sectionTitle', label: 'Section 4' }
+             form:
+                 fields:
+                   - { property: 'bannerFile', type: 'vich_image', label: 'Bannière' }
+                   - { type: 'section', label: 'Section 1' }
+                   - { property: 'goalTitle', type: 'fos_ckeditor', label: 'Titre' }
+                   - { property: 'goalBody', type: 'fos_ckeditor', label: 'Contenu' }
+                   - { type: 'section', label: 'Section 2' }
+                   - { property: 'targetTitle',type: 'fos_ckeditor', label: 'Titre' }
+                   - { property: 'targetTitle1',type: 'fos_ckeditor', label: 'Sous-titre Gauche' }
+                   - { property: 'targetTitle2',type: 'fos_ckeditor', label: 'Sous-titre Droit' }
+                   - { property: 'targetBody', type: 'fos_ckeditor', label: 'Texte Image Gauche' }
+                   - { property: 'targetBody2', type: 'fos_ckeditor', label: 'Texte Image Droite' }
+                   - { property: 'targetImgFamFile', type: 'vich_image', label: 'Image Gauche (.png, .jpeg)' }
+                   - { property: 'targetImgPlaceFile', type: 'vich_image', label: ' Image Droite(.png, .jpeg)' }
+                   - { type: 'section', label: 'Section 3' }
+                   - { property: 'approachTitle',type: 'fos_ckeditor', label: 'Titre ' }
+                   - { property: 'approachSubTitle',type: 'fos_ckeditor', label: 'Sous-titre' }
+                   - { property: 'approachBody', type: 'fos_ckeditor', label: 'Contenu' }
+                   - { type: 'section', label: 'Section 4' }
+                   - { property: 'sectionTitle',type: 'fos_ckeditor', label: 'Titre' }
+                   - { property: 'sectionImgFile', type: 'vich_image', label: 'Image (.gif, .png, .jpeg,)' }
+                   - { property: 'sectionBody', type: 'fos_ckeditor', label: 'Contenu' }
+                   - { property: 'btneshop', label: 'Nom bouton vers site web ' }
+                   - { property: 'link', label: 'Lien vers site web'}
+        Target:
+            class: App\Entity\Target
+            label: "Cible"
+            list:
+                actions:
+                  - { name: 'edit', icon: 'pencil', label: false, css_class: 'btn btn-primary' }
+                  - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
+                  - { name: 'new', icon: 'plus', label: 'Ajouter une cible', css_class: 'btn btn-success' }
+                fields:
+                  - { property: 'name', label: 'Nom de la Cible' }
+            form:
+              fields:
+                - { property: 'name', label: 'Nom' }
+        User:
+            class: App\Entity\User
+            disabled_actions: ['edit','new']
+            label: "Utilisateurs"
+            list:
+              actions:
+                - { name: 'show', icon: 'eye', label: false, css_class: 'btn btn-dark' }
+                - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
+              fields:
+                - { property: 'email', label: 'Email' }
+                - { property: 'firstname', label: 'Prénom' }
+                - { property: 'lastname', label: 'Nom' }
+                - { property: 'city', label: 'Ville' }
+                - { property: 'username', label: 'Pseudo' }
+            show:
+                fields:
+                  - { property: 'email', label: 'Email' }
+                  - { property: 'firstname', label: 'Prénom' }
+                  - { property: 'lastname', label: 'Nom' }
+                  - { property: 'gender', label: 'Genre' }
+                  - { property: 'birthday', label: 'Date de naissance' }
+                  - { property: 'profession', label: 'Profession' }
+                  - { property: 'marital', label: 'Situation familiale' }
+                  - { property: 'namevoie', label: 'Nom de la voie' }
+                  - { property: 'channelnum', label: 'Numéro de voie' }
+                  - { property: 'complement', label: 'Complément adresse' }
+                  - { property: 'cp', label: 'Code postal' }
+                  - { property: 'city', label: 'Ville' }
+                  - { property: 'country', label: 'Pays' }
+                  - { property: 'phone', label: 'Numéro Tel' }
+                  - { property: 'mobile', label: ' Tel.mobile' }
+                  - { property: 'hobbies', label: "Centre d'intérêts" }
+                  - { property: 'username', label: 'Pseudo' }
+                  - { property: 'avatar', type: 'image', base_path: '%uploads_path%' }
+        Report:
+          class: App\Entity\Report
+          disabled_actions: [ 'new', 'edit' ]
+          label: "Signalements des articles et commentaires"
+          list:
+            actions:
+              - { name: 'show', icon: 'eye', label: false, css_class: 'btn btn-dark' }
+              - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
+            fields:
+              - { property: 'subject', label: 'Motif du signalement' }
+              - { property: 'comment', label: 'Commentaire signalé' }
+              - { property: 'article', label: 'Article signalé'}
+              - { property: 'createdAt', label: 'Date du signalement' }
+              - { property: 'email', label: 'Rapporteur'}
+          show:
+            fields:
+              - { property: 'subject', label: 'Motif du signalement' }
+              - { property: 'comment', label: 'Commentaire signalé' }
+              - { property: 'article', label: 'Article signalé' }
+              - { property: 'createdAt', label: 'Date du signalement' }
+              - { property: 'email', label: 'Rapporteur' }
+        Contact:
+          class: App\Entity\Contact
+          disabled_actions: ['edit','new']
+          list:
+            actions:
+              - { name: 'email_contact', icon: "envelope", type: 'route', label: 'Répondre', css_class: 'btn btn-info', target: '_blank' }
+              - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
+            fields:
+              - { property: 'email', label: 'Email' }
+              - { property: 'name', label: 'Expéditeur' }
+              - { property: 'subject', label: 'Sujet' }
+              - { property: 'createdAt', label: 'Date de récéption' }
+        Comment:
+          class: App\Entity\Comment
+          disabled_actions: [ 'new' ]
+          label: "Commentaires"
+          list:
+            actions:
+              - { name: 'show', icon: 'eye', label: false, css_class: 'btn btn-dark' }
+              - { name: 'edit', icon: 'pencil', label: false, css_class: 'btn btn-primary' }
+              - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
+            fields:
+              - { property: 'comment', label: 'Commentaire' }
+              - { property: 'author', label: 'Auteur du commentaire' }
+              - { property: 'article', label: 'Article commenté' }
+          show:
+            fields:
+              - { property: 'comment', label: 'Commentaire' }
+              - { property: 'author', label: 'Auteur du commentaire' }
+              - { property: 'article', label: 'Article commenté' }
+          edit:
+            fields:
+              - { property: 'comment', label: 'Commentaire' }
+        Newsletter:
+            class: App\Entity\Newsletter
+            disabled_actions: ['new','edit','show']
+            help: "<i style='color: #4b6df5' class='fas fa-info-circle'></i> Vous pouvez accéder à la liste de tous les emails grâce au bouton Tous les emails"
+            list:
+              actions:
+                - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
+                - { name: 'newsletter_email', icon: 'eye', type: 'route', label: 'Tous les emails', css_class: 'btn btn-dark' }
+              fields:
+                - { property: 'email', type: 'email' }
+            edit:
+              fields:
+                - { property: 'email', type: 'email' }
+            form:
+              fields:
+                - { property: 'email', type: 'email' }
+        More:
+          class: App\Entity\More
+          disabled_actions: ['show', 'new', 'delete']
+          label: "Mentions Légales et Logo"
+          list:
+            actions:
+              - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
+              - { name: 'edit', icon: 'pencil', label: false, css_class: 'btn btn-primary' }
+            fields:
+              - { property: 'logo',type: 'image', label: 'Logo', base_path: "%uploads_path%" }
+              - { property: 'titlecgu', label: 'CGU' }
+              - { property: 'politicstitle', label: 'Politique de confidentialité' }
+          form:
+            fields:
+              - { property: 'logoFile',type: 'vich_image', label: 'Logo site' }
+              - { type: 'section', label: "Conditions Générales d'Utilisation" }
+              - { property: 'titlecgu',type: 'fos_ckeditor', label: 'Titre CGU' }
+              - { property: 'linkcgu', label: 'Lien CGU' }
+              - { property: 'cgu',type: 'fos_ckeditor', label: 'Contenu CGU' }
+              - { type: 'section', label: "Politique de Confidentialité" }
+              - { property: 'politicstitle',type: 'fos_ckeditor', label: 'Titre Politique de Confidentialité' }
+              - { property: 'politics',type: 'fos_ckeditor', label: 'Contenu Politique de confidentialité' }
+        Link:
+          class: App\Entity\Link
+          label: "Liens"
+          list:
+            actions:
+              - { name: 'edit', icon: 'pencil', label: false, css_class: 'btn btn-primary' }
+              - { name: 'delete', icon: 'trash-alt', label: false, css_class: 'btn btn-danger' }
+              - { name: 'new', icon: 'plus', label: 'Ajouter un lien réseau', css_class: 'btn btn-success' }
+            fields:
+              - { property: 'name', label: 'Icone' }
+              - { property: 'href', label: 'Lien' }
+          form:
+            fields:
+              - { property: 'name', label: "Nom de l'icone (font awesome)" }
+              - { property: 'href', label: 'Lien' }

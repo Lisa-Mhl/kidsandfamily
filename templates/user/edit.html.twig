@@ -1,0 +1,143 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier mon profil{% endblock %}
+
+{% block body %}
+    <div class="ctn">
+    <h1 class="detailsTitle">Modifier mon profil</h1>
+
+    <div class="hidden">}
+        {{ form_widget(form.namevoie) }}
+        {{ form_widget(form.complement) }}
+    </div>
+    {% if app.user.id is same as (user.id) %}
+        <fieldset class="formUser">
+            {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+            <h3 class="text-center formCtnTitle">Général</h3>
+            <div class="formCtn">
+                <div class="formInput">
+                          <span class="bold grey">
+                {{ form_label(form.username, '* Nom d\'utilisateur') }}
+                                 </span>
+                    {{ form_widget(form.username) }}
+                </div>
+                <div class="formInput">
+                          <span class="bold grey">
+                {{ form_label(form.avatarFile, 'Photo de Profil') }}
+                          </span>
+                    {{ form_widget(form.avatarFile) }}
+                </div>
+                <div class="formInput">
+                          <span class="bold grey">
+                {{ form_label(form.firstname, 'Prénom') }}
+                          </span>
+                    {{ form_widget(form.firstname) }}
+                </div>
+                <div class="formInput">
+                          <span class="bold grey">
+                {{ form_label(form.lastname, 'Nom') }}
+                          </span>
+                    {{ form_widget(form.lastname) }}
+                </div>
+                <div class="formInput">
+                          <span class="bold grey">
+                {{ form_label(form.birthday, 'Date de Naissance') }}
+                                </span>
+                    {{ form_widget(form.birthday) }}
+                </div>
+                <div class="formInput">
+                          <span class="bold grey">
+                {{ form_label(form.gender, 'Je suis (sélectionnez dans la liste)') }}
+                                                              </span>
+                    {{ form_widget(form.gender) }}
+                </div>
+            </div>
+            <h3 class="text-center formCtnTitle">Coordonnées</h3>
+            <div class="formCtn">
+                <div class="formInput">
+                          <span class="bold grey">
+                {{ form_label(form.email, '* Email') }}
+                                 </span>
+                    {{ form_widget(form.email) }}
+                </div>
+                <div class="formInput">
+                          <span class="bold grey">
+                {{ form_label(form.channelnum, 'Adresse') }}
+                                     </span>
+                    {{ form_widget(form.channelnum) }}
+                </div>
+                <div class="formInput">
+                          <span class="bold grey">
+                {{ form_label(form.cp, 'Code postal') }}
+                                </span>
+                    {{ form_widget(form.cp) }}
+                </div>
+                <div class="formInput">
+                          <span class="bold grey">
+                {{ form_label(form.city, 'Ville') }}
+                                </span>
+                    {{ form_widget(form.city) }}
+                </div>
+                <div class="formInput">
+                          <span class="bold grey">
+                {{ form_label(form.country, 'Pays') }}
+                                </span>
+                    {{ form_widget(form.country) }}
+                </div>
+
+                <div class="formInput">
+                          <span class="bold grey">
+                {{ form_label(form.phone, 'Téléphone') }}
+                                </span>
+                    {{ form_widget(form.phone) }}
+                </div>
+                <div class="formInput">
+                          <span class="bold grey">
+                {{ form_label(form.mobile, 'Mobile') }}
+                                </span>
+                    {{ form_widget(form.mobile) }}
+                </div>
+            </div>
+            <h3 class="text-center formCtnTitle">Autres</h3>
+            <div class="formCtn">
+                <div class="formInput">
+                          <span class="bold grey">
+            {{ form_label(form.profession, 'Profession') }}
+                          </span>
+                    {{ form_widget(form.profession) }}
+                </div>
+                <div class="formInput">
+                          <span class="bold grey">
+                {{ form_label(form.marital, 'Situation (sélectionnez dans la liste)') }}
+                                            </span>
+                    {{ form_widget(form.marital) }}
+                </div>
+                <div class="formInput">
+                          <span class="bold grey">
+                {{ form_label(form.hobbies, 'Centre d\'interets') }}
+                                            </span>
+                    {{ form_widget(form.hobbies) }}
+                </div>
+            </div>
+            <div class="center">
+                <p>* Tous ces champs sont obligatoires</p>
+            </div>
+            <div class="center">
+                <button class="loginBtn" id="publishBtn">{{ button_label|default('Sauvegarder') }}</button>
+            </div>
+            <div class="center">
+                <a class="logLink" href="{{ path('profile', {'id': app.user.id }) }}">Retour</a>
+            </div>
+            {{ form_end(form) }}
+        </div>
+        </fieldset>
+        <div class="center">
+            {{ include('user/_delete_form.html.twig') }}
+        </div>
+        </div>
+    {% else %}
+        <div class="mustCo">
+            <p class="mustCoBody">Vous ne pouvez pas modifier les informations d'un autre utilisateur</p>
+        </div>
+    {% endif %}
+{% endblock %}

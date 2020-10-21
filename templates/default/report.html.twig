@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% if app.user %}
+        <div class="ctn reportCtn">
+            <h1 class="detailsTitle">Signaler la publication "{{ article.title }}"</h1>
+
+            {{ form_start(form) }}
+            <fieldset class="formFs reportFs">
+                <div class="hidden">
+                    {{ form_widget(form.email) }}
+                    {{ form_widget(form.article) }}
+                </div>
+
+                {{ form_label(form.subject, 'Pour quel motif souhaitez-vous signaler cette publication ?') }}
+                {{ form_widget(form.subject) }}
+                <div class="center">
+                    <button class="loginBtn" id="reportBtn">{{ button_label|default('Signaler') }}</button>
+                </div>
+                {{ form_end(form) }}
+            </fieldset>
+
+        </div>
+
+        {% else %}
+            <div class="mustCo">
+                <p class="mustCoBody">Seuls les utilisateurs connectés peuvent signaler une publication</p>
+                <a class="logLink" href="{{ path('app_login') }}">Se connecter</a> <br>
+                <a class="logLink" href="{{ path('app_register') }}">Créer un compte</a>
+            </div>
+
+    {% endif %}
+{% endblock %}

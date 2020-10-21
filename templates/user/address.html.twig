@@ -1,0 +1,35 @@
+{% extends 'base_user.html.twig' %}
+
+{% block title %}Mon compte{% endblock %}
+
+{% block body %}
+    <h1>Mon compte</h1>
+    <div class="profileCtn" >
+        {% if app.user %}
+            {% if app.user.id is same as(user.id) %}
+                <h1 class="detailsTitle">Mes Coordonnées</h1>
+                <p class="addressBody">{{ user.channelnum }}
+                    {% if user.complement %}
+                        {{ user.complement }}<br>
+                    {% endif %}
+                    {{ user.namevoie }}<br>
+                    {{ user.cp }}, {{ user.city }}<br>
+                    {{ user.country }}</p>
+
+                <div class="center">
+                    {# TO DO : AJOUTER SECURITE POUR QUE SEUL UTILISATEUR CO SUR SON PROFIL PUISSE MODIFIER #}
+                    <button class="btnProfile update"><a class="linkProfile"
+                                                         href="{{ path('user_edit', {'id': user.id}) }}">Modifier</a>
+                    </button>
+                </div>
+
+            {% else %}
+                <div class="mustCo">
+                    <p>Vous ne pouvez pas accédez aux coordonnées d'un autre utilisateur</p>
+                </div>
+            {% endif %}
+
+        {% endif %}
+
+    </div>
+{% endblock %}

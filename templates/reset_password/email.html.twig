@@ -1,0 +1,35 @@
+{% extends 'base_email.html.twig' %}
+
+{% block body %}
+    <row class="message">
+        <columns>
+            <spacer size="35"></spacer>
+            <h2>
+                <center>
+                     Réinitialisation de votre mot de passe.
+                </center>
+            </h2>
+            <spacer size="20"></spacer>
+        </columns>
+    </row>
+    <row>
+        <columns>
+            <p>
+                pour réinitialiser votre mot de passe, veuillez cliquez sur le lien suivant :
+                <a href="{{ url('app_reset_password', {token: resetToken.token}) }}">{{ url('app_reset_password', {token: resetToken.token}) }}</a>
+                Ce lien expirera dans {{ tokenLifetime|date('g') }} heure(s).
+            </p>
+        </columns>
+    </row>
+    <hr>
+    <row>
+        <columns>
+        </columns>
+    </row>
+    <row>
+        <columns>
+            <center>
+            </center>
+        </columns>
+    </row>
+{% endblock %}

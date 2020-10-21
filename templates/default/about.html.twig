@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for about in abouts %}
+        <div class="ctn" id="aboutCtn">
+            <article class="aboutArticle">
+                <h1 id="aboutTitle" class="bold yellow">{{ about.presentationTitle|raw }}</h1>
+                <p id="aboutBody">
+                    {{ about.presentationBody|raw }}</p> <br>
+                <div class="center">
+                    {# TO DO Solution for upload video #}
+                    <iframe class="aboutVideo" width="560" height="315" src="https://www.youtube.com/embed/sqGltsSb-i0"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                </div>
+            </article>
+            <article class="aboutArticle">
+                <h1 id="aboutTitle" class="rightTitle bold pink">{{ about.visionTitle|raw }}</h1>
+                <section id="vision">
+                    <img src="{{ vich_uploader_asset(about, 'visionImgFile') }}" class="aboutImg">
+                    <p id="aboutBody" class="visionBody">
+                        {{ about.visionBody|raw }}</p>
+                </section>
+            </article>
+            <article class="aboutArticle">
+                <h1 id="aboutTitle" class="bold yellow">{{ about.valuesTitle|raw }}</h1>
+                <p id="aboutBody">
+                    {{ about.valuesBody|raw }}</p>
+            </article>
+            <article class="aboutArticle">
+                <h1 id="aboutTitle" class="aboutServicesTitle bold pink">{{ about.servicesTitle|raw }}</h1>
+                <ul class="aboutList">
+                    <li class="serviceList">
+                        <img class="serviceImg" src="{{ vich_uploader_asset(about, 'localImgFile') }}" alt="{{ about.localTitle }}">
+                        <p class="serviceListTitle">{{ about.localTitle|raw }}</p>
+                    </li>
+                    <li class="serviceList">
+                        <img class="serviceImg" src="{{ vich_uploader_asset(about, 'messageImgFile') }}" alt="{{ about.messageTitle }}">
+                        <p class="serviceListTitle">{{ about.messageTitle|raw }}</p>
+                    </li>
+                    <li class="serviceList">
+                        <img class="serviceImg" src="{{ vich_uploader_asset(about, 'dealsImgFile') }}" alt="{{ about.dealsTitle }}">
+                        <p class="serviceListTitle">{{ about.dealsTitle|raw }}</p>
+                    </li>
+                    <li class="serviceList">
+                        <img class="serviceImg"
+                             src="{{ vich_uploader_asset(about, 'eventImgFile') }}"
+                             alt="{{ about.eventTitle }}">
+                        <p class="serviceListTitle">{{ about.eventTitle|raw }}</p>
+                    </li>
+                    <li class="serviceList">
+                        <img class="serviceImg"
+                             src="{{ vich_uploader_asset(about, 'helpImgFile') }}" alt="{{ about.helpTitle }}">
+                        <p class="serviceListTitle">{{ about.helpTitle|raw }}</p>
+                    </li>
+                    <li class="serviceList">
+                        <img class="serviceImg"
+                             src="{{ vich_uploader_asset(about, 'giveImgFile') }}" alt="{{ about.giveTitle }}">
+                        <p class="serviceListTitle">{{ about.giveTitle|raw }}</p>
+                    </li>
+                </ul>
+            </article>
+            <article class="join">
+                <h1 class="bold yellow" id="aboutTitleJoin">{{ about.communityTitle|raw }}</h1>
+                <p id="aboutBody">
+                    {{ about.communityBody|raw }}<br>
+                    <a class="btn loginBtn" href="{{ path('app_register') }}">Je souhaite m'inscrire !</a> <br>
+                <div class="aboutLinksCtn">
+                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                    <a class="logLink bold" href="{{ path('contribute') }}">Comment ça marche ?</a><br>
+                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                    <a class="logLink bold" href="{{ path('all_articles') }}#Kids&Family">Voir les publications</a><br>
+                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                    <a class="logLink bold" href="{{ path('home') }}">Retour à l'accueil</a>
+
+                </div>
+            </article>
+        </div>
+    {% endfor %}
+{% endblock %}

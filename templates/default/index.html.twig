@@ -1,8 +1,247 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil{% endblock %}
-
 {% block body %}
-<h1>UESH</h1>
+    {% for homepage in homepages %}
+        <img class="coverImg" src="{{ vich_uploader_asset(homepage, 'bannerFile') }}" alt="Bannière">
+        <span class="coverCtn">
+            CREATEUR D'EXPERIENCE ET DE LIEN <br>
+                <section class="coverBtnCtn">
+                {% if app.user %}
+                    <a id="coverBtn" class="btn coverBtn" href="#news">Nouveautés</a>
+                    <a id="coverBtn" class="btn coverBtn " href="{{ path('contribute') }}">Contribuer</a>
+                {% else %}
+                    <a id="coverBtn" class="btn coverBtn " href="#a-propos">Je découvre</a>
+                    <a id="coverBtn" class="btn coverBtn" href="{{ path('app_register') }}">Je m'inscris</a>
+                {% endif %}
+                    </section>
+                </span>
+        <div id="a-propos"></div>
+        <div class="aboutCtn">
+            <div id="about">
+                <h2 class="bold">{{ homepage.goalTitle|raw }}</h2>
+                <hr class="homeHr">
+                <h4 class="aboutBody">
+                    {{ homepage.goalBody|raw }}
+                </h4>
+            </div>
+        </div>
 
+        <div id="target">
+            <h2 class="bold">{{ homepage.targetTitle|raw }}</h2>
+            <hr class="homeHr">
+            <div class="row targetCtn">
+                <div class="card targetCard">
+                    <div class="row" id="targetTitle">
+                        <i class="fas fa-users"></i>
+                        <h4 class="card-title">{{ homepage.targetTitle1|raw }}</h4>
+                    </div>
+                    <img class="card-img targetImg"
+                         src="{{ vich_uploader_asset(homepage, 'targetImgFamFile') }}"
+                         alt="Photo Famille">
+                    <div class="enfant">
+                        {{ homepage.targetBody|raw }}
+                    </div>
+
+                </div>
+                <div class="card targetCard">
+                    <div class="row" id="targetTitle">
+                        <i class="fas fa-house-user"></i>
+                        <h4 class="card-title targetTitle">{{ homepage.targetTitle2|raw }}</h4></div>
+                    <img class="card-img targetImg"
+                         src="{{ vich_uploader_asset(homepage, 'targetImgPlaceFile') }}"
+                         alt="Photo Lieux">
+                    <div class="enfant">
+                        {{ homepage.targetBody2|raw }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="services">
+            <h2 class="bold">{{ homepage.approachTitle|raw }}</h2>
+            <hr class="homeHr">
+            <h4 class="servicesTitle">{{ homepage.approachSubTitle|raw }}</h4> <br>
+            <h4 class="servicesBody">{{ homepage.approachBody|raw }}</h4>
+            <div class="aboutLink">
+                <a class="newsLink" href="{{ path('about') }}">En savoir plus</a>
+            </div>
+        </div>
+
+        <div id="news"></div>
+        <section class="newsCtn">
+            <h2 class="newsTitle bold">Nos dernières publications</h2>
+            <hr class="homeHr">
+            <div class="news">
+                {% for article in articles|sort((a,b) => a.updatedAt < b.updatedAt ) %}
+                    {% if article.isPublished is same as(true) %}
+                        {% if article.author.username == "Kids & Family" %}    {# TO DO : OPTIMISER / SECURISER (role admin ?) + BLOQUER A 3 MAX #}
+                            <div class="card articleCard" id="articleCard">
+                                <img class="card-img articleImg" src="{{ vich_uploader_asset(article, 'photoFile') }}"
+                                     alt="{{ article.title }}">
+                                <div class="articleHead">
+                                    <h5 class="card-title articleTitle">{{ article.title }}</h5>
+                                    <span class="like" id="likeStyle">{{ article.likes | length }}<i
+                                                class="fas fa-heart redLike"></i></span>
+                                </div>
+                                <div class="row">
+                                    {% for category in article.category %}
+                                        <div class="card-title articleCategory ">{{ category.name }}</div>
+                                    {% endfor %}
+                                </div>
+                                <hr>
+                                <div class="bottomCard">
+                                    <div class="profileCard">
+                                        {% if article.author.avatar %}
+                                            {% set user = article.author %}
+                                            <img class="avatarCard" src="{{ vich_uploader_asset(user, 'avatarFile') }}"
+                                                 alt="Photo du Profil">
+                                        {% endif %}
+                                        <span id="authorCard">
+                                               <a class="profileLink" href="{{ path('profile', {'id': article.author.id}) }}">{{ article.author.username }}</a>
+                                        </span>
+                                    </div>
+                                    <div class="commentCtn">
+                                        <section class="iconCard">
+                                            <i class="fa fa-commenting-o"></i>
+                                            <a class="articleLink"
+                                               href="{{ path('article_details', {'id': article.id}) }}#comment">Commenter</a>
+                                        </section>
+                                        <section class="iconCard">
+                                            <i class="fa fa-envelope-o"></i>
+                                            <a class="articleLink" href="#">Message Privé</a>
+                                        </section>
+                                    </div> {# TO DO : AJOUTER SYSTEM DE MESSAGE DIRECT #}
+                                    {# <a  class="stretched-link"  id="articleIdLink" href="#">Voir</a> #}
+                                </div>
+                                <a class="detailsLink" href="{{ path('article_details', {'id': article.id}) }}">Voir la
+                                    publication</a>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <h2 class="newsTitle bold">Les dernières publications de nos
+                ambassadeurs</h2> {# TO DO : OPTIMISER / SECURISER (role user ?) + BLOQUER A 3 MAX #}
+            <hr class="homeHr">
+            <div class="news">
+                {% for article in articles|sort((a,b) => a.updatedAt < b.updatedAt ) %}
+                    {% if article.isPublished is same as(true) %}
+                        {% if article.author.username != "Kids & Family" %}
+                            <div class="card articleCard" id="articleCard">
+                                <img class="card-img articleImg" src="{{ vich_uploader_asset(article, 'photoFile') }}"
+                                     alt="{{ article.title }}">
+                                <div class="articleHead">
+                                    <h5 class="card-title articleTitle">{{ article.title }}</h5>
+                                    <span class="like" id="likeStyle">{{ article.likes | length }}<i
+                                                class="fas fa-heart redLike"></i></span>
+                                </div>
+                                <div class="row">
+                                    {% for category in article.category %}
+                                        <div class="card-title articleCategory ">{{ category.name }}</div>
+                                    {% endfor %}
+                                </div>
+                                <hr>
+                                <div class="bottomCard">
+                                    <div class="profileCard">
+                                        {% if article.author.avatar %}
+                                            {% set user = article.author %}
+                                            <img class="avatarCard" src="{{ vich_uploader_asset(user, 'avatarFile') }}"
+                                                 alt="Photo du Profil">
+                                        {% endif %}
+                                        <span id="authorCard">
+                                               <a class="profileLink" href="{{ path('profile', {'id': article.author.id}) }}">{{ article.author.username }}</a>
+                                        </span>
+                                    </div>
+                                    <div class="commentCtn">
+                                        <section class="iconCard">
+                                            <i class="fa fa-commenting-o"></i>
+                                            <a class="articleLink"
+                                               href="{{ path('article_details', {'id': article.id}) }}#comment">Commenter</a>
+                                        </section>
+                                        <section class="iconCard">
+                                            <i class="fa fa-envelope-o"></i>
+                                            <a class="articleLink" href="#">Message Privé</a>
+                                        </section>
+                                    </div> {# TO DO : AJOUTER SYSTEM DE MESSAGE DIRECT #}
+                                    {# <a  class="stretched-link"  id="articleIdLink" href="#">Voir</a> #}
+                                </div>
+                                <a class="detailsLink" href="{{ path('article_details', {'id': article.id}) }}">Voir la
+                                    publication</a>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <h2 class="newsTitle bold">Ils ont besoin d'aide !</h2> {# TO DO : BLOQUER A 3 MAX #}
+            <hr class="homeHr">
+            <div class="news">
+                {% for article in articles|sort((a,b) => a.updatedAt < b.updatedAt ) %}
+                    {% if article.isPublished is same as(true) %}
+                        {% if article.needs %}
+                            <div class="card articleCard" id="articleCard">
+                                <img class="card-img articleImg"
+                                     src="{{ vich_uploader_asset(article, 'photoFile') }}"
+                                     alt="{{ article.title }}">
+                                <div class="articleHead">
+                                    <h5 class="card-title articleTitle">{{ article.title }}</h5>
+                                    <span class="like" id="likeStyle">{{ article.likes | length }}<i
+                                                class="fas fa-heart redLike"></i></span>
+                                </div>
+                                <div class="row">
+                                    {% for category in article.category %}
+                                        <div class="card-title articleCategory ">{{ category.name }}</div>
+                                    {% endfor %}
+                                </div>
+                                <hr>
+                                <div class="bottomCard">
+                                    <div class="profileCard">
+                                        {% if article.author.avatar %}
+                                            {% set user = article.author %}
+                                            <img class="avatarCard" src="{{ vich_uploader_asset(user, 'avatarFile') }}"
+                                                 alt="Photo du Profil">
+                                        {% endif %}
+                                        <span id="authorCard">
+                                            <a class="profileLink" href="{{ path('profile', {'id': article.author.id}) }}">{{ article.author.username }}</a>
+                                        </span>
+                                    </div>
+                                    <div class="commentCtn">
+                                        <section class="iconCard">
+                                            <i class="fa fa-commenting-o"></i>
+                                            <a class="articleLink"
+                                               href="{{ path('article_details', {'id': article.id}) }}#comment">Commenter</a>
+                                        </section>
+                                        <section class="iconCard">
+                                            <i class="fa fa-envelope-o"></i>
+                                            <a class="articleLink" href="#">Message Privé</a>
+                                        </section>
+                                    </div> {# TO DO : AJOUTER SYSTEM DE MESSAGE DIRECT #}
+                                    {# <a  class="stretched-link"  id="articleIdLink" href="#">Voir</a> #}
+                                </div>
+                                <a class="detailsLink" href="{{ path('article_details', {'id': article.id}) }}">Voir la
+                                    publication</a>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="newsLinkCtn">
+                <a class="btn loginBtn" href="{{ path('all_articles') }}#Kids&Family">Voir toutes les publications</a>
+            </div>
+        </section>
+
+        <div class="eshopCtn">
+            <div class="eshop">
+                <h2 class="eshopTitle bold">{{ homepage.sectionTitle|raw }}</h2>
+                <img src="{{ vich_uploader_asset(homepage, 'sectionImgFile') }}"/>
+                <h4 class="servicesBody">{{ homepage.sectionBody|raw }} </h4>
+                <div class="eshopLinkCtn">
+                    <a class="eshopLink" href="https://{{ homepage.link }}" target="_blank">{{homepage.btneshop}}</a>
+                </div>
+            </div>
+        </div>
+
+    {% endfor %}
 {% endblock %}
+

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for contribute in contributes %}
+        <div class="ctn contributeCtn">
+            <h1 class="detailsTitle">{{ contribute.contributeTitle|raw }}</h1>
+            <div class="contributeStep">
+                <h4 class="contributeStepTitle bold">{{ contribute.step1Title|raw}}</h4>
+                <div class="stepCtn">
+                    <img class="contributeStepImg"
+                         src="{{ vich_uploader_asset(contribute, 'step1ImgFile') }}">
+                    <p class="contributeStepBody">{{ contribute.step1Body|raw }}
+                    </p>
+                </div>
+            </div>
+
+            <div class="contributeStep">
+                <h4 class="contributeStepTitle rightTitle bold">{{contribute.step2Title|raw }}</h4>
+                <div class="stepCtn">
+                    <p class="contributeStepBody">{{ contribute.step2Body|raw }}
+                    </p>
+                    <img class="contributeStepImg"
+                         src="{{ vich_uploader_asset(contribute, 'step2ImgFile') }}">
+                </div>
+            </div>
+            <div class="contributeStep">
+                <h4 class="contributeStepTitle bold">{{contribute.step3Title|raw }}</h4>
+                <div class="stepCtn">
+                    <img class="contributeStepImg"
+                         src="{{ vich_uploader_asset(contribute, 'step3ImgFile') }}">
+                    <p class="contributeStepBody">{{ contribute.step3Body|raw }}
+                </div>
+            </div>
+
+            <div class="contributeStep">
+                <h4 class="contributeStepTitle rightTitle bold">{{contribute.step4Title|raw}}</h4>
+                <div class="stepCtn">
+                    <p class="contributeStepBody">{{ contribute.step4Body|raw }}
+                    </p>
+                    <img class="contributeStepImg"
+                         src="{{ vich_uploader_asset(contribute, 'step4ImgFile') }}">
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}

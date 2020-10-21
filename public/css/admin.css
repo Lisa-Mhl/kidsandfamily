@@ -1,0 +1,139 @@
+.servicesTitle {
+    text-align: center;
+    padding-top: 2em;
+    font-size: 2.5em;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.blue {
+    color: #17a2b8;
+}
+
+.baliseblue {
+    color: #29F3E2;
+    background: #171810;
+    padding: 0.2em;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+/** CONTRACTS **/
+
+#contract-ctn {
+    padding-bottom: 15em;
+}
+
+.table {
+    width: 100%;
+    margin: auto;
+}
+
+.total {
+    padding-top: 1em;
+    text-align: right;
+}
+
+#myInput {
+    width: 30%;
+}
+
+/** QUOTES **/
+.quoteCtn {
+    padding-top: 2em;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    width: 50%;
+    margin: 2em auto 1em;
+    border-style: solid;
+    border-width: thin;
+    min-height: 1200px;
+}
+
+.quoteHead {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.clientCtn {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.quoteLogo {
+    width: 45%;
+    padding-bottom: 0.5em;
+    padding-left: 2em;
+}
+
+.quoteClient {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-style: double;
+    border-radius: 5px;
+    padding-top: 1em;
+    padding-right: 1em;
+    text-align: right;
+    width: 100%;
+}
+
+.table {
+    margin-top: 1em;
+}
+
+.bg-thead {
+    background-color: #171810;
+}
+
+.tableHead {
+    color: #29F3E2;
+}
+
+.TVA {
+    text-align: right;
+}
+
+.sendQuote {
+    margin-bottom: 5em;
+}
+
+.quoteFooter {
+    font-size: 0.8em;
+    margin-top: 35em;
+    margin-bottom: 2em;
+    background-color: #171810;
+    color: whitesmoke;
+    padding: 5px;
+}
+
+.quoteLogoFooter {
+    width: 20%;
+}
+
+.quoteDetails {
+    font-size: 0.9em;
+}
+
+.signature {
+    margin-top: 5em;
+}
+
+#quoteBtn {
+    margin: 2em;
+}
+
+.quoteForm {
+    width: 70%;
+    margin: auto;
+}

@@ -1,0 +1,36 @@
+{% extends 'base_user.html.twig' %}
+{% block title %}Centres d'interets{% endblock %}
+{% block body %}
+    <div class="hobbiesCtn">
+        {% if app.user.id is same as (user.id) %}
+            <h1 class="detailsTitle"> Mes Centres d'Intérêts</h1>
+        {% else %}
+            <h1 class="detailsTitle">Centres d'Intérêts de {{ user }}</h1>
+        {% endif %}
+        <div class="hidden">
+            {{ form_widget(form.firstname) }}
+            {{ form_widget(form.lastname) }}
+            {{ form_widget(form.channelnum) }}
+            {{ form_widget(form.namevoie) }}
+            {{ form_widget(form.complement) }}
+            {{ form_widget(form.cp) }}
+            {{ form_widget(form.city) }}
+            {{ form_widget(form.country) }}
+            {{ form_widget(form.phone) }}
+            {{ form_widget(form.mobile) }}
+            {{ form_widget(form.gender) }}
+            {{ form_widget(form.profession) }}
+            {{ form_widget(form.marital) }}
+            {{ form_widget(form.avatarFile) }}
+            {{ form_widget(form.username) }}
+            {{ form_widget(form.email) }}
+            {{ form_widget(form.birthday) }}
+        </div>
+        {{ form_start(form) }}
+        {{ form_widget(form.hobbies, {'attr':{'class':'formHobbies'}} ) }}
+        {% if app.user.id is same as (user.id) %}
+            <button class="loginBtn" id="publishBtn">{{ button_label|default('sauvegarder') }}</button>
+        {% endif %}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

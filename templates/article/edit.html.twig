@@ -1,0 +1,158 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier ma Publication{% endblock %}
+
+{% block body %}
+    <div class="ctn editArtCtn">
+        {% if app.user is same as (article.author) %}
+
+            <h1 class="detailsTitle">Modifier ma Publication</h1>
+            {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+            <fieldset class="formFs">
+                <div class="hidden">
+                    {{ form_label(form.author, 'Auteur') }}
+                    {{ form_widget(form.author) }}
+                    {{ form_widget(form.updatedAt) }}
+                    {{ form_widget(form.isPublished) }}
+                </div>
+                <div class="formCtn">
+                    <div class="formInput">
+                          <span class="bold grey">
+                    {{ form_label(form.heading, 'Sélectionnez le type de publication :') }}
+                                  </span>
+                        {{ form_widget(form.heading) }}
+                    </div>
+                    <div class="formInput">
+                          <span class="bold grey">
+                    {{ form_label(form.classification, 'Choisissez une classification :') }}
+                                  </span>
+                        {{ form_widget(form.classification) }}
+                    </div>
+                    <div class="formInput">
+                          <span class="bold grey">
+                    {{ form_label(form.category, 'Choisissez entre 1 et 3 catégories :') }}
+                                  </span>
+                        {{ form_widget(form.category) }}
+                    </div>
+                    <div class="formInput">
+                          <span class="bold grey">
+                    {{ form_label(form.target, 'A qui s\'addresse votre publication ?') }}
+                                  </span>
+                        {{ form_widget(form.target) }}
+                    </div>
+                </div>
+
+                <div class="formCtn">
+                    <h3 class="text-center formCtnTitle">Informations</h3>
+                    <div class="formInput">
+                    <span class="bold grey">
+                    {{ form_label(form.title, 'Titre de votre publication :') }}
+                        </span>
+                        {{ form_widget(form.title) }}
+                    </div>
+
+                    <div class="formInput formContent">
+                          <span class="bold grey">
+                    {{ form_label(form.content, 'Description détaillée :') }}
+                                  </span>
+                        {{ form_widget(form.content, {'attr' : {'style': 'height: 350px'}}) }}
+                    </div>
+                    <div class="formInput">
+                          <span class="bold grey">
+                    {{ form_label(form.photoFile, 'Veuillez sélectionnez une image pour illustrer votre article :') }}
+                                  </span>
+                        {{ form_widget(form.photoFile) }}
+                    </div>
+                </div>
+                <div class="formCtn">
+                    <h3 class="text-center formCtnTitle">Géolocalisation</h3>
+                    <div class="formInput">
+                    <span class="bold grey">
+                    {{ form_label(form.address, 'Adresse (Sélectionnez une adresse proposée afin de géolocaliser votre article sur la map) :') }}
+                                       </span>
+                        <i class="fa fa-info-circle orange " aria-hidden="true"></i>
+                        {{ form_widget(form.address) }}
+                    </div>
+                    <div class="formInput">
+                    <span class="bold grey">
+                    {{ form_label(form.city, 'Ville :') }}
+                           </span>
+                        {{ form_widget(form.city) }}
+                    </div>
+                    <div class="formInput">
+                    <span class="bold grey">
+                    {{ form_label(form.zipcode, 'Code Postal :') }}
+                           </span>
+                        {{ form_widget(form.zipcode) }}
+                    </div>
+                </div>
+                <div class="optionCtn">
+                    <div class="option">
+                        <h3 class="text-center formCtnTitle">Optionnel</h3>
+                        <div class="formOption">
+                            <h5 class="newArticleContact">- Mes besoins</h5>
+                            {{ form_label(form.needs, 'Si vous avez besoin d\'aide de la part des ambassadeurs, de matériel (etc.) merci de détailler vos besoins ci-dessous :') }}
+                            {{ form_widget(form.needs, {'attr' : {'style': 'height: 150px'}}) }}
+                        </div>
+                        <div class="formOption">
+                            <h5 class="newArticleContact">- Documentation</h5>
+                            {{ form_label(form.photoBFile, 'Ajoutez une 2e image d\'illustration :') }}
+                            {{ form_widget(form.photoBFile) }}
+                        </div>
+                        <div class="formOption">
+                            {{ form_label(form.photoCFile, 'Ajoutez une 3e image d\'illustration :') }}
+                            {{ form_widget(form.photoCFile) }}
+                        </div>
+                        <div class="formOption">
+                            {{ form_label(form.video, 'Ajoutez un lien vers une vidéo') }}
+                            <i class="fa fa-info-circle grey" aria-hidden="true"></i>
+                            {{ form_widget(form.video) }}
+                        </div>
+                        <div class="formOption">
+                            {{ form_label(form.pdf, 'Ajoutez un document PDF') }}
+                            {{ form_widget(form.pdf) }}
+                        </div>
+                        <h5 class="newArticleContact">Contact <br><span class="subtitle">Ces informations apparaîtront pour les autres utilisateurs, ne remplissez que les champs que vous souhaitez communiquer</span>
+                        </h5>
+                        <div class="formContact">
+                            <i class="fa fa-phone-square" aria-hidden="true"></i>
+                            {{ form_label(form.telephone, 'Téléphone') }}
+                            {{ form_widget(form.telephone) }}
+                        </div>
+                        <div class="formContact">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            {{ form_label(form.email, 'Email') }}
+                            {{ form_widget(form.email) }}
+                        </div>
+                        <div class="formContact">
+                            <i class="fas fa-globe"></i>
+                            {{ form_label(form.website, 'Site Web') }}
+                            {{ form_widget(form.website) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="center">
+                    <button class="loginBtn" id="publishBtn">{{ button_label|default('Publier') }}</button>
+                </div>
+            </fieldset>
+            {{ form_end(form) }}
+
+            <div class="center">
+                <a class="logLink" href="{{ path('my_articles', {'id': app.user.id}) }}">Retour à mes publications</a>
+            </div>
+            <hr>
+            <div class="center">
+                {{ include('article/_delete_form.html.twig') }}
+            </div>
+
+        {% else %}
+            <div class="mustCo">
+                <p class="mustCoBody">Seul l'auteur d'une publication peut la modifier</p>
+                <a class="logLink" href="{{ path('app_login') }}">Se connecter</a> <br>
+                <a class="logLink" href="{{ path('app_register') }}">Créer un compte</a>
+            </div>
+
+        {% endif %}
+    </div>
+{% endblock %}

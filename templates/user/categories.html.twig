@@ -1,0 +1,26 @@
+{% extends 'base_user.html.twig' %}
+
+{% block title %}Mon compte{% endblock %}
+
+{% block body %}
+    {% if app.user %}
+        {% if is_granted('ROLE_USER') %}
+            <div class="categoryCtn">
+            <h1 class="detailsTitle">Catégories</h1>
+            <div class="row" id="catCard">
+                {% for category in categories %}
+                    <div class="card" id="categoryCard">
+                        <img class="categoryPoster" src="{{ vich_uploader_asset( category ) }}" alt="{{ category.name }}">
+                        <h4 class="card-title bold orange">{{ category.name }}</h4>
+                        <a class="stretched-link" href="{{ path('all_articles') }}#{{ category.name }}"></a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="text-center">Seuls les utilisateurs connectés peuvent accéder à cette page <br>
+                <a href="{{ path('app_login') }}">Connexion</a>
+            </p>
+        {% endif %}
+        </div>
+    {% endif %}
+{% endblock %}

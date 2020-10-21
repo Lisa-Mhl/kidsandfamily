@@ -1,0 +1,259 @@
+{% extends 'base.html.twig' %}
+  {% block stylesheets %}
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+            integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+            crossorigin=""/>
+      <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+              integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+              crossorigin=""></script>
+      <style type="text/css">
+          #map { /* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
+              height: 330px;
+              width: 280px;
+              z-index: 1;
+          }
+      </style>
+
+  {% endblock %}
+{% block body %}
+    <div class="ctn detailsCtn">
+
+        <h1 class="detailsTitle">{{ article.title|raw }} <br>
+            <span class="detailsSubtitle grey">publié par
+                <a class="profileLink" href="{{ path('profile', {'id': article.author.id}) }}">
+                    {{ article.author.username }}
+                </a>
+            </span>
+            <span class="detailsSubtitle grey"> | le {{ article.updatedAt|date('d/m/Y') }}
+            </span>
+        </h1>
+
+        <p class="detailsContent">{{ article.content|raw }}</p>
+        <div class="detailsPhotoCtn">
+            <img class="detailsPhoto" src="{{ vich_uploader_asset(article, 'photoFile') }}"
+                 alt="Illustration Article {{ article.title }}">
+            {% if article.photoB %}
+                <img class="detailsPhoto" src="{{ vich_uploader_asset(article, 'photoBFile') }}"
+                     alt="Illustration Article {{ article.title }}">
+            {% endif %}
+            {% if article.photoC %}
+                <img class="detailsPhoto" src="{{ vich_uploader_asset(article, 'photoCFile') }}"
+                     alt="Illustration Article {{ article.title }}">
+            {% endif %}
+        </div>
+
+        {% if article.needs %}
+            <div class="needsCtn">
+                <h3 class="needsTitle">Nos besoins</h3>
+                <p class="needsBody">{{ article.needs|raw }}</p>
+                <a class="btn loginBtn" id="helpLink" href="#">Je peux aider !</a>
+            </div>
+        {% endif %}
+        <div class="articleCommentCtn">
+            {% if article.comments is not empty %}
+                <h3 class="comTitle">Commentaires</h3>
+            {% endif %}
+            <div class="detailsComCtn">
+                {% for comment in article.comments %}
+                    <div class="profileCom">
+                        <div class="comName">
+                            {% if comment.author.avatar %}
+                                {% set user = comment.author %}
+                                <img id="avatarCom" src="{{ vich_uploader_asset(user, 'avatarFile') }}">
+                            {% endif %}
+                            <span id="authorCom">
+                                  <a class="profileLink"
+                                     href="{{ path('profile', {'id': comment.author.id}) }}">{{ comment.author }}</a>
+                                </span>
+                        </div>
+
+                        <div class="commentMenu">
+                            <li class="nav-item dropdown" id="comMenu">
+                                <a href="#" id="navbarDropdown" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-cog" id="comMenuIcon" aria-hidden="true"></i>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    {% if app.user is same as (comment.author) %}
+                                        {% include '/default/_delete_comment.html.twig' %}
+                                        <a class="dropdown-item"
+                                           href="{{ path('comment_edit', {'id': comment.id}) }}">Modifier</a>
+                                    {% else %}
+                                        <a class="dropdown-item"
+                                           href="{{ path('report_comment', {'id': comment.id}) }}">Signaler</a>
+                                    {% endif %}
+                                </div>
+                            </li>
+                        </div>
+                    </div>
+                    <p class="grey comment">{{ comment.comment }}</p>
+                {% endfor %}
+            </div>
+
+            {% if app.user %}
+                <h3 id="comment" class="comTitle">Laisser un commentaire</h3>
+                {{ form_start(form) }}
+                {{ form_label(form.comment, 'Votre message') }}
+                {{ form_widget(form.comment) }}
+                <button class="loginBtn btn sendComment">{{ button_label|default('Envoyer !') }}</button>
+                {{ form_end(form) }}
+            {% else %}
+                <p>
+                    <a class="detailsLink" href="{{ path('app_login') }}"> Connectez-vous
+                    </a>
+                    pour laisser un commentaire
+                </p>
+            {% endif %}
+        </div>
+
+        <div class="articleSideBar">
+            <div class="detailsCatCtn">
+                <h4 class="barTitle">
+                    <i class="fa fa-folder-open" aria-hidden="true"></i>
+                    Catégorie(s) </h4><br>
+                {% for category in article.category %}
+                <span class="detailsCatName">{{ category.name | upper }}</span>
+                {% endfor %}<br>
+                <hr>
+            </div>
+            <h4 class="barTitle"><i class="fa fa-map-marker" aria-hidden="true"></i> Lieu </h4>
+            <p>{{ article.address }}</p>
+            <div class="map">
+                <div id="map" data-lat="{{ article.lat }}" data-lng="{{ article.lng }}">
+                </div>
+            </div>
+            <div class="detailsMapLink">
+                <a class="detMapLink" href="{{ path('map') }}">Voir la map</a>
+            </div>
+            <hr>
+            <h4 class="barTitle"><i class="fa fa-share-square" aria-hidden="true"></i> Partager </h4>
+            <section class="shareCtn">
+                <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/"
+                     data-layout="button"
+                     data-size="large">
+                    <a target="_blank"
+                       href="https://www.facebook.com/sharer.php?u={url}"
+                       class="fb-xfbml-parse-ignore">
+                    </a>
+                </div>
+
+                <div class="twitter">
+                    <a class="twitter-share-button"
+                       href="https://twitter.com/intent/tweet" data-size="large"></a>
+                </div>
+
+                <div class="pinterest">
+                    <a data-pin-do="buttonPin" href="https://www.pinterest.com/pin/create/button/"
+                       data-pin-custom="true">
+                        <img src="https://addons.opera.com/media/extensions/55/19155/1.1-rev1/icons/icon_64x64.png"
+                             width="25" height="25" alt="pinterest">
+                    </a>
+                </div>
+            </section>
+
+            {% if article.author != "Kids & Family" %} {# TO DO : OPTIMISER AVEC ROLE ADMIN ? #}
+            <div class="report">
+                <p class="reportTitle">Contenu inapproprié ?</p>
+                <a class="red bold" href="{{ path('report', {'id': article.id}) }}">Signaler cette publication</a>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if article.telephone or article.email %}
+            <div class="articleContact">
+                <h5 class="contactTitle bold">CONTACT</h5>
+                {% if article.telephone %}
+                <p class="articleContactBody"><i class="fas fa-phone-alt contactIcon"></i> 0{{ article.telephone }} <br>
+                    {% endif %}
+                    {% if article.email %}
+                        <i class="fa fa-envelope contactIcon" aria-hidden="true"></i>
+                        <a href="mailto:{{ article.email }}"> {{ article.email }}</a> <br>
+                    {% endif %}
+            </div>
+        {% endif %}
+    </div>
+    {% if article.website or article.pdf %}
+        <div class="docCtn">
+            <h5 class="bold">Sources complémentaires</h5>
+            {% if article.website %}
+                <i class="fas fa-globe contactIcon"></i> <a target="_blank" href="https://{{ article.website }}">{{ article.website }}</a>
+                </p>
+            {% endif %}
+            {% if article.pdf %}
+                <a target="_blank" href="{{ vich_uploader_asset(article, 'pdfFile') }}">Document PDF</a><br>
+            {% endif %}
+        </div>
+    {% endif %}
+
+
+    {# Réseaux soc #}
+    <script>
+        (function (d) {
+            var f = d.getElementsByTagName('SCRIPT')[0], p = d.createElement('SCRIPT');
+            p.type = 'text/javascript';
+            p.async = true;
+            p.src = '//assets.pinterest.com/js/pinit.js';
+            f.parentNode.insertBefore(p, f);
+        }(document));
+
+    </script>
+    <script>window.twttr = (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0],
+                t = window.twttr || {};
+            if (d.getElementById(id)) return t;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+
+            t._e = [];
+            t.ready = function (f) {
+                t._e.push(f);
+            };
+
+            return t;
+        }(document, "script", "twitter-wjs"));</script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v8.0"
+            nonce="3WT9zbBN"></script>
+    {# endRéseaux soc #}
+
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
+            integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
+            crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
+
+    <script type="text/javascript">
+        // On initialise la latitude et la longitude de Clermont Ferrand (centre de la carte)
+        var lat = {{ article.lat }};
+        var lon = {{ article.lng }};
+        var macarte = null;
+
+        // Fonction d'initialisation de la carte
+        function initMap() {
+            let macarte = document.querySelector('#map')
+            if (macarte === null) {
+                return
+            }
+            // Définir la variable pointant au centre
+            let center = [macarte.dataset.lat, macarte.dataset.lng]
+            // Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
+            macarte = L.map('map').setView(center, 13);
+            // Leaflet ne récupère pas les cartes (tiles) sur un serveur par défaut. Nous devons lui préciser où nous souhaitons les récupérer. Ici, openstreetmap
+            L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+                // Il est toujours bien de laisser le lien vers la source des données
+                attribution: 'données © OpenStreetMap/ODbL - rendu OSM France',
+                // Zoom
+                minZoom: 5,
+                maxZoom: 20
+            }).addTo(macarte);
+            // Ajout de marker
+            L.marker(center).addTo(macarte);
+        }
+
+        window.onload = function () {
+            // Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
+            initMap();
+        };
+    </script>
+
+{% endblock %}

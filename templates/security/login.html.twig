@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+    <form method="post">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        {% if app.user %}
+            <div class="mb-3">
+                Vous etes connectés en tant que {{ app.user.username }}, <a href="{{ path('app_logout') }}">Se
+                    déconnecter</a>
+            </div>
+        {% endif %}
+
+        <div class="logCtn">
+            <h1 class="logTitle">Connexion</h1>
+            <label for="inputEmail">Email</label>
+            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required
+                   autofocus>
+            <label for="inputPassword">Mot de passe</label>
+            <input type="password" name="password" id="inputPassword" class="form-control" required>
+
+            <input type="hidden" name="_csrf_token"
+                   value="{{ csrf_token('authenticate') }}">
+
+            <div class="remeberMe">
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" name="_remember_me"> Se souvenir de moi
+                    </label>
+                </div>
+            </div>
+
+            <div class="loginBtn">
+                <button class="btn btn-lg logBtn" type="submit">
+                    Se connecter
+                </button>
+            </div>
+            <div class="registerLink">
+                <p>Pas encore inscrit ? <a class="regLink" href="{{ path('app_register') }}"> Créer un compte</a> <br>
+                <a class="regLink" href="{{ path('app_forgot_password_request') }}">Mot de passe oublié</a></p>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}

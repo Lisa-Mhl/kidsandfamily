@@ -1,0 +1,34 @@
+{% extends 'base_map.html.twig' %}
+{% block navBar %}
+    <div>BARRE DE RECHERCHE A METTRE ICI</div>
+{% endblock %}
+    {% block body %}
+        {% if app.user %}
+            <div class="ctn MapCtn">
+
+            <div id="mapSideBar">
+                <span class="bold">Catégories :</span>
+                {% for category in categories %}
+                    <p class="mapCat">{{ category.name }}</p>
+                    {% for article in category.article %}
+                        <a class="mapLink"
+                           href="{{ path('article_details', {'id': article.id}) }}">{{ article.title }}</a><br>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+
+            <!-- BARRE DE RECHERCHE -->
+            <div id="map">
+                <!-- Ici s'affichera la carte -->
+            </div>
+
+        {% else %}
+            <div class="mustCo">
+                <p class="mustCoBody">Seul les utilisateurs connectés peuvent accéder à la carte</p>
+                <a class="logLink" href="{{ path('app_login') }}">Se connecter</a> <br>
+                <a class="logLink" href="{{ path('app_register') }}">Créer un compte</a>
+            </div>
+
+        {% endif %}
+        </div>
+    {% endblock %}

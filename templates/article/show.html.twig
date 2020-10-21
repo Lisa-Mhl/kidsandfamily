@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article{% endblock %}
+
+{% block body %}
+    <h1>Article</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ article.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ article.title }}</td>
+            </tr>
+            <tr>
+                <th>Classification</th>
+                <td>{{ article.classification ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ article.address }}</td>
+            </tr>
+            <tr>
+                <th>Heading</th>
+                <td>{{ article.heading }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td><img src="{{ vich_uploader_asset(article, 'photoFile')}}"></td>
+            </tr>
+            <tr>
+                <th>Video</th>
+                <td>{{ article.video }}</td>
+            </tr>
+            <tr>
+                <th>Pdf</th>
+                <td>{{ article.pdf }}</td>
+            </tr>
+            <tr>
+                <th>Needs</th>
+                <td>{{ article.needs }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ article.content }}</td>
+            </tr>
+            <tr>
+                <th>PhotoB</th>
+                <td><img src="{{ vich_uploader_asset(article, 'photoBFile')}}"></td>
+            </tr>
+            <tr>
+                <th>PhotoC</th>
+                <td><img src="{{ vich_uploader_asset(article, 'photoCFile')}}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('article_index') }}">back to list</a>
+
+    <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
+
+    {{ include('article/_delete_form.html.twig') }}
+{% endblock %}
