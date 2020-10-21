@@ -139,15 +139,11 @@ class DefaultController extends AbstractController
      */
     public function deleteComment(Request $request, Comment $comment): Response
     {
-        $reports =$this->getDoctrine()->getRepository(Report::class)->findAll();
         $article = $comment->getArticle();
 
         if ($this->isCsrfTokenValid('delete' . $comment->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($comment);
-            foreach ($reports as $report) {
-                $entityManager->remove($report);
-            }
             $entityManager->flush();
         }
         return $this->redirectToRoute('article_details', ['id' => $article->getId()]);

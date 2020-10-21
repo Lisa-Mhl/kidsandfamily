@@ -145,15 +145,11 @@ class ArticleController extends AbstractController
      */
     public function delete(Request $request, Article $article): Response
     {
-        $reports =$this->getDoctrine()->getRepository(Report::class)->findAll();
+        ;
        $user = $article ->getAuthor();
         if ($this->isCsrfTokenValid('delete'.$article->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($article);
-            foreach ($reports as $report) {
-                $entityManager->remove($report);
-            }
-            $entityManager->flush();
             $entityManager->flush();
 
     }
